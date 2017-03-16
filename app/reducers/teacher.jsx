@@ -43,7 +43,7 @@ export const loadStudents = () => (dispatch, getState) => {
   let teacherId = getState().auth.teacherId
   axios.get(`/api/teacher/${teacherId}/students`)
     .then(res => res.data)
-    .then(students => dispatch(setStudents(students))
+    .then(students => dispatch(setStudents(students)))
     .catch(err => console.error(err))
 }
 

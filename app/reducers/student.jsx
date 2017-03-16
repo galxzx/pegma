@@ -17,6 +17,7 @@ export const setTeacher               = (teacher) => ({ type: SET_TEACHER, teach
 
 
 /* ------------       REDUCERS     ------------------ */
+
 const initialState = {
   assignments: [],
   currentAssignment: {},
@@ -46,6 +47,7 @@ export default function reducer(prevState = initialState, action) {
   }
   return newState
 }
+
 /* ------------       DISPATCHERS     ------------------ */
 
 // Add a new user
@@ -54,7 +56,7 @@ export const loadAssignments = () => (dispatch, getState) => {
   let studentId = getState().auth.studentId
   axios.get(`/api/students/${studentId}/assingments`)
     .then(res => res.data)
-    .then(assignments => dispatch(setAssignments(assignments))
+    .then(assignments => dispatch(setAssignments(assignments)))
     .catch(err => console.error(err))
 }
 
@@ -62,7 +64,7 @@ export const loadCurrentAssignment = (assignmentId) => (dispatch, getState) => {
   let studentId = getState().auth.studentId
   axios.get(`/api/students/${studentId}/assingments/${assignmentId}`)
     .then(res => res.data)
-    .then(assignment => dispatch(setCurrentAssignment(assignment))
+    .then(assignment => dispatch(setCurrentAssignment(assignment)))
     .catch(err => console.error(err))
 }
 
@@ -70,7 +72,7 @@ export const loadTeacher = () => (dispatch, getState) => {
   let studentId = getState().auth.studentId
   axios.get(`/api/students/${studentId}/`)
     .then(res => res.data)
-    .then(student => dispatch(setTeacher(student.teacher))
+    .then(student => dispatch(setTeacher(student.teacher)))
     .catch(err => console.error(err))
 }
 

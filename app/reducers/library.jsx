@@ -47,13 +47,13 @@ export default function reducer(prevState = initialState, action) {
 export const loadQuizzes = () => (dispatch, getState) => {
   axios.get(`/api/library/quizzes`)
     .then(res => res.data)
-    .then(quizzes => dispatch(setQuizzes(quizzes))
+    .then(quizzes => dispatch(setQuizzes(quizzes)))
     .catch(err => console.error(err))
 }
 
 export const loadTasks = () => (dispatch, getState) => {
   axios.get(`/api/library/tasks`)
     .then(res => res.data)
-    .then(tasks => dispatch(setTasks(tasks))
+    .then(tasks => dispatch(setTasks(tasks)))
     .catch(err => console.error(err))
 }
