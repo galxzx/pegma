@@ -25,11 +25,28 @@ const seedStudents = () => db.Promise.map([
   {user: {name: 'Kimberly Winston-Jackson', email: 'kimberly.winstonjackson@example.com', password: '1234'}, teacher_id: 1}
 ], students => db.model('students').create(students, {include:[User]}))
 
+//http://www.mathplanet.com/education/pre-algebra
 const seedTasks = () => db.Promise.map([
-  {title: 'Practice Addition', description: 'default description', teacher_id: 1},
-  {title: 'Book Report: War And Peace', description: 'default description', teacher_id: 1},
-  {title: 'Learn About Gravity', description: 'default description', teacher_id: 1}
+  {subject: 'Pre-Algebra', topic: 'Introducing Algebra', title: 'Operations in the correct order', description: 'default description', teacher_id: 1, grade_level: 8},
+  {subject: 'Pre-Algebra', topic: 'Introducing Algebra', title: 'The slope of a linear function', description: 'default description', teacher_id: 1, grade_level: 8},
+  {subject: 'Pre-Algebra', topic: 'Introducing Algebra', title: 'Identify properties', description: 'default description', teacher_id: 1, grade_level: 8},
+  {subject: 'Pre-Algebra', topic: 'Introducing Algebra', title: 'Equations with variables', description: 'default description', teacher_id: 1, grade_level: 8},
+  {subject: 'Pre-Algebra', topic: 'Introducing Algebra', title: 'Coordinate system and ordered pairs', description: 'default description', teacher_id: 1, grade_level: 8},
+  {subject: 'Pre-Algebra', topic: 'Introducing Algebra', title: 'Inequalities', description: 'default description', teacher_id: 1, grade_level: 8},
+
+  {subject: 'Pre-Algebra', topic: 'Graphing and functions', title: 'Linear equations in the coordinate plane', description: 'default description', teacher_id: 1, grade_level: 8},
+  {subject: 'Pre-Algebra', topic: 'Graphing and functions', title: 'The slope of a linear function', description: 'default description', teacher_id: 1, grade_level: 8},
+  {subject: 'Pre-Algebra', topic: 'Graphing and functions', title: 'Graphing linear inequalities',description: 'default description', teacher_id: 1, grade_level: 8},
+  {subject: 'Pre-Algebra', topic: 'Graphing and functions', title: 'Linear equations in the coordinate plane', description: 'default description', teacher_id: 1, grade_level: 8},
+  {subject: 'Pre-Algebra', topic: 'Graphing and functions', title: 'The slope of a linear function', description: 'default description', teacher_id: 1, grade_level: 8},
+  {subject: 'Pre-Algebra', topic: 'Graphing and functions', title: 'Graphing linear inequalities',description: 'default description', teacher_id: 1, grade_level: 8},
+  {subject: 'Pre-Algebra', topic: 'Graphing and functions', title: 'Solve systems of equations by graphing',description: 'default description', teacher_id: 1, grade_level: 8}
+
+  {subject: 'Pre-Algebra', topic: 'Area and volumes', title: 'Measure areas',description: 'default description', teacher_id: 1, grade_level: 8},
+  {subject: 'Pre-Algebra', topic: 'Area and volumes', title: 'Solve systems of equations by graphing',description: 'default description', teacher_id: 1, grade_level: 8}
 ], task => db.model('tasks').create(task))
+
+
 
 
 const seedQuizzes = () => db.Promise.map([
