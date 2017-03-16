@@ -10,3 +10,8 @@ public/bundle.js.map
 
 # NPM errors
 npm-debug.log
+
+.DS_Store
+._.DS_Store
+**/.DS_Store
+**/._.DS_Store
