@@ -7,6 +7,16 @@
 const User = require('./user')
 const OAuth = require('./oauth')
 
+const Student = require('./student')
+const Teacher = require('./teacher')
+
+
 OAuth.belongsTo(User)
 User.hasOne(OAuth)
+
+Student.belongsTo(User)
+Teacher.belongsTo(User)
+Student.belongsTo(Teacher)
+Teacher.hasMany(Student)
+
 module.exports = {User}
