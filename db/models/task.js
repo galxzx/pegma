@@ -14,6 +14,10 @@ const Task = db.define('tasks', {
   subject: {
   	type: Sequelize.STRING,
   	defaultValue: 'No Subject'
+  },
+  topic: {
+  	type: Sequelize.STRING,
+  	defaultValue: 'General'  	
   }
 })
 
