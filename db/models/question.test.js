@@ -32,5 +32,9 @@ describe('Question', () => {
       expect(question.answer[0]).to.equal('Mercury')
     })
 
+    it('has a string as type field', function () {
+      expect(question.answer).to.equal('Multiple Choice')
+    })
+
   })
 })
