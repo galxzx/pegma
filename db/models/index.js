@@ -6,16 +6,16 @@
 
 const User = require('./user')
 const OAuth = require('./oauth')
-const Teacher = require('./teacher')
-const Assignment = require('./assignment')
+// const Teacher = require('./teacher')
+// const Assignment = require('./assignment')
 const Quiz = require('./quiz')
 const Question = require('./question')
 
 OAuth.belongsTo(User)
 User.hasOne(OAuth)
 
-Quiz.belongsTo(Teacher)
-Quiz.belongsTo(Assignment)
+// Quiz.belongsTo(Teacher)
+// Quiz.belongsTo(Assignment)
 Quiz.hasMany(Question)
 Question.belongsTo(Quiz)
 
