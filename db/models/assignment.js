@@ -15,6 +15,13 @@ const Assignment = db.define('assignments', {
   ETC: Sequelize.FLOAT,
   type: Sequelize.ENUM('task', 'quiz'),
   reward: Sequelize.INTEGER
+}, {
+  hooks: {
+    beforeCreate: (assignment) => {
+      if(assignment.type === 'quiz' && !assignment.quiz_id) 
+      throw new Error(`A assignment of type 'quiz' must have a quiz_id!`)
+    }
+  }  
 })
 
 // Assignment belongsTo Task

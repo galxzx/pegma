@@ -14,11 +14,15 @@ const Assignment = require('./assignment')
 const Task = require('./task')
 
 OAuth.belongsTo(User)
-User.hasOne(OAuth)
 
-Student.belongsTo(User)
-Teacher.belongsTo(User)
+User.hasOne(OAuth)
+User.belongsTo(Student)
+User.belongsTo(Teacher)
+
+Student.hasOne(User)
 Student.belongsTo(Teacher)
+
+Teacher.hasOne(User)
 Teacher.hasMany(Student)
 
 Quiz.belongsTo(Teacher)
