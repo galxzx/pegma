@@ -12,7 +12,7 @@ const Student = db.define('students', {
     rewards: () => {
       let rewards = null
       // Assignment.findAll({where: {student_id: this.id}})
-      //   .then(rows => rewards = rows.reduce((sum, reward) => (sum + reward), 0))
+      //   .then(rows => rewards = rows.reduce((sum, row) => (sum + row.dataValues.reward), 0))
       return rewards
     }
   }
