@@ -9,4 +9,6 @@ const Task = db.define('task', {
   description: Sequelize.TEXT
 })
 
+//Task belongsTo Teacher
+
 module.exports = Task

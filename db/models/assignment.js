@@ -17,4 +17,7 @@ const Assignment = db.define('assignment', {
   reward: Sequelize.INTEGER
 })
 
+// Assignment belongsTo Task
+// Assignment belongsTo Student
+
 module.exports = Assignment
