@@ -4,7 +4,7 @@ const Sequelize = require('sequelize')
 const db = require('APP/db')
 
 
-const Assignment = db.define('assignment', {
+const Assignment = db.define('assignments', {
   due_date: Sequelize.DATE,
   status: {
     type: Sequelize.ENUM('future', 'assigned', 'inProgress', 'completed'),
