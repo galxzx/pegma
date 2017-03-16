@@ -10,7 +10,7 @@ describe('Question', () => {
   afterEach('Clear the tables', () => db.truncate({ cascade: true }))
 
   describe('the Question model', () => {
-  
+
     let question
 
     beforeEach(function (done) {
@@ -21,10 +21,10 @@ describe('Question', () => {
       })
       done()
     })
-    
+
     it('has a inquiry field', function () {
       expect(question.inquiry).to.equal('What is the second planet in the Solar System?')
-    })      
+    })
 
     it('has a array as answers field', function () {
       expect(question.answer).to.be.an('array')
@@ -33,7 +33,7 @@ describe('Question', () => {
     })
 
     it('has a string as type field', function () {
-      expect(question.answer).to.equal('Multiple Choice')
+      expect(question.type).to.equal('Multiple Choice')
     })
 
   })
