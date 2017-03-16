@@ -15,14 +15,14 @@ describe('Quiz', () => {
 
     beforeEach(function (done) {
       quiz = Quiz.build({
-        name: 'Astronomy Quiz',
+        title: 'Astronomy Quiz',
         description: 'Answer this five questions about what we learned this week.'
       })
       done()
     })
     
-    it('has a name field', function () {
-      expect(quiz.name).to.equal('Astronomy Quiz')
+    it('has a title field', function () {
+      expect(quiz.title).to.equal('Astronomy Quiz')
     })      
 
     it('has a working description field', function () {
