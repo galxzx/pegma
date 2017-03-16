@@ -9,6 +9,7 @@ import Login from './components/Login'
 import WhoAmI from './components/WhoAmI'
 import Jokes from './components/Jokes'
 import AppContainer from './containers/AppContainer'
+import StudentDashboardContainer from './containers/StudentDashboardContainer'
 
 
 export default function Root () {
@@ -16,8 +17,8 @@ export default function Root () {
     <Provider store={store}>
       <Router history={browserHistory}>
         <Route path="/" component={AppContainer}>
-          <IndexRedirect to="/jokes" />
-          <Route path="/jokes" component={Jokes} />
+          <IndexRedirect to="/student" />
+          <Route path="/student" component={StudentDashboardContainer} />
         </Route>
       </Router>
     </Provider>
