@@ -12,7 +12,7 @@ const seedTeachers = () => db.Promise.map([
 ], teacher => db.model('teachers').create(teacher, {include:[User]}))
 
 const seedStudents = () => db.Promise.map([
-  {user: {name: 'Cody', email: 'cody@example.com', password: '1234'}, teacher_id: 1},	
+  {user: {name: 'Cody', email: 'cody@example.com', password: '1234'}, teacher_id: 1},
   {user: {name: 'Corryn Young', email: 'corryn.young@example.com', password: '1234'}, teacher_id: 1},
   {user: {name: 'Jonathan', email: 'jonathan.mann@example.com', password: '1234'}, teacher_id: 1},
   {user: {name: 'Fabiano Pires da Silva', email: 'fabiano.piresdasliva@example.com', password: '1234'}, teacher_id: 1},
@@ -40,7 +40,7 @@ const seedTasks = () => db.Promise.map([
   {subject: 'Pre-Algebra', topic: 'Graphing and functions', title: 'Linear equations in the coordinate plane', description: 'default description', teacher_id: 1, grade_level: 8},
   {subject: 'Pre-Algebra', topic: 'Graphing and functions', title: 'The slope of a linear function', description: 'default description', teacher_id: 1, grade_level: 8},
   {subject: 'Pre-Algebra', topic: 'Graphing and functions', title: 'Graphing linear inequalities',description: 'default description', teacher_id: 1, grade_level: 8},
-  {subject: 'Pre-Algebra', topic: 'Graphing and functions', title: 'Solve systems of equations by graphing',description: 'default description', teacher_id: 1, grade_level: 8}
+  {subject: 'Pre-Algebra', topic: 'Graphing and functions', title: 'Solve systems of equations by graphing',description: 'default description', teacher_id: 1, grade_level: 8},
 
   {subject: 'Pre-Algebra', topic: 'Area and volumes', title: 'Measure areas',description: 'default description', teacher_id: 1, grade_level: 8},
   {subject: 'Pre-Algebra', topic: 'Area and volumes', title: 'Solve systems of equations by graphing',description: 'default description', teacher_id: 1, grade_level: 8}
@@ -66,14 +66,14 @@ const seedAssignments = () => db.Promise.map([
 db.didSync
   .then(() => db.sync({force: true}))
 	.then(seedTeachers)
-  .then(teachers => console.log(`Seeded ${teachers.length} teachers OK`))  
+  .then(teachers => console.log(`Seeded ${teachers.length} teachers OK`))
   .then(seedStudents)
-  .then(students => console.log(`Seeded ${students.length} students OK`))  
+  .then(students => console.log(`Seeded ${students.length} students OK`))
   .then(seedTasks)
-  .then(tasks => console.log(`Seeded ${tasks.length} tasks OK`))  
+  .then(tasks => console.log(`Seeded ${tasks.length} tasks OK`))
   .then(seedQuizzes)
-  .then(quizzes => console.log(`Seeded ${quizzes.length} quizzes OK`))   	
+  .then(quizzes => console.log(`Seeded ${quizzes.length} quizzes OK`))
 	.then(seedAssignments)
-  .then(assignments => console.log(`Seeded ${assignments.length} assignments OK`))         
-  .catch(error => console.error(error))    
+  .then(assignments => console.log(`Seeded ${assignments.length} assignments OK`))
+  .catch(error => console.error(error))
   .finally(() => db.close())

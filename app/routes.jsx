@@ -17,6 +17,12 @@ import StudentDashboardContainer from './containers/StudentDashboardContainer'
 import TeacherDashboardContainer from './containers/TeacherDashboardContainer'
 import TrackerContainer from './containers/TrackerContainer'
 import StudentSettingsContainer from './containers/StudentSettingsContainer'
+import StudentCalendarContainer from './containers/StudentCalendarContainer'
+import AssignmentContainer from './containers/AssignmentContainer'
+import ClassTrackerContainer from './containers/ClassTrackerContainer'
+import LibraryContainer from './containers/LibraryContainer'
+import TeacherSettingsContainer from './containers/TeacherSettingsContainer'
+import TeacherCalendarContainer from './containers/TeacherCalendarContainer'
 
 
 export default function Root () {
@@ -27,12 +33,19 @@ export default function Root () {
           <IndexRedirect to="/student" />
           <Router path="/student"  component={StudentAppContainer}>
             <Route path="dashboard" component={StudentDashboardContainer} />
-            <Route path="tracker" component={TrackerContainer} />
+            <Route path="tracker/:studentId" component={TrackerContainer} />
             <Route path="settings" component={StudentSettingsContainer} />
+            <Route path="calendar" component={StudentCalendarContainer} />
+            <Route path="assignment/:assignmentId" component={AssignmentContainer} />
             <IndexRedirect to="dashboard" />
           </Router>
           <Router path="/teacher" component={TeacherAppContainer}>
             <Route path="dashboard" component={TeacherDashboardContainer} />
+            <Route path="class" component={ClassTrackerContainer} />
+            <Route path="student/:studentId" component={TrackerContainer} />
+            <Route path="library" component={LibraryContainer} />
+            <Route path="settings" component={TeacherSettingsContainer} />
+            <Route path="calendar" component={TeacherCalendarContainer} />
             <IndexRedirect to="dashboard" />
           </Router>
         </Route>
