@@ -6,7 +6,6 @@ const StudentApp = ({ user, children }) => {
   return (
     <div>
       <nav className="container nav-content">
-        {user ? <WhoAmI/> : <Login/>}      
         <ul className="nav-bar">
           <li className="nav-item">
             <span className="nav-icon icon-clipboard"></span>

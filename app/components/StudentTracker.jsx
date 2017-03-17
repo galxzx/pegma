@@ -8,7 +8,7 @@ const Tracker = ({user, assignments}) => {
       <div className="flex-child list-container">
 
         <section className="panel list">
-          <div className="panel-header">Notifications</div>
+          <div className="panel-header">To-Do</div>
           <ul className="notifications-list">
             <li className="overdue">Assignment X is overdue.<span className="icon icon-external-link-sqaure"></span></li>
             <li>Assignment Y graded.<span className="icon icon-external-link-sqaure"></span></li>
@@ -23,14 +23,15 @@ const Tracker = ({user, assignments}) => {
       <div className="flex-child list-container">
 
         <section className="panel list">
-          <div className="panel-header">Notifications</div>
+          <div className="panel-header">Doing</div>
           <ul className="notifications-list">
-            <li className="overdue">Assignment X is overdue.<span className="icon icon-external-link-sqaure"></span></li>
-            <li>Assignment Y graded.<span className="icon icon-external-link-sqaure"></span></li>
-            <li>New Assigment Z added.<span className="icon icon-external-link-sqaure"></span></li>
-            <li>New Assigment W added.<span className="icon icon-external-link-sqaure"></span></li>
-            <li>New Assigment W added.<span className="icon icon-external-link-sqaure"></span></li>
-            <li>Assignment H graded.<span className="icon icon-external-link-sqaure"></span></li>
+          {	
+          	assignments && assignments.map(assignment => (
+            	<li>{assignment.task.title || assignment.quiz.title || 'Untitled'}
+            		<span className="icon icon-external-link-sqaure"></span>
+            	</li>
+          	))
+          }
           </ul>
         </section> 
 
@@ -38,14 +39,9 @@ const Tracker = ({user, assignments}) => {
       <div className="flex-child list-container">
 
         <section className="panel list">
-          <div className="panel-header">Notifications</div>
+          <div className="panel-header">Done</div>
           <ul className="notifications-list">
-            <li className="overdue">Assignment X is overdue.<span className="icon icon-external-link-sqaure"></span></li>
-            <li>Assignment Y graded.<span className="icon icon-external-link-sqaure"></span></li>
-            <li>New Assigment Z added.<span className="icon icon-external-link-sqaure"></span></li>
-            <li>New Assigment W added.<span className="icon icon-external-link-sqaure"></span></li>
-            <li>New Assigment W added.<span className="icon icon-external-link-sqaure"></span></li>
-            <li>Assignment H graded.<span className="icon icon-external-link-sqaure"></span></li>
+            <li>Task 2<span className="icon icon-external-link-sqaure"></span></li>
           </ul>
         </section> 
 
@@ -53,14 +49,9 @@ const Tracker = ({user, assignments}) => {
       <div className="flex-child list-container">
 
         <section className="panel">
-          <div className="panel-header">Notifications</div>
+          <div className="panel-header">Archive</div>
           <ul className="notifications-list">
-            <li className="overdue">Assignment X is overdue.<span className="icon icon-external-link-sqaure"></span></li>
-            <li>Assignment Y graded.<span className="icon icon-external-link-sqaure"></span></li>
-            <li>New Assigment Z added.<span className="icon icon-external-link-sqaure"></span></li>
-            <li>New Assigment W added.<span className="icon icon-external-link-sqaure"></span></li>
-            <li>New Assigment W added.<span className="icon icon-external-link-sqaure"></span></li>
-            <li>Assignment H graded.<span className="icon icon-external-link-sqaure"></span></li>
+            <li className="overdue">Task 3<span className="icon icon-external-link-sqaure"></span></li>
           </ul>
         </section>    
 

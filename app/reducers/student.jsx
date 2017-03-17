@@ -53,7 +53,7 @@ export default function reducer(prevState = initialState, action) {
 // Add a new user
 
 export const loadAssignments = () => (dispatch, getState) => {
-  let studentId = getState().auth.studentId
+  let studentId = getState().auth.student_id
   axios.get(`/api/students/${studentId}/assingments`)
     .then(res => res.data)
     .then(assignments => dispatch(setAssignments(assignments)))
@@ -61,18 +61,21 @@ export const loadAssignments = () => (dispatch, getState) => {
 }
 
 export const loadCurrentAssignment = (assignmentId) => (dispatch, getState) => {
-  let studentId = getState().auth.studentId
+  let studentId = getState().auth.student_id
   axios.get(`/api/students/${studentId}/assingments/${assignmentId}`)
     .then(res => res.data)
     .then(assignment => dispatch(setCurrentAssignment(assignment)))
     .catch(err => console.error(err))
 }
 
-export const loadTeacher = () => (dispatch, getState) => {
-  let studentId = getState().auth.studentId
+export const loadStudent = () => (dispatch, getState) => {
+  let studentId = getState().auth.student_id
   axios.get(`/api/students/${studentId}/`)
     .then(res => res.data)
-    .then(student => dispatch(setTeacher(student.teacher)))
+    .then(student => {
+      dispatch(setAssignments(student.assignments))      
+      dispatch(setTeacher(student.teacher))
+    })
     .catch(err => console.error(err))
 }
 

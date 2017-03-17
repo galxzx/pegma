@@ -24,6 +24,14 @@ import LibraryContainer from './containers/LibraryContainer'
 import TeacherSettingsContainer from './containers/TeacherSettingsContainer'
 import TeacherCalendarContainer from './containers/TeacherCalendarContainer'
 
+import {whoami} from './reducers/auth'
+import {loadAssignments, loadCurrentAssignment, loadStudent} from './reducers/student'
+
+
+const onEnterStudent = () => {
+  store.dispatch(whoami())
+    .then(res => store.dispatch(loadStudent()))
+}
 
 export default function Root () {
   return (
@@ -31,7 +39,7 @@ export default function Root () {
       <Router history={browserHistory}>
         <Route path="/" component={AppContainer}>
           <IndexRedirect to="/student" />
-          <Router path="/student"  component={StudentAppContainer}>
+          <Router path="/student"  component={StudentAppContainer} onEnter={onEnterStudent}>
             <Route path="dashboard" component={StudentDashboardContainer} />
             <Route path="tracker/:studentId" component={StudentTrackerContainer} />
             <Route path="settings" component={StudentSettingsContainer} />
