@@ -23,6 +23,7 @@ import ClassTrackerContainer from './containers/ClassTrackerContainer'
 import LibraryContainer from './containers/LibraryContainer'
 import TeacherSettingsContainer from './containers/TeacherSettingsContainer'
 import TeacherCalendarContainer from './containers/TeacherCalendarContainer'
+import QuizContainer from './containers/QuizContainer'
 
 
 export default function Root () {
@@ -36,7 +37,9 @@ export default function Root () {
             <Route path="tracker/:studentId" component={TrackerContainer} />
             <Route path="settings" component={StudentSettingsContainer} />
             <Route path="calendar" component={StudentCalendarContainer} />
-            <Route path="assignment/:assignmentId" component={AssignmentContainer} />
+            <Router path="assignment/:assignmentId" component={AssignmentContainer} >
+              <Route path="quiz/:quizId" component={QuizContainer} />
+            </Router>
             <IndexRedirect to="dashboard" />
           </Router>
           <Router path="/teacher" component={TeacherAppContainer}>

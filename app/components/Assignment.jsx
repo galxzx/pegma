@@ -1,8 +1,11 @@
 import React from 'react'
 
-const Assignment = ({user, currentAssignment}) => {
+const Assignment = ({user, currentAssignment, children}) => {
   return (
-    <div>Assignment </div>
+    <div>
+      <div>Assignment </div>
+      {children}
+    </div>
   )
 }
 
