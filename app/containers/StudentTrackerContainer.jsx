@@ -9,4 +9,4 @@ const mapState = (state) => {
     assignments: state.student.assignments
   }
 }
-export default connect (mapState) (Tracker)
+export default connect (mapState) (StudentTracker)
