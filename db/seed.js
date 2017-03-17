@@ -52,7 +52,7 @@ const seedTasks = () => db.Promise.map([
 const seedQuizzes = () => db.Promise.map([
   {title: 'Math Quiz #1', teacher_id: 1},
   {title: 'Math Quiz #2', teacher_id: 1},
-  {title: 'History Quiz #1', teacher_id: 1}
+  {title: 'Math Quiz #3', teacher_id: 1}
 ], quiz => db.model('quizzes').create(quiz))
 
 const seedAssignments = () => db.Promise.map([
