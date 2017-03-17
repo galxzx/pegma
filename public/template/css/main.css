@@ -11,10 +11,20 @@ html {
 	padding: 0 15px;
 }
 
+#app {
+	display: flex;
+	flex-direction: column;
+}
+
 .top-menu {
 	background: #eee;
 	padding-top: 15px;
 	padding-bottom: 15px;
+	flex: 1;
+}
+
+.main {
+	flex: 1;
 }
 
 .header-content {
@@ -28,10 +38,12 @@ html {
 }
 
 footer {
+	margin-top: 30px;
 	background: #222;
 	color: #fff;
 	padding: 5px;
 	text-align: center;
+	flex: 1;
 }
 
 footer p {
@@ -203,13 +215,13 @@ main {
 	font-size: 80%;
 }
 
-.dashboard .assignments .assignments-list {
+.dashboard .assignments-list {
 	padding: 0;
 	margin: 0;
 	list-style: none;
 }
 
-.dashboard .assignments .assignments-list li {
+.assignments-list li {
 	padding: 5px;
 	border-bottom: 1px solid #eee;
 	display: flex;
@@ -217,37 +229,44 @@ main {
 	cursor: pointer;
 }
 
-.dashboard .assignments .assignments-list li:hover {
+.assignments-list li:hover {
 	background: #eee;
 }
 
-.dashboard .assignments .assignments-list li h3 {
+.assignments-list li h3 {
 	margin: 5px 0;
 	/*outline: 1px solid green;*/
 }
 
-.dashboard .assignments .assignments-list li .snippet {
+.assignments-list li .snippet {
 	margin: 5px 0;
 	font-style: italic;
 	font-size: 80%;
 	/*outline: 1px solid orange;*/
 }
 
-.dashboard .assignments .assignments-list li .due {
+.assignments-list li .due {
 	text-align: center;
 	margin-right: 15px;
 }
 
-.dashboard .assignments .assignments-list li h4 {
+.assignments-list li h4 {
 	margin: 5px 0;
 	/*outline: 1px solid red;*/
 	font-size: 60%;
 }
 
-.dashboard .assignments .assignments-list li .date {
+.assignments-list li .date {
 	margin: 5px 0;
 	/*outline: 1px solid blue;*/
 	font-size: 120%;
+}
+
+.list-pending,
+.list-inprogress,
+.list-completed,
+.list-archived {
+	width: 25%;
 }
 
 
