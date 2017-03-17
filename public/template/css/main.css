@@ -124,6 +124,10 @@ main {
 	justify-content: space-between;
 }
 
+.dashboard-teacher .stats li {
+	width: 50%;
+}
+
 .stats li:last-child {
 	margin-right: 0 !important;
 }
@@ -158,6 +162,15 @@ main {
 }
 
 .stats .stats-rewards {
+	background: #666;
+}
+
+
+.stats .stats-ready {
+	background: #666;
+}
+
+.stats .stats-selfgraded {
 	background: #666;
 }
 

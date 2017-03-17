@@ -1,0 +1,195 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link href="https://fonts.googleapis.com/css?family=Asap:400,400i,700" rel="stylesheet">
+  <link rel="stylesheet" href="css/normalize.min.css">
+  <link rel="stylesheet" href="fonts/icons.css">
+  <link rel="stylesheet" href="css/main.css">
+
+    <!-- <script src="js/vendor/modernizr-2.8.3.min.js"></script> -->
+</head>
+<body>
+  <!--[if lt IE 8]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+  <div id="app">
+    <header class="top-menu">
+      <div class="container header-content">
+        <div class="logo">Pegma</div>
+        <div class="user-information">Hello, John Smith <a href="#" class="icon icon-sign-out"></a></div>
+      </div>
+    </header>
+
+    <div class="main">
+
+      <nav class="container nav-content">
+        <ul class="nav-bar">
+          <li class="nav-item">
+            <span class="nav-icon icon-clipboard"></span>
+            <a class="nav-text" href="student-tracker.html">Assignments</a>
+          </li>
+          <li class="nav-item">
+            <span class="nav-icon icon-calendar"></span>
+            <a class="nav-text" href="student-calendar.html">Calendar</a>
+          </li>
+          <li class="nav-item">
+            <span class="nav-icon icon-cog"></span>
+            <a class="nav-text" href="student-settings.html">Students</a>
+          </li>
+          <li class="nav-item">
+            <span class="nav-icon icon-trophy"></span>
+            <a class="nav-text" href="student-settings.html">Rewards</a>
+          </li>
+          <li class="nav-item">
+            <span class="nav-icon icon-cog"></span>
+            <a class="nav-text" href="student-settings.html">Settings</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="dashboard dashboard-teacher">
+
+        <div class="container flex-container">
+            
+            <div class="flex-child">
+              
+              <ul class="stats">
+                <li class="stats-ready">
+                  <span class="icon icon-file-text"></span>
+                  <div class="info">
+                    <div class="quantity">14</div>
+                    <div class="type">Ready to Grade</div>
+                  </div>
+                </li>
+                <li class="stats-selfgraded">
+                  <span class="icon icon-calendar-plus-o"></span>
+                  <div class="info">
+                    <div class="quantity">24</div>
+                    <div class="type">Self Graded</div>
+                  </div>
+                </li>
+              </ul><!-- /stats -->
+
+              <section class="panel notifications">
+                <div class="panel-header">Notifications</div>
+                <ul class="notifications-list">
+                  <li class="overdue">Luke Cookie's Assignment X is late.<span class="icon icon-external-link-sqaure"></span></li>
+                  <li>Jane Doe completed Assignment Y.<span class="icon icon-external-link-sqaure"></span></li>
+                  <li>Pam Pancake completed Assignment X.<span class="icon icon-external-link-sqaure"></span></li>
+                  <li>Carl Chocolate completed Assignment Z.<span class="icon icon-external-link-sqaure"></span></li>
+                  <li>Cody completed Assignment X.<span class="icon icon-external-link-sqaure"></span></li>
+                  <li>Laquisha Lasagna completed Assignment Z.<span class="icon icon-external-link-sqaure"></span></li>
+                </ul>
+              </section> <!-- /notifications -->
+
+              <section class="panel calendar">
+                <div class="panel-header">
+                  <div>Calendar</div>
+                </div>
+              </section>
+            
+            </div> <!-- flex-child -->
+
+            <div class="flex-child">
+
+              <section class="panel assignments">
+                <div class="panel-header">
+                  <span>Assignments</span>
+                  <div class="styled-select-filters">
+                    <select name="sort_assignments">
+                      <option value="" selected>Sort by</option>
+                      <option value="duedate">Due Date</option>
+                      <option value="name">Name</option>
+                      <option value="type">Type</option>
+                    </select>
+                  </div>
+                </div>
+                <ul class="assignments-list">
+                  <li>
+                    <div class="summary">
+                      <h3 class="title">Title</h3>
+                      <span class="student-name">Jane Doe</span>
+                    </div>
+                    <div class="due">
+                      <h4>Due</h4>
+                      <p class="date">01/17</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="summary">
+                      <h3 class="title">Title</h3>
+                      <span class="student-name">Jane Doe</span>
+                    </div>
+                    <div class="due">
+                      <h4>Due</h4>
+                      <p class="date">01/17</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="summary">
+                      <h3 class="title">Title</h3>
+                      <span class="student-name">Jane Doe</span>
+                    </div>
+                    <div class="due">
+                      <h4>Due</h4>
+                      <p class="date">01/17</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="summary">
+                      <h3 class="title">Title</h3>
+                      <span class="student-name">Jane Doe</span>
+                    </div>
+                    <div class="due">
+                      <h4>Due</h4>
+                      <p class="date">01/17</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="summary">
+                      <h3 class="title">Title</h3>
+                      <span class="student-name">Jane Doe</span>
+                    </div>
+                    <div class="due">
+                      <h4>Due</h4>
+                      <p class="date">01/17</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="summary">
+                      <h3 class="title">Title</h3>
+                      <span class="student-name">Jane Doe</span>
+                    </div>
+                    <div class="due">
+                      <h4>Due</h4>
+                      <p class="date">01/17</p>
+                    </div>
+                  </li>
+                </ul>
+              </section> <!-- /assignments -->
+
+            </div><!-- /flex-child -->
+
+        </div><!-- /container /flex-container -->
+
+      </div> <!-- dashboard -->
+
+    </div><!-- /main -->
+
+    <footer>
+      <div class="container footer-content">
+        <p>© Pegma 2017</p>    
+      </div>
+    </footer>
+  </div> <!-- /app -->
+
+    <!-- <script src="js/main.js"></script> -->
+</body>
+</html>
