@@ -22,6 +22,7 @@ import AssignmentContainer from './containers/AssignmentContainer'
 import ClassTrackerContainer from './containers/ClassTrackerContainer'
 import LibraryContainer from './containers/LibraryContainer'
 import TeacherSettingsContainer from './containers/TeacherSettingsContainer'
+import TeacherCalendarContainer from './containers/TeacherCalendarContainer'
 
 
 export default function Root () {
