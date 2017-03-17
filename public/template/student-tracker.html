@@ -1,0 +1,248 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link href="https://fonts.googleapis.com/css?family=Asap:400,400i,700" rel="stylesheet">
+  <link rel="stylesheet" href="css/normalize.min.css">
+  <link rel="stylesheet" href="fonts/icons.css">
+  <link rel="stylesheet" href="css/main.css">
+
+    <!-- <script src="js/vendor/modernizr-2.8.3.min.js"></script> -->
+</head>
+<body>
+  <!--[if lt IE 8]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+  <div id="app">
+    <header class="top-menu">
+      <div class="container header-content">
+        <div class="logo">Pegma</div>
+        <div class="user-information">Hello, John Smith <a href="#" class="icon icon-sign-out"></a></div>
+      </div>
+    </header>
+
+    <div class="main">
+
+      <nav class="container nav-content">
+        <ul class="nav-bar">
+          <li class="nav-item">
+            <span class="nav-icon icon-clipboard"></span>
+            <a class="nav-text" href="student-tracker.html">Assignments</a>
+          </li>
+          <li class="nav-item">
+            <span class="nav-icon icon-calendar"></span>
+            <a class="nav-text" href="student-calendar.html">Calendar</a>
+          </li>
+          <li class="nav-item">
+            <span class="nav-icon icon-cog"></span>
+            <a class="nav-text" href="student-settings.html">Settings</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="dashboard">
+        <div class="container panel-container">
+          <ul class="stats">
+            <li class="stats-incomplete">
+              <span class="icon icon-file-text"></span>
+              <div class="info">
+                <div class="quantity">00</div>
+                <div class="type">To-Do</div>
+              </div>
+            </li>
+            <li class="stats-new">
+              <span class="icon icon-pencil-square"></span>
+              <div class="info">
+                <div class="quantity">00</div>
+                <div class="type">In Progress</div>
+              </div>
+            </li>
+            <li class="stats-complete">
+              <span class="icon icon-calendar-check-o"></span>
+              <div class="info">
+                <div class="quantity">00</div>
+                <div class="type">Completed</div>
+              </div>
+            </li>
+            <li class="stats-rewards">
+              <span class="icon icon-trophy"></span>
+              <div class="info">
+                <div class="quantity">0000</div>
+                <div class="type">Reward Points</div>
+              </div>
+            </li>
+          </ul><!-- /stats -->
+
+          <div class="flex-container">
+
+            <section class="flex-child panel list-pending">
+              <div class="panel-header">Pending</div>
+              <ul class="assignments-list">
+                <li>
+                  <div class="summary">
+                    <h3 class="title">Title</h3>
+                    <span class="snippet">Do this, this, and that beautifu...</span>
+                  </div>
+                  <div class="due">
+                    <h4>Due</h4>
+                    <p class="date">01/17</p>
+                  </div>
+                </li>
+                <li>
+                  <div class="summary">
+                    <h3 class="title">Title</h3>
+                    <span class="snippet">Do this, this, and that beautifu...</span>
+                  </div>
+                  <div class="due">
+                    <h4>Due</h4>
+                    <p class="date">01/17</p>
+                  </div>
+                </li>
+                <li>
+                  <div class="summary">
+                    <h3 class="title">Title</h3>
+                    <span class="snippet">Do this, this, and that beautifu...</span>
+                  </div>
+                  <div class="due">
+                    <h4>Due</h4>
+                    <p class="date">01/17</p>
+                  </div>
+                </li>
+                <li>
+                  <div class="summary">
+                    <h3 class="title">Title</h3>
+                    <span class="snippet">Do this, this, and that beautifu...</span>
+                  </div>
+                  <div class="due">
+                    <h4>Due</h4>
+                    <p class="date">01/17</p>
+                  </div>
+                </li>
+                <li>
+                  <div class="summary">
+                    <h3 class="title">Title</h3>
+                    <span class="snippet">Do this, this, and that beautifu...</span>
+                  </div>
+                  <div class="due">
+                    <h4>Due</h4>
+                    <p class="date">01/17</p>
+                  </div>
+                </li>
+
+              </ul>
+            </section> <!-- /list-pending -->
+
+            <section class="flex-child panel list-inprogress">
+              <div class="panel-header">In Progress</div>
+              <ul class="assignments-list">
+                <li>
+                  <div class="summary">
+                    <h3 class="title">Title</h3>
+                    <span class="snippet">Do this, this, and that beautifu...</span>
+                  </div>
+                  <div class="due">
+                    <h4>Due</h4>
+                    <p class="date">01/17</p>
+                  </div>
+                </li>
+              </ul>
+            </section> <!-- /list-inprogress -->
+
+            <section class="flex-child panel list-completed">
+              <div class="panel-header">Completed</div>
+              <ul class="assignments-list">
+                <li>
+                  <div class="summary">
+                    <h3 class="title">Title</h3>
+                    <span class="snippet">Do this, this, and that beautifu...</span>
+                  </div>
+                  <div class="due">
+                    <h4>Due</h4>
+                    <p class="date">01/17</p>
+                  </div>
+                </li>
+                <li>
+                  <div class="summary">
+                    <h3 class="title">Title</h3>
+                    <span class="snippet">Do this, this, and that beautifu...</span>
+                  </div>
+                  <div class="due">
+                    <h4>Due</h4>
+                    <p class="date">01/17</p>
+                  </div>
+                </li>
+
+              </ul>
+            </section> <!-- /list-completed -->
+
+            <section class="flex-child panel list-archived">
+              <div class="panel-header">Arquived</div>
+              <ul class="assignments-list">
+                <li>
+                  <div class="summary">
+                    <h3 class="title">Title</h3>
+                    <span class="snippet">Do this, this, and that beautifu...</span>
+                  </div>
+                  <div class="due">
+                    <h4>Due</h4>
+                    <p class="date">01/17</p>
+                  </div>
+                </li>
+                <li>
+                  <div class="summary">
+                    <h3 class="title">Title</h3>
+                    <span class="snippet">Do this, this, and that beautifu...</span>
+                  </div>
+                  <div class="due">
+                    <h4>Due</h4>
+                    <p class="date">01/17</p>
+                  </div>
+                </li>
+                <li>
+                  <div class="summary">
+                    <h3 class="title">Title</h3>
+                    <span class="snippet">Do this, this, and that beautifu...</span>
+                  </div>
+                  <div class="due">
+                    <h4>Due</h4>
+                    <p class="date">01/17</p>
+                  </div>
+                </li>
+                <li>
+                  <div class="summary">
+                    <h3 class="title">Title</h3>
+                    <span class="snippet">Do this, this, and that beautifu...</span>
+                  </div>
+                  <div class="due">
+                    <h4>Due</h4>
+                    <p class="date">01/17</p>
+                  </div>
+                </li>
+
+              </ul>
+            </section> <!-- /list-archived -->
+
+          </div> <!-- flex-container -->
+
+        </div> <!-- /container -->
+
+      </div> <!-- dadshboard -->
+
+    </div><!-- /main -->
+
+    <footer>
+      <div class="container footer-content">
+        <p>© Pegma 2017</p>    
+      </div>
+    </footer>
+  </div> <!-- /app -->
+
+    <!-- <script src="js/main.js"></script> -->
+</body>
+</html>
