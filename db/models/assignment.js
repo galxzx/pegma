@@ -3,11 +3,11 @@
 const Sequelize = require('sequelize')
 const db = require('APP/db')
 
-
 const Assignment = db.define('assignments', {
+  title: Sequelize.STRING, // duplicate of quiz/task models...but needed for state
   due_date: Sequelize.DATE,
   status: {
-    type: Sequelize.ENUM('future', 'assigned', 'inProgress', 'completed'),
+    type: Sequelize.ENUM('assigned', 'doing', 'completed', 'archive'),
     defaultValue: 'future'
   },
   notes: Sequelize.STRING,

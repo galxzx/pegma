@@ -5,6 +5,7 @@ const Student = db.model('students')
 const Assignment = db.model('assignments')
 const Teacher = db.model('teachers')
 
+
 const {mustBeLoggedIn, forbidden,} = require('./auth.filters')
 
 module.exports = require('express').Router()

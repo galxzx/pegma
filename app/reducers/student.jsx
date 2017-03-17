@@ -70,6 +70,7 @@ export const loadCurrentAssignment = (assignmentId) => (dispatch, getState) => {
 
 export const loadStudent = () => (dispatch, getState) => {
   let studentId = getState().auth.student_id
+
   axios.get(`/api/students/${studentId}/`)
     .then(res => res.data)
     .then(student => {
