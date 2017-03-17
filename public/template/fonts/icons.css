@@ -92,3 +92,9 @@
 .icon-external-link-sqaure:before {
   content: "\72";
 }
+.icon-forward:before {
+  content: "\73";
+}
+.icon-pencil-square:before {
+  content: "\74";
+}
