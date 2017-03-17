@@ -6,15 +6,20 @@ const db = require('APP/db')
 // const Teacher = db.model('teachers')
 const Quiz = db.model('quizzes')
 const Question = db.model('questions')
+const Task = db.model('tasks')
 
 const {mustBeLoggedIn, forbidden,} = require('./auth.filters')
 
 module.exports = require('express').Router()
-	.get('/quizzes', mustBeLoggedIn, (req, res, next) => 
+	.get('/quizzes', mustBeLoggedIn, (req, res, next) =>
 		Quiz.findAll({include:[Question]})
 		.then(quizzes => res.json(quizzes))
 		.catch(next))
-	.get('/tasks', mustBeLoggedIn, (req, res, next) => 
-		Quiz.findAll({})
+  .get('/quizzes/:quizId', mustBeLoggedIn, (req, res, next) =>
+    Quiz.findById(req.params.quizId)
+      .then(quiz => res.json(quiz))
+       .catch(next))
+	.get('/tasks', mustBeLoggedIn, (req, res, next) =>
+		Task.findAll({})
 		.then(tasks => res.json(tasks))
 		.catch(next))

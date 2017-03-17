@@ -7,6 +7,7 @@ import { browserHistory } from 'react-router'
 export const SET_ASSIGNMENTS          = 'SET_ASSIGNMENTS'
 export const SET_CURRENT_ASSIGNMENT   = 'SET_CURRENT_ASSIGNMENT'
 export const SET_TEACHER              = 'SET_TEACHER'
+export const SET_QUIZ                 = 'SET_QUIZ'
 
 
 /* ------------   ACTION CREATORS     ------------------ */
@@ -14,6 +15,7 @@ export const SET_TEACHER              = 'SET_TEACHER'
 export const setAssignments           = (assignments) => ({ type: SET_ASSIGNMENTS, assignments })
 export const setCurrentAssignment     = (assignment) => ({ type: SET_CURRENT_ASSIGNMENT, assignment })
 export const setTeacher               = (teacher) => ({ type: SET_TEACHER, teacher })
+export const setQuiz                  = (quiz) => ({ type: SET_QUIZ, quiz})
 
 
 /* ------------       REDUCERS     ------------------ */
@@ -21,11 +23,12 @@ export const setTeacher               = (teacher) => ({ type: SET_TEACHER, teach
 const initialState = {
   assignments: [],
   currentAssignment: {},
-  teacher: {}
+  teacher: {},
+  quiz: {}
 }
 
 export default function reducer(prevState = initialState, action) {
- 
+
   const newState = Object.assign({}, prevState)
 
   switch (action.type) {
@@ -40,6 +43,10 @@ export default function reducer(prevState = initialState, action) {
 
     case SET_TEACHER:
       newState.teacher = action.teacher
+      break
+
+    case SET_QUIZ:
+      newState.quiz = action.quiz
       break
 
     default:
@@ -76,3 +83,9 @@ export const loadTeacher = () => (dispatch, getState) => {
     .catch(err => console.error(err))
 }
 
+export const loadQuiz = (quizId) => (dispatch) => {
+  axios.get(`api/library/quizzes/${quizId}`)
+    .then(res => res.data)
+    .then(quiz => dispatch(setQuiz(quiz)))
+    .catch(err => console.error(err))
+}
