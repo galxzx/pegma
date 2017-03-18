@@ -18,6 +18,9 @@ module.exports = require('express').Router()
 		Assignment.findById(req.params.assignmentId)
 		.then(assignment => res.json(assignment))
 		.catch(next))
+	.post('/:studentId/assignments/:assignmentId', mustBeLoggedIn, (req, res, next) => 
+		Assignment.update(req.body, {where: {id: req.params.assignmentId}})
+		.then(assignment => res.json(assignment)))
 	.get('/:studentId/', mustBeLoggedIn, (req, res, next) => 
 		Student.findById(req.params.studentId, {include: [Teacher, Assignment]})
 		.then(student => res.json(student))

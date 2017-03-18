@@ -4,13 +4,24 @@ const Sequelize = require('sequelize')
 const db = require('APP/db')
 
 const Assignment = db.define('assignments', {
-  title: Sequelize.STRING, // duplicate of quiz/task models...but needed for state
+  title: { 
+    type: Sequelize.STRING, 
+    defaultValue: 'Untitled'
+  },
   due_date: Sequelize.DATE,
   status: {
     type: Sequelize.ENUM('assigned', 'doing', 'completed', 'archive'),
-    defaultValue: 'future'
+    defaultValue: 'assigned'
   },
-  notes: Sequelize.STRING,
+  description: {
+    type: Sequelize.TEXT,
+    defaultValue: 'no description'
+  },    
+  notes: Sequelize.STRING, // remove this
+  label: {
+    type: Sequelize.STRING,
+    defaultValue: 'no label'
+  },
   grade: Sequelize.FLOAT,
   ETC: Sequelize.FLOAT,
   type: Sequelize.ENUM('task', 'quiz'),
