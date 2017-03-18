@@ -25,7 +25,7 @@ import TeacherSettingsContainer from './containers/TeacherSettingsContainer'
 import TeacherCalendarContainer from './containers/TeacherCalendarContainer'
 
 import {whoami} from './reducers/auth'
-import {loadAssignments, loadCurrentAssignment, loadStudent} from './reducers/student'
+import {loadStudent, loadAssignments, loadCurrentAssignment} from './reducers/student'
 
 
 const onEnterStudent = () => {
@@ -41,7 +41,7 @@ export default function Root () {
           <IndexRedirect to="/student" />
           <Router path="/student"  component={StudentAppContainer} onEnter={onEnterStudent}>
             <Route path="dashboard" component={StudentDashboardContainer} />
-            <Route path="tracker/:studentId" component={StudentTrackerContainer} />
+            <Route path="tracker" component={StudentTrackerContainer} />
             <Route path="settings" component={StudentSettingsContainer} />
             <Route path="calendar" component={StudentCalendarContainer} />
             <Route path="assignment/:assignmentId" component={AssignmentContainer} />

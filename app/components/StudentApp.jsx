@@ -2,14 +2,17 @@ import React from 'react'
 import WhoAmI from './WhoAmI'
 import Login from './Login'
 
+import {Link} from 'react-router'
+
 const StudentApp = ({ user, children }) => {
-  return (
+	console.log(user)
+	return (user !== null) ? (
     <div>
       <nav className="container nav-content">
         <ul className="nav-bar">
           <li className="nav-item">
             <span className="nav-icon icon-clipboard"></span>
-            <a className="nav-text" href="student-tracker.html">Assignments</a>
+            <Link className="nav-text" to='/student/tracker'>Assignments</Link>
           </li>
           <li className="nav-item">
             <span className="nav-icon icon-calendar"></span>
@@ -24,6 +27,7 @@ const StudentApp = ({ user, children }) => {
       {children}
     </div>
   )
+  : (<div></div>)
 }
 
 export default StudentApp

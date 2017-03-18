@@ -46,9 +46,6 @@ const seedTasks = () => db.Promise.map([
   {subject: 'Pre-Algebra', topic: 'Area and volumes', title: 'Solve systems of equations by graphing',description: 'default description', teacher_id: 1, grade_level: 8}
 ], task => db.model('tasks').create(task))
 
-
-
-
 const seedQuizzes = () => db.Promise.map([
   {title: 'Math Quiz #1', teacher_id: 1},
   {title: 'Math Quiz #2', teacher_id: 1},
@@ -56,9 +53,9 @@ const seedQuizzes = () => db.Promise.map([
 ], quiz => db.model('quizzes').create(quiz))
 
 const seedAssignments = () => db.Promise.map([
-  {due_date: '2017-4-12', student_id: 1, status:'assigned', teacher_id: 1, type:'task', reward: 10, ETC: '2017-5-11'},
-  {due_date: '2017-03-20', student_id: 1,  status:'future', teacher_id: 1, type:'task', reward: 5, ETC: '2017-5-11'},
-  {due_date: '2017-04-01', student_id: 1, status:'inProgress', teacher_id: 1, type:'quiz', quiz_id: 1, reward: 3, ETC: '2017-5-11'}
+  {title: 'Operations in the correct order', due_date: '2017-4-12', student_id: 1, status:'assigned', teacher_id: 1, type:'task', reward: 10, ETC: '2017-5-11'},
+  {title: 'The slope of a linear function', due_date: '2017-03-20', student_id: 1,  status:'completed', teacher_id: 1, type:'task', reward: 5, ETC: '2017-5-11'},
+  {title: 'Math Quiz #1', due_date: '2017-04-01', student_id: 1, status:'doing', teacher_id: 1, type:'quiz', quiz_id: 1, reward: 3, ETC: '2017-5-11'}
 ], assignment => db.model('assignments').create(assignment))
 
 

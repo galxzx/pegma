@@ -285,6 +285,8 @@ main {
 #student-tracker div.list-container {
 	margin-left: 1%;
 	margin-right: 1%;
+	min-height: 500px;
+
 }
 
 #student-tracker div.list-container:first-child {
@@ -295,3 +297,10 @@ main {
 	margin-right: 2%;
 }
 
+#student-tracker div section.list {
+	min-height: 500px;
+}
+
+#student-tracker div section.list ul.notifications-list {
+	min-height: 500px;
+}

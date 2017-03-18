@@ -3,14 +3,25 @@
 const Sequelize = require('sequelize')
 const db = require('APP/db')
 
-
 const Assignment = db.define('assignments', {
+  title: { 
+    type: Sequelize.STRING, 
+    defaultValue: 'Untitled'
+  },
   due_date: Sequelize.DATE,
   status: {
-    type: Sequelize.ENUM('future', 'assigned', 'inProgress', 'completed'),
-    defaultValue: 'future'
+    type: Sequelize.ENUM('assigned', 'doing', 'completed', 'archive'),
+    defaultValue: 'assigned'
   },
-  notes: Sequelize.STRING,
+  description: {
+    type: Sequelize.TEXT,
+    defaultValue: 'no description'
+  },    
+  notes: Sequelize.STRING, // remove this
+  label: {
+    type: Sequelize.STRING,
+    defaultValue: 'no label'
+  },
   grade: Sequelize.FLOAT,
   ETC: Sequelize.FLOAT,
   type: Sequelize.ENUM('task', 'quiz'),
