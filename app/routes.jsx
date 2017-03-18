@@ -5,6 +5,7 @@ import {render} from 'react-dom'
 import {connect, Provider} from 'react-redux'
 
 import store from './store'
+import { loadQuiz } from './reducers/student'
 
 import Login from './components/Login'
 import WhoAmI from './components/WhoAmI'
@@ -25,6 +26,10 @@ import TeacherSettingsContainer from './containers/TeacherSettingsContainer'
 import TeacherCalendarContainer from './containers/TeacherCalendarContainer'
 import QuizContainer from './containers/QuizContainer'
 
+const quizEnter = () => {
+  const quizId = store.getState().student.currentAssignment.quiz_id;
+  store.dispatch(loadQuiz(quizId))
+}
 
 export default function Root () {
   return (
@@ -38,7 +43,7 @@ export default function Root () {
             <Route path="settings" component={StudentSettingsContainer} />
             <Route path="calendar" component={StudentCalendarContainer} />
             <Router path="assignment/:assignmentId" component={AssignmentContainer} >
-              <Route path="quiz/:quizId" component={QuizContainer} />
+              <Route path="quiz/:quizId" component={QuizContainer} onEnter={quizEnter} />
             </Router>
             <IndexRedirect to="dashboard" />
           </Router>

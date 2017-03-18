@@ -22,7 +22,7 @@ export const setQuiz                  = (quiz) => ({ type: SET_QUIZ, quiz})
 
 const initialState = {
   assignments: [],
-  currentAssignment: {},
+  currentAssignment: {due_date: '2017-04-01', student_id: 1, status:'inProgress', teacher_id: 1, type:'quiz', quiz_id: 1, reward: 3, ETC: '2017-5-11'},
   teacher: {},
   quiz: {}
 }
@@ -84,7 +84,7 @@ export const loadTeacher = () => (dispatch, getState) => {
 }
 
 export const loadQuiz = (quizId) => (dispatch) => {
-  axios.get(`api/library/quizzes/${quizId}`)
+  axios.get(`/api/library/quizzes/${quizId}`)
     .then(res => res.data)
     .then(quiz => dispatch(setQuiz(quiz)))
     .catch(err => console.error(err))

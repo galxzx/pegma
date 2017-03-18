@@ -6,7 +6,7 @@ import Quiz from '../components/Quiz'
 const mapState = (state) => {
   return {
     user: state.auth,
-    currentQuiz: state.student.currentQuiz
+    quiz: state.student.quiz
   }
 }
 export default connect(mapState)(Quiz)

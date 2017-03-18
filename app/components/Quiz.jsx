@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Quiz = ({user, currentAssignment}) => {
+const Quiz = ({user, currentAssignment, quiz}) => {
   return (
     <div>
       <div>Quiz </div>
@@ -9,4 +9,4 @@ const Quiz = ({user, currentAssignment}) => {
   )
 }
 
-export default Assignment
+export default Quiz
