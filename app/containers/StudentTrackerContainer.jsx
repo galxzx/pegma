@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
 
-import Tracker from '../components/Tracker'
+import StudentTracker from '../components/StudentTracker'
 
 
 const mapState = (state) => {
@@ -9,4 +9,4 @@ const mapState = (state) => {
     assignments: state.student.assignments
   }
 }
-export default connect (mapState) (Tracker)
+export default connect (mapState) (StudentTracker)

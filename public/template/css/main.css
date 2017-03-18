@@ -124,6 +124,10 @@ main {
 	justify-content: space-between;
 }
 
+.dashboard-teacher .stats li {
+	width: 50%;
+}
+
 .stats li:last-child {
 	margin-right: 0 !important;
 }
@@ -158,6 +162,15 @@ main {
 }
 
 .stats .stats-rewards {
+	background: #666;
+}
+
+
+.stats .stats-ready {
+	background: #666;
+}
+
+.stats .stats-selfgraded {
 	background: #666;
 }
 
@@ -269,4 +282,16 @@ main {
 	width: 25%;
 }
 
+#student-tracker div.list-container {
+	margin-left: 1%;
+	margin-right: 1%;
+}
+
+#student-tracker div.list-container:first-child {
+	margin-left: 2%;
+}
+
+#student-tracker div.list-container:last-child {
+	margin-right: 2%;
+}
 
