@@ -10,10 +10,6 @@ export const SET_TEACHER              = 'SET_TEACHER'
 
 export const UPDATE_ASSIGNMENT        = 'UPDATE_ASSIGNMENT'
 
-// for tracker board
-// export const MOVE_CARD                = 'MOVE_CARD';
-// export const TOGGLE_DRAGGING          = 'TOGGLE_DRAGGING';
-
 /* ------------   ACTION CREATORS     ------------------ */
 
 export const setAssignments           = (assignments) => ({ type: SET_ASSIGNMENTS, assignments })
@@ -30,23 +26,9 @@ export const updateAssignment         = (assignment) => ({ type: UPDATE_ASSIGNME
 const initialState = {
   assignments: [],
   currentAssignment: {},
-  teacher: {},
-  board: {
-    lanes: [
-      {id:'assigned', title: 'assigned', label: 'assigned', cards:[]},
-      {id:'doing', title: 'doing', label: 'doing', cards:[]},
-      {id:'complete', title: 'complete', label: 'complete', cards:[]},
-      {id:'archive', title: 'archive', label: 'archive', cards:[]}
-    ]
-  }
+  teacher: {}
 }
-
-function getIdx(status) {
-  if(status === 'assigned') return 0
-  if(status === 'doing') return 1
-  if(status === 'completed') return 2
-  if(status === 'archive') return 3  
-}    
+  
 
 export default function reducer(prevState = initialState, action) {
  
@@ -57,10 +39,6 @@ export default function reducer(prevState = initialState, action) {
     case SET_ASSIGNMENTS:
 
       newState.assignments = action.assignments
-      newState.assignments.forEach(assignment => {
-        newState.board.lanes[getIdx(assignment.status)].cards.push(assignment)
-      })
-
       break
 
     case SET_CURRENT_ASSIGNMENT:
@@ -72,7 +50,7 @@ export default function reducer(prevState = initialState, action) {
         if(assignment.id === action.assignment.id) {
           return Object.assign(assignment, action.assignment)
         }
-        return assignment
+        else return assignment
       })
       break      
 
@@ -124,17 +102,3 @@ export const updateAssignmentRequest = (assignment) => (dispatch, getState) => {
     .then(assignment => dispatch(updateAssignment(assignment)))
     .catch(err => console.error(err))
 }
-
-// for tracker board
-// export const moveCard = (prevStatus, prevPosition, nextStatus, nextPosition) => (dispatch) => {
-//   let studentId = getState().auth.student_id
-//   axios.post(`/api/students/${studentId}/assingments/${assignmentId}`, 
-//     {status: nextStatus, position: nextPosition})
-//     .then(res => res.data)
-//     .then(assignment => dispatch(moveCard(prevStatus, prevPosition, nextStatus, nextPosition)))
-//     .catch(err => console.error(err))
-// }
-
-// export const toggleDragging = (isDragging) => (dispatch) => {
-//   dispatch({ type: TOGGLE_DRAGGING, isDragging })
-// }
