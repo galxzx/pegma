@@ -30,6 +30,11 @@ html {
 	flex-direction: column;
 }
 
+.icon {
+	color: $black;
+	text-decoration: none;
+}
+
 /* BUTTONS */
 
 .btn {
@@ -107,6 +112,8 @@ html {
 	}
 }
 
+/* HEADER TOP BAR */
+
 .top-menu {
 	background: $lightGrey;
 	padding-top: 15px;
@@ -128,6 +135,8 @@ html {
 	}
 }
 
+/* FOOTER */
+
 footer {
 	margin-top: 30px;
 	background: #222;
@@ -141,10 +150,7 @@ footer {
 	}
 }
 
-.icon {
-	color: $black;
-	text-decoration: none;
-}
+/* NAV-BAR */
 
 .nav-bar {
 	padding: 0;
@@ -193,6 +199,8 @@ footer {
 		margin-right: 0;
 	}
 }
+
+/* STATS-BAR */
 
 .stats {
 	width: 100%;
@@ -260,6 +268,8 @@ footer {
 	width: 50%;
 }
 
+/* CONTENT */
+
 .panel {
 	margin-top: 10px;
 	width: 100%;
@@ -303,9 +313,24 @@ footer {
 
 /* CALENDAR */
 
-.dashboard .calendar {
+.dashboard > .calendar {
 	height: 350px;
 	background: $darkGrey;
+}
+
+.panel-calendar {
+	width: 100%;
+}
+
+.calendar-content-sm {
+    width: 100%;
+    height: 350px;
+}
+
+.calendar-content-max {
+	width: 100% !important;
+	height: 450px !important;
+	border: 0;
 }
 
 /* ASSIGNMENTS */

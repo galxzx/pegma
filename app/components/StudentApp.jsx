@@ -10,14 +10,14 @@ const StudentApp = ({ user, children }) => {
       <nav className="container nav-content">
         <ul className="nav-bar">
           <Link className="nav-item" to='/student/dashboard'>
-            <span className="nav-icon icon-clipboard"></span>
+            <span className="nav-icon icon-list-alt"></span>
             <div className="nav-text">Dashboard</div>
           </Link>        
           <Link className="nav-item" to='/student/tracker'>
             <span className="nav-icon icon-clipboard"></span>
             <div className="nav-text">Assignments</div>
           </Link>
-          <Link className="nav-item">
+          <Link className="nav-item" to='/student/calendar'>
             <span className="nav-icon icon-calendar"></span>
             <div className="nav-text">Calendar</div>
           </Link>

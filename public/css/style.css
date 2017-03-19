@@ -15,6 +15,10 @@ html {
   display: flex;
   flex-direction: column; }
 
+.icon {
+  color: #222221;
+  text-decoration: none; }
+
 /* BUTTONS */
 .btn {
   display: inline-block;
@@ -74,6 +78,7 @@ html {
       .index-container .index-content nav .btn {
         width: 100px; }
 
+/* HEADER TOP BAR */
 .top-menu {
   background: #EEEEEC;
   padding-top: 15px;
@@ -90,6 +95,7 @@ html {
     font-weight: bold;
     text-transform: uppercase; }
 
+/* FOOTER */
 footer {
   margin-top: 30px;
   background: #222;
@@ -100,10 +106,7 @@ footer {
   footer p {
     font-size: 70%; }
 
-.icon {
-  color: #222221;
-  text-decoration: none; }
-
+/* NAV-BAR */
 .nav-bar {
   padding: 0;
   margin: 10px 0;
@@ -139,6 +142,7 @@ footer {
   .flex-child:last-child {
     margin-right: 0; }
 
+/* STATS-BAR */
 .stats {
   width: 100%;
   padding: 0;
@@ -179,6 +183,7 @@ footer {
 .dashboard-teacher .stats li {
   width: 50%; }
 
+/* CONTENT */
 .panel {
   margin-top: 10px;
   width: 100%;
@@ -209,9 +214,21 @@ footer {
       float: right; }
 
 /* CALENDAR */
-.dashboard .calendar {
+.dashboard > .calendar {
   height: 350px;
   background: #4B4B4A; }
+
+.panel-calendar {
+  width: 100%; }
+
+.calendar-content-sm {
+  width: 100%;
+  height: 350px; }
+
+.calendar-content-max {
+  width: 100% !important;
+  height: 450px !important;
+  border: 0; }
 
 /* ASSIGNMENTS */
 .dashboard .assignments .panel-header {
