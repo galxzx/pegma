@@ -46,7 +46,7 @@ export default function Root () {
           <IndexRedirect to="/student" />
           <Router path="/student"  component={StudentAppContainer} onEnter={onEnterStudent}>
             <Route path="dashboard" component={StudentDashboardContainer} />
-            <Route path="tracker" component={StudentTrackerContainer} onEnter={onEnterStudent}/>
+            <Route path="tracker" component={StudentTrackerContainer} />
             <Route path="settings" component={StudentSettingsContainer} />
             <Route path="calendar" component={StudentCalendarContainer} />
             <Route path="assignment/:assignmentId" component={AssignmentContainer} />
