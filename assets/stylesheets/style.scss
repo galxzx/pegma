@@ -151,6 +151,7 @@ footer {
 	margin: 10px 0;
 	list-style: none;
 	display: flex;
+	text-align: center;
 
 	.nav-item {
 		width: 100px;
@@ -159,6 +160,8 @@ footer {
 		display: flex;
 		flex-direction: column;
 		cursor: pointer;
+		color: $black;
+		text-decoration: none;
 
 		&:hover {
 			background: $lightGrey;
@@ -167,13 +170,11 @@ footer {
 
 	.nav-icon {
 		width: 100%;
-		font-size: 2em;
-		text-align: center;
+		font-size: 2em;		
 	}
 
 	.nav-text {
 		width: 100%;
-		text-align: center;
 		font-size: 0.8em;
 	}
 }
@@ -372,15 +373,6 @@ footer {
 .list-archived {
 	width: 25%;
 }
-
-/* CALENDARS */
-
-.calendar-content {
-	margin: 0 auto;
-	text-align: center;
-}
-
-
 
 /* STUDENT-TRACKER */
 

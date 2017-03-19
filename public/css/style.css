@@ -108,23 +108,24 @@ footer {
   padding: 0;
   margin: 10px 0;
   list-style: none;
-  display: flex; }
+  display: flex;
+  text-align: center; }
   .nav-bar .nav-item {
     width: 100px;
     margin-right: 5px;
     padding: 10px;
     display: flex;
     flex-direction: column;
-    cursor: pointer; }
+    cursor: pointer;
+    color: #222221;
+    text-decoration: none; }
     .nav-bar .nav-item:hover {
       background: #EEEEEC; }
   .nav-bar .nav-icon {
     width: 100%;
-    font-size: 2em;
-    text-align: center; }
+    font-size: 2em; }
   .nav-bar .nav-text {
     width: 100%;
-    text-align: center;
     font-size: 0.8em; }
 
 .flex-container {
@@ -253,11 +254,6 @@ footer {
 .list-completed,
 .list-archived {
   width: 25%; }
-
-/* CALENDARS */
-.calendar-content {
-  margin: 0 auto;
-  text-align: center; }
 
 /* STUDENT-TRACKER */
 #student-tracker div.list-container {
