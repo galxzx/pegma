@@ -5,7 +5,7 @@ import Login from './Login'
 import {Link} from 'react-router'
 
 const StudentApp = ({ user, children }) => {
-	return (user !== null) ? (
+	return (user !== null && user.student_id) ? (
     <div>
       <nav className="container nav-content">
         <ul className="nav-bar">
@@ -30,7 +30,7 @@ const StudentApp = ({ user, children }) => {
       {children}
     </div>
   )
-  : (<div></div>)
+  : (<div>You must be logged in as a Student to see this page.</div>)
 }
 
 export default StudentApp
