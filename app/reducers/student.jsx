@@ -68,32 +68,18 @@ export default function reducer(prevState = initialState, action) {
       break
 
     case UPDATE_ASSIGNMENT:
-      // need help here
+      newState.assignments.map(assignment => {
+        if(assignment.id === action.assignment.id) {
+          return Object.assign(assignment, action.assignment)
+        }
+        return assignment
+      })
       break      
 
     case SET_TEACHER:
       newState.teacher = action.teacher
       break
 
-    // case MOVE_CARD: 
-    //   const newLists = [...newState.lists];
-    //   const {prevStatus, prevPosition, nextStatus, nextPosition} = action;
-    //   if (prevStatus === nextStatus) {
-    //     newLists[prevStatus].cards.splice(nextStatus, 0, newLists[prevStatus].cards.splice(prevPosition, 1)[0]);
-    //   } else {
-    //     // move element to new place
-    //     newLists[nextStatus].cards.splice(nextPosition, 0, newLists[prevStatus].cards[prevPosition]);
-    //     // delete element from old place
-    //     newLists[prevStatus].cards.splice(prevPosition, 1);
-    //   }
-    //   return state.withMutations((ctx) => {
-    //     ctx.set('lists', newLists);
-    //   })
-    
- 
-    // case TOGGLE_DRAGGING: {
-    //   return state.set('isDragging', action.isDragging);
-    // }
 
     default:
       return prevState
@@ -102,8 +88,6 @@ export default function reducer(prevState = initialState, action) {
 }
 
 /* ------------       DISPATCHERS     ------------------ */
-
-// Add a new user
 
 export const loadAssignments = () => (dispatch, getState) => {
   let studentId = getState().auth.student_id

@@ -12,6 +12,10 @@ const StudentApp = ({ user, children }) => {
         <ul className="nav-bar">
           <li className="nav-item">
             <span className="nav-icon icon-clipboard"></span>
+            <Link className="nav-text" to='/student/dashboard'>Dashboard</Link>
+          </li>        
+          <li className="nav-item">
+            <span className="nav-icon icon-clipboard"></span>
             <Link className="nav-text" to='/student/tracker'>Assignments</Link>
           </li>
           <li className="nav-item">
