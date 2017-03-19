@@ -96,15 +96,17 @@ const StudentDashboard = ({user, assignments, teacher}) => {
                 {
                   (assignments.length > 0) ? 
                     assignments.map((assignment, i) => {
+                      
                     let dueDate = `${assignment.due_date.substring(5,7)}/${assignment.due_date.substring(8,10)}`
                     let snippet = assignment.description
                     if (snippet.length > 40) snippet = `${snippet.substring(0,41)}...`
-                    
+                    let type = `${assignment.type[0].toUpperCase()}${assignment.type.substring(1)}`
+
                     return (
                       <li key={ i }>
                         <div className="summary">
                           <h3 className="title">{ assignment.title }</h3>
-                          <span className="snippet">{ snippet }</span>
+                          <span className="snippet">{ type } - { snippet }</span>
                         </div>
                         <div className="due">
                           <h4>Due</h4>
