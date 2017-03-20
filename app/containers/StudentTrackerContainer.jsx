@@ -10,9 +10,7 @@ const handleDragStart = (cardId, laneId) => (dispatch) => {
 }
 
 const handleDragEnd = (cardId, sourceLaneId, targetLaneId) => (dispatch) => {
-  console.log("status is =====>", targetLaneId)
-  console.log("id is =====>", cardId)
-
+  console.log('target ==============>', targetLaneId)
   dispatch(updateAssignmentRequest({id: cardId, status:targetLaneId}))
 }
 
