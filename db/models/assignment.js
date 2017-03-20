@@ -44,6 +44,17 @@ const Assignment = db.define('assignments', {
     snippet: function () {
       if (this.description.length > 40) return this.description.slice(0, 41) + '...'
       else return this.description
+    },
+    formattedDate: function() {
+      if (this.due_date) { 
+        return (this.due_date.getMonth() + 1) + '/' + this.due_date.getDate()
+      }
+      else return '-'
+    },
+    overdue: function() {
+      const now = new Date()
+      if (this.due_date < now) return true
+      else return false
     }
   }
 })

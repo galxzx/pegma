@@ -18,6 +18,7 @@ describe('Assignment', () => {
         title: 'Astrology Quiz #1',
         type: 'quiz',
         quiz_id: 1,
+        due_date: '2016-11-13 17:00:00-07',
         description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.'
       })
     })
@@ -41,6 +42,14 @@ describe('Assignment', () => {
 
     it('has as snippet getterMethod that returns the correct string', function () {
       expect(assignment.snippet).to.equal('Lorem Ipsum is simply dummy text of the p...')
+    })
+
+    it('has as formattedDate getterMethod that returns the correct string', function () {
+      expect(assignment.formattedDate).to.equal('11/13')
+    })
+
+    it('has as overdue getterMethod that returns a boolean', function () {
+      expect(assignment.overdue).to.equal(true)
     })
 
   })
