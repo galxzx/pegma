@@ -1,6 +1,29 @@
 import React from 'react'
 
 const StudentDashboard = ({user, assignments, teacher}) => {
+  let totalToDo = 0
+  let totalNew = 0
+  let totalCompleted = 0
+  let totalRewards = 0
+
+  assignments.forEach(assignment => {
+    // Group totals
+    if (assignment.status === 'completed') {
+      totalCompleted++
+      // Count rewards
+    }
+    else if (assignment.status === 'graded') {
+      totalRewards += assignment.reward
+    }
+    else if (assignment.status === 'future') {
+      totalNew++
+      totalToDo++
+    }
+    else {
+      totalToDo++
+    }
+  })
+
   return (
 		<div className="dashboard">
       <div className="container panel-container">
@@ -8,28 +31,28 @@ const StudentDashboard = ({user, assignments, teacher}) => {
           <li className="stats-incomplete">
             <span className="icon icon-file-text"></span>
             <div className="info">
-              <div className="quantity">00</div>
+              <div className="quantity">{ totalToDo }</div>
               <div className="type">To-Do</div>
             </div>
           </li>
           <li className="stats-new">
             <span className="icon icon-calendar-plus-o"></span>
             <div className="info">
-              <div className="quantity">00</div>
+              <div className="quantity">{ totalNew }</div>
               <div className="type">New</div>
             </div>
           </li>
           <li className="stats-complete">
             <span className="icon icon-calendar-check-o"></span>
             <div className="info">
-              <div className="quantity">00</div>
+              <div className="quantity">{ totalCompleted }</div>
               <div className="type">Completed</div>
             </div>
           </li>
           <li className="stats-rewards">
             <span className="icon icon-trophy"></span>
             <div className="info">
-              <div className="quantity">0000</div>
+              <div className="quantity">{ totalRewards }</div>
               <div className="type">Reward Points</div>
             </div>
           </li>
@@ -52,11 +75,9 @@ const StudentDashboard = ({user, assignments, teacher}) => {
             </section> 
 
             <section className="panel calendar">
-              <div className="panel-header">
-                <div>Calendar</div>
-              </div>
+              <div className="panel-header">Calendar</div>
+              <iframe className="calendar-content-sm" src="https://calendar.google.com/calendar/embed?src=pegmaproject%40gmail.com&amp;showTitle=0"></iframe>
             </section>
-
           </div>
 
           <div className="flex-child">
@@ -74,86 +95,31 @@ const StudentDashboard = ({user, assignments, teacher}) => {
                 </div>
               </div>
               <ul className="assignments-list">
-                <li>
-                  <div className="summary">
-                    <h3 className="title">Title</h3>
-                    <span className="snippet">Do this, this, and that beautifu...</span>
-                  </div>
-                  <div className="due">
-                    <h4>Due</h4>
-                    <p className="date">01/17</p>
-                  </div>
-                </li>
-                <li>
-                  <div className="summary">
-                    <h3 className="title">Title</h3>
-                    <span className="snippet">Do this, this, and that beautifu...</span>
-                  </div>
-                  <div className="due">
-                    <h4>Due</h4>
-                    <p className="date">01/17</p>
-                  </div>
-                </li>
-                <li>
-                  <div className="summary">
-                    <h3 className="title">Title</h3>
-                    <span className="snippet">Do this, this, and that beautifu...</span>
-                  </div>
-                  <div className="due">
-                    <h4>Due</h4>
-                    <p className="date">01/17</p>
-                  </div>
-                </li>
-                <li>
-                  <div className="summary">
-                    <h3 className="title">Title</h3>
-                    <span className="snippet">Do this, this, and that beautifu...</span>
-                  </div>
-                  <div className="due">
-                    <h4>Due</h4>
-                    <p className="date">01/17</p>
-                  </div>
-                </li>
-                <li>
-                  <div className="summary">
-                    <h3 className="title">Title</h3>
-                    <span className="snippet">Do this, this, and that beautifu...</span>
-                  </div>
-                  <div className="due">
-                    <h4>Due</h4>
-                    <p className="date">01/17</p>
-                  </div>
-                </li>
-                <li>
-                  <div className="summary">
-                    <h3 className="title">Title</h3>
-                    <span className="snippet">Do this, this, and that beautifu...</span>
-                  </div>
-                  <div className="due">
-                    <h4>Due</h4>
-                    <p className="date">01/17</p>
-                  </div>
-                </li>
-                <li>
-                  <div className="summary">
-                    <h3 className="title">Title</h3>
-                    <span className="snippet">Do this, this, and that beautifu...</span>
-                  </div>
-                  <div className="due">
-                    <h4>Due</h4>
-                    <p className="date">01/17</p>
-                  </div>
-                </li>
-                <li>
-                  <div className="summary">
-                    <h3 className="title">Title</h3>
-                    <span className="snippet">Do this, this, and that beautifu...</span>
-                  </div>
-                  <div className="due">
-                    <h4>Due</h4>
-                    <p className="date">01/17</p>
-                  </div>
-                </li>
+                {
+                  (assignments.length > 0) ? 
+                    assignments.map((assignment, i) => {
+
+                    let dueDate = `${assignment.due_date.substring(5,7)}/${assignment.due_date.substring(8,10)}`
+                    let snippet = assignment.description
+                    if (snippet.length > 40) snippet = `${snippet.substring(0,41)}...`
+                    let type = `${assignment.type[0].toUpperCase()}${assignment.type.substring(1)}`
+
+                    return (
+                      <li key={ i }>
+                        <div className="summary">
+                          <h3 className="title">{ assignment.title }</h3>
+                          <span className="snippet">{ type } - { snippet }</span>
+                        </div>
+                        <div className="due">
+                          <h4>Due</h4>
+                          <p className="date"> { dueDate }</p>
+                        </div>
+                      </li>
+                    )
+                  }) :
+                    <li>No assignments to display.</li>
+                }
+
               </ul>
             </section> 
           </div>

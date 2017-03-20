@@ -98,3 +98,12 @@
 .icon-pencil-square:before {
   content: "\74";
 }
+.icon-users:before {
+  content: "\75";
+}
+.icon-list-alt:before {
+  content: "\76";
+}
+.icon-sign-in:before {
+  content: "\77";
+}
