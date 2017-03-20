@@ -272,6 +272,29 @@ footer {
 .list-archived {
   width: 25%; }
 
+/* SETTINGS */
+.settings-content fieldset {
+  padding: 50px 35% 100px 35%; }
+
+.settings-content input {
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #9C9C9B;
+  border-radius: 5px; }
+  .settings-content input:disabled {
+    background: #EEEEEC;
+    color: #4B4B4A;
+    font-style: italic; }
+
+.settings-content .alert-inline {
+  font-size: 70%;
+  color: #C60034;
+  margin: 0 5px; }
+
+.settings-content button {
+  background: #FFC943;
+  margin-top: 20px auto 10px auto; }
+
 /* STUDENT-TRACKER */
 #student-tracker div.list-container {
   margin-left: 1%;

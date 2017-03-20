@@ -399,6 +399,40 @@ footer {
 	width: 25%;
 }
 
+/* SETTINGS */
+
+.settings-content {
+
+	fieldset {
+		padding: 50px 35% 100px 35%;
+	}
+
+	input {
+		margin-top: 5px;
+		margin-bottom: 15px;
+		border: 1px solid $mediumGrey;
+		border-radius: 5px;
+
+		&:disabled {
+			background: $lightGrey;
+			color: $darkGrey;
+			font-style: italic;
+		}
+	}
+
+
+	.alert-inline {
+		font-size: 70%;
+		color: $red;
+		margin: 0 5px;
+	}
+
+	button {
+		background: $yellow;
+		margin-top: 20px auto 10px auto;
+	}
+}
+
 /* STUDENT-TRACKER */
 
 #student-tracker {

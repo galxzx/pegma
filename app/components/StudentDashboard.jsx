@@ -11,6 +11,8 @@ const StudentDashboard = ({user, assignments, teacher}) => {
     if (assignment.status === 'completed') {
       totalCompleted++
       // Count rewards
+    }
+    else if (assignment.status === 'graded') {
       totalRewards += assignment.reward
     }
     else if (assignment.status === 'future') {
@@ -96,7 +98,7 @@ const StudentDashboard = ({user, assignments, teacher}) => {
                 {
                   (assignments.length > 0) ? 
                     assignments.map((assignment, i) => {
-                      
+
                     let dueDate = `${assignment.due_date.substring(5,7)}/${assignment.due_date.substring(8,10)}`
                     let snippet = assignment.description
                     if (snippet.length > 40) snippet = `${snippet.substring(0,41)}...`

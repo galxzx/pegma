@@ -52,7 +52,27 @@
           <div class="flex-container">
 
             <section class="flex-child panel settings">
-                <div class="panel-header">settings</div>
+                <div class="panel-header">Settings</div>
+                <div class="settings-content">
+                  <form>
+                    <fieldset>
+                      <div class="form-group">
+                        <label>Name</label><br/>
+                        <input type="text" name="name"/><br/>
+                        <label>E-mail</label><br/>
+                        <input type="text" name="email"/><br/>
+                        <label>Password</label><br/>
+                        <input type="text" name="password"/><br/>
+                        <label>Teacher</label>
+                        <span class="alert-inline">You are not allowed to change your teacher.</span><br/>
+                        <input type="text" name="teacher" disabled/><br/>
+                        <button type="submit" class="btn">
+                        Update Information
+                        </button>
+                      </div>
+                    </fieldset>
+                  </form>
+                </div>
             </section> <!-- / -->
             
           </div> <!-- flex-container -->
