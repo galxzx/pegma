@@ -58,7 +58,7 @@ const Assignment = db.define('assignments', {
     },
     daysLeft: function() {
       const now = new Date()
-      let daysLeft = Math.floor(this.due_date - now)
+      let daysLeft = Math.ceil((this.due_date - now) / 86400000)
       return daysLeft
     }
   }
