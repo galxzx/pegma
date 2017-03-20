@@ -60,7 +60,6 @@ const seedAssignments = () => db.Promise.map([
   {title: 'Operations in the correct order', due_date: '2017-4-12', student_id: 1, status:'assigned', teacher_id: 1, type:'task', reward: 10, ETC: '2017-5-11'},
   {title: 'The slope of a linear function', due_date: '2017-03-20', student_id: 1,  status:'completed', teacher_id: 1, type:'task', reward: 5, ETC: '2017-5-11'},
   {title: 'Math Quiz #1', due_date: '2017-04-01', student_id: 1, status:'doing', teacher_id: 1, type:'quiz', quiz_id: 1, reward: 3, ETC: '2017-5-11'},
-  ,
   {title: 'English Quiz #1', due_date: '2017-04-02', student_id: 1, status:'completed', teacher_id: 1, type:'quiz', quiz_id: 1, reward: 7, ETC: '2017-5-11'},
   {title: 'English Essay #1', due_date: '2017-04-15', student_id: 1, status:'assigned', teacher_id: 1, type:'task', task_id: 12, reward: 10, ETC: '2017-5-11', description: 'On a separate piece of paper, write an essay in which you discuss the play Romeo and Juliet, by William Shakespeare, using the quote provided.'}
 ], assignment => db.model('assignments').create(assignment))
