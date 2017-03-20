@@ -6,7 +6,7 @@ import {Board} from 'react-trello'
 const Tracker = (props) => {
   return (
     <div>
-      <Board data={props.board} 
+      <Board data={props.board}
         draggable={true}
         onDataChange={props.shouldReceiveNewData}
         handleDragStart={props.handleDragStart}
@@ -28,7 +28,7 @@ export default Tracker
   //         <ul className="notifications-list">
   //           <li className="overdue">Assignment X is overdue.<span className="icon icon-external-link-sqaure"></span></li>
   //         </ul>
-  //       </section> 
+  //       </section>
 
   //     </div>
   //     <div className="flex-child list-container">
@@ -36,7 +36,7 @@ export default Tracker
   //       <section className="panel list">
   //         <div className="panel-header">Doing</div>
   //         <ul className="notifications-list">
-  //         { 
+  //         {
   //           assignments && assignments.map(assignment => (
   //             assignment.status === 'doing'
   //               ? <li>{assignment.title || 'Untitled'}</li>
@@ -44,7 +44,7 @@ export default Tracker
   //           ))
   //         }
   //         </ul>
-  //       </section> 
+  //       </section>
 
   //     </div>
   //     <div className="flex-child list-container">
@@ -54,7 +54,7 @@ export default Tracker
   //         <ul className="notifications-list">
   //           <li>Task 2<span className="icon icon-external-link-sqaure"></span></li>
   //         </ul>
-  //       </section> 
+  //       </section>
 
   //     </div>
   //     <div className="flex-child list-container">
@@ -64,7 +64,7 @@ export default Tracker
   //         <ul className="notifications-list">
   //           <li className="overdue">Task 3<span className="icon icon-external-link-sqaure"></span></li>
   //         </ul>
-  //       </section>    
+  //       </section>
 
   //     </div>
-  //   </div>   
+  //   </div>

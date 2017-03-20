@@ -9,9 +9,13 @@ const Question = db.define('questions', {
 		allowNull: false
 	},
 	answer: {
-		type: Sequelize.ARRAY(Sequelize.TEXT), // Holds multiple answers or single answer. [0] should always be the correct answer
+		type: Sequelize.ARRAY(Sequelize.TEXT),
     defaultValue: []
 	},
+  solution: { //should correspond to array index of correct answer
+    type: Sequelize.INTEGER,
+    allowNull: false
+  },
   type: {
     type: Sequelize.TEXT,
     allowNull: false

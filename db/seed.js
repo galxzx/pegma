@@ -4,7 +4,7 @@ const db = require('APP/db')
  //  {name: 'Freda Nada', email: 'freda.nada@example.com', password: '1234'},
  //  {name: 'Andrew Gionfriddo', email: 'andrew.gionfriddo@example.com', password: '1234'}
 const User = db.model('users')
-
+const Question = db.model('questions')
 const seedTeachers = () => db.Promise.map([
   {user: {name: 'Geoff Bass', email: 'geoff.bass@example.com', password: '1234'}},
   {user: {name: 'Freda Nada', email: 'freda.nada@example.com', password: '1234'}},
@@ -47,10 +47,14 @@ const seedTasks = () => db.Promise.map([
 ], task => db.model('tasks').create(task))
 
 const seedQuizzes = () => db.Promise.map([
-  {title: 'Math Quiz #1', teacher_id: 1},
+  {title: 'Math Quiz #1', teacher_id: 1, questions: [
+    {inquiry: 'What is 2 + 2?', answer:['4', '8', '1', '12'], type:'multiple-choice', solution: 0},
+    {inquiry: 'What is the answer to life the universe and everything?', answer:['pasta', '42', '34', 'yes'], type:'multiple-choice', solution: 1},
+    {inquiry: 'What is 4 x 5?', answer:['35', '38', '20', '7'], type:'multiple-choice', solution: 2}
+    ]},
   {title: 'Math Quiz #2', teacher_id: 1},
   {title: 'Math Quiz #3', teacher_id: 1}
-], quiz => db.model('quizzes').create(quiz))
+], quiz => db.model('quizzes').create(quiz, {include: [Question ]}))
 
 const seedAssignments = () => db.Promise.map([
   {title: 'Operations in the correct order', due_date: '2017-4-12', student_id: 1, status:'assigned', teacher_id: 1, type:'task', reward: 10, ETC: '2017-5-11'},

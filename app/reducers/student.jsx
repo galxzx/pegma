@@ -7,6 +7,7 @@ import { browserHistory } from 'react-router'
 export const SET_ASSIGNMENTS          = 'SET_ASSIGNMENTS'
 export const SET_CURRENT_ASSIGNMENT   = 'SET_CURRENT_ASSIGNMENT'
 export const SET_TEACHER              = 'SET_TEACHER'
+export const SET_QUIZ                 = 'SET_QUIZ'
 
 export const UPDATE_ASSIGNMENT        = 'UPDATE_ASSIGNMENT'
 
@@ -15,6 +16,7 @@ export const UPDATE_ASSIGNMENT        = 'UPDATE_ASSIGNMENT'
 export const setAssignments           = (assignments) => ({ type: SET_ASSIGNMENTS, assignments })
 export const setCurrentAssignment     = (assignment) => ({ type: SET_CURRENT_ASSIGNMENT, assignment })
 export const setTeacher               = (teacher) => ({ type: SET_TEACHER, teacher })
+export const setQuiz                  = (quiz) => ({ type: SET_QUIZ, quiz})
 
 export const updateAssignment         = (assignment) => ({ type: UPDATE_ASSIGNMENT, assignment })
 
@@ -25,13 +27,14 @@ export const updateAssignment         = (assignment) => ({ type: UPDATE_ASSIGNME
 
 const initialState = {
   assignments: [],
-  currentAssignment: {},
-  teacher: {}
+  currentAssignment: {id: 1, due_date: '2017-04-01', student_id: 1, status:'inProgress', teacher_id: 1, type:'quiz', quiz_id: 3, reward: 3, ETC: '2017-5-11', quiz_answers:{}},
+  teacher: {},
+  quiz: { questions:[] }
 }
-  
+
 
 export default function reducer(prevState = initialState, action) {
- 
+
   const newState = Object.assign({}, prevState)
 
   switch (action.type) {
@@ -52,10 +55,14 @@ export default function reducer(prevState = initialState, action) {
         }
         else return assignment
       })
-      break      
+      break
 
     case SET_TEACHER:
       newState.teacher = action.teacher
+      break
+
+    case SET_QUIZ:
+      newState.quiz = action.quiz
       break
 
 
@@ -77,9 +84,13 @@ export const loadAssignments = () => (dispatch, getState) => {
 
 export const loadCurrentAssignment = (assignmentId) => (dispatch, getState) => {
   let studentId = getState().auth.student_id
-  axios.get(`/api/students/${studentId}/assignments/${assignmentId}`)
+  return axios.get(`/api/students/${studentId}/assignments/${assignmentId}`)
+
     .then(res => res.data)
-    .then(assignment => dispatch(setCurrentAssignment(assignment)))
+    .then(assignment => {
+      dispatch(setCurrentAssignment(assignment))
+      return assignment
+    })
     .catch(err => console.error(err))
 }
 
@@ -89,8 +100,34 @@ export const loadStudent = () => (dispatch, getState) => {
   axios.get(`/api/students/${studentId}/`)
     .then(res => res.data)
     .then(student => {
-      dispatch(setAssignments(student.assignments))      
+      dispatch(setAssignments(student.assignments))
       dispatch(setTeacher(student.teacher))
+    })
+    .catch(err => console.error(err))
+}
+
+
+export const loadQuiz = (quizId) => (dispatch) => {
+  axios.get(`/api/library/quizzes/${quizId}`)
+    .then(res => res.data)
+    .then(quiz => dispatch(setQuiz(quiz)))
+    .catch(err => console.error(err))
+}
+
+export const gradeQuiz = () => (dispatch, getState) => {
+  const state = getState()
+  const quizAnswers = state.form.quiz.values
+  const quizLength = state.student.quiz.questions.length
+  const grade = state.student.quiz.questions.reduce((current, next) =>{
+    if(+next.solution === +quizAnswers[`q_${next.id}`]) return current + 1;
+    else return current;
+  }, 0) / quizLength * 100
+  axios.put(`/api/students/${state.student.currentAssignment.student_id}/assignments/${state.student.currentAssignment.id}`,
+    {status:'completed', grade, quiz_answers: quizAnswers})
+    .then(res => res.data)
+    .then(assignment => {
+      dispatch(setCurrentAssignment(assignment))
+      browserHistory.push(`/student/assignment/${assignment.id}/completedQuiz`)
     })
     .catch(err => console.error(err))
 }
@@ -102,3 +139,4 @@ export const updateAssignmentRequest = (assignment) => (dispatch, getState) => {
     .then(assignment => dispatch(updateAssignment(assignment)))
     .catch(err => console.error(err))
 }
+

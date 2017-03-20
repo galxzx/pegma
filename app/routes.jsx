@@ -6,6 +6,7 @@ import {connect, Provider} from 'react-redux'
 
 import store from './store'
 
+
 import Login from './components/Login'
 import WhoAmI from './components/WhoAmI'
 import Jokes from './components/Jokes'
@@ -23,9 +24,14 @@ import ClassTrackerContainer from './containers/ClassTrackerContainer'
 import LibraryContainer from './containers/LibraryContainer'
 import TeacherSettingsContainer from './containers/TeacherSettingsContainer'
 import TeacherCalendarContainer from './containers/TeacherCalendarContainer'
+import QuizContainer from './containers/QuizContainer'
+import CompletedQuizContainer from './containers/CompletedQuizContainer'
+
 
 import {whoami} from './reducers/auth'
-import {loadStudent, loadAssignments, loadCurrentAssignment} from './reducers/student'
+
+import {loadAssignments, loadCurrentAssignment, loadStudent, loadQuiz} from './reducers/student'
+
 
 
 const onEnterStudent = () => {
@@ -33,6 +39,23 @@ const onEnterStudent = () => {
     .then(res => store.dispatch(loadStudent()))
 }
 
+const onEnterQuiz = () => {
+  const currentAssignment = store.getState().student.currentAssignment;
+  store.dispatch(loadQuiz(currentAssignment.quiz_id))
+  if (currentAssignment.type === 'quiz' && currentAssignment.status === 'completed') browserHistory.push(`/student/assignment/${currentAssignment.id}/completedQuiz`)
+}
+
+const onEnterAssignment = (nextState) =>  {
+  console.log('nextState', nextState)
+  store.dispatch(whoami())
+  .then(() => {
+    return store.dispatch(loadCurrentAssignment(nextState.params.assignmentId))
+      .then(currentAssignment => {
+        if (currentAssignment.type === 'quiz') browserHistory.push(`/student/assignment/${currentAssignment.id}/quiz/${currentAssignment.quiz_id}`)
+    })
+  })
+    .catch(err => console.error(err))
+}
 // const onEnterStudentTracker = () => {
 //   store.dispatch(loadAssignments())
 // }
@@ -49,7 +72,10 @@ export default function Root () {
             <Route path="tracker" component={StudentTrackerContainer} />
             <Route path="settings" component={StudentSettingsContainer} />
             <Route path="calendar" component={StudentCalendarContainer} />
-            <Route path="assignment/:assignmentId" component={AssignmentContainer} />
+            <Router path="assignment/:assignmentId" component={AssignmentContainer} onEnter={onEnterAssignment} >
+              <Route path="quiz/:quizId" component={QuizContainer} onEnter={onEnterQuiz} />
+              <Route path="completedQuiz" component={CompletedQuizContainer} />
+            </Router>
             <IndexRedirect to="dashboard" />
           </Router>
           <Router path="/teacher" component={TeacherAppContainer}>
