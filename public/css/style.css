@@ -267,8 +267,7 @@ footer {
       font-size: 120%; }
   .dashboard .assignments-list a {
     text-decoration: none;
-    color: black;
-  }
+    color: black; }
 
 .list-pending,
 .list-inprogress,
