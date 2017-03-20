@@ -10,6 +10,9 @@ const handleDragStart = (cardId, laneId) => (dispatch) => {
 }
 
 const handleDragEnd = (cardId, sourceLaneId, targetLaneId) => (dispatch) => {
+  console.log("status is =====>", targetLaneId)
+  console.log("id is =====>", cardId)
+
   dispatch(updateAssignmentRequest({id: cardId, status:targetLaneId}))
 }
 
@@ -22,7 +25,7 @@ function getIdx(status) {
   if(status === 'assigned') return 0
   if(status === 'doing') return 1
   if(status === 'completed') return 2
-  if(status === 'archive') return 3  
+  if(status === 'archived') return 3  
 }    
 
 const arrangeBoard = (assignments) => {
@@ -30,8 +33,8 @@ const arrangeBoard = (assignments) => {
     lanes: [
       {id:'assigned', title: 'assigned', label: 'assigned', cards:[]},
       {id:'doing', title: 'doing', label: 'doing', cards:[]},
-      {id:'complete', title: 'complete', label: 'complete', cards:[]},
-      {id:'archive', title: 'archive', label: 'archive', cards:[]}
+      {id:'completed', title: 'complete', label: 'complete', cards:[]},
+      {id:'archived', title: 'archive', label: 'archive', cards:[]}
     ]
   }
 	assignments.forEach(assignment => {

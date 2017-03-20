@@ -55,6 +55,7 @@ export default function reducer(prevState = initialState, action) {
         }
         else return assignment
       })
+      console.log('state after update', newState)
       break
 
     case SET_TEACHER:
@@ -134,9 +135,12 @@ export const gradeQuiz = () => (dispatch, getState) => {
 
 export const updateAssignmentRequest = (assignment) => (dispatch, getState) => {
   let studentId = getState().auth.student_id
-  axios.post(`/api/students/${studentId}/assignments/${assignment.id}`, assignment)
+  axios.put(`/api/students/${studentId}/assignments/${assignment.id}`, assignment)
     .then(res => res.data)
-    .then(assignment => dispatch(updateAssignment(assignment)))
+    .then(assignment => {
+      console.log('returned assignment --->', assignment)
+      dispatch(updateAssignment(assignment))
+    })
     .catch(err => console.error(err))
 }
 
