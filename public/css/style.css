@@ -55,6 +55,9 @@ html {
 .btn:active, .btn.active {
   background-image: none; }
 
+.btn-primary {
+  background: #FFC943; }
+
 /* INDEX */
 .index-container {
   background: #FFC943;
@@ -194,6 +197,11 @@ footer {
   padding: 5px;
   font-weight: bold; }
 
+.panel-subheader {
+  background: #fff;
+  padding: 5px;
+  border-bottom: 1px solid #EEEEEC; }
+
 /* NOTIFICATIONS */
 .notifications-list {
   list-style: none;
@@ -231,43 +239,44 @@ footer {
   border: 0; }
 
 /* ASSIGNMENTS */
-.dashboard .assignments .panel-header {
-  display: flex;
-  justify-content: space-between; }
-  .dashboard .assignments .panel-header select {
-    font-weight: normal;
-    font-size: 80%; }
-
-.dashboard .assignments-list {
-  padding: 0;
-  margin: 0;
-  list-style: none; }
-  .dashboard .assignments-list li {
-    padding: 5px;
-    border-bottom: 1px solid #EEEEEC;
+.dashboard {
+  background: #fff; }
+  .dashboard .assignments .panel-header {
     display: flex;
-    justify-content: space-between;
-    cursor: pointer; }
-    .dashboard .assignments-list li:hover {
-      background: #EEEEEC; }
-    .dashboard .assignments-list li h3 {
-      margin: 5px 0; }
-    .dashboard .assignments-list li h4 {
-      margin: 5px 0;
-      font-size: 60%; }
-    .dashboard .assignments-list li .snippet {
-      margin: 5px 0;
-      font-style: italic;
+    justify-content: space-between; }
+    .dashboard .assignments .panel-header select {
+      font-weight: normal;
       font-size: 80%; }
-    .dashboard .assignments-list li .due {
-      text-align: center;
-      margin-right: 15px; }
-    .dashboard .assignments-list li .date {
-      margin: 5px 0;
-      font-size: 120%; }
-  .dashboard .assignments-list a {
-    text-decoration: none;
-    color: black; }
+  .dashboard .assignments-list {
+    padding: 0;
+    margin: 0;
+    list-style: none; }
+    .dashboard .assignments-list li {
+      padding: 5px;
+      border-bottom: 1px solid #EEEEEC;
+      display: flex;
+      justify-content: space-between;
+      cursor: pointer; }
+      .dashboard .assignments-list li:hover {
+        background: #EEEEEC; }
+      .dashboard .assignments-list li h3 {
+        margin: 5px 0; }
+      .dashboard .assignments-list li h4 {
+        margin: 5px 0;
+        font-size: 60%; }
+      .dashboard .assignments-list li .snippet {
+        margin: 5px 0;
+        font-style: italic;
+        font-size: 80%; }
+      .dashboard .assignments-list li .due {
+        text-align: center;
+        margin-right: 15px; }
+      .dashboard .assignments-list li .date {
+        margin: 5px 0;
+        font-size: 120%; }
+    .dashboard .assignments-list a {
+      text-decoration: none;
+      color: #222221; }
 
 .list-pending,
 .list-inprogress,
@@ -297,6 +306,42 @@ footer {
 .settings-content button {
   background: #FFC943;
   margin-top: 20px auto 10px auto; }
+
+/* QUIZZES */
+.quiz {
+  padding: 10px 30px; }
+  .quiz .question-group {
+    border: 1px solid #EEEEEC;
+    padding: 10px;
+    margin-bottom: 10px; }
+    .quiz .question-group .inquiry {
+      margin: 10px 0; }
+    .quiz .question-group .inquiry-options {
+      list-style: none;
+      padding: 0; }
+    .quiz .question-group .bucetudo {
+      background: purple; }
+    .quiz .question-group .inquiry-option {
+      margin-bottom: 5px; }
+      .quiz .question-group .inquiry-option input {
+        margin-right: 10px; }
+      .quiz .question-group .inquiry-option .answer {
+        font-size: 80%;
+        text-transform: uppercase;
+        padding: 2px 5px;
+        color: #fff;
+        border-radius: 5px;
+        margin-left: 5px; }
+        .quiz .question-group .inquiry-option .answer.answer-correct {
+          background: #FFC943; }
+        .quiz .question-group .inquiry-option .answer.answer-student-wrong {
+          background: #C60034; }
+        .quiz .question-group .inquiry-option .answer.answer-student {
+          background: #00C692; }
+
+.quiz-completed .inquiry-options {
+  list-style: disc !important;
+  margin-left: 19px !important; }
 
 /* STUDENT-TRACKER */
 #student-tracker div.list-container {

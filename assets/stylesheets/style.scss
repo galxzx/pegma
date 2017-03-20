@@ -77,6 +77,10 @@ html {
   background-image: none;
 }
 
+.btn-primary {
+	background: $yellow;
+}
+
 /* INDEX */
 
 .index-container {
@@ -282,6 +286,12 @@ footer {
 	font-weight: bold;
 }
 
+.panel-subheader {
+	background: #fff;
+	padding: 5px;
+	border-bottom: 1px solid $lightGrey;
+}
+
 /* NOTIFICATIONS */
 
 .notifications-list {
@@ -336,6 +346,9 @@ footer {
 /* ASSIGNMENTS */
 
 .dashboard {
+
+	background: #fff;
+
 	.assignments {
 		.panel-header {
 			display: flex;
@@ -391,7 +404,7 @@ footer {
 		}
 	a {
 		    text-decoration: none;
-		    color: black;
+		    color: $black;
   		}
 	}
 }
@@ -434,6 +447,66 @@ footer {
 	button {
 		background: $yellow;
 		margin-top: 20px auto 10px auto;
+	}
+}
+
+/* QUIZZES */
+
+.quiz {
+	padding: 10px 30px;
+
+	.question-group {
+
+		border: 1px solid $lightGrey;
+		padding: 10px;
+		margin-bottom: 10px;
+
+		.inquiry {
+			margin: 10px 0;
+		}
+
+		.inquiry-options {
+			list-style: none;
+			padding: 0;
+		}
+		.bucetudo {
+			background: purple;
+		}
+		.inquiry-option {
+			margin-bottom: 5px;
+		
+			input {
+				margin-right: 10px;
+			}
+
+			.answer {
+		    font-size: 80%;
+		    text-transform: uppercase;
+		    padding: 2px 5px;
+		    color: #fff;
+		    border-radius: 5px;
+		    margin-left: 5px;
+
+		    &.answer-correct {
+		    	background: $yellow;
+		    }
+
+		    &.answer-student-wrong {
+		    	background: $red;
+		    }
+
+		    &.answer-student {
+		    	background: $green;
+		    }
+			}
+		}
+	}	
+}
+
+.quiz-completed {
+	.inquiry-options {
+		list-style: disc !important;
+		margin-left: 19px !important;
 	}
 }
 
