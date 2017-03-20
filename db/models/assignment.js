@@ -39,6 +39,13 @@ const Assignment = db.define('assignments', {
     type: Sequelize.JSON,
     defualtValue: {}
   }
+}, {
+  getterMethods: {
+    snippet: function () {
+      if (this.description.length > 40) return this.description.slice(0, 41) + '...'
+      else return this.description
+    }
+  }
 })
 
 // Assignment belongsTo Task
