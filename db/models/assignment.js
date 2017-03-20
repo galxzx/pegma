@@ -17,25 +17,27 @@ const Assignment = db.define('assignments', {
     type: Sequelize.TEXT,
     defaultValue: 'no description'
   },
-  notes: Sequelize.STRING, // remove this
   label: {
     type: Sequelize.STRING,
     defaultValue: 'no label'
   },
   grade: Sequelize.FLOAT,
-  ETC: Sequelize.FLOAT,
-  type: Sequelize.ENUM('task', 'quiz'),
-  reward: Sequelize.INTEGER,
+  ETC: Sequelize.FLOAT, // Estimated Time to Completion
+  type: {
+    type: Sequelize.ENUM('task', 'quiz'),
+    validate: {
+      hasAssociationId: function(value) {
+        if (value === 'quiz' && !Assignment.quiz_id) throw new Error(`A assignment of type 'quiz' must have a quiz_id!`)
+      }
+    }
+  },
+  reward: {
+    type: Sequelize.INTEGER,
+    defaultValue: 0
+  },
   quiz_answers: {
     type: Sequelize.JSON,
     defualtValue: {}
-  }
-}, {
-  hooks: {
-    beforeCreate: (assignment) => {
-      if(assignment.type === 'quiz' && !assignment.quiz_id)
-      throw new Error(`A assignment of type 'quiz' must have a quiz_id!`)
-    }
   }
 })
 
