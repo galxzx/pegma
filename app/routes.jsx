@@ -25,6 +25,7 @@ import LibraryContainer from './containers/LibraryContainer'
 import TeacherSettingsContainer from './containers/TeacherSettingsContainer'
 import TeacherCalendarContainer from './containers/TeacherCalendarContainer'
 import QuizContainer from './containers/QuizContainer'
+import CompletedQuizContainer from './containers/CompletedQuizContainer'
 
 
 import {whoami} from './reducers/auth'
@@ -41,6 +42,14 @@ const onEnterQuiz = () => {
   store.dispatch(loadQuiz(quizId))
 }
 
+const onEnterAssignment = (nextState) =>  {
+  store.dispatch(loadCurrentAssignment(nextState.params.assignmentId))
+    .then(currentAssignment => {
+      if(currentAssignment.type === 'quiz') browserHistory.push(`/student/assignment/${currentAssignment.id}/quiz/${currentAssignment.quiz_id}`)
+    })
+    .catch(err => console.error(err))
+}
+
 export default function Root () {
   return (
     <Provider store={store}>
@@ -52,8 +61,9 @@ export default function Root () {
             <Route path="tracker/:studentId" component={StudentTrackerContainer} />
             <Route path="settings" component={StudentSettingsContainer} />
             <Route path="calendar" component={StudentCalendarContainer} />
-            <Router path="assignment/:assignmentId" component={AssignmentContainer} >
+            <Router path="assignment/:assignmentId" component={AssignmentContainer} onEnter={onEnterAssignment} >
               <Route path="quiz/:quizId" component={QuizContainer} onEnter={onEnterQuiz} />
+              <Route path="completedQuiz" component={CompletedQuizContainer} />
             </Router>
             <IndexRedirect to="dashboard" />
           </Router>

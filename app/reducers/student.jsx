@@ -22,9 +22,9 @@ export const setQuiz                  = (quiz) => ({ type: SET_QUIZ, quiz})
 
 const initialState = {
   assignments: [],
-  currentAssignment: {due_date: '2017-04-01', student_id: 1, status:'inProgress', teacher_id: 1, type:'quiz', quiz_id: 1, reward: 3, ETC: '2017-5-11'},
+  currentAssignment: {id: 1, due_date: '2017-04-01', student_id: 1, status:'inProgress', teacher_id: 1, type:'quiz', quiz_id: 3, reward: 3, ETC: '2017-5-11', quiz_answers:{}},
   teacher: {},
-  quiz: {}
+  quiz: { questions:[] }
 }
 
 export default function reducer(prevState = initialState, action) {
@@ -69,9 +69,12 @@ export const loadAssignments = () => (dispatch, getState) => {
 
 export const loadCurrentAssignment = (assignmentId) => (dispatch, getState) => {
   let studentId = getState().auth.student_id
-  axios.get(`/api/students/${studentId}/assingments/${assignmentId}`)
+  return axios.get(`/api/students/${studentId}/assingments/${assignmentId}`)
     .then(res => res.data)
-    .then(assignment => dispatch(setCurrentAssignment(assignment)))
+    .then(assignment => {
+      dispatch(setCurrentAssignment(assignment))
+      return assignment
+    })
     .catch(err => console.error(err))
 }
 
@@ -80,7 +83,7 @@ export const loadStudent = () => (dispatch, getState) => {
   axios.get(`/api/students/${studentId}/`)
     .then(res => res.data)
     .then(student => {
-      dispatch(setAssignments(student.assignments))      
+      dispatch(setAssignments(student.assignments))
       dispatch(setTeacher(student.teacher))
     })
     .catch(err => console.error(err))
@@ -90,5 +93,23 @@ export const loadQuiz = (quizId) => (dispatch) => {
   axios.get(`/api/library/quizzes/${quizId}`)
     .then(res => res.data)
     .then(quiz => dispatch(setQuiz(quiz)))
+    .catch(err => console.error(err))
+}
+
+export const gradeQuiz = () => (dispatch, getState) => {
+  const state = getState()
+  const quizAnswers = state.form.quiz.values
+  const quizLength = state.student.quiz.questions.length
+  const grade = state.student.quiz.questions.reduce((current, next) =>{
+    if(+next.solution === +quizAnswers[`q_${next.id}`]) return current + 1;
+    else return current;
+  }, 0) / quizLength * 100
+  axios.put(`/api/students/${state.student.currentAssignment.student_id}/assignments/${state.student.currentAssignment.id}`,
+    {status:'completed', grade, quiz_answers: quizAnswers})
+    .then(res => res.data)
+    .then(assignment => {
+      dispatch(setCurrentAssignment(assignment))
+      browserHistory.push(`/student/assignment/${assignment.id}/completedQuiz`)
+    })
     .catch(err => console.error(err))
 }

@@ -50,7 +50,11 @@ const seedTasks = () => db.Promise.map([
 
 
 const seedQuizzes = () => db.Promise.map([
-  {title: 'Math Quiz #1', teacher_id: 1, questions: [{inquiry: 'What is 2 + 2?', answer:['4', '8', '1', '12'], type:'multiple-choice'}, {inquiry: 'What is the answer to life the universe and everything?', answer:['42', 'pasta', '34', 'yes'], type:'multiple-choice'}]},
+  {title: 'Math Quiz #1', teacher_id: 1, questions: [
+    {inquiry: 'What is 2 + 2?', answer:['4', '8', '1', '12'], type:'multiple-choice', solution: 0},
+    {inquiry: 'What is the answer to life the universe and everything?', answer:['pasta', '42', '34', 'yes'], type:'multiple-choice', solution: 1},
+    {inquiry: 'What is 4 x 5?', answer:['35', '38', '20', '7'], type:'multiple-choice', solution: 2}
+    ]},
   {title: 'Math Quiz #2', teacher_id: 1},
   {title: 'Math Quiz #3', teacher_id: 1}
 ], quiz => db.model('quizzes').create(quiz, {include: [Question ]}))

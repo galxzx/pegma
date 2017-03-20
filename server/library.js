@@ -16,7 +16,7 @@ module.exports = require('express').Router()
 		.then(quizzes => res.json(quizzes))
 		.catch(next))
   .get('/quizzes/:quizId', mustBeLoggedIn, (req, res, next) =>
-    Quiz.findById(req.params.quizId)
+    Quiz.findById(req.params.quizId, {include: [Question]})
       .then(quiz => res.json(quiz))
        .catch(next))
 	.get('/tasks', mustBeLoggedIn, (req, res, next) =>
