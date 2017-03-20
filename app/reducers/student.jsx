@@ -9,6 +9,7 @@ export const SET_CURRENT_ASSIGNMENT   = 'SET_CURRENT_ASSIGNMENT'
 export const SET_TEACHER              = 'SET_TEACHER'
 export const SET_QUIZ                 = 'SET_QUIZ'
 
+export const UPDATE_ASSIGNMENT        = 'UPDATE_ASSIGNMENT'
 
 /* ------------   ACTION CREATORS     ------------------ */
 
@@ -16,6 +17,10 @@ export const setAssignments           = (assignments) => ({ type: SET_ASSIGNMENT
 export const setCurrentAssignment     = (assignment) => ({ type: SET_CURRENT_ASSIGNMENT, assignment })
 export const setTeacher               = (teacher) => ({ type: SET_TEACHER, teacher })
 export const setQuiz                  = (quiz) => ({ type: SET_QUIZ, quiz})
+
+export const updateAssignment         = (assignment) => ({ type: UPDATE_ASSIGNMENT, assignment })
+
+// for tracker board
 
 
 /* ------------       REDUCERS     ------------------ */
@@ -27,6 +32,7 @@ const initialState = {
   quiz: { questions:[] }
 }
 
+
 export default function reducer(prevState = initialState, action) {
 
   const newState = Object.assign({}, prevState)
@@ -34,11 +40,21 @@ export default function reducer(prevState = initialState, action) {
   switch (action.type) {
 
     case SET_ASSIGNMENTS:
+
       newState.assignments = action.assignments
       break
 
     case SET_CURRENT_ASSIGNMENT:
       newState.currentAssignment = action.assignment
+      break
+
+    case UPDATE_ASSIGNMENT:
+      newState.assignments.map(assignment => {
+        if(assignment.id === action.assignment.id) {
+          return Object.assign(assignment, action.assignment)
+        }
+        else return assignment
+      })
       break
 
     case SET_TEACHER:
@@ -49,6 +65,7 @@ export default function reducer(prevState = initialState, action) {
       newState.quiz = action.quiz
       break
 
+
     default:
       return prevState
   }
@@ -57,11 +74,9 @@ export default function reducer(prevState = initialState, action) {
 
 /* ------------       DISPATCHERS     ------------------ */
 
-// Add a new user
-
 export const loadAssignments = () => (dispatch, getState) => {
   let studentId = getState().auth.student_id
-  axios.get(`/api/students/${studentId}/assingments`)
+  axios.get(`/api/students/${studentId}/assignments`)
     .then(res => res.data)
     .then(assignments => dispatch(setAssignments(assignments)))
     .catch(err => console.error(err))
@@ -69,7 +84,8 @@ export const loadAssignments = () => (dispatch, getState) => {
 
 export const loadCurrentAssignment = (assignmentId) => (dispatch, getState) => {
   let studentId = getState().auth.student_id
-  return axios.get(`/api/students/${studentId}/assingments/${assignmentId}`)
+  return axios.get(`/api/students/${studentId}/assignments/${assignmentId}`)
+
     .then(res => res.data)
     .then(assignment => {
       dispatch(setCurrentAssignment(assignment))
@@ -80,6 +96,7 @@ export const loadCurrentAssignment = (assignmentId) => (dispatch, getState) => {
 
 export const loadStudent = () => (dispatch, getState) => {
   let studentId = getState().auth.student_id
+
   axios.get(`/api/students/${studentId}/`)
     .then(res => res.data)
     .then(student => {
@@ -88,6 +105,7 @@ export const loadStudent = () => (dispatch, getState) => {
     })
     .catch(err => console.error(err))
 }
+
 
 export const loadQuiz = (quizId) => (dispatch) => {
   axios.get(`/api/library/quizzes/${quizId}`)
@@ -113,3 +131,12 @@ export const gradeQuiz = () => (dispatch, getState) => {
     })
     .catch(err => console.error(err))
 }
+
+export const updateAssignmentRequest = (assignment) => (dispatch, getState) => {
+  let studentId = getState().auth.student_id
+  axios.post(`/api/students/${studentId}/assignments/${assignment.id}`, assignment)
+    .then(res => res.data)
+    .then(assignment => dispatch(updateAssignment(assignment)))
+    .catch(err => console.error(err))
+}
+

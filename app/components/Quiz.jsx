@@ -22,7 +22,7 @@ const Quiz = ({ handleSubmit, quiz, gradeQuiz, quizForm }) => {
                 return (
                   <div key={answer}>
                     <label>
-                      <Field name={'q_'+question.id} component="input" type="radio" value={idx} checked={quizForm && quizForm.values['q_'+question.id] == idx} />
+                      <Field name={'q_'+question.id} component="input" type="radio" value={idx} checked={quizForm && quizForm.values && quizForm.values['q_'+question.id] == idx} />
                       {answer}
                     </label>
                   </div>

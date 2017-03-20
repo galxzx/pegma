@@ -2,28 +2,35 @@ import React from 'react'
 import WhoAmI from './WhoAmI'
 import Login from './Login'
 
+import {Link} from 'react-router'
+
 const StudentApp = ({ user, children }) => {
-  return (
+	return (user !== null && user.student_id) ? (
     <div>
       <nav className="container nav-content">
         <ul className="nav-bar">
-          <li className="nav-item">
+          <Link className="nav-item" to='/student/dashboard'>
+            <span className="nav-icon icon-list-alt"></span>
+            <div className="nav-text">Dashboard</div>
+          </Link>        
+          <Link className="nav-item" to='/student/tracker'>
             <span className="nav-icon icon-clipboard"></span>
-            <a className="nav-text" href="student-tracker.html">Assignments</a>
-          </li>
-          <li className="nav-item">
+            <div className="nav-text">Assignments</div>
+          </Link>
+          <Link className="nav-item" to='/student/calendar'>
             <span className="nav-icon icon-calendar"></span>
-            <a className="nav-text" href="student-calendar.html">Calendar</a>
-          </li>
-          <li className="nav-item">
+            <div className="nav-text">Calendar</div>
+          </Link>
+          <Link className="nav-item" to='/student/settings'>
             <span className="nav-icon icon-cog"></span>
-            <a className="nav-text" href="student-settings.html">Settings</a>
-          </li>
+            <div className="nav-text">Settings</div>
+          </Link>
         </ul>
       </nav>      
       {children}
     </div>
   )
+  : (<div>You must be logged in as a Student to see this page.</div>)
 }
 
 export default StudentApp

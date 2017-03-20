@@ -8,9 +8,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link href="https://fonts.googleapis.com/css?family=Asap:400,400i,700" rel="stylesheet">
-  <link rel="stylesheet" href="css/normalize.min.css">
-  <link rel="stylesheet" href="fonts/icons.css">
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="../css/normalize.min.css">
+  <link rel="stylesheet" href="../fonts/icons.css">
+  <link rel="stylesheet" href="../css/style.css">
 
     <!-- <script src="js/vendor/modernizr-2.8.3.min.js"></script> -->
 </head>
@@ -20,196 +20,17 @@
   <![endif]-->
 
   <div id="app">
-    <header class="top-menu">
-      <div class="container header-content">
-        <div class="logo">Pegma</div>
-        <div class="user-information">Hello, John Smith <a href="#" class="icon icon-sign-out"></a></div>
+    
+    <section class="index-container">
+      <div class="index-content">
+        <h1>Pegma</h1>
+        <h4>Subtitle comes here</h4>
+        <nav>
+          <button class="btn btn-login">Log in</button>
+          <button class="btn btn-signup">Sign up</button>
+        </nav>
       </div>
-    </header>
-
-    <div class="main">
-
-      <nav class="container nav-content">
-        <ul class="nav-bar">
-          <li class="nav-item">
-            <span class="nav-icon icon-clipboard"></span>
-            <a class="nav-text" href="student-tracker.html">Assignments</a>
-          </li>
-          <li class="nav-item">
-            <span class="nav-icon icon-calendar"></span>
-            <a class="nav-text" href="student-calendar.html">Calendar</a>
-          </li>
-          <li class="nav-item">
-            <span class="nav-icon icon-cog"></span>
-            <a class="nav-text" href="student-settings.html">Settings</a>
-          </li>
-        </ul>
-      </nav>
-
-      <div class="dashboard">
-        <div class="container panel-container">
-          <ul class="stats">
-            <li class="stats-incomplete">
-              <span class="icon icon-file-text"></span>
-              <div class="info">
-                <div class="quantity">00</div>
-                <div class="type">To-Do</div>
-              </div>
-            </li>
-            <li class="stats-new">
-              <span class="icon icon-calendar-plus-o"></span>
-              <div class="info">
-                <div class="quantity">00</div>
-                <div class="type">New</div>
-              </div>
-            </li>
-            <li class="stats-complete">
-              <span class="icon icon-calendar-check-o"></span>
-              <div class="info">
-                <div class="quantity">00</div>
-                <div class="type">Completed</div>
-              </div>
-            </li>
-            <li class="stats-rewards">
-              <span class="icon icon-trophy"></span>
-              <div class="info">
-                <div class="quantity">0000</div>
-                <div class="type">Reward Points</div>
-              </div>
-            </li>
-          </ul><!-- /stats -->
-
-          <div class="flex-container">
-
-            <div class="flex-child">
-
-              <section class="panel notifications">
-                <div class="panel-header">Notifications</div>
-                <ul class="notifications-list">
-                  <li class="overdue">Assignment X is overdue.<span class="icon icon-external-link-sqaure"></span></li>
-                  <li>Assignment Y graded.<span class="icon icon-external-link-sqaure"></span></li>
-                  <li>New Assigment Z added.<span class="icon icon-external-link-sqaure"></span></li>
-                  <li>New Assigment W added.<span class="icon icon-external-link-sqaure"></span></li>
-                  <li>New Assigment W added.<span class="icon icon-external-link-sqaure"></span></li>
-                  <li>Assignment H graded.<span class="icon icon-external-link-sqaure"></span></li>
-                </ul>
-              </section> <!-- /notifications -->
-
-              <section class="panel calendar">
-                <div class="panel-header">
-                  <div>Calendar</div>
-                </div>
-              </section>
-
-            </div> <!-- /flex-child -->
-
-            <div class="flex-child">
-
-              <section class="panel assignments">
-                <div class="panel-header">
-                  <span>Assignments</span>
-                  <div class="styled-select-filters">
-                    <select name="sort_assignments">
-                      <option value="" selected>Sort by</option>
-                      <option value="duedate">Due Date</option>
-                      <option value="name">Name</option>
-                      <option value="type">Type</option>
-                    </select>
-                  </div>
-                </div>
-                <ul class="assignments-list">
-                  <li>
-                    <div class="summary">
-                      <h3 class="title">Title</h3>
-                      <span class="snippet">Do this, this, and that beautifu...</span>
-                    </div>
-                    <div class="due">
-                      <h4>Due</h4>
-                      <p class="date">01/17</p>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="summary">
-                      <h3 class="title">Title</h3>
-                      <span class="snippet">Do this, this, and that beautifu...</span>
-                    </div>
-                    <div class="due">
-                      <h4>Due</h4>
-                      <p class="date">01/17</p>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="summary">
-                      <h3 class="title">Title</h3>
-                      <span class="snippet">Do this, this, and that beautifu...</span>
-                    </div>
-                    <div class="due">
-                      <h4>Due</h4>
-                      <p class="date">01/17</p>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="summary">
-                      <h3 class="title">Title</h3>
-                      <span class="snippet">Do this, this, and that beautifu...</span>
-                    </div>
-                    <div class="due">
-                      <h4>Due</h4>
-                      <p class="date">01/17</p>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="summary">
-                      <h3 class="title">Title</h3>
-                      <span class="snippet">Do this, this, and that beautifu...</span>
-                    </div>
-                    <div class="due">
-                      <h4>Due</h4>
-                      <p class="date">01/17</p>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="summary">
-                      <h3 class="title">Title</h3>
-                      <span class="snippet">Do this, this, and that beautifu...</span>
-                    </div>
-                    <div class="due">
-                      <h4>Due</h4>
-                      <p class="date">01/17</p>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="summary">
-                      <h3 class="title">Title</h3>
-                      <span class="snippet">Do this, this, and that beautifu...</span>
-                    </div>
-                    <div class="due">
-                      <h4>Due</h4>
-                      <p class="date">01/17</p>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="summary">
-                      <h3 class="title">Title</h3>
-                      <span class="snippet">Do this, this, and that beautifu...</span>
-                    </div>
-                    <div class="due">
-                      <h4>Due</h4>
-                      <p class="date">01/17</p>
-                    </div>
-                  </li>
-                </ul>
-              </section> <!-- /assignments -->
-
-            </div><!-- /flex-child -->
-
-          </div> <!-- flex-container -->
-          
-        </div> <!-- /container -->
-
-      </div> <!-- dadshboard -->
-
-    </div><!-- /main -->
+    </section>
 
     <footer>
       <div class="container footer-content">
