@@ -1,9 +1,11 @@
 import React from 'react'
 
-import {Board} from 'react-trello'
+import {Board} from 'APP/react-trello'
 
 
 const Tracker = (props) => {
+
+
   return (
     <div>
       <Board data={props.board}
@@ -11,6 +13,8 @@ const Tracker = (props) => {
         onDataChange={props.shouldReceiveNewData}
         handleDragStart={props.handleDragStart}
         handleDragEnd={props.handleDragEnd}
+        onCardClick={props.handleCardClick}
+        laneSortFunction={props.defineSortFunction}
       />
     </div>
   )

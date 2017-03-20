@@ -537,6 +537,20 @@ footer {
 .kjauoa {
     margin: 1.6% !important;
     min-width: 20% !important;
-   
 }
 
+article[data-class="overdue"], article[data-class="overdue"]:hover {
+	background: $red;
+	color: #ffffff;
+	div {
+		background: $red;
+		color: #ffffff;	
+	}	
+}
+
+article[data-class="reminder"], article[data-class="reminder"]:hover {
+	background: $yellow;
+	div {
+		background: $yellow;
+	}	
+}

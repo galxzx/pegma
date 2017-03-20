@@ -27,7 +27,7 @@ const Assignment = db.define('assignments', {
     type: Sequelize.ENUM('task', 'quiz'),
     validate: {
       hasAssociationId: function(value) {
-        if (value === 'quiz' && !Assignment.quiz_id) throw new Error(`A assignment of type 'quiz' must have a quiz_id!`)
+        if (value === 'quiz' && !this.quiz_id) throw new Error(`A assignment of type 'quiz' must have a quiz_id!`)
       }
     }
   },
@@ -55,6 +55,11 @@ const Assignment = db.define('assignments', {
       const now = new Date()
       if (this.due_date < now) return true
       else return false
+    },
+    daysLeft: function() {
+      const now = new Date()
+      let daysLeft = Math.floor(this.due_date - now)
+      return daysLeft
     }
   }
 })
