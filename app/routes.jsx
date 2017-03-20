@@ -40,8 +40,9 @@ const onEnterStudent = () => {
 }
 
 const onEnterQuiz = () => {
-  const quizId = store.getState().student.currentAssignment.quiz_id;
-  store.dispatch(loadQuiz(quizId))
+  const currentAssignment = store.getState().student.currentAssignment;
+  store.dispatch(loadQuiz(currentAssignment.quiz_id))
+  if (currentAssignment.type === 'quiz' && currentAssignment.status === 'completed') browserHistory.push(`/student/assignment/${currentAssignment.id}/completedQuiz`)
 }
 
 const onEnterAssignment = (nextState) =>  {
@@ -50,7 +51,6 @@ const onEnterAssignment = (nextState) =>  {
   .then(() => {
     return store.dispatch(loadCurrentAssignment(nextState.params.assignmentId))
       .then(currentAssignment => {
-        console.log("current", currentAssignment)
         if (currentAssignment.type === 'quiz') browserHistory.push(`/student/assignment/${currentAssignment.id}/quiz/${currentAssignment.quiz_id}`)
     })
   })

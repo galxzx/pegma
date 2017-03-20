@@ -7,7 +7,6 @@ const CompletedQuiz = ({ currentAssignment, quiz }) => {
     console.log('quiz', quiz)
   return (
     <div>
-      <div>Grade: {currentAssignment.grade} </div>
       {quiz.questions.map(question => {
         return (
           <div key={question.id}>

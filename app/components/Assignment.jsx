@@ -3,7 +3,8 @@ import React from 'react'
 const Assignment = ({user, currentAssignment, children}) => {
   return (
     <div>
-      <div>Assignment </div>
+      <div>{currentAssignment.title}</div>
+      <div>Grade: {currentAssignment.Grade}</div>
       {children}
     </div>
   )

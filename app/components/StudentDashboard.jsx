@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router'
 
 const StudentDashboard = ({user, assignments, teacher}) => {
   let totalToDo = 0
@@ -72,7 +73,7 @@ const StudentDashboard = ({user, assignments, teacher}) => {
                 <li>New Assigment W added.<span className="icon icon-external-link-sqaure"></span></li>
                 <li>Assignment H graded.<span className="icon icon-external-link-sqaure"></span></li>
               </ul>
-            </section> 
+            </section>
 
             <section className="panel calendar">
               <div className="panel-header">Calendar</div>
@@ -96,7 +97,7 @@ const StudentDashboard = ({user, assignments, teacher}) => {
               </div>
               <ul className="assignments-list">
                 {
-                  (assignments.length > 0) ? 
+                  (assignments.length > 0) ?
                     assignments.map((assignment, i) => {
 
                     let dueDate = `${assignment.due_date.substring(5,7)}/${assignment.due_date.substring(8,10)}`
@@ -105,27 +106,29 @@ const StudentDashboard = ({user, assignments, teacher}) => {
                     let type = `${assignment.type[0].toUpperCase()}${assignment.type.substring(1)}`
 
                     return (
-                      <li key={ i }>
-                        <div className="summary">
-                          <h3 className="title">{ assignment.title }</h3>
-                          <span className="snippet">{ type } - { snippet }</span>
-                        </div>
-                        <div className="due">
-                          <h4>Due</h4>
-                          <p className="date"> { dueDate }</p>
-                        </div>
-                      </li>
+                      <Link to={`/student/assignment/${assignment.id}`} key={ assignment.id } >
+                        <li>
+                          <div className="summary">
+                            <h3 className="title">{ assignment.title }</h3>
+                            <span className="snippet">{ type } - { snippet }</span>
+                          </div>
+                          <div className="due">
+                            <h4>Due</h4>
+                            <p className="date"> { dueDate }</p>
+                          </div>
+                        </li>
+                      </Link>
                     )
                   }) :
                     <li>No assignments to display.</li>
                 }
 
               </ul>
-            </section> 
+            </section>
           </div>
-        </div> 
-      </div> 
-    </div>   
+        </div>
+      </div>
+    </div>
    )
 }
 
