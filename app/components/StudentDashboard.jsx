@@ -11,12 +11,12 @@ const StudentDashboard = ({user, assignments, teacher}) => {
     // Group totals
     if (assignment.status === 'completed') {
       totalCompleted++
-      // Count rewards
+
     }
-    else if (assignment.status === 'graded') {
+    else if (assignment.status === 'archived') {
       totalRewards += assignment.reward
     }
-    else if (assignment.status === 'future') {
+    else if (assignment.status === 'assigned') {
       totalNew++
       totalToDo++
     }
