@@ -12,29 +12,30 @@ const required = value => (value || value === 0) ? undefined : 'Required'
 const Quiz = ({ handleSubmit, quiz, gradeQuiz, quizForm }) => {
   console.log('form data', quizForm)
   return (
-    <form onSubmit={handleSubmit(gradeQuiz)}>
-      {quiz.questions.map(question => {
+    <form className="quiz" onSubmit={handleSubmit(gradeQuiz)}>
+      {quiz.questions.map((question, indexNum) => {
+        let questionNum = indexNum + 1;
         return (
-          <div key={question.id}>
-            <h4>{question.inquiry}</h4>
-            <div>
+          <div key={question.id} className="question-group">
+            <h4 className="inquiry">{questionNum}. {question.inquiry}</h4>
+            <ul className="inquiry-options">
               {question.answer.map((answer, idx) =>{
                 return (
-                  <div key={answer}>
+                  <li key={answer} className="inquiry-option">
                     <label>
                       <Field name={'q_'+question.id} component="input" type="radio" value={idx} checked={quizForm && quizForm.values && quizForm.values['q_'+question.id] == idx} />
                       {answer}
                     </label>
-                  </div>
+                  </li>
                 )
               })}
               <Field name={'q_'+question.id} component={renderError} validate={required} />
-            </div>
+            </ul>
           </div>
         )
       })}
       <div>
-        <button type="submit">Submit Quiz</button>
+        <button className="btn btn-primary" type="submit">Submit Quiz</button>
       </div>
     </form>
 

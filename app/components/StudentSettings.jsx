@@ -22,7 +22,7 @@ const StudentSettings = ({user, teacher}) => {
                     <label>Teacher</label><br/>
                     <span className="alert-inline">You are not allowed to change your teacher.</span><br/>
                     <input type="text" name="teacher" value="unknown" disabled/><br/>
-                    <button type="submit" className="btn">Update Information</button>
+                    <button type="submit" className="btn btn-primary">Update Information</button>
                   </div>
                 </fieldset>
               </form>
