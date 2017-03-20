@@ -17,7 +17,7 @@ const Question = db.define('questions', {
     allowNull: false
   },
   type: {
-    type: Sequelize.TEXT,
+    type: Sequelize.STRING,
     allowNull: false
   }
 });

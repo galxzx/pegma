@@ -7,11 +7,10 @@ const StudentDashboard = ({user, assignments, teacher}) => {
   let totalCompleted = 0
   let totalRewards = 0
 
+  // Group totals
   assignments.forEach(assignment => {
-    // Group totals
     if (assignment.status === 'completed') {
       totalCompleted++
-
     }
     else if (assignment.status === 'archived') {
       totalRewards += assignment.reward

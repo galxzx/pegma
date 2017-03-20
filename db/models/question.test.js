@@ -13,13 +13,13 @@ describe('Question', () => {
 
     let question
 
-    beforeEach(function (done) {
+    beforeEach(function () {
       question = Question.build({
         inquiry: 'What is the second planet in the Solar System?',
         answer: ['Mercury', 'Venus', 'Earth', 'Mars'],
-        type: 'Multiple Choice'
+        type: 'Multiple Choice',
+        solution: 1
       })
-      done()
     })
 
     it('has a inquiry field', function () {
@@ -30,6 +30,11 @@ describe('Question', () => {
       expect(question.answer).to.be.an('array')
       expect(question.answer).to.have.length(4)
       expect(question.answer[0]).to.equal('Mercury')
+    })
+
+    it('has a number as solution field', function () {
+      expect(question.solution).to.be.an('number')
+      expect(question.solution).to.equal(1)
     })
 
     it('has a string as type field', function () {

@@ -13,12 +13,11 @@ describe('Quiz', () => {
   
     let quiz
 
-    beforeEach(function (done) {
+    beforeEach(function () {
       quiz = Quiz.build({
         title: 'Astronomy Quiz',
         description: 'Answer this five questions about what we learned this week.'
       })
-      done()
     })
     
     it('has a title field', function () {
