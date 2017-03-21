@@ -15,7 +15,6 @@ const StudentDashboard = ({user, assignments, teacher}) => {
         <StudentStats assignments={assignments} />
 
         <div className="flex-container">
-
           <div className="flex-child">
 
             <NotificationsPanel assignments={assignments} />
@@ -23,7 +22,6 @@ const StudentDashboard = ({user, assignments, teacher}) => {
             <CalendarSmall />
             
           </div>
-
           <div className="flex-child">
 
             <AssignmentsPanel assignments={assignments}/>
