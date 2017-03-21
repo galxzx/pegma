@@ -57,3 +57,14 @@ export const loadTasks = () => (dispatch, getState) => {
     .then(tasks => dispatch(setTasks(tasks)))
     .catch(err => console.error(err))
 }
+
+export const loadLibrary = () => (dispatch, getState) => {
+  axios.get(`/api/library/quizzes`)
+    .then(res => res.data)
+    .then(quizzes => dispatch(setQuizzes(quizzes)))
+    .catch(err => console.error(err))
+  axios.get(`/api/library/tasks`)
+    .then(res => res.data)
+    .then(tasks => dispatch(setTasks(tasks)))
+    .catch(err => console.error(err))
+}

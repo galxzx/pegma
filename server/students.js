@@ -14,6 +14,10 @@ module.exports = require('express').Router()
 		.then(student => student.getAssignments({order: ['status']}))
 		.then(assignments => res.json(assignments))
 		.catch(next))
+	.post('/:studentId/assignments/', (req, res, next) =>
+	  Assignment.create(req.body)
+	  .then(assignment => res.send(assignment))
+	  .catch(next))	
 	.get('/:studentId/assignments/:assignmentId', mustBeLoggedIn, (req, res, next) =>
 		Assignment.findById(req.params.assignmentId)
 		.then(assignment => res.json(assignment))

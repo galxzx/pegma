@@ -2,6 +2,8 @@ import React from 'react'
 import WhoAmI from './WhoAmI'
 import Login from './Login'
 
+import {Link} from 'react-router'
+
 const TeacherApp = ({ user, children }) => {
   return (user && user.teacher_id) ? (
     <div>

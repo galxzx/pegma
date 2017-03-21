@@ -32,15 +32,26 @@ import TeacherFunctionsContainer from './containers/TeacherFunctionsContainer'
 import {whoami} from './reducers/auth'
 
 import {loadAssignments, loadCurrentAssignment, loadStudent, loadQuiz} from './reducers/student'
+import {loadStudents} from './reducers/teacher'
+import {loadLibrary} from './reducers/library'
+
 import {loadBoard} from './reducers/tracker'
 
 
-const onEnterStudent = (nextState, replace, done) => (
+const onEnterStudent = (nextState, replace) => (
   store.dispatch(whoami())
     .then(res => store.dispatch(loadStudent()))
-    .then(done())
 )
 
+const onEnterTeacher = (nextState, replace) => (
+  store.dispatch(whoami())
+    .then(res => store.dispatch(loadStudents()))
+)
+
+const onEnterFunctions = (nextState, replace) => (
+  store.dispatch(whoami())
+    .then(res => store.dispatch(loadLibrary()))
+)
 
 const onEnterQuiz = () => {
   const currentAssignment = store.getState().student.currentAssignment;
@@ -61,7 +72,7 @@ const onEnterAssignment = (nextState) =>  {
 }
  
 const onEnterStudentTracker = (nextState, replace, done) => {
-  onEnterStudent(nextState, replace, done)
+  onEnterStudent(nextState, replace)
   .then(res => store.dispatch(loadBoard()))
   .then(done())
 }
@@ -84,14 +95,14 @@ export default function Root () {
             </Router>
             <IndexRedirect to="dashboard" />
           </Router>
-          <Router path="/teacher" component={TeacherAppContainer}>
+          <Router path="/teacher" component={TeacherAppContainer} onEnter={onEnterTeacher}>
             <Route path="dashboard" component={TeacherDashboardContainer} />
             <Route path="class" component={ClassTrackerContainer} />
             <Route path="student/:studentId" component={StudentTrackerContainer} />
             <Route path="library" component={LibraryContainer} />
             <Route path="settings" component={TeacherSettingsContainer} />
             <Route path="calendar" component={TeacherCalendarContainer} />
-            <Route path="functions" component={TeacherFunctionsContainer} />
+            <Route path="functions" component={TeacherFunctionsContainer} onEnter={onEnterFunctions}/>
             <IndexRedirect to="dashboard" />
           </Router>
         </Route>

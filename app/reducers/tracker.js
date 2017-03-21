@@ -42,7 +42,8 @@ export default function reducer(prevState = initialState, action) {
         let dueDate = `${assignment.due_date.substring(5,7)}/${assignment.due_date.substring(8,10)}`    
         assignment.label = dueDate
         //assignment.id = assignment.id + ''
-        newState.board.lanes[getIdx(assignment.status)].cards.push(assignment)
+        let cards = newState.board.lanes[getIdx(assignment.status)].cards  
+        newState.board.lanes[getIdx(assignment.status)].cards = [...cards, assignment]     
       })
       break
     case UPDATE_STATUS:
