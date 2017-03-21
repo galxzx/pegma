@@ -34,10 +34,12 @@ import {loadAssignments, loadCurrentAssignment, loadStudent, loadQuiz} from './r
 import {loadBoard} from './reducers/tracker'
 
 
-const onEnterStudent = () => {
+const onEnterStudent = (nextState, replace, done) => (
   store.dispatch(whoami())
     .then(res => store.dispatch(loadStudent()))
-}
+    .then(done())
+)
+
 
 const onEnterQuiz = () => {
   const currentAssignment = store.getState().student.currentAssignment;
@@ -56,10 +58,11 @@ const onEnterAssignment = (nextState) =>  {
   })
     .catch(err => console.error(err))
 }
-
-const onEnterStudentTracker = () => {
-    store.dispatch(whoami())
-    .then(res => store.dispatch(loadBoard()))
+ 
+const onEnterStudentTracker = (nextState, replace, done) => {
+  onEnterStudent(nextState, replace, done)
+  .then(res => store.dispatch(loadBoard()))
+  .then(done())
 }
 
 

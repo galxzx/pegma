@@ -14,15 +14,17 @@ export const updateStatus = (updated) => ({ type: UPDATE_STATUS, updated })
 
 /* ------------       REDUCERS     ------------------ */
 
+let board = {
+  lanes: [
+    {id:'assigned', title: 'assigned', label: 'assigned', cards:[]},
+    {id:'doing', title: 'doing', label: 'doing', cards:[]},
+    {id:'completed', title: 'completed', label: 'completed', cards:[]},
+    {id:'archived', title: 'archived', label: 'archived', cards:[]}
+  ]
+}
+
 const initialState = {
-  board: {
-    lanes: [
-      {id:'assigned', title: 'assigned', label: 'assigned', cards:[]},
-      {id:'doing', title: 'doing', label: 'doing', cards:[]},
-      {id:'completed', title: 'completed', label: 'completed', cards:[]},
-      {id:'archived', title: 'archived', label: 'archived', cards:[]}
-    ]
-  }
+  board: Object.assign({}, board)
 }
 
 function getIdx(status) {
@@ -36,7 +38,7 @@ export default function reducer(prevState = initialState, action) {
   const newState = Object.assign({}, prevState)
   switch (action.type) {
     case SET_BOARD:
-      newState.board.lanes.map(lane => lane.cards = [])
+      newState.board = Object.assign({}, board)
       action.assignments.forEach(assignment => {
         let dueDate = `${assignment.due_date.substring(5,7)}/${assignment.due_date.substring(8,10)}`    
         assignment.label = dueDate
@@ -65,7 +67,7 @@ export default function reducer(prevState = initialState, action) {
 
 export const loadBoard = () => (dispatch, getState) => {
   let studentId = getState().auth.student_id
-  axios.get(`/api/students/${studentId}/assignments`)
+  return axios.get(`/api/students/${studentId}/assignments`)
     .then(res => res.data)
     .then(assignments => dispatch(setBoard(assignments)))
     .catch(err => console.error(err))

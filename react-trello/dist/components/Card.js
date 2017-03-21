@@ -110,15 +110,20 @@ var cardSource = {
   endDrag: function endDrag(props, monitor) {
     var item = monitor.getItem();
     var dropResult = monitor.getDropResult();
-    if (dropResult && dropResult.listId !== item.listId) {
+
+    if(!dropResult || !dropResult.listId) return;
+
+    else if (dropResult && dropResult.listId !== item.listId) {
       props.removeCard(item.listId, item.id);
+      props.handleDragEnd(item.id, item.listId, dropResult.listId);
     }
-    props.handleDragEnd(item.id, item.listId, dropResult.listId);
+
   }
 };
 
 var cardTarget = {
   hover: function hover(props, monitor, component) {
+
     var dragIndex = monitor.getItem().index;
     var hoverIndex = props.index;
     var sourceListId = monitor.getItem().listId;

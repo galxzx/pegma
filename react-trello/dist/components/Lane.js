@@ -202,9 +202,11 @@ Lane.propTypes = {
 
 var cardTarget = {
   drop: function drop(props, monitor, component) {
-    var id = props.id;
 
     var draggedObj = monitor.getItem();
+
+    var id = props.id;
+
     if (id !== draggedObj.listId) {
       props.actions.addCard({ laneId: id, card: draggedObj.card });
     } else {
