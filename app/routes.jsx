@@ -31,7 +31,7 @@ import CompletedQuizContainer from './containers/CompletedQuizContainer'
 import {whoami} from './reducers/auth'
 
 import {loadAssignments, loadCurrentAssignment, loadStudent, loadQuiz} from './reducers/student'
-
+import {loadBoard} from './reducers/tracker'
 
 
 const onEnterStudent = () => {
@@ -56,9 +56,11 @@ const onEnterAssignment = (nextState) =>  {
   })
     .catch(err => console.error(err))
 }
-// const onEnterStudentTracker = () => {
-//   store.dispatch(loadAssignments())
-// }
+
+const onEnterStudentTracker = () => {
+    store.dispatch(whoami())
+    .then(res => store.dispatch(loadBoard()))
+}
 
 
 export default function Root () {
@@ -69,7 +71,7 @@ export default function Root () {
           <IndexRedirect to="/student" />
           <Router path="/student"  component={StudentAppContainer} onEnter={onEnterStudent}>
             <Route path="dashboard" component={StudentDashboardContainer} />
-            <Route path="tracker" component={StudentTrackerContainer} />
+            <Route path="tracker" component={StudentTrackerContainer} onEnter={onEnterStudentTracker}/>
             <Route path="settings" component={StudentSettingsContainer} />
             <Route path="calendar" component={StudentCalendarContainer} />
             <Router path="assignment/:assignmentId" component={AssignmentContainer} onEnter={onEnterAssignment} >

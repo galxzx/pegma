@@ -10,7 +10,6 @@ const Tracker = (props) => {
     <div>
       <Board data={props.board}
         draggable={true}
-        onDataChange={props.shouldReceiveNewData}
         handleDragStart={props.handleDragStart}
         handleDragEnd={props.handleDragEnd}
         onCardClick={props.handleCardClick}
