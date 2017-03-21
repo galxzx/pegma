@@ -53,13 +53,23 @@ const Assignment = db.define('assignments', {
     },
     overdue: function() {
       const now = new Date()
-      if (this.due_date < now) return true
+      if (this.due_date < now && this.status !== 'completed' && this.status !== 'archived') return true
       else return false
     },
     daysLeft: function() {
       const now = new Date()
       let daysLeft = Math.ceil((this.due_date - now) / 86400000)
       return daysLeft
+    },
+    isNew: function() {
+      const now = new Date()
+      let createDay = ((this.created_at - now) / 86400000)
+      return (createDay <= 2) ? true : false
+    },
+    recentlyUpdated: function() {
+      const now = new Date()
+      let updateDay = ((this.updated_at - now) / 86400000)
+      return (updateDay <= 2) ? true : false
     }
   }
 })

@@ -19,6 +19,12 @@ html {
   color: #222221;
   text-decoration: none; }
 
+.float-left {
+  float: left; }
+
+.float-right {
+  float: right; }
+
 /* BUTTONS */
 .btn {
   display: inline-block;
@@ -218,8 +224,6 @@ footer {
     .notifications-list li:hover {
       background: #EEEEEC;
       padding-left: 15px; }
-    .notifications-list li > .icon {
-      float: right; }
 
 /* CALENDAR */
 .dashboard > .calendar {
@@ -367,3 +371,28 @@ article[data-class="reminder"], article[data-class="reminder"]:hover {
   background: #FFC943; }
   article[data-class="reminder"] div, article[data-class="reminder"]:hover div {
     background: #FFC943; }
+
+/* COLOR CLASSSES */
+.bg-red {
+  background: #C60034; }
+
+.red {
+  color: #C60034; }
+
+.bg-yellow {
+  background: #FFC943; }
+
+.yellow {
+  color: #FFC943; }
+
+.bg-blue {
+  background: #0B9CCC; }
+
+.blue {
+  color: #0B9CCC; }
+
+.bg-green {
+  background: #00C692; }
+
+.green {
+  color: #00C692; }
