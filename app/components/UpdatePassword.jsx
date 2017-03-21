@@ -4,7 +4,7 @@ import { Field } from 'redux-form'
 
 
 
-const StudentSettings = ({user, teacher, handleSubmit, updateStudent}) => {
+const UpdatePassword = ({handleSubmit, settingsSubmit}) => {
 
 
   return (
@@ -16,7 +16,7 @@ const StudentSettings = ({user, teacher, handleSubmit, updateStudent}) => {
           <section className="flex-child panel settings">
             <div className="panel-header">Settings</div>
             <div className="settings-content">
-              <form onSubmit={handleSubmit(updateStudent)}>
+              <form onSubmit={handleSubmit}>
                 <fieldset>
                   <div className="form-group">
                     <label>Name</label><br/>
@@ -39,4 +39,4 @@ const StudentSettings = ({user, teacher, handleSubmit, updateStudent}) => {
   )
 }
 
-export default StudentSettings
+export default UpdatePassword

@@ -35,4 +35,14 @@ export const whoami = () =>
       })
       .catch(failed => dispatch(authenticated(null)))
 
+export const updateStudent = () =>
+  (dispatch, getState) =>{
+    const state = getState()
+    const userId = state.auth.id
+    const newInfo = state.form.studentSettings.values
+    return axios.put(`/api/users/${userId}`, newInfo)
+      .then(() => dispatch(whoami()))
+      .catch(err => console.error(err))
+}
+
 export default reducer

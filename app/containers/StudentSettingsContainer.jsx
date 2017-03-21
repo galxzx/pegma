@@ -1,11 +1,24 @@
 import {connect} from 'react-redux'
+import { reduxForm } from 'redux-form'
 
 import StudentSettings from '../components/StudentSettings'
+import { updateStudent } from '../reducers/auth'
+
 
 
 const mapState = (state) => {
   return {
-    user: state.auth
+    initialValues: state.auth
+
   }
 }
-export default connect(mapState)(StudentSettings)
+
+const mapDispatch = {updateStudent}
+
+
+const SettingsForm = reduxForm({
+  form: 'studentSettings',
+})(StudentSettings)
+
+export default connect(mapState, mapDispatch)(SettingsForm)
+
