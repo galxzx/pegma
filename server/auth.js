@@ -122,7 +122,7 @@ passport.use(new (require('passport-local').Strategy) (
 auth.get('/whoami', (req, res) => res.send(req.user))
 
 // POST requests for local login:
-auth.post('/login/local', passport.authenticate('local', { successRedirect: '/', }))
+auth.post('/login/local', passport.authenticate('local', { successRedirect: '/' }))
 
 // GET requests for OAuth login:
 // Register this route as a callback URL with OAuth provider
@@ -137,6 +137,32 @@ auth.get('/login/:strategy', (req, res, next) =>
 auth.post('/logout', (req, res, next) => {
   req.logout()
   res.redirect('/api/auth/whoami')
+})
+
+auth.post('/checkPassword', (req, res, next) =>
+  User.findById(req.body.user.id)
+    .then(user =>
+      user.authenticate(req.body.password)
+        .then(ok => {
+          if (!ok) res.sendStatus(401)
+          else res.sendStatus(204)
+        })
+        .catch(next)
+    )
+    .catch(next)
+)
+
+auth.post('/updatePassword', (req, res, next) =>{
+  return User.findById(req.body.id)
+    .then(user =>
+      user.authenticate(req.body.password)
+        .then(ok => {
+          if(!ok) res.sendStatus(401)
+          else user.update({email: req.body.email, password:req.body.newPwd})
+            .then(() => res.redirect('/api/auth/whoami'))
+        })
+    )
+    .catch(next)
 })
 
 module.exports = auth

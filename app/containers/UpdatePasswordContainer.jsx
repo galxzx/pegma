@@ -2,22 +2,19 @@ import {connect} from 'react-redux'
 import { reduxForm } from 'redux-form'
 
 import UpdatePassword from '../components/UpdatePassword'
-import { checkPassword } from '../reducers/auth'
+import validatePassword from '../validators/validatePassword'
+import { checkPassword, updatePassword } from '../reducers/auth'
 
 
+const mapState = () => ({})
 
-const mapState = (state) => {
-  return {
-    initialValues: state.auth
-
-  }
-}
-
-const mapDispatch = {asyncValidate: checkPassword}
+const mapDispatch = {asyncValidate: checkPassword, updatePassword}
 
 
-const SettingsForm = reduxForm({
-  form: 'updatePassword',
+const PasswordForm = reduxForm({
+  form: 'password',
+  asyncBlurFields: ['password'],
+  validate: validatePassword
 })(UpdatePassword)
 
-export default connect(mapState, mapDispatch)(SettingsForm)
+export default connect(mapState, mapDispatch)(PasswordForm)

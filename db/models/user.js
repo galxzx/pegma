@@ -33,6 +33,13 @@ const User = db.define('users', {
             err ? reject(err) : resolve(result))
         )
     }
+  },
+  getterMethods: {
+    userType () {
+      if(this.student_id) return 'student'
+      if(this.teacher_id) return 'teacher'
+      return ''
+    }
   }
 })
 

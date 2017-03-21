@@ -1,5 +1,6 @@
 import React from 'react'
 import { Field } from 'redux-form'
+import UpdatePasswordContainer from '../containers/UpdatePasswordContainer'
 
 
 
@@ -33,7 +34,9 @@ const StudentSettings = ({user, teacher, handleSubmit, updateStudent}) => {
             </div>
           </section>
 
+
         </div>
+        <UpdatePasswordContainer />
       </div>
     </div>
   )

@@ -64,6 +64,10 @@ html {
 .btn-primary {
   background: #FFC943; }
 
+/* FORMS */
+form .formError {
+  color: #C60034; }
+
 /* INDEX */
 .index-container {
   background: #FFC943;
