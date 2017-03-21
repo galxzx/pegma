@@ -5,19 +5,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 var _react = require('react');
-
 var _react2 = _interopRequireDefault(_react);
-
 var _Base = require('../styles/Base');
-
 var _DragType = require('../helpers/DragType');
-
 var _reactDnd = require('react-dnd');
-
 var _reactDom = require('react-dom');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -110,15 +103,20 @@ var cardSource = {
   endDrag: function endDrag(props, monitor) {
     var item = monitor.getItem();
     var dropResult = monitor.getDropResult();
-    if (dropResult && dropResult.listId !== item.listId) {
+
+    if(!dropResult || !dropResult.listId) return;
+
+    else if (dropResult && dropResult.listId !== item.listId) {
       props.removeCard(item.listId, item.id);
+      props.handleDragEnd(item.id, item.listId, dropResult.listId);
     }
-    props.handleDragEnd(item.id, item.listId, dropResult.listId);
+
   }
 };
 
 var cardTarget = {
   hover: function hover(props, monitor, component) {
+
     var dragIndex = monitor.getItem().index;
     var hoverIndex = props.index;
     var sourceListId = monitor.getItem().listId;

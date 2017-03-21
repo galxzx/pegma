@@ -26,6 +26,7 @@ import TeacherSettingsContainer from './containers/TeacherSettingsContainer'
 import TeacherCalendarContainer from './containers/TeacherCalendarContainer'
 import QuizContainer from './containers/QuizContainer'
 import CompletedQuizContainer from './containers/CompletedQuizContainer'
+import TeacherFunctionsContainer from './containers/TeacherFunctionsContainer'
 
 
 import {whoami} from './reducers/auth'
@@ -34,10 +35,12 @@ import {loadAssignments, loadCurrentAssignment, loadStudent, loadQuiz} from './r
 import {loadBoard} from './reducers/tracker'
 
 
-const onEnterStudent = () => {
+const onEnterStudent = (nextState, replace, done) => (
   store.dispatch(whoami())
     .then(res => store.dispatch(loadStudent()))
-}
+    .then(done())
+)
+
 
 const onEnterQuiz = () => {
   const currentAssignment = store.getState().student.currentAssignment;
@@ -56,10 +59,11 @@ const onEnterAssignment = (nextState) =>  {
   })
     .catch(err => console.error(err))
 }
-
-const onEnterStudentTracker = () => {
-    store.dispatch(whoami())
-    .then(res => store.dispatch(loadBoard()))
+ 
+const onEnterStudentTracker = (nextState, replace, done) => {
+  onEnterStudent(nextState, replace, done)
+  .then(res => store.dispatch(loadBoard()))
+  .then(done())
 }
 
 
@@ -87,6 +91,7 @@ export default function Root () {
             <Route path="library" component={LibraryContainer} />
             <Route path="settings" component={TeacherSettingsContainer} />
             <Route path="calendar" component={TeacherCalendarContainer} />
+            <Route path="functions" component={TeacherFunctionsContainer} />
             <IndexRedirect to="dashboard" />
           </Router>
         </Route>

@@ -5,33 +5,19 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 var _react = require('react');
-
 var _react2 = _interopRequireDefault(_react);
-
 var _Loader = require('./Loader');
-
 var _Loader2 = _interopRequireDefault(_Loader);
-
 var _Card = require('./Card');
-
 var _Card2 = _interopRequireDefault(_Card);
-
 var _Base = require('../styles/Base');
-
 var _redux = require('redux');
-
 var _reactRedux = require('react-redux');
-
 var _reactDnd = require('react-dnd');
-
 var _update = require('react/lib/update');
-
 var _update2 = _interopRequireDefault(_update);
-
 var _DragType = require('../helpers/DragType');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -202,9 +188,11 @@ Lane.propTypes = {
 
 var cardTarget = {
   drop: function drop(props, monitor, component) {
-    var id = props.id;
 
     var draggedObj = monitor.getItem();
+
+    var id = props.id;
+
     if (id !== draggedObj.listId) {
       props.actions.addCard({ laneId: id, card: draggedObj.card });
     } else {
