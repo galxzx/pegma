@@ -1,11 +1,7 @@
 import React from 'react'
 import { Field } from 'redux-form'
 
-
-
-
 const StudentSettings = ({user, teacher, handleSubmit, updateStudent}) => {
-
 
   return (
     <div className="dashboard">

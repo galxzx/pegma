@@ -61,7 +61,6 @@ class AssignmentsPanel extends React.Component {
               }) :
               <li>No assignments to display.</li>
           }
-
         </ul>
       </section>
     )
