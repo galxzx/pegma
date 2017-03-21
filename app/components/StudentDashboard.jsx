@@ -1,10 +1,9 @@
 import React from 'react'
-import { Link } from 'react-router'
 
 import StudentStats from './Dashboard/StudentStats'
-import NotificationsPanel from './Dashboard/NotificationsPanel'
+import StudentNotificationsPanel from './Dashboard/StudentNotificationsPanel'
 import CalendarSmall from './Dashboard/CalendarSmall'
-import AssignmentsPanel from './Dashboard/AssignmentsPanel'
+import StudentAssignmentsPanel from './Dashboard/StudentAssignmentsPanel'
 
 const StudentDashboard = ({user, assignments, teacher}) => {
 
@@ -17,14 +16,14 @@ const StudentDashboard = ({user, assignments, teacher}) => {
         <div className="flex-container">
           <div className="flex-child">
 
-            <NotificationsPanel assignments={assignments} />
+            <StudentNotificationsPanel assignments={assignments} />
 
             <CalendarSmall />
             
           </div>
           <div className="flex-child">
 
-            <AssignmentsPanel assignments={assignments}/>
+            <StudentAssignmentsPanel assignments={assignments}/>
 
           </div>
         </div>
