@@ -7,6 +7,7 @@ $darkGrey: #4B4B4A;
 $red: #C60034;
 $pink: #FF2760;
 $yellow: #FFC943;
+$orange: #FF8943;
 $blue: #0B9CCC;
 $green: #00C692;
 
@@ -583,6 +584,14 @@ article[data-class="reminder"], article[data-class="reminder"]:hover {
 
 .yellow {
 	color: $yellow;
+}
+
+.bg-orange {
+	background: $orange;
+}
+
+.orange {
+	color: $orange;
 }
 
 .bg-blue {

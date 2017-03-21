@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router'
-import _ from 'lodash'
 
 import StudentStats from './Dashboard/StudentStats'
 import NotificationsPanel from './Dashboard/NotificationsPanel'
@@ -16,7 +15,6 @@ const StudentDashboard = ({user, assignments, teacher}) => {
         <StudentStats assignments={assignments} />
 
         <div className="flex-container">
-
           <div className="flex-child">
 
             <NotificationsPanel assignments={assignments} />
@@ -24,7 +22,6 @@ const StudentDashboard = ({user, assignments, teacher}) => {
             <CalendarSmall />
             
           </div>
-
           <div className="flex-child">
 
             <AssignmentsPanel assignments={assignments}/>
