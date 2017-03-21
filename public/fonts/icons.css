@@ -140,3 +140,9 @@
 .icon-paper-plus:before {
   content: "\48";
 }
+.icon-google-plus-square:before {
+  content: "\4b";
+}
+.icon-facebook-square:before {
+  content: "\49";
+}

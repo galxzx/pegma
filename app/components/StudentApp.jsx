@@ -1,8 +1,10 @@
 import React from 'react'
 import {Link} from 'react-router'
 
+import Login from './Login'
+
 const StudentApp = ({ user, children }) => {
-	return (user !== null && user.student_id) ? (
+	return (user && user.student_id) ? (
     <div>
       <nav className="container nav-content">
         <ul className="nav-bar">
@@ -27,7 +29,14 @@ const StudentApp = ({ user, children }) => {
       {children}
     </div>
   )
-  : (<div>You must be logged in as a Student to see this page.</div>)
+  : 
+  (
+    <div className="not-logged">
+      <span className="icon icon-exclamation-triangle"></span>
+      <h3>You must be logged in as a Student to see this page.</h3>
+      <Login />
+    </div>
+  )
 }
 
 export default StudentApp
