@@ -9,7 +9,9 @@ $pink: #FF2760;
 $yellow: #FFC943;
 $orange: #FF8943;
 $blue: #0B9CCC;
+$cyan: #43B9FF;
 $green: #00C692;
+$lightGreen: #27FFC6;
 
 /* HTML BASICS */
 
@@ -208,7 +210,7 @@ footer {
 .flex-container {
 	display: flex;
 	flex-direction: row;
-	width: 100%;
+	max-width: 100%;
 }
 
 .flex-child {
@@ -275,11 +277,19 @@ footer {
 		}
 
 		&.stats-ready {
-			background: $mediumGrey;
+			background: $pink;
 		}
 
 		&.stats-selfgraded {
-			background: $mediumGrey;
+			background: $green;
+		}
+
+		&.stats-totalassignments {
+			background: $blue;
+		}
+
+		&.stats-totalstudents {
+			background: $orange;
 		}
 	}
 }

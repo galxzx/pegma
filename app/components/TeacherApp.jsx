@@ -1,6 +1,5 @@
 import React from 'react'
-import WhoAmI from './WhoAmI'
-import Login from './Login'
+import {Link} from 'react-router'
 
 const TeacherApp = ({ user, children }) => {
   return (user && user.teacher_id) ? (
@@ -23,11 +22,11 @@ const TeacherApp = ({ user, children }) => {
             <span className="nav-icon icon-trophy"></span>
             <div className="nav-text">Rewards</div>
           </Link>
-          <Link className="nav-item" to='/student/calendar'>
+          <Link className="nav-item" to='/teacher/calendar'>
             <span className="nav-icon icon-calendar"></span>
             <div className="nav-text">Calendar</div>
           </Link>
-          <Link className="nav-item">
+          <Link className="nav-item" to="/teacher/calendar">
             <span className="nav-icon icon-cog"></span>
             <div className="nav-text">Settings</div>
           </Link>
