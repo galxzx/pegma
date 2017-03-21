@@ -33,7 +33,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var flow = require('lodash.flow');
 
 const daysLeftClass = (daysLeft) => {
-  console.log('days left::::' , daysLeft)
   if(daysLeft < 0) return 'overdue'
   else if(daysLeft === 0) return 'reminder'
   else return ''
