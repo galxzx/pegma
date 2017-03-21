@@ -90,6 +90,13 @@ html {
 	background: $yellow;
 }
 
+/* FORMS */
+form {
+	.formError {
+		color: $red;
+	}
+}
+
 /* INDEX */
 
 .index-container {
@@ -480,7 +487,7 @@ footer {
 		}
 		.inquiry-option {
 			margin-bottom: 5px;
-		
+
 			input {
 				margin-right: 10px;
 			}
@@ -506,7 +513,7 @@ footer {
 		    }
 			}
 		}
-	}	
+	}
 }
 
 .quiz-completed {
@@ -550,15 +557,15 @@ article[data-class="overdue"], article[data-class="overdue"]:hover {
 	color: #ffffff;
 	div {
 		background: $red;
-		color: #ffffff;	
-	}	
+		color: #ffffff;
+	}
 }
 
 article[data-class="reminder"], article[data-class="reminder"]:hover {
 	background: $yellow;
 	div {
 		background: $yellow;
-	}	
+	}
 }
 
 /* COLOR CLASSSES */

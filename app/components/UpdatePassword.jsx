@@ -2,31 +2,38 @@ import React from 'react'
 import { Field } from 'redux-form'
 
 
+const renderField = ({ input, label, type, meta: { asyncValidating, touched, error } }) => (
+  <div>
+    <label>{label}</label>
+    <div className={asyncValidating ? 'async-validating' : ''}>
+      <input {...input} type={type} placeholder={label}/><br/>
+      {touched && error && <span><span className="icon icon-burst-new blue"></span><span className="formError">{error}</span></span>}
+    </div>
+  </div>
+)
 
-
-const UpdatePassword = ({handleSubmit, settingsSubmit}) => {
+const UpdatePassword = ({handleSubmit, updatePassword}) => {
 
 
   return (
-    <div className="dashboard">
-      <div className="container panel-container">
+
 
         <div className="flex-container">
 
           <section className="flex-child panel settings">
-            <div className="panel-header">Settings</div>
+            <div className="panel-header">Change Password</div>
             <div className="settings-content">
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit(updatePassword)}>
                 <fieldset>
                   <div className="form-group">
-                    <label>Name</label><br/>
-                    <Field type="text" name="name" component="input" /><br/>
-                    <label>E-mail</label><br/>
-                    <Field type="text" name="email" component="input" /><br/>
-                    <label>Teacher</label><br/>
-                    <span className="alert-inline">You are not allowed to change your teacher.</span><br/>
-                    <Field type="text" name="teacher"  component="input" disabled /><br/>
-                    <button type="submit" className="btn btn-primary">Update Information</button>
+
+                    <Field type="text" name="password" label="Old Password" component={renderField} /><br/>
+
+                    <Field type="text" name="newPwd" label="New Password" component={renderField} /><br/>
+
+
+                    <Field type="text" name="verPwd" label="Verify Password" component={renderField}  /><br/>
+                    <button type="submit" className="btn btn-primary">Update Password</button>
                   </div>
                 </fieldset>
               </form>
@@ -34,8 +41,7 @@ const UpdatePassword = ({handleSubmit, settingsSubmit}) => {
           </section>
 
         </div>
-      </div>
-    </div>
+
   )
 }
 

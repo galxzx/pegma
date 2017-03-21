@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { browserHistory } from 'react-router'
 
 const reducer = (state=null, action) => {
   switch(action.type) {
@@ -37,7 +38,7 @@ export const whoami = () =>
       .catch(failed => dispatch(authenticated(null)))
 
 export const updateStudent = () =>
-  (dispatch, getState) =>{
+  (dispatch, getState) => {
     const state = getState()
     const userId = state.auth.id
     const newInfo = state.form.studentSettings.values
@@ -45,5 +46,26 @@ export const updateStudent = () =>
       .then(() => dispatch(whoami()))
       .catch(err => console.error(err))
 }
+
+export const checkPassword = (values) =>
+  (dispatch, getState) => {
+    const user =  getState().auth
+    return axios.post('/api/auth/checkPassword', {user, password: values.password})
+    .then(() => {})
+    .catch(() => {
+      return {password: 'Incorrect Password'}
+    })
+  }
+
+export const updatePassword = () =>
+  (dispatch, getState) => {
+    const state = getState()
+    const user = Object.assign({}, state.auth, state.form.password.values )
+    return axios.post('/api/auth/updatePassword', user)
+      .then(() => dispatch(whoami()))
+      .then(() => browserHistory.push(`/${user.userType}/dashboard`))
+      .catch(() => dispatch(whoami()))
+  }
+
 
 export default reducer
