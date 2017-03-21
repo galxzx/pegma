@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router'
-import _ from 'lodash'
 
 import StudentStats from './Dashboard/StudentStats'
 import NotificationsPanel from './Dashboard/NotificationsPanel'
