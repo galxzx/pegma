@@ -147,7 +147,7 @@ footer {
 .flex-container {
   display: flex;
   flex-direction: row;
-  width: 100%; }
+  max-width: 100%; }
 
 .flex-child {
   width: calc(50% - 12px);
@@ -189,9 +189,13 @@ footer {
     .stats li.stats-rewards {
       background: #FFC943; }
     .stats li.stats-ready {
-      background: #9C9C9B; }
+      background: #FF2760; }
     .stats li.stats-selfgraded {
-      background: #9C9C9B; }
+      background: #00C692; }
+    .stats li.stats-totalassignments {
+      background: #0B9CCC; }
+    .stats li.stats-totalstudents {
+      background: #FF8943; }
 
 .dashboard-teacher .stats li {
   width: 50%; }
@@ -388,6 +392,12 @@ article[data-class="reminder"], article[data-class="reminder"]:hover {
 
 .yellow {
   color: #FFC943; }
+
+.bg-orange {
+  background: #FF8943; }
+
+.orange {
+  color: #FF8943; }
 
 .bg-blue {
   background: #0B9CCC; }
