@@ -18,7 +18,14 @@ const TeacherFunctions = ({students, library, handleSubmit}) => {
               <option>Assign Task...</option>
             {
               library && library.tasks &&
-                library.tasks.map(task => <option key={task.id} data-title={task.title} data-id={task.id}>{task.title}</option>)
+                library.tasks.map(task => 
+                  <option 
+                    id={`task-${task.id}`}
+                    key={task.id} 
+                    data-title={task.title} 
+                    data-id={task.id}>{task.title}
+                  </option>
+                )
             }
             </select>
             <button type="submit">Assign Task</button>

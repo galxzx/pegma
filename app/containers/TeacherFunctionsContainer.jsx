@@ -15,8 +15,14 @@ const mapState = (state) => {
 
 const handleSubmit = (evt) => (dispatch) => {
 	evt.preventDefault()
-	console.log(evt.target.tasks.getAttribute('data-title'), '<========= data title')
-	dispatch(addAssignmentRequest(evt.target))
+	let tasks = document.getElementById('tasks')
+	let idx = tasks.selectedIndex
+	let option = tasks.querySelector(`#task-${idx}`)
+	let title = option.getAttribute('data-title')
+	let taskId = option.getAttribute('data-id')
+	console.log(idx, 'idx', taskId, 'taskId' )
+
+	dispatch(addAssignmentRequest({task_id: taskId, title: title}))
 }
 
 const mapDispatch = {handleSubmit}

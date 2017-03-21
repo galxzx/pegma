@@ -52,9 +52,10 @@ export const loadStudents = () => (dispatch, getState) => {
     .catch(err => console.error(err))
 }
 
-export const addAssignmentRequest = (assignmentId) => (dispatch, getState) => {
+export const addAssignmentRequest = (task) => (dispatch, getState) => {
   let teacherId = getState().auth.teacher_id
-  axios.post(`/api/teachers/${teacherId}/assignments/`, assignmentId)
+  console.log('task ====>', task)
+  axios.post(`/api/teachers/${teacherId}/assignments/`, task)
     .then(res => res.data)
     .then(assignment => dispatch(addAssignment(assignment)))
     .catch(err => console.error(err))

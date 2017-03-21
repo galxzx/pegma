@@ -37,6 +37,9 @@ Assignment.belongsTo(Student)
 Student.hasMany(Assignment)
 Assignment.belongsTo(Task)
 
+Assignment.belongsTo(Teacher)
+
+
 Task.belongsTo(Teacher)
 Teacher.hasMany(Task)
 

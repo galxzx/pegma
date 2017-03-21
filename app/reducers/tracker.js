@@ -39,8 +39,10 @@ export default function reducer(prevState = initialState, action) {
     case SET_BOARD:
       newState.board = Object.assign({}, board)
       action.assignments.forEach(assignment => {
-        let dueDate = `${assignment.due_date.substring(5,7)}/${assignment.due_date.substring(8,10)}`    
-        assignment.label = dueDate
+        if(assignment.due_date) {
+          let dueDate = `${assignment.due_date.substring(5,7)}/${assignment.due_date.substring(8,10)}`    
+          assignment.label = dueDate      
+        }
         //assignment.id = assignment.id + ''
         let cards = newState.board.lanes[getIdx(assignment.status)].cards  
         newState.board.lanes[getIdx(assignment.status)].cards = [...cards, assignment]     
