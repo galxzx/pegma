@@ -18,15 +18,12 @@ class AssignmentsPanel extends React.Component {
 
   handleSortChange(event) {
     let resortedAssignments = _.sortBy(this.state.sortedAssignments, event.target.value)
-
     this.setState({ sortedAssignments: resortedAssignments})
-
   }
 
   render() {
     const assignments = this.state.sortedAssignments
-    console.log(this.state.sort)
-    
+  
     return (
       <section className="panel assignments">
         <div className="panel-header">
@@ -44,7 +41,7 @@ class AssignmentsPanel extends React.Component {
           {
             (assignments.length) ?
               assignments.map((assignment, i) => {
-                console.log(assignment)
+
                 let type = `${assignment.type[0].toUpperCase()}${assignment.type.substring(1)}`
 
                 return (
