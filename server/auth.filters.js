@@ -6,7 +6,8 @@ const mustBeLoggedIn = (req, res, next) => {
 }
 
 const selfOnly = action => (req, res, next) => {
-  if (req.params.id !== req.user.id) {
+
+  if (+req.params.id !== +req.body.id) {
     return res.status(403).send(`You can only ${action} yourself.`)
   }
   next()

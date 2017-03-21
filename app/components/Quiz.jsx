@@ -1,7 +1,6 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 
-import RenderField from './RenderField'
 
 const renderError = ({ meta: { touched, error } }) => touched && error ?
   <span>{error}</span> : false
