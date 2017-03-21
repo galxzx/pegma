@@ -8,9 +8,9 @@ import {createStore} from 'redux'
 
 import StudentDashboard from './StudentDashboard'
 import StudentStats from './Dashboard/StudentStats'
-import NotificationsPanel from './Dashboard/NotificationsPanel'
+import StudentNotificationsPanel from './Dashboard/StudentNotificationsPanel'
 import CalendarSmall from './Dashboard/CalendarSmall'
-import AssignmentsPanel from './Dashboard/AssignmentsPanel'
+import StudentAssignmentsPanel from './Dashboard/StudentAssignmentsPanel'
 
 
 describe('<StudentDashboard/>', () => {
@@ -25,7 +25,7 @@ describe('<StudentDashboard/>', () => {
   })
 
   it('should have a Notifications panel', () => {
-    expect(root.find(NotificationsPanel)).to.have.length(1)
+    expect(root.find(StudentNotificationsPanel)).to.have.length(1)
   })
 
   it('should have a Calendar panel', () => {
@@ -33,7 +33,7 @@ describe('<StudentDashboard/>', () => {
   })
 
   it('should have a Assignments Panel', () => {
-    expect(root.find(AssignmentsPanel)).to.have.length(1)
+    expect(root.find(StudentAssignmentsPanel)).to.have.length(1)
   })
 
   it('should receive assignments as props', () => {

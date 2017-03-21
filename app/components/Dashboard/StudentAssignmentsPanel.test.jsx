@@ -6,13 +6,13 @@ import {spy} from 'sinon'
 chai.use(require('sinon-chai'))
 import {createStore} from 'redux'
 
-import AssignmentsPanel from './AssignmentsPanel'
+import StudentAssignmentsPanel from './StudentAssignmentsPanel'
 
-describe('<AssignmentsPanel/>', () => {
+describe('<StudentAssignmentsPanel/>', () => {
 
   let root
   beforeEach('render the root', () =>
-    root = shallow(<AssignmentsPanel />)
+    root = shallow(<StudentAssignmentsPanel />)
   )
 
   it('should have a select input', () => {
