@@ -31,6 +31,8 @@ html {
 #app {
 	display: flex;
 	flex-direction: column;
+	align-items: stretch;
+  min-height: 100vh;
 }
 
 .icon {
@@ -93,10 +95,73 @@ html {
 }
 
 /* FORMS */
+
 form {
 	.formError {
 		color: $red;
 	}
+}
+
+/* NOT-LOGGED ALERTS */
+
+.not-logged {
+	text-align: center;
+	overflow: auto;
+	padding: 30px;
+	flex: 1;
+
+	span.icon {
+		font-size: 3em;
+		color: $yellow;
+	}
+}
+
+/* LOGGIN */
+
+.modal-login {
+
+	margin: 30px auto;
+  width: 300px;
+  border: 1px solid $lightGrey;
+
+  nav {
+  	border-bottom: 1px solid $lightGrey;
+  	padding: 20px;
+
+  	button {
+  		color: #fff;
+  		margin: 0 5px;
+
+  		> span.icon {
+  			font-size: 1em;
+  			color: #fff !important;
+  			margin-right: 5px;
+  		}
+  	}
+  }
+
+  form {
+  	padding: 20px;
+
+  	> * {
+		  display: block;
+		  margin: 0 auto;
+		  margin-bottom: 15px;
+		}
+  }
+
+  .login-footer {
+  	padding-bottom: 20px;
+
+  	p {
+  		margin: 0;
+  	}
+  	a {
+	  	font-size: 80%;
+	    color: $black;
+  	}
+  }
+
 }
 
 /* INDEX */
@@ -140,7 +205,7 @@ form {
 	background: $lightGrey;
 	padding-top: 15px;
 	padding-bottom: 15px;
-	flex: 1;
+	flex: 0 1 auto;
 }
 
 .main {
@@ -165,7 +230,7 @@ footer {
 	color: #fff;
 	padding: 5px;
 	text-align: center;
-	flex: 1;
+	flex: 0 1 auto;
 
 	p {
 		font-size: 70%;

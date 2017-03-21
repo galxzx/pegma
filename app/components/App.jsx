@@ -8,7 +8,7 @@ const App = ({ user, children }) => {
 	    <header className="top-menu">
 	      <div className="container header-content">
 	        <div className="logo">Pegma</div>
-	        <div className="user-information">{user ? <WhoAmI/> : <Login/>}</div>
+	        <div className="user-information">{user ? <WhoAmI/> : null}</div>
 	      </div>
 	    </header>    
 

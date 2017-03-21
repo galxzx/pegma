@@ -1,6 +1,8 @@
 import React from 'react'
 import {Link} from 'react-router'
 
+import Login from './Login'
+
 const TeacherApp = ({ user, children }) => {
   return (user && user.teacher_id) ? (
     <div>
@@ -35,8 +37,14 @@ const TeacherApp = ({ user, children }) => {
       {children}
     </div>
   )
-  : (<div>You must be logged in as a Teacher to see this page.</div>)
+  : 
+  (
+    <div className="not-logged">
+      <span className="icon icon-exclamation-triangle"></span>
+      <h3>You must be logged in as a Teacher to see this page.</h3>
+      <Login />
+    </div>
+  )
 }
-
 
 export default TeacherApp
