@@ -1,7 +1,6 @@
 import axios from 'axios'
 import { browserHistory } from 'react-router'
 
-
 /* -----------------    ACTIONS     ------------------ */
 
 export const SET_BOARD = 'SET_BOARD'
@@ -69,7 +68,9 @@ export const loadBoard = () => (dispatch, getState) => {
   let studentId = getState().auth.student_id
   return axios.get(`/api/students/${studentId}/assignments`)
     .then(res => res.data)
-    .then(assignments => dispatch(setBoard(assignments)))
+    .then(assignments => {
+      dispatch(setBoard(assignments))
+    })
     .catch(err => console.error(err))
 }
 export const handleDragStart = (cardId, laneId) => (dispatch) => {}

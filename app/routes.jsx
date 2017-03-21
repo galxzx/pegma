@@ -26,6 +26,7 @@ import TeacherSettingsContainer from './containers/TeacherSettingsContainer'
 import TeacherCalendarContainer from './containers/TeacherCalendarContainer'
 import QuizContainer from './containers/QuizContainer'
 import CompletedQuizContainer from './containers/CompletedQuizContainer'
+import TeacherFunctionsContainer from './containers/TeacherFunctionsContainer'
 
 
 import {whoami} from './reducers/auth'
@@ -90,6 +91,7 @@ export default function Root () {
             <Route path="library" component={LibraryContainer} />
             <Route path="settings" component={TeacherSettingsContainer} />
             <Route path="calendar" component={TeacherCalendarContainer} />
+            <Route path="functions" component={TeacherFunctionsContainer} />
             <IndexRedirect to="dashboard" />
           </Router>
         </Route>
