@@ -16,8 +16,8 @@ const StudentStats = ({assignments}) => {
       totalRewards += assignment.reward
     }
     else if (assignment.status === 'assigned') {
-      totalNew++
       totalToDo++
+      if (assignment.isNew) totalNew++
     }
     else {
       totalToDo++

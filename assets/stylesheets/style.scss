@@ -35,6 +35,14 @@ html {
 	text-decoration: none;
 }
 
+.float-left {
+	float: left;
+}
+
+.float-right {
+	float: right;
+}
+
 /* BUTTONS */
 
 .btn {
@@ -315,9 +323,6 @@ footer {
 			padding-left: 15px;
 		}
 
-		> .icon {
-			float: right;
-		}
 	}
 }
 
@@ -553,4 +558,38 @@ article[data-class="reminder"], article[data-class="reminder"]:hover {
 	div {
 		background: $yellow;
 	}	
+}
+
+/* COLOR CLASSSES */
+
+.bg-red {
+	background: $red;
+}
+
+.red {
+	color: $red;
+}
+
+.bg-yellow {
+	background: $yellow;
+}
+
+.yellow {
+	color: $yellow;
+}
+
+.bg-blue {
+	background: $blue;
+}
+
+.blue {
+	color: $blue;
+}
+
+.bg-green {
+	background: $green;
+}
+
+.green {
+	color: $green;
 }
