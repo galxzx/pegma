@@ -4,23 +4,23 @@ import { browserHistory } from 'react-router'
 
 /* -----------------    ACTIONS     ------------------ */
 
-export const SET_ASSIGNMENTS          = 'SET_ASSIGNMENTS'
-export const SET_CURRENT_ASSIGNMENT   = 'SET_CURRENT_ASSIGNMENT'
-export const SET_TEACHER              = 'SET_TEACHER'
-export const SET_QUIZ                 = 'SET_QUIZ'
+export const SET_ASSIGNMENTS = 'SET_ASSIGNMENTS'
+export const SET_CURRENT_ASSIGNMENT  = 'SET_CURRENT_ASSIGNMENT'
+export const SET_TEACHER = 'SET_TEACHER'
+export const SET_QUIZ = 'SET_QUIZ'
 
-export const UPDATE_ASSIGNMENT        = 'UPDATE_ASSIGNMENT'
+export const UPDATE_ASSIGNMENT = 'UPDATE_ASSIGNMENT'
+
 
 /* ------------   ACTION CREATORS     ------------------ */
 
-export const setAssignments           = (assignments) => ({ type: SET_ASSIGNMENTS, assignments })
-export const setCurrentAssignment     = (assignment) => ({ type: SET_CURRENT_ASSIGNMENT, assignment })
-export const setTeacher               = (teacher) => ({ type: SET_TEACHER, teacher })
-export const setQuiz                  = (quiz) => ({ type: SET_QUIZ, quiz})
+export const setAssignments = (assignments) => ({ type: SET_ASSIGNMENTS, assignments })
+export const setCurrentAssignment = (assignment) => ({ type: SET_CURRENT_ASSIGNMENT, assignment })
+export const setTeacher = (teacher) => ({ type: SET_TEACHER, teacher })
+export const setQuiz = (quiz) => ({ type: SET_QUIZ, quiz})
 
-export const updateAssignment         = (assignment) => ({ type: UPDATE_ASSIGNMENT, assignment })
+export const updateAssignment = (assignment) => ({ type: UPDATE_ASSIGNMENT, assignment })
 
-// for tracker board
 
 
 /* ------------       REDUCERS     ------------------ */
@@ -40,7 +40,6 @@ export default function reducer(prevState = initialState, action) {
   switch (action.type) {
 
     case SET_ASSIGNMENTS:
-
       newState.assignments = action.assignments
       break
 
@@ -57,6 +56,7 @@ export default function reducer(prevState = initialState, action) {
       })
       console.log('state after update', newState)
       break
+
 
     case SET_TEACHER:
       newState.teacher = action.teacher
@@ -143,4 +143,3 @@ export const updateAssignmentRequest = (assignment) => (dispatch, getState) => {
     })
     .catch(err => console.error(err))
 }
-

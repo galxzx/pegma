@@ -410,3 +410,36 @@ article[data-class="reminder"], article[data-class="reminder"]:hover {
 
 .green {
   color: #00C692; }
+
+/* TEACHER */
+.teacher-functions {
+  margin: 15px;
+  margin-top: 30px;
+  margin-bottom: 0px;
+  padding: 2px; }
+
+table.student-list {
+  margin: 15px;
+  margin-top: 30px;
+  border: 3px solid #f1f1f1; }
+  table.student-list th {
+    text-align: center;
+    width: 18%;
+    background: #C60034;
+    padding: 10px;
+    color: #ffffff; }
+  table.student-list th:first-child, table.student-list th:nth-child(2) {
+    width: 5%; }
+  table.student-list td {
+    text-align: center;
+    padding: 10px;
+    width: 18%; }
+  table.student-list td:first-child, table.student-list td:nth-child(2) {
+    width: 5%; }
+  table.student-list tr:nth-child(odd) {
+    background: #f1f1f1; }
+  table.student-list tr#filters th {
+    background: #C60034;
+    padding: 10px; }
+    table.student-list tr#filters th select {
+      color: #333333; }
