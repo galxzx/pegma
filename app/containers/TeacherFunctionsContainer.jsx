@@ -1,7 +1,6 @@
 import {connect} from 'react-redux'
 
 import TeacherFunctions from '../components/TeacherFunctions'
-
 import {addAssignmentRequest} from '../reducers/teacher'
 
 
@@ -14,15 +13,30 @@ const mapState = (state) => {
 }
 
 const handleSubmit = (evt) => (dispatch) => {
+	
 	evt.preventDefault()
-	let tasks = document.getElementById('tasks')
-	let idx = tasks.selectedIndex
-	let option = tasks.querySelector(`#task-${idx}`)
-	let title = option.getAttribute('data-title')
-	let taskId = option.getAttribute('data-id')
-	console.log(idx, 'idx', taskId, 'taskId' )
 
-	dispatch(addAssignmentRequest({task_id: taskId, title: title}))
+	let tasks = document.getElementById('tasks')
+	let taskIdx = tasks.selectedIndex || 0
+
+
+
+	if(taskIdx && taskIdx !== 0) {
+		let taskOption = tasks.querySelector(`#task-${taskIdx}`)
+		let taskTitle = taskOption.getAttribute('data-title')
+		let taskId = taskOption.getAttribute('data-id')
+		dispatch(addAssignmentRequest({task_id: taskId, title: taskTitle}, []))
+	}
+
+	// let quizzes = document.getElementById('quizzes')
+	// let quizIdx = quizzes.selectedIndex || 0
+
+	// if(quizIdx && quizId !== 0) {
+	// 	let quizOption = tasks.querySelector(`#task-${taskIdx}`)
+	// 	let taskTitle = quizOption.getAttribute('data-title')
+	// 	let quizId = quizOption.getAttribute('data-id')
+	// 	dispatch(addAssignmentRequest({quiz_id: quizId, title: quizTitle}))
+	// }
 }
 
 const mapDispatch = {handleSubmit}

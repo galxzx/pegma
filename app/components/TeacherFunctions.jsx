@@ -1,6 +1,8 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 
+import DueDate from '../containers/DueDateContainer'
+
 const TeacherFunctions = ({students, library, handleSubmit}) => {
   return ( 
     <div>
@@ -28,21 +30,26 @@ const TeacherFunctions = ({students, library, handleSubmit}) => {
                 )
             }
             </select>
-            <button type="submit">Assign Task</button>
+
+            <label>Due Date</label>
+            <button type="submit">Assign Task</button>            
+            <select>
+              <option>Assign Quiz...</option>          
+            {
+              library && library.quizzes &&
+                library.quizzes.map(quiz => <option key={quiz.id} value={quiz.id}>{quiz.title}</option>)
+            }          
+            </select>   
+
           </form>
 
-          <select>
-            <option>Assign Quiz...</option>          
-          {
-            library && library.quizzes &&
-              library.quizzes.map(quiz => <option key={quiz.id} value={quiz.id}>{quiz.title}</option>)
-          }          </select>                      
+
         </div>  
       </div>
 
       <div className="flex-container">          
         <table className="student-list">
-          <tbody>         
+          <tbody id="students">         
             <tr id="filters">
               <th><input type="checkbox" /></th>          
               <th>ID</th>          
@@ -54,7 +61,7 @@ const TeacherFunctions = ({students, library, handleSubmit}) => {
           {students.map((student) => {
             return (
               <tr key={student.id} className="">
-                <td className="centered"><input type="checkbox" /></td>            
+                <td className="centered"><input defaultValue={student.id} type="checkbox" /></td>            
                 <td className="">{student.id}</td>
                 <td className="">{student.user.name}</td>
                 <td className="">{student.name}</td>            

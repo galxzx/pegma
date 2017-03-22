@@ -48,7 +48,7 @@ const onEnterTeacher = (nextState, replace) => (
     .then(res => store.dispatch(loadStudents()))
 )
 
-const onEnterFunctions = (nextState, replace) => (
+const onEnterTeacherFunctions = (nextState, replace) => (
   store.dispatch(whoami())
     .then(res => store.dispatch(loadLibrary()))
 )
@@ -97,12 +97,11 @@ export default function Root () {
           </Router>
           <Router path="/teacher" component={TeacherAppContainer} onEnter={onEnterTeacher}>
             <Route path="dashboard" component={TeacherDashboardContainer} />
-            <Route path="class" component={ClassTrackerContainer} />
+            <Route path="assignments" component={TeacherFunctionsContainer} onEnter={onEnterTeacherFunctions} />
             <Route path="student/:studentId" component={StudentTrackerContainer} />
             <Route path="library" component={LibraryContainer} />
             <Route path="settings" component={TeacherSettingsContainer} />
             <Route path="calendar" component={TeacherCalendarContainer} />
-            <Route path="functions" component={TeacherFunctionsContainer} onEnter={onEnterFunctions}/>
             <IndexRedirect to="dashboard" />
           </Router>
         </Route>
