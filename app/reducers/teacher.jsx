@@ -56,6 +56,9 @@ export const addAssignmentRequest = (item, students) => (dispatch, getState) => 
   let teacherId = getState().auth.teacher_id
   axios.post(`/api/teachers/${teacherId}/assignments/`, {item: item, students: students})
     .then(res => res.data)
-    .then(assignment => dispatch(addAssignment(assignment)))
+    .then(assignments => {
+      console.log('assignment-======', assignment)
+      dispatch(addAssignment(assignments))
+    })
     .catch(err => console.error(err))
 }

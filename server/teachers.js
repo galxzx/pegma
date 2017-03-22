@@ -25,7 +25,7 @@ module.exports = require('express').Router()
 		let item = req.body.item
 		let students = req.body.students
 		Teacher.findById(teacherId)
-		.then(teacher => teacher.getStudents({include: [Assignment, User]}))
+		.then(teacher => teacher.getStudents({where: {id: {$in: students}}, include: [Assignment, User]}))	
 		.then(students => {
 			const assignments = students.map(student => {
 				return Object.assign({}, {student_id: student.id, teacher_id: teacherId}, item)
@@ -33,7 +33,10 @@ module.exports = require('express').Router()
 			return Assignment.bulkCreate(assignments)
 		})
 		.then(() => Assignment.findAll({where: {teacher_id: teacherId}}))
-		.then((assignments) => res.json(assignments))
+		.then((assignments) => {
+			console.log('------------------', 'assignments')
+			res.json(assignments)
+		})
 		.catch(next)
 	})
 

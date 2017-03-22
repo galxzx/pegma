@@ -6,7 +6,8 @@ import moment from 'moment'
 
 import DueDate from '../containers/DueDateContainer'
 
-const TeacherFunctions = ({students, library, handleSubmit}) => {
+
+const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll}) => {
   return (
     <div>
       <div className="flex-container">
@@ -27,34 +28,51 @@ const TeacherFunctions = ({students, library, handleSubmit}) => {
                   <option
                     id={`task-${task.id}`}
                     key={task.id}
-                    data-title={task.title}
-                    data-id={task.id}>{task.title}
+                    data-id={task.id}
+                    data-title={task.title}>{task.title}
+
                   </option>
                 )
             }
             </select>
 
+
             <DatePicker selected={ moment()} />
-            <button type="submit">Assign Task</button>
-            <select>
+            <select id="quizzes" name="quizzes">
               <option>Assign Quiz...</option>
             {
               library && library.quizzes &&
-                library.quizzes.map(quiz => <option key={quiz.id} value={quiz.id}>{quiz.title}</option>)
+                library.quizzes.map(quiz =>
+                  <option
+                    id={`quiz-${quiz.id}`}
+                    key={quiz.id}
+                    data-id={quiz.id}
+                    data-title={quiz.title}
+                    >{quiz.title}
+                  </option>
+                )
             }
             </select>
 
+
+            <label>Due Date</label>
+
+            <button type="submit">Assign Task</button>
+
+
+            <span id="message-box"></span>
+
           </form>
-
-
         </div>
+
       </div>
 
       <div className="flex-container">
         <table className="student-list">
           <tbody id="students">
             <tr id="filters">
-              <th><input type="checkbox" /></th>
+
+              <th><input type="checkbox" onChange={(evt) => toggleCheckAll('#students', evt.target.checked)}/></th>
               <th>ID</th>
               <th>Full Name</th>
               <th>info </th>
@@ -63,8 +81,9 @@ const TeacherFunctions = ({students, library, handleSubmit}) => {
             </tr>
           {students.map((student) => {
             return (
-              <tr key={student.id} className="">
-                <td className="centered"><input defaultValue={student.id} type="checkbox" /></td>
+              <tr key={student.id} className="student">
+                <td className="select"><input defaultValue={student.id} type="checkbox" /></td>
+
                 <td className="">{student.id}</td>
                 <td className="">{student.user.name}</td>
                 <td className="">{student.name}</td>
