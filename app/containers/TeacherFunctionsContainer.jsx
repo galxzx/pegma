@@ -20,7 +20,7 @@ const toggleCheckAll = (tbodyId, status) => (dispatch) => {
 	})
 }	
 
-const handleSubmit = (evt) => (dispatch, setState) => {
+const handleSubmit = (evt) => (dispatch) => {
 	
 	evt.preventDefault()
 
@@ -49,7 +49,6 @@ const handleSubmit = (evt) => (dispatch, setState) => {
 		dispatch(addAssignmentRequest({status: 'assigned', type: 'quiz', quiz_id: quizId, title: quizTitle}))
 	}
 
-	setState({})
 }
 
 const mapDispatch = {handleSubmit, toggleCheckAll}
