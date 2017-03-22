@@ -116,3 +116,33 @@
 .icon-line-chart:before {
   content: "\7a";
 }
+.icon-exclamation-circle:before {
+  content: "\41";
+}
+.icon-exclamation-triangle:before {
+  content: "\42";
+}
+.icon-file:before {
+  content: "\43";
+}
+.icon-hourglass-half:before {
+  content: "\44";
+}
+.icon-graduation-cap:before {
+  content: "\45";
+}
+.icon-paper-alert:before {
+  content: "\46";
+}
+.icon-paper-check:before {
+  content: "\47";
+}
+.icon-paper-plus:before {
+  content: "\48";
+}
+.icon-google-plus-square:before {
+  content: "\4b";
+}
+.icon-facebook-square:before {
+  content: "\49";
+}

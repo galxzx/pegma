@@ -13,7 +13,9 @@ html {
 
 #app {
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  align-items: stretch;
+  min-height: 100vh; }
 
 .icon {
   color: #222221;
@@ -68,6 +70,45 @@ html {
 form .formError {
   color: #C60034; }
 
+/* NOT-LOGGED ALERTS */
+.not-logged {
+  text-align: center;
+  overflow: auto;
+  padding: 30px;
+  flex: 1; }
+  .not-logged span.icon {
+    font-size: 3em;
+    color: #FFC943; }
+
+/* LOGGIN */
+.modal-login {
+  margin: 30px auto;
+  width: 300px;
+  border: 1px solid #EEEEEC; }
+  .modal-login nav {
+    border-bottom: 1px solid #EEEEEC;
+    padding: 20px; }
+    .modal-login nav button {
+      color: #fff;
+      margin: 0 5px; }
+      .modal-login nav button > span.icon {
+        font-size: 1em;
+        color: #fff !important;
+        margin-right: 5px; }
+  .modal-login form {
+    padding: 20px; }
+    .modal-login form > * {
+      display: block;
+      margin: 0 auto;
+      margin-bottom: 15px; }
+  .modal-login .login-footer {
+    padding-bottom: 20px; }
+    .modal-login .login-footer p {
+      margin: 0; }
+    .modal-login .login-footer a {
+      font-size: 80%;
+      color: #222221; }
+
 /* INDEX */
 .index-container {
   background: #FFC943;
@@ -96,9 +137,10 @@ form .formError {
   background: #EEEEEC;
   padding-top: 15px;
   padding-bottom: 15px;
-  flex: 1; }
+  flex: 0 1 auto; }
 
-.main {
+.main,
+.flex-main {
   flex: 1; }
 
 .header-content {
@@ -115,7 +157,7 @@ footer {
   color: #fff;
   padding: 5px;
   text-align: center;
-  flex: 1; }
+  flex: 0 1 auto; }
   footer p {
     font-size: 70%; }
 
@@ -147,7 +189,7 @@ footer {
 .flex-container {
   display: flex;
   flex-direction: row;
-  width: 100%; }
+  max-width: 100%; }
 
 .flex-child {
   width: calc(50% - 12px);
@@ -189,9 +231,13 @@ footer {
     .stats li.stats-rewards {
       background: #FFC943; }
     .stats li.stats-ready {
-      background: #9C9C9B; }
+      background: #FF2760; }
     .stats li.stats-selfgraded {
-      background: #9C9C9B; }
+      background: #00C692; }
+    .stats li.stats-totalassignments {
+      background: #0B9CCC; }
+    .stats li.stats-totalstudents {
+      background: #FF8943; }
 
 .dashboard-teacher .stats li {
   width: 50%; }
@@ -406,3 +452,36 @@ article[data-class="reminder"], article[data-class="reminder"]:hover {
 
 .green {
   color: #00C692; }
+
+/* TEACHER */
+.teacher-functions {
+  margin: 15px;
+  margin-top: 30px;
+  margin-bottom: 0px;
+  padding: 2px; }
+
+table.student-list {
+  margin: 15px;
+  margin-top: 30px;
+  border: 3px solid #f1f1f1; }
+  table.student-list th {
+    text-align: center;
+    width: 18%;
+    background: #C60034;
+    padding: 10px;
+    color: #ffffff; }
+  table.student-list th:first-child, table.student-list th:nth-child(2) {
+    width: 5%; }
+  table.student-list td {
+    text-align: center;
+    padding: 10px;
+    width: 18%; }
+  table.student-list td:first-child, table.student-list td:nth-child(2) {
+    width: 5%; }
+  table.student-list tr:nth-child(odd) {
+    background: #f1f1f1; }
+  table.student-list tr#filters th {
+    background: #C60034;
+    padding: 10px; }
+    table.student-list tr#filters th select {
+      color: #333333; }

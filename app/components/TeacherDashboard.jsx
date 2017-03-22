@@ -8,21 +8,25 @@ import TeacherAssignmentsPanel from './Dashboard/TeacherAssignmentsPanel'
 const TeacherDashboard = ({students}) => {
 
   return (
-		<div className="dashboard dashboard-teacher">
-      <div className="container flex-container">
-	      <div className="flex-child">
 
-	        <TeacherStats />
+    <div className="dashboard dashboard-teacher">
+      <div className="container panel-container">
 
-	        <TeacherNotifications />
+        <TeacherStats />
 
-	        <CalendarSmall />
+        <div className="flex-container">
+          <div className="flex-child">
 
-	      </div>
-        <div className="flex-child">
+            <TeacherNotifications />
 
-          <TeacherAssignmentsPanel />
+            <CalendarSmall />
 
+          </div>
+          <div className="flex-child">
+
+            <TeacherAssignmentsPanel />
+
+          </div>
         </div>
       </div>
     </div>
