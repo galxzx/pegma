@@ -7,6 +7,7 @@ const rootReducer = combineReducers({
   teacher: require('./teacher').default,
   library: require('./library').default,
   tracker: require('./tracker').default,
+  signup: require('./signup').default,
   form
 })
 

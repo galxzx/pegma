@@ -26,6 +26,7 @@ export const logout = () =>
     axios.post('/api/auth/logout')
       .then(() => dispatch(whoami()))
       .catch(() => dispatch(whoami()))
+      .then(() => browserHistory.push('/signup'))
 
 export const whoami = () =>
   dispatch =>
@@ -66,6 +67,13 @@ export const updatePassword = () =>
       .then(() => browserHistory.push(`/${user.userType}/dashboard`))
       .catch(() => dispatch(whoami()))
   }
+
+export const checkEmail = (values) =>
+  dispatch =>
+    axios.post('/api/auth/checkEmail', {email: values.email})
+      .then(() => {})
+      .catch(() => ({email: 'User already exists with that email'}))
+
 
 
 export default reducer
