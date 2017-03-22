@@ -1,72 +1,75 @@
+
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
+import DatePicker from 'react-datepicker'
+import moment from 'moment'
 
 import DueDate from '../containers/DueDateContainer'
 
 const TeacherFunctions = ({students, library, handleSubmit}) => {
-  return ( 
+  return (
     <div>
       <div className="flex-container">
         <section className="flex-child panel functions">
-          <div className="panel-header">Teacher Functions</div>          
+          <div className="panel-header">Teacher Functions</div>
         </section>
       </div>
 
       <div className="flex-container">
         <div className="teacher-functions">
 
-          <form className="" onSubmit={(evt) => handleSubmit(evt)}> 
+          <form className="" onSubmit={(evt) => handleSubmit(evt)}>
             <select id="tasks" name="tasks">
               <option>Assign Task...</option>
             {
               library && library.tasks &&
-                library.tasks.map(task => 
-                  <option 
+                library.tasks.map(task =>
+                  <option
                     id={`task-${task.id}`}
-                    key={task.id} 
-                    data-title={task.title} 
+                    key={task.id}
+                    data-title={task.title}
                     data-id={task.id}>{task.title}
                   </option>
                 )
             }
             </select>
 
-            <label>Due Date</label>
-            <button type="submit">Assign Task</button>            
+            <DatePicker selected={ moment()} />
+            <button type="submit">Assign Task</button>
             <select>
-              <option>Assign Quiz...</option>          
+              <option>Assign Quiz...</option>
             {
               library && library.quizzes &&
                 library.quizzes.map(quiz => <option key={quiz.id} value={quiz.id}>{quiz.title}</option>)
-            }          
-            </select>   
+            }
+            </select>
 
           </form>
 
 
-        </div>  
+        </div>
       </div>
 
-      <div className="flex-container">          
+      <div className="flex-container">
         <table className="student-list">
-          <tbody id="students">         
+          <tbody id="students">
             <tr id="filters">
-              <th><input type="checkbox" /></th>          
-              <th>ID</th>          
-              <th>Full Name</th>          
-              <th>info </th>          
-              <th>info </th>          
-              <th>info </th>          
-            </tr>          
+              <th><input type="checkbox" /></th>
+              <th>ID</th>
+              <th>Full Name</th>
+              <th>info </th>
+              <th>info </th>
+              <th>info </th>
+            </tr>
           {students.map((student) => {
             return (
               <tr key={student.id} className="">
-                <td className="centered"><input defaultValue={student.id} type="checkbox" /></td>            
+                <td className="centered"><input defaultValue={student.id} type="checkbox" /></td>
                 <td className="">{student.id}</td>
                 <td className="">{student.user.name}</td>
-                <td className="">{student.name}</td>            
-                <td className="">{student.name}</td>            
-                <td className="">{student.name}</td>            
+                <td className="">{student.name}</td>
+                <td className="">{student.name}</td>
+                <td className="">{student.name}</td>
               </tr>
             )
           })}
