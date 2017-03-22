@@ -5,12 +5,12 @@ import { browserHistory } from 'react-router'
 /* -----------------    ACTIONS     ------------------ */
 
 export const SET_STUDENTS  = 'SET_STUDENTS'
-export const ADD_ASSIGNMENTS = 'ADD_ASSIGNMENTS'
+// export const SET_ASSIGNMENTS = 'ADD_ASSIGNMENTS'
 
 /* ------------   ACTION CREATORS     ------------------ */
 
 export const setStudents = (students) => ({ type: SET_STUDENTS, students })
-export const addAssignments = (assignments) => ({ type: ADD_ASSIGNMENTS, assignments })
+// export const setAssignments = (assignments) => ({ type: ADD_ASSIGNMENTS, assignments })
 
 /* ------------       REDUCERS     ------------------ */
 
@@ -19,7 +19,7 @@ const initialState = {
 }
 
 export default function reducer(prevState = initialState, action) {
- 
+
   const newState = Object.assign({}, prevState)
 
   switch (action.type) {
@@ -28,11 +28,11 @@ export default function reducer(prevState = initialState, action) {
       newState.students = action.students
       break
 
-    case ADD_ASSIGNMENTS:
-      action.assignments.forEach(assignment =>
-        newState.student[assignment.student_id].assignments.push(assignment)
-      )
-      break
+    // case SET_ASSIGNMENTS:
+    //   action.assignments.forEach(assignment =>
+    //     newState.student[assignment.student_id].assignments.push(assignment)
+    //   )
+    //   break
 
     default:
       return prevState
@@ -56,9 +56,9 @@ export const addAssignmentsRequest = (item, students) => (dispatch, getState) =>
   let teacherId = getState().auth.teacher_id
   axios.post(`/api/teachers/${teacherId}/assignments/`, {item: item, students: students})
     .then(res => res.data)
-    .then(assignments => {
-      console.log('assignments in reducer --->', assignments)
-      dispatch(addAssignments(assignments))
+    .then(students => {
+      console.log('returned students', students)
+       dispatch(setStudents(students))
     })
     .catch(err => console.error(err))
 }

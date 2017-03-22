@@ -7,7 +7,7 @@ import moment from 'moment'
 import DueDate from '../containers/DueDateContainer'
 
 
-const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll}) => {
+const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll, due_date, handleChange}) => {
   return (
     <div>
       <div className="flex-container">
@@ -37,7 +37,7 @@ const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll}) => 
             </select>
 
 
-            <DatePicker selected={ moment()} />
+
             <select id="quizzes" name="quizzes">
               <option>Assign Quiz...</option>
             {
@@ -56,6 +56,7 @@ const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll}) => 
 
 
             <label>Due Date</label>
+            <DatePicker selected={ due_date } onChange={handleChange} />
 
             <button type="submit">Assign Task</button>
 
