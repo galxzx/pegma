@@ -165,5 +165,14 @@ auth.post('/updatePassword', (req, res, next) =>{
     .catch(next)
 })
 
-module.exports = auth
+auth.post('/checkEmail', (req, res, next) =>
+  User.findOne({where: req.body})
+    .then(user => {
+      if (user) res.sendStatus(409)
+      else res.sendStatus (204)
+      })
+    .catch(next)
+)
 
+
+module.exports = auth

@@ -2,6 +2,8 @@
 
 const db = require('APP/db')
 const User = db.model('users')
+const Student = db.model('students')
+const Teacher = db.model('teachers')
 
 const {mustBeLoggedIn, forbidden, selfOnly} = require('./auth.filters')
 
@@ -22,5 +24,12 @@ module.exports = require('express').Router()
 		User.findById(req.params.id)
 		.then(user => user.update(req.body))
 		.then(user => res.json(user))
-		.catch(next)
-	 )
+		.catch(next))
+	.post('/student', (req, res, next) =>
+		Student.create({teacher_id: req.body.teacher, user: req.body}, {include: [User]})
+			.then(student => res.send(student))
+			.catch(next))
+	.post('/teacher', (req, res, next) =>
+		Teacher.create({user: req.body}, {include: [User]})
+			.then(teacher => res.send(teacher))
+	 		.catch(next))
