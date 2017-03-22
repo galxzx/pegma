@@ -1,7 +1,7 @@
 import {connect} from 'react-redux'
 
 import TeacherFunctions from '../components/TeacherFunctions'
-import {addAssignmentRequest} from '../reducers/teacher'
+import {addAssignmentsRequest} from '../reducers/teacher'
 
 
 const mapState = (state) => {
@@ -62,7 +62,7 @@ const handleSubmit = (evt) => (dispatch, getState) => {
 			let taskOption = tasks.querySelector(`#task-${taskIdx}`)
 			let taskTitle = taskOption.getAttribute('data-title')
 			let taskId = taskOption.getAttribute('data-id')
-			dispatch(addAssignmentRequest({status: 'assigned', type: 'task', task_id: taskId, title: taskTitle}, studentIds))
+			dispatch(addAssignmentsRequest({status: 'assigned', type: 'task', task_id: taskId, title: taskTitle}, studentIds))
 			numCreated += studentIds.length
 		}
 
@@ -70,7 +70,7 @@ const handleSubmit = (evt) => (dispatch, getState) => {
 			let quizOption = quizzes.querySelector(`#quiz-${quizIdx}`)
 			let quizTitle = quizOption.getAttribute('data-title')
 			let quizId = quizOption.getAttribute('data-id')
-			dispatch(addAssignmentRequest({status: 'assigned', type: 'quiz', quiz_id: quizId, title: quizTitle}))
+			dispatch(addAssignmentsRequest({status: 'assigned', type: 'quiz', quiz_id: quizId, title: quizTitle}))
 			numCreated += studentIds.length		
 		}
 	clearForm()
