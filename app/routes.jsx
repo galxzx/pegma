@@ -93,7 +93,7 @@ export default function Root () {
           <IndexRedirect to="/home" />
           <Route path="/signup" component={SignUpContainer} onEnter={onEnterSignup} />
           <Router path="/student"  component={StudentAppContainer} onEnter={onEnterStudent}>
-            <Route path="dashboard" component={StudentDashboardContainer} />
+            <Route path="dashboard" component={StudentDashboardContainer} onEnter={onEnterStudent}/>
             <Route path="tracker" component={StudentTrackerContainer} onEnter={onEnterStudentTracker}/>
             <Route path="settings" component={StudentSettingsContainer} />
             <Route path="calendar" component={StudentCalendarContainer} />
