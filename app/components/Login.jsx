@@ -19,7 +19,7 @@ export const Login = ({ login }) => (
 
     <div className="login-footer">
       <p><Link href="#">Forgot Password?</Link></p>
-      <p><Link href="#">Create account</Link></p>
+      <p><Link to="/signup">Create account</Link></p>
     </div>
 
   </div>
