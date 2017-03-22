@@ -74,7 +74,4 @@ const Assignment = db.define('assignments', {
   }
 })
 
-// Assignment belongsTo Task
-// Assignment belongsTo Student
-
 module.exports = Assignment
