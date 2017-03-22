@@ -34,7 +34,6 @@ module.exports = require('express').Router()
 		})
 		.then(() => Assignment.findAll({where: {teacher_id: teacherId}}))
 		.then((assignments) => {
-			console.log('------------------', 'assignments')
 			res.json(assignments)
 		})
 		.catch(next)
