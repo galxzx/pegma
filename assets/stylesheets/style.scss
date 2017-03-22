@@ -68,11 +68,12 @@ html {
   -webkit-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
-  background: $lightGrey
+  background: $lightGrey;
 }
 
 .btn:focus, .btn:hover {
   text-decoration: none;
+  transform: scale(1.1);
 }
 
 .btn:focus, .btn.focus {
@@ -116,6 +117,35 @@ form {
 	}
 }
 
+/* MODAL/POP-UP */
+
+.modal {
+	position: absolute;
+	z-index: 1001;
+  background: #fff;
+  padding: 30px;
+  box-shadow: 5px 5px 20px;
+  border: 1px solid $lightGrey;
+  max-width: 80%;
+	left: 50%;
+	top: 50%; 
+	transform: translate(-50%, -50%);
+}
+
+.modal-close {
+	float: right;
+  padding: 5px 10px;
+  border: 1px solid #fff;
+  margin-right: -20px;
+  margin-top: -20px;
+  border-radius: 3px;
+  color: $mediumGrey;
+
+  &:hover {
+  	border: 1px solid $lightGrey;
+  }
+}
+
 /* LOGGIN */
 
 .modal-login {
@@ -127,6 +157,7 @@ form {
   nav {
   	border-bottom: 1px solid $lightGrey;
   	padding: 20px;
+  	text-align: center;
 
   	button {
   		color: #fff;
@@ -152,6 +183,7 @@ form {
 
   .login-footer {
   	padding-bottom: 20px;
+  	text-align: center;
 
   	p {
   		margin: 0;
@@ -164,16 +196,21 @@ form {
 
 }
 
+.modal-home {
+	.modal-login {
+
+	}
+}
+
 /* INDEX */
 
 .index-container {
 	background: $yellow;
-	width: 100vw;
-	height: 100vh;
 	overflow: hidden;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	flex: 1 1 auto;
 
 	.index-content {
 		width: 250px;
@@ -181,6 +218,7 @@ form {
 
 		h1 {
 			text-transform: uppercase;
+			padding-top: 50px;
 		}
 
 		h4 {
@@ -188,12 +226,12 @@ form {
 		}
 
 		nav {
-			margin-top: 100px;
 			display: flex;
-			justify-content: space-between;
+			justify-content: space-around;
 
 			.btn {
-				width: 100px;
+				min-width: 120px;
+				color: $black;
 			}
 		}
 	}
@@ -211,6 +249,7 @@ form {
 .main,
 .flex-main {
 	flex: 1;
+	padding-bottom: 30px;
 }
 
 .header-content {
@@ -226,7 +265,6 @@ form {
 /* FOOTER */
 
 footer {
-	margin-top: 30px;
 	background: #222;
 	color: #fff;
 	padding: 5px;

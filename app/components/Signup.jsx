@@ -8,13 +8,13 @@ const RenderError = ({ meta: { touched, error } }) => touched && error ?
 const Signup = ({handleSubmit, typeValue, teachers, createAccount}) => {
 
   return (
-    <div className="dashboard">
+    <div className="dashboard flex-main">
       <div className="container panel-container">
 
         <div className="flex-container">
 
           <section className="flex-child panel settings">
-            <div className="panel-header">New Account</div>
+            <div className="panel-header">Create New Account</div>
             <div className="settings-content">
               <form onSubmit={handleSubmit(createAccount)}>
                 <fieldset>
