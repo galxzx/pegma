@@ -1,4 +1,4 @@
-const validatePassword = values => {
+const validateSignup = values => {
   const errors = {}
   if(!values.name) errors.name = 'Name is required'
   if(!values.email) errors.email = 'Email is required'
@@ -15,4 +15,4 @@ const validatePassword = values => {
 }
 
 
-export default validatePassword
+export default validateSignup
