@@ -6,11 +6,12 @@ import CalendarSmall from './Dashboard/CalendarSmall'
 import TeacherAssignmentsPanel from './Dashboard/TeacherAssignmentsPanel'
 
 const TeacherDashboard = ({students}) => {
-  
+
   return (
+
     <div className="dashboard dashboard-teacher">
       <div className="container panel-container">
-        
+
         <TeacherStats />
 
         <div className="flex-container">
@@ -19,7 +20,7 @@ const TeacherDashboard = ({students}) => {
             <TeacherNotifications />
 
             <CalendarSmall />
-            
+
           </div>
           <div className="flex-child">
 
