@@ -52,6 +52,8 @@ const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll}) => 
 
             <button type="submit">Assign Task</button>            
 
+            <span id="message-box"></span>
+
           </form>
         </div>  
       </div>
