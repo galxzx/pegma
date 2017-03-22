@@ -227,10 +227,11 @@ form {
 
 		nav {
 			display: flex;
-			justify-content: space-between;
+			justify-content: space-around;
 
 			.btn {
-				width: 120px;
+				min-width: 120px;
+				color: $black;
 			}
 		}
 	}

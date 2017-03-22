@@ -49,7 +49,8 @@ html {
   background: #EEEEEC; }
 
 .btn:focus, .btn:hover {
-  text-decoration: none; }
+  text-decoration: none;
+  transform: scale(1.1); }
 
 .btn:focus, .btn.focus {
   outline: 0;
@@ -80,6 +81,30 @@ form .formError {
     font-size: 3em;
     color: #FFC943; }
 
+/* MODAL/POP-UP */
+.modal {
+  position: absolute;
+  z-index: 1001;
+  background: #fff;
+  padding: 30px;
+  box-shadow: 5px 5px 20px;
+  border: 1px solid #EEEEEC;
+  max-width: 80%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); }
+
+.modal-close {
+  float: right;
+  padding: 5px 10px;
+  border: 1px solid #fff;
+  margin-right: -20px;
+  margin-top: -20px;
+  border-radius: 3px;
+  color: #9C9C9B; }
+  .modal-close:hover {
+    border: 1px solid #EEEEEC; }
+
 /* LOGGIN */
 .modal-login {
   margin: 30px auto;
@@ -87,7 +112,8 @@ form .formError {
   border: 1px solid #EEEEEC; }
   .modal-login nav {
     border-bottom: 1px solid #EEEEEC;
-    padding: 20px; }
+    padding: 20px;
+    text-align: center; }
     .modal-login nav button {
       color: #fff;
       margin: 0 5px; }
@@ -102,7 +128,8 @@ form .formError {
       margin: 0 auto;
       margin-bottom: 15px; }
   .modal-login .login-footer {
-    padding-bottom: 20px; }
+    padding-bottom: 20px;
+    text-align: center; }
     .modal-login .login-footer p {
       margin: 0; }
     .modal-login .login-footer a {
@@ -112,25 +139,25 @@ form .formError {
 /* INDEX */
 .index-container {
   background: #FFC943;
-  width: 100vw;
-  height: 100vh;
   overflow: hidden;
   display: flex;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  flex: 1 1 auto; }
   .index-container .index-content {
     width: 250px;
     text-align: center; }
     .index-container .index-content h1 {
-      text-transform: uppercase; }
+      text-transform: uppercase;
+      padding-top: 50px; }
     .index-container .index-content h4 {
       font-weight: normal; }
     .index-container .index-content nav {
-      margin-top: 100px;
       display: flex;
-      justify-content: space-between; }
+      justify-content: space-around; }
       .index-container .index-content nav .btn {
-        width: 100px; }
+        min-width: 120px;
+        color: #222221; }
 
 /* HEADER TOP BAR */
 .top-menu {
@@ -141,7 +168,8 @@ form .formError {
 
 .main,
 .flex-main {
-  flex: 1; }
+  flex: 1;
+  padding-bottom: 30px; }
 
 .header-content {
   display: flex;
@@ -152,7 +180,6 @@ form .formError {
 
 /* FOOTER */
 footer {
-  margin-top: 30px;
   background: #222;
   color: #fff;
   padding: 5px;
