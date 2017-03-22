@@ -45,7 +45,7 @@ const CreateQuestions = ({ fields, meta: { touched, error } }) => (
           label="Answer #4"/>
           <div>
             <label>Solution </label>
-              <Field name="solution" component="select">
+              <Field name={`${question}.solution`} component="select">
                 <option></option>
                 {[1,2,3,4].map(solution =>
                   (

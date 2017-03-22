@@ -16,7 +16,7 @@ const renderTextArea = ({input, label, type,  meta: { touched, error, warning }}
     </div>
 )
 
-const createQuiz = ({handleSubmit, submitting}) => {
+const createQuiz = ({handleSubmit, submitting, addQuiz}) => {
   return (
     <div className="dashboard">
       <div className="container panel-container">
@@ -26,7 +26,7 @@ const createQuiz = ({handleSubmit, submitting}) => {
           <section className="flex-child panel settings">
             <div className="panel-header">Create New Quiz</div>
             <div className="settings-content">
-              <form onSubmit={handleSubmit(()=>{})}>
+              <form onSubmit={handleSubmit(addQuiz)}>
                 <fieldset>
                   <div className="form-group">
                     <Field name="title" type="text" component={RenderField} label="Title"/>

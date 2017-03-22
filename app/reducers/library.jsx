@@ -21,7 +21,7 @@ const initialState = {
 }
 
 export default function reducer(prevState = initialState, action) {
- 
+
   const newState = Object.assign({}, prevState)
 
   switch (action.type) {
@@ -44,21 +44,21 @@ export default function reducer(prevState = initialState, action) {
 
 // Add a new user
 
-export const loadQuizzes = () => (dispatch, getState) => {
+export const loadQuizzes = () => (dispatch) => {
   axios.get(`/api/library/quizzes`)
     .then(res => res.data)
     .then(quizzes => dispatch(setQuizzes(quizzes)))
     .catch(err => console.error(err))
 }
 
-export const loadTasks = () => (dispatch, getState) => {
+export const loadTasks = () => (dispatch) => {
   axios.get(`/api/library/tasks`)
     .then(res => res.data)
     .then(tasks => dispatch(setTasks(tasks)))
     .catch(err => console.error(err))
 }
 
-export const loadLibrary = () => (dispatch, getState) => {
+export const loadLibrary = () => (dispatch) => {
   axios.get(`/api/library/quizzes`)
     .then(res => res.data)
     .then(quizzes => dispatch(setQuizzes(quizzes)))
@@ -66,5 +66,22 @@ export const loadLibrary = () => (dispatch, getState) => {
   axios.get(`/api/library/tasks`)
     .then(res => res.data)
     .then(tasks => dispatch(setTasks(tasks)))
+    .catch(err => console.error(err))
+}
+
+export const addQuiz = () => (dispatch, getState) => {
+  const newQuiz = getState().form.createquiz.values;
+  const questions = newQuiz.questions.map(question => {
+    let answer = []
+    for (let key in question) {
+      if(key.startsWith('a_')) {
+        answer[+key.split('_')[1]] = question[key]
+      }
+    }
+    return Object.assign(question, {answer, type:'multiple-choice'})
+  })
+  const formattedQuiz = Object.assign({}, newQuiz, {questions, teacher_id: getState().auth.teacher_id} )
+  axios.post('/api/library/quiz', formattedQuiz)
+    .then(() => dispatch(loadLibrary))
     .catch(err => console.error(err))
 }

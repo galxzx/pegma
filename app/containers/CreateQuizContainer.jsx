@@ -3,6 +3,7 @@ import { reduxForm } from 'redux-form'
 
 import CreateQuiz from '../components/CreateQuiz'
 import validateQuiz from '../validators/validateQuiz'
+import { addQuiz } from '../reducers/library'
 
 
 
@@ -12,10 +13,7 @@ const mapState = (state) => {
   }
 }
 
-const mapDispatch = (dispatch) => {
-  return {
-  }
-}
+const mapDispatch = {addQuiz}
 
 const CreateQuizForm = reduxForm ({
   form: 'createquiz',
