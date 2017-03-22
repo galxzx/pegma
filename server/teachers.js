@@ -33,7 +33,10 @@ module.exports = require('express').Router()
 			return Assignment.bulkCreate(assignments)
 		})
 		.then(() => Assignment.findAll({where: {teacher_id: teacherId}}))
-		.then((assignments) => res.json(assignments))
+		.then((assignments) => {
+			console.log('------------------', 'assignments')
+			res.json(assignments)
+		})
 		.catch(next)
 	})
 

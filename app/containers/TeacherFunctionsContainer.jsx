@@ -20,7 +20,25 @@ const toggleCheckAll = (tbodyId, status) => (dispatch) => {
 	})
 }	
 
-const handleSubmit = (evt) => (dispatch) => {
+
+const clearForm = () => {
+	let checkboxes = document.querySelectorAll('input[type="checkbox"]')
+	checkboxes = [...checkboxes]
+	checkboxes.forEach(checkbox => {
+		checkbox.checked = false
+	})
+	let selects = document.querySelectorAll('select')
+	selects = [...selects]
+	selects.forEach(select => {
+		select.selectedIndex = 0
+	})	
+}	
+
+const displayMessage = (message) => {
+	document.getElementById('message-box').innerHTML = message
+}
+
+const handleSubmit = (evt) => (dispatch, getState) => {
 	
 	evt.preventDefault()
 
@@ -34,21 +52,34 @@ const handleSubmit = (evt) => (dispatch) => {
 	studentIds = [...studentIds].map(input => {
 		return +input.value
 	})
+	
+	let numCreated = 0
+	let numStudents = studentIds.length
 
-	if(taskIdx && taskIdx !== 0) {
-		let taskOption = tasks.querySelector(`#task-${taskIdx}`)
-		let taskTitle = taskOption.getAttribute('data-title')
-		let taskId = taskOption.getAttribute('data-id')
-		dispatch(addAssignmentRequest({status: 'assigned', type: 'task', task_id: taskId, title: taskTitle}, studentIds))
+	if(studentIds.length !== 0) {
+			console.log('taskIdx===>', taskIdx)
+		if(taskIdx && taskIdx !== 0) {
+			let taskOption = tasks.querySelector(`#task-${taskIdx}`)
+			let taskTitle = taskOption.getAttribute('data-title')
+			let taskId = taskOption.getAttribute('data-id')
+			dispatch(addAssignmentRequest({status: 'assigned', type: 'task', task_id: taskId, title: taskTitle}, studentIds))
+			numCreated += studentIds.length
+		}
+
+		if(quizIdx && quizIdx !== 0) {
+			let quizOption = quizzes.querySelector(`#quiz-${quizIdx}`)
+			let quizTitle = quizOption.getAttribute('data-title')
+			let quizId = quizOption.getAttribute('data-id')
+			dispatch(addAssignmentRequest({status: 'assigned', type: 'quiz', quiz_id: quizId, title: quizTitle}))
+			numCreated += studentIds.length		
+		}
+	clearForm()
+	// update this to retrieve from state...
+	displayMessage(`${numCreated} assignments were created for ${numStudents} students`)
 	}
-
-	if(quizIdx && quizIdx !== 0) {
-		let quizOption = quizzes.querySelector(`#quiz-${quizIdx}`)
-		let quizTitle = quizOption.getAttribute('data-title')
-		let quizId = quizOption.getAttribute('data-id')
-		dispatch(addAssignmentRequest({status: 'assigned', type: 'quiz', quiz_id: quizId, title: quizTitle}))
+	else {
+		displayMessage('')
 	}
-
 }
 
 const mapDispatch = {handleSubmit, toggleCheckAll}
