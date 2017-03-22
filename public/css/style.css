@@ -389,6 +389,12 @@ article[data-class="reminder"], article[data-class="reminder"]:hover {
 .yellow {
   color: #FFC943; }
 
+.bg-orange {
+  background: #FF8943; }
+
+.orange {
+  color: #FF8943; }
+
 .bg-blue {
   background: #0B9CCC; }
 

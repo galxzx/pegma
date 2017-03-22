@@ -27,13 +27,18 @@ import TeacherCalendarContainer from './containers/TeacherCalendarContainer'
 import QuizContainer from './containers/QuizContainer'
 import CompletedQuizContainer from './containers/CompletedQuizContainer'
 import TeacherFunctionsContainer from './containers/TeacherFunctionsContainer'
+import SignUpContainer from './containers/SignUpContainer'
 
 
 import {whoami} from './reducers/auth'
 
 import {loadAssignments, loadCurrentAssignment, loadStudent, loadQuiz} from './reducers/student'
 import {loadBoard} from './reducers/tracker'
+import {loadTeachers} from './reducers/signup'
 
+const onEnterSignup = () => {
+  store.dispatch(loadTeachers())
+}
 
 const onEnterStudent = (nextState, replace, done) => (
   store.dispatch(whoami())
@@ -59,7 +64,7 @@ const onEnterAssignment = (nextState) =>  {
   })
     .catch(err => console.error(err))
 }
- 
+
 const onEnterStudentTracker = (nextState, replace, done) => {
   onEnterStudent(nextState, replace, done)
   .then(res => store.dispatch(loadBoard()))
@@ -72,7 +77,8 @@ export default function Root () {
     <Provider store={store}>
       <Router history={browserHistory}>
         <Route path="/" component={AppContainer}>
-          <IndexRedirect to="/student" />
+          <Route path="/signup" component={SignUpContainer} onEnter={onEnterSignup} />
+          <IndexRedirect to="/signup" />
           <Router path="/student"  component={StudentAppContainer} onEnter={onEnterStudent}>
             <Route path="dashboard" component={StudentDashboardContainer} />
             <Route path="tracker" component={StudentTrackerContainer} onEnter={onEnterStudentTracker}/>

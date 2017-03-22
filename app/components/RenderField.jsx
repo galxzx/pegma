@@ -1,11 +1,11 @@
 import React from 'react'
 
-const RenderField = ({ input, label, type, meta: { touched, error } }) => (
+const RenderField = ({ input, label, type, meta: { asyncValidating, touched, error } }) => (
   <div>
     <label>{label}</label>
-    <div>
-      <input {...input} placeholder={label} type={type}/>
-      {touched && error && <span>{error}</span>}
+    <div className={asyncValidating ? 'async-validating' : ''}>
+      <input {...input} type={type} placeholder={label}/><br/>
+      {touched && error && <span><span className="icon icon-burst-new blue"></span><span className="formError">{error}</span></span>}
     </div>
   </div>
 )
