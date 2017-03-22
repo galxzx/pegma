@@ -22,11 +22,13 @@ module.exports = require('express').Router()
 		.catch(next))
 	.post('/:teacherId/assignments', mustBeLoggedIn, (req, res, next) => {
 		let teacherId = Number(req.params.teacherId)
+		let item = req.body.item
+		let students = req.body.students
 		Teacher.findById(teacherId)
 		.then(teacher => teacher.getStudents({include: [Assignment, User]}))
 		.then(students => {
 			const assignments = students.map(student => {
-				return Object.assign({}, {student_id: student.id, teacher_id: teacherId}, req.body)
+				return Object.assign({}, {student_id: student.id, teacher_id: teacherId}, item)
 			})
 			return Assignment.bulkCreate(assignments)
 		})

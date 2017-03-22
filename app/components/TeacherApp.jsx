@@ -11,15 +11,15 @@ const TeacherApp = ({ user, children }) => {
           <Link className="nav-item" to='/teacher/dashboard'>
             <span className="nav-icon icon-list-alt"></span>
             <div className="nav-text">Dashboard</div>
-          </Link>
-          <Link className="nav-item" to='/teacher/tracker'>
+          </Link> 
+          <Link className="nav-item" to='/teacher/assignments'>
             <span className="nav-icon icon-clipboard"></span>
             <div className="nav-text">Assignments</div>
           </Link>
           <Link className="nav-item" to='/teacher/students'>
             <span className="nav-icon icon-users"></span>
             <div className="nav-text">Students</div>
-          </Link>
+          </Link>       
           <Link className="nav-item" to='/teacher/rewards'>
             <span className="nav-icon icon-trophy"></span>
             <div className="nav-text">Rewards</div>
