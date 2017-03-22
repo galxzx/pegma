@@ -139,7 +139,8 @@ form .formError {
   padding-bottom: 15px;
   flex: 0 1 auto; }
 
-.main {
+.main,
+.flex-main {
   flex: 1; }
 
 .header-content {

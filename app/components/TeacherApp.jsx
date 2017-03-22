@@ -5,7 +5,7 @@ import Login from './Login'
 
 const TeacherApp = ({ user, children }) => {
   return (user && user.teacher_id) ? (
-    <div>
+    <div className="flex-main">
       <nav className="container nav-content">
         <ul className="nav-bar">
           <Link className="nav-item" to='/teacher/dashboard'>
