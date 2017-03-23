@@ -12,7 +12,7 @@ const Assignment = ({user, currentAssignment, updateGrade}) => {
           <section className="panel single-assignment">
             <div className="panel-header">{ currentAssignment.title }</div>
             <div className="panel-subheader">
-              <strong>Name:</strong> {currentAssignment.student.user.name} <br/>
+              <strong>Name:</strong> {currentAssignment.student.user.firstName + ' ' + currentAssignment.student.user.lastName} <br/>
               <strong>Current Grade:</strong> {currentAssignment.grade ? currentAssignment.grade : 0}/100
               {user.teacher_id ? (
                 <div>
