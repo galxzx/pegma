@@ -4,6 +4,8 @@ const db = require('APP/db')
 const Student = db.model('students')
 const Assignment = db.model('assignments')
 const Teacher = db.model('teachers')
+const User = db.model('users')
+
 
 const {mustBeLoggedIn, forbidden} = require('./auth.filters')
 
@@ -17,9 +19,17 @@ module.exports = require('express').Router()
 	.post('/:studentId/assignments/', (req, res, next) =>
 	  Assignment.create(req.body)
 	  .then(assignment => res.send(assignment))
-	  .catch(next))	
+	  .catch(next))
 	.get('/:studentId/assignments/:assignmentId', mustBeLoggedIn, (req, res, next) =>
-		Assignment.findById(req.params.assignmentId)
+		Assignment.findById(req.params.assignmentId, {
+			include: {
+				model: Student,
+				include: {
+					model:User,
+					attributes:['name']
+				}
+			}
+		})
 		.then(assignment => res.json(assignment))
 		.catch(next))
 	.get('/:studentId/', mustBeLoggedIn, (req, res, next) =>

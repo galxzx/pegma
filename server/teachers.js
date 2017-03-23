@@ -38,5 +38,10 @@ module.exports = require('express').Router()
 		})
 		.catch(next)
 	})
-
+	.put('/assignments/:assignmentId', (req, res, next) =>
+	  Assignment.findById(req.params.assignmentId)
+	  	.then(assignment =>
+	  		assignment.update(req.body))
+	  	.then(assignment => res.json(assignment))
+	  	.catch(next))
 

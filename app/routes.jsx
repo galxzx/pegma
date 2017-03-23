@@ -30,6 +30,7 @@ import CompletedQuizContainer from './containers/CompletedQuizContainer'
 import TeacherFunctionsContainer from './containers/TeacherFunctionsContainer'
 import SignUpContainer from './containers/SignUpContainer'
 import CreateQuizContainer from './containers/CreateQuizContainer'
+import CompletedAssignmentContainer from './containers/CompletedAssignmentContainer'
 
 
 import {whoami} from './reducers/auth'
@@ -67,7 +68,6 @@ const onEnterQuiz = () => {
 }
 
 const onEnterAssignment = (nextState) => {
-  console.log('nextState', nextState)
   store.dispatch(whoami())
   .then(() => {
     return store.dispatch(loadCurrentAssignment(nextState.params.assignmentId))
@@ -76,6 +76,16 @@ const onEnterAssignment = (nextState) => {
     })
   })
     .catch(err => console.error(err))
+}
+
+const onEntercompAssign = (nextState) => {
+  store.dispatch(whoami())
+  .then(() =>
+    store.dispatch(loadCurrentAssignment(nextState.params.assignmentId)))
+  .then((currentAssignment) => {
+    if(currentAssignment.type === 'quiz') return store.dispatch(loadQuiz(currentAssignment.quiz_id))
+  })
+  .catch(err => console.error(err))
 }
 
 const onEnterStudentTracker = (nextState, replace, done) => {
@@ -113,6 +123,7 @@ export default function Root () {
             <Route path="settings" component={TeacherSettingsContainer} />
             <Route path="calendar" component={TeacherCalendarContainer} />
             <Route path="createquiz" component={CreateQuizContainer} />
+            <Route path="assignment/:assignmentId" component={CompletedAssignmentContainer} onEnter={onEntercompAssign} />
             <IndexRedirect to="dashboard" />
           </Router>
         </Route>
