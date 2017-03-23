@@ -15,7 +15,10 @@ const User = db.define('users', {
 			notEmpty: true,
 		}
   },
-
+  avatar: {
+    type: Sequelize.STRING,
+    defaultValue: 'http://placehold.it/100x100'
+  },
   // We support oauth, so users may or may not have passwords.
   password_digest: Sequelize.STRING, // This column stores the hashed password in the DB, via the beforeCreate/beforeUpdate hooks
 	password: Sequelize.VIRTUAL // Note that this is a virtual, and not actually stored in DB

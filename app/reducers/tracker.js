@@ -13,7 +13,7 @@ export const updateStatus = (updated) => ({ type: UPDATE_STATUS, updated })
 
 /* ------------       REDUCERS     ------------------ */
 
-let board = {
+const board = {
   lanes: [
     {id:'assigned', title: 'assigned', label: 'assigned', cards:[]},
     {id:'doing', title: 'doing', label: 'doing', cards:[]},
@@ -23,7 +23,7 @@ let board = {
 }
 
 const initialState = {
-  board: Object.assign({}, board)
+  board: board
 }
 
 function getIdx(status) {
@@ -37,13 +37,23 @@ export default function reducer(prevState = initialState, action) {
   const newState = Object.assign({}, prevState)
   switch (action.type) {
     case SET_BOARD:
-      newState.board = Object.assign({}, board)
+    console.log('new cards ====>', action.assignments)
+
+      newState.board = {
+        lanes: [
+          {id:'assigned', title: 'assigned', label: 'assigned', cards:[]},
+          {id:'doing', title: 'doing', label: 'doing', cards:[]},
+          {id:'completed', title: 'completed', label: 'completed', cards:[]},
+          {id:'archived', title: 'archived', label: 'archived', cards:[]}
+        ]
+      }
+
       action.assignments.forEach(assignment => {
         if(assignment.due_date) {
           let dueDate = `${assignment.due_date.substring(5,7)}/${assignment.due_date.substring(8,10)}`    
           assignment.label = dueDate      
         }
-        //assignment.id = assignment.id + ''
+        assignment.id = assignment.id + ''
         let cards = newState.board.lanes[getIdx(assignment.status)].cards  
         newState.board.lanes[getIdx(assignment.status)].cards = [...cards, assignment]     
       })
@@ -62,13 +72,14 @@ export default function reducer(prevState = initialState, action) {
     default:
       return prevState
   }
+  console.log('newState ===> ', newState)
   return newState
 }
 
 /* ------------       DISPATCHERS     ------------------ */
 
 export const loadBoard = () => (dispatch, getState) => {
-  let studentId = getState().auth.student_id
+  let studentId = getState().auth.student_id || getState().teacher.currentStudent.id
   return axios.get(`/api/students/${studentId}/assignments`)
     .then(res => res.data)
     .then(assignments => {
@@ -81,8 +92,8 @@ export const handleDragStart = (cardId, laneId) => (dispatch) => {}
 export const shouldReceiveNewData = (nextData) => (dispatch) => {}
 
 export const handleDragEnd = (cardId, sourceLaneId, targetLaneId) => (dispatch, getState) => {
-  let studentId = getState().auth.student_id
-  let update = {id: cardId, status: targetLaneId}
+  let studentId = getState().auth.student_id || getState().teacher.currentStudent.id
+  let update = {status: targetLaneId}
   axios.put(`/api/students/${studentId}/assignments/${cardId}`, update)
     .then(res => res.data)
     .then(assignments => dispatch(updateStatus(update)))
@@ -96,3 +107,4 @@ export const handleCardClick = (cardId, metadata) => (dispatch, getState) => {
 export const defineSortFunction = (card1, card2) => (dispatch, getState) => {
   return card1.due_date > card2.due_date
 }
+

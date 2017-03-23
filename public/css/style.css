@@ -22,21 +22,21 @@ html {
 
 .app-enter.app-enter-active {
   opacity: 1;
-  transition: opacity 5000ms ease-in; }
+  transition: opacity 200ms ease-in; }
 
 .app-leave {
   opacity: 1; }
 
 .app-leave.app-leave-active {
   opacity: 0.01;
-  transition: opacity 5000ms ease-in; }
+  transition: opacity 200ms ease-in; }
 
 .app-appear {
   opacity: 0.01; }
 
 .app-appear.app-appear-active {
   opacity: 1;
-  transition: opacity 500ms ease-in; }
+  transition: opacity 200ms ease-in; }
 
 .icon {
   color: #222221;
@@ -554,6 +554,8 @@ table.student-list {
     width: 18%; }
   table.student-list td:first-child, table.student-list td:nth-child(2) {
     width: 5%; }
+  table.student-list tr {
+    background: #f8f8f8; }
   table.student-list tr:nth-child(odd) {
     background: #f1f1f1; }
   table.student-list tr#filters th {
@@ -561,3 +563,27 @@ table.student-list {
     padding: 10px; }
     table.student-list tr#filters th select {
       color: #333333; }
+  table.student-list td.options > * {
+    text-decoration: none;
+    color: #fff;
+    background: #C60034;
+    font-size: 24pt;
+    padding: 10px;
+    padding-bottom: 5px;
+    margin: 10px; }
+  table.student-list td.options > *:hover {
+    opacity: .7; }
+  table.student-list td.options > *:first-child {
+    background: #0B9CCC; }
+
+table.student-list.fancy-colors th {
+  background: #C60034; }
+
+table.student-list.fancy-colors tr {
+  -webkit-transition: all 200ms;
+  transition: all 200ms; }
+
+table.student-list.fancy-colors tr:hover {
+  background: #FFC943;
+  -webkit-transition: all 200ms;
+  transition: all 200ms; }

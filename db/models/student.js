@@ -19,8 +19,3 @@ const Student = db.define('students', {
 })
 
 module.exports = Student
-
-// id - created by sequelize
-// user_id - created by belongsTo
-// teacher_id - created by belongsTo
-// rewards - created by getter method

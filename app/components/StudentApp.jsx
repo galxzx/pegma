@@ -33,11 +33,13 @@ const StudentApp = ({ user, children }) => {
       </nav>   
       <ReactCSSTransitionGroup
           transitionName="app"
-          transitionEnterTimeout={5000}
-          transitionLeaveTimeout={5000}
+          transitionEnterTimeout={200}
+          transitionLeaveTimeout={200}
           transitionAppear={true}
-          transitionAppearTimeout={500}>
-        {children}
+          transitionAppearTimeout={200}>
+          {
+          React.cloneElement(children, {key: window.location.pathname})
+          }          
       </ReactCSSTransitionGroup>         
     </div>
   )
