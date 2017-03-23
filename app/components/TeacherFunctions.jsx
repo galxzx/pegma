@@ -11,13 +11,13 @@ const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll, due_
   return (
     <div>
       <div className="flex-container">
-        <section className="flex-child panel functions">
+        <section className="flex-child panel">
           <div className="panel-header">Teacher Functions</div>
         </section>
       </div>
 
       <div className="flex-container">
-        <div className="teacher-functions">
+        <div className="teacher-assignments">
 
           <form className="" onSubmit={(evt) => handleSubmit(evt)}>
             <select id="tasks" name="tasks">
@@ -65,12 +65,13 @@ const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll, due_
       </div>
 
       <div className="flex-container">
-        <table className="student-list">
+        <table className="teacher-assignments">
           <tbody id="students">
             <tr id="filters">
               <th><input type="checkbox" onChange={(evt) => toggleCheckAll('#students', evt.target.checked)}/></th>
               <th>ID</th>
-              <th>Full Name</th>
+              <th>Last</th>
+              <th>First</th>              
               <th>Assigned</th>
               <th>Doing </th>              
               <th>Completed </th>
@@ -83,10 +84,10 @@ const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll, due_
                 <td className="">{student.id}</td>
                 <td className="">{student.user.lastName}</td>
                 <td className="">{student.user.firstName}</td>
-                <td className="">{student.name}</td>
-                <td className="">{student.name}</td>
-                <td className="">{student.name}</td>
-                <td className="">{student.name}</td>                
+                <td className="">{student.studentStats.assigned}</td>
+                <td className="">{student.studentStats.doing}</td>
+                <td className="">{student.studentStats.completed}</td>
+                <td className="">{student.studentStats.archived}</td>                
               </tr>
             )
           })}

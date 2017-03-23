@@ -805,75 +805,72 @@ article[data-class="reminder"], article[data-class="reminder"]:hover {
 
 /* TEACHER */
 
-.teacher-functions {
+div.teacher-assignments {
 	margin: 15px;
 	margin-top: 30px;
 	margin-bottom: 0px;
 	padding: 2px;
 }
 
-table.student-list {
+table.teacher-assignments, table.teacher-students {
 	margin: 15px;
 	margin-top: 30px;
-	border: 3px solid #f1f1f1;
-	th {
-		text-align: center;	
-		width: 18%;
-		background: $red;
-		padding: 10px;
-		color: #ffffff;	
-	}
-	th:first-child, th:nth-child(2) {
-		width: 5%;
-	}		
-	td {
-		text-align: center;	
-		padding: 10px;
-		width: 18%;		
-	}
-
-	td:first-child, td:nth-child(2) {
-		width: 5%;
-	}	
+	border: 3px solid $lightGrey;
 	tr {
-		background: #f8f8f8;
+		background: $lightGrey;		
+		th {
+			text-align: center;	
+			background: $red;
+			padding: 10px;
+			color: #ffffff;	
+		}			
+		td {
+			text-align: center;	
+			padding: 10px;
+		}
+
+		td:first-child, td:nth-child(2) {
+			width: 5%;
+		}	
+		td.options > * {
+			text-decoration: none;
+			color: #fff;
+			background: $red;
+			font-size: 24pt;
+			padding: 10px;
+			padding-bottom: 5px;
+			margin: 10px;
+		}
+		td.options > *:hover {
+			opacity: .7;
+		}	
+		td.options > *:first-child {
+			background: $blue;
+		}				
 	}
 	tr:nth-child(odd) {
-		background: #f1f1f1;
+		background: #ffffff;
 	}
-	tr#filters th {
-		background: $red;
-		padding: 10px;
-		select {
-			color: #333333;
-		}
-	}
-
-	td.options > * {
-		text-decoration: none;
-		color: #fff;
-		background: $red;
-		font-size: 24pt;
-		padding: 10px;
-		padding-bottom: 5px;
-		margin: 10px;
-	}
-	td.options > *:hover {
-		opacity: .7;
-	}	
-	td.options > *:first-child {
-		background: $blue;
-	}		
 }
 
-table.student-list.fancy-colors {
-	th {
-		background: $red;
-
+table.teacher-assignments {
+	width: 50%;
+	font-size: 10pt;
+	td {
+		width: 5% !important;
 	}
+	td:nth-child(3), td:nth-child(4) {
+		text-align: left;
+	}	
+}
+
+table.teacher-students.fancy-colors {
 	tr {
     -webkit-transition: all 200ms; 
     transition: all 200ms;		
+		th {
+			background: $red;
+		}    
 	}
 	tr:hover {
 		background: $yellow;

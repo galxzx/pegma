@@ -104,7 +104,6 @@ export const handleCardClick = (cardId, metadata) => (dispatch, getState) => {
 
   browserHistory.push(`/student/assignment/${cardId}`)
 
-  // jonathan will complete:
   // getState().auth.student_id ?
   //   browserHistory.push(`/student/assignment/${cardId}`) :
   //   browserHistory.push(`/teacher/assignment/${cardId}`) :
