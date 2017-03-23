@@ -8,6 +8,7 @@ export const SET_ASSIGNMENTS = 'SET_ASSIGNMENTS'
 export const SET_CURRENT_ASSIGNMENT  = 'SET_CURRENT_ASSIGNMENT'
 export const SET_TEACHER = 'SET_TEACHER'
 export const SET_QUIZ = 'SET_QUIZ'
+export const SET_TASK = 'SET_TASK'
 
 export const UPDATE_ASSIGNMENT = 'UPDATE_ASSIGNMENT'
 
@@ -18,6 +19,7 @@ export const setAssignments = (assignments) => ({ type: SET_ASSIGNMENTS, assignm
 export const setCurrentAssignment = (assignment) => ({ type: SET_CURRENT_ASSIGNMENT, assignment })
 export const setTeacher = (teacher) => ({ type: SET_TEACHER, teacher })
 export const setQuiz = (quiz) => ({ type: SET_QUIZ, quiz})
+export const setTask = (task) => ({ type: SET_TASK, task})
 
 export const updateAssignment = (assignment) => ({ type: UPDATE_ASSIGNMENT, assignment })
 
@@ -29,7 +31,8 @@ const initialState = {
   assignments: [],
   currentAssignment: {},
   teacher: {},
-  quiz: { questions:[] }
+  quiz: { questions:[] },
+  task: {}
 }
 
 
@@ -66,6 +69,9 @@ export default function reducer(prevState = initialState, action) {
       newState.quiz = action.quiz
       break
 
+     case SET_TASK:
+      newState.task = action.task
+      break
 
     default:
       return prevState
@@ -98,20 +104,28 @@ export const loadCurrentAssignment = (assignmentId) => (dispatch, getState) => {
 export const loadStudent = () => (dispatch, getState) => {
   let studentId = getState().auth.student_id
 
-  axios.get(`/api/students/${studentId}/`)
+  return axios.get(`/api/students/${studentId}/`)
     .then(res => res.data)
     .then(student => {
       dispatch(setAssignments(student.assignments))
       dispatch(setTeacher(student.teacher))
+      return student;
     })
     .catch(err => console.error(err))
 }
 
 
 export const loadQuiz = (quizId) => (dispatch) => {
-  axios.get(`/api/library/quizzes/${quizId}`)
+  return axios.get(`/api/library/quizzes/${quizId}`)
     .then(res => res.data)
     .then(quiz => dispatch(setQuiz(quiz)))
+    .catch(err => console.error(err))
+}
+
+export const loadTask = (taskId) => (dispatch) => {
+  return axios.get(`/api/library/tasks/${taskId}`)
+    .then(res => res.data)
+    .then(task => dispatch(setTask(task)))
     .catch(err => console.error(err))
 }
 

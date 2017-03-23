@@ -23,6 +23,10 @@ module.exports = require('express').Router()
 		Task.findAll({})
 		.then(tasks => res.json(tasks))
 		.catch(next))
+  .get('/tasks/:taskId', mustBeLoggedIn, (req, res, next) =>
+    Task.findById(req.params.taskId)
+      .then(task => res.json(task))
+      .catch(next))
   .post('/quiz', (req, res, next) =>
     Quiz.create(req.body, {include:[Question]})
       .then(quiz => res.send(quiz))
