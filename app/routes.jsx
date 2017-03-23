@@ -9,9 +9,9 @@ import store from './store'
 
 import Login from './components/Login'
 import WhoAmI from './components/WhoAmI'
-import Jokes from './components/Jokes'
 
 import AppContainer from './containers/AppContainer'
+import HomeContainer from './containers/HomeContainer'
 import StudentAppContainer from './containers/StudentAppContainer'
 import TeacherAppContainer from './containers/TeacherAppContainer'
 import StudentDashboardContainer from './containers/StudentDashboardContainer'
@@ -65,7 +65,7 @@ const onEnterQuiz = () => {
   if (currentAssignment.type === 'quiz' && currentAssignment.status === 'completed') browserHistory.push(`/student/assignment/${currentAssignment.id}/completedQuiz`)
 }
 
-const onEnterAssignment = (nextState) =>  {
+const onEnterAssignment = (nextState) => {
   console.log('nextState', nextState)
   store.dispatch(whoami())
   .then(() => {
@@ -89,8 +89,9 @@ export default function Root () {
     <Provider store={store}>
       <Router history={browserHistory}>
         <Route path="/" component={AppContainer}>
+          <Route path="/home" component={HomeContainer} />
+          <IndexRedirect to="/home" />
           <Route path="/signup" component={SignUpContainer} onEnter={onEnterSignup} />
-          <IndexRedirect to="/signup" />
           <Router path="/student"  component={StudentAppContainer} onEnter={onEnterStudent}>
             <Route path="dashboard" component={StudentDashboardContainer} onEnter={onEnterStudent}/>
             <Route path="tracker" component={StudentTrackerContainer} onEnter={onEnterStudentTracker}/>

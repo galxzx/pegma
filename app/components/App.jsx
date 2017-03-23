@@ -1,6 +1,5 @@
 import React from 'react'
 import WhoAmI from './WhoAmI'
-import Login from './Login'
 
 const App = ({ user, children }) => {
   return (
@@ -22,6 +21,5 @@ const App = ({ user, children }) => {
 	  </div> 
   )
 }
-
 
 export default App
