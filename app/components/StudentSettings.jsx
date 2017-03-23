@@ -16,8 +16,10 @@ const StudentSettings = ({user, teacher, handleSubmit, updateStudent}) => {
               <form onSubmit={handleSubmit(updateStudent)}>
                 <fieldset>
                   <div className="form-group">
-                    <label>Name</label><br/>
-                    <Field type="text" name="name" component="input" /><br/>
+                    <label>First Name</label><br/>
+                    <Field type="text" name="firstName" component="input" /><br/>
+                    <label>Last Name</label><br/>
+                    <Field type="text" name="lastName" component="input" /><br/>
                     <label>E-mail</label><br/>
                     <Field type="text" name="email" component="input" /><br/>
                     <label>Teacher</label><br/>
