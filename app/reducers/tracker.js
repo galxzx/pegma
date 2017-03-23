@@ -101,7 +101,14 @@ export const handleDragEnd = (cardId, sourceLaneId, targetLaneId) => (dispatch, 
 }
 
 export const handleCardClick = (cardId, metadata) => (dispatch, getState) => {
+
   browserHistory.push(`/student/assignment/${cardId}`)
+
+  // jonathan will complete:
+  // getState().auth.student_id ?
+  //   browserHistory.push(`/student/assignment/${cardId}`) :
+  //   browserHistory.push(`/teacher/assignment/${cardId}`) :
+
 }
 
 export const defineSortFunction = (card1, card2) => (dispatch, getState) => {
