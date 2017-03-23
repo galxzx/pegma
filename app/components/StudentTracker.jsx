@@ -7,7 +7,7 @@ const Tracker = (props) => {
 
   const studentName = props.user.student_id ? 
     props.user.firstName + ' ' + props.user.lastName :
-    props.currentStudent.firstName + ' ' + props.currentStudent.lastName
+    props.currentStudent.user.firstName + ' ' + props.currentStudent.user.lastName
 
   return (
     <div>

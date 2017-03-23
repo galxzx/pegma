@@ -3,12 +3,15 @@ import React from 'react'
 import {Link} from 'react-router'
 
 const TeacherStudents = ({user, students}) => {
+
+  const teacherName = user.firstName + ' ' + user.lastName
+
   return (
     <div>
 
       <div className="flex-container">
         <section className="flex-child panel functions">
-          <div className="panel-header">{`${user.name}'s`} Students</div>
+          <div className="panel-header">{`${teacherName}'s`} Students</div>
         </section>
       </div>
 
