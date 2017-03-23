@@ -1,6 +1,40 @@
 import React from 'react'
 
 const StudentReportCard = ({user, assignments, teacher}) => {
+  const reportCard = [];
+  // Loop through assignments
+  assignments.forEach(assignment => {
+    let instance;
+    // Find out if it is a quiz or task
+    if (assignment.quiz) instance = assignment.quiz;
+    else if (assignment.task) instance = assignment.task;
+    let subject = instance.subject;
+    // If subject object doesn't exist in Report Card
+    let subjectIndex = reportCard.findIndex((obj) => {
+      return obj.subject == subject     
+    })
+    // If subect doesn't exist, create it
+    if (subjectIndex === -1) {
+      let newSubject = {
+        subject: subject,
+        totalAssigments: 0,
+        gradedAssignments: 0,
+        partialGrade: 0,
+        finalGrade: 0,
+        totalGrade: 0
+      }
+      reportCard.push(newSubject);
+      // Reassign index
+      subjectIndex = reportCard.length - 1;
+    }
+    reportCard[subjectIndex].totalAssigments++;
+    if (assignment.grade) {
+      reportCard[subjectIndex].totalGrade += assignment.grade;
+      reportCard[subjectIndex].gradedAssignments++;
+    }
+    reportCard[subjectIndex].partialGrade = Math.round(reportCard[subjectIndex].totalGrade / reportCard[subjectIndex].gradedAssignments);
+    reportCard[subjectIndex].finalGrade = Math.round(reportCard[subjectIndex].totalGrade / reportCard[subjectIndex].totalAssigments); 
+  })
 
   return (
     <div className="dashboard">
@@ -8,56 +42,35 @@ const StudentReportCard = ({user, assignments, teacher}) => {
 
         <section className="flex-child panel reportcard">
           <div className="panel-header">Report Card</div>
-          <div className="panel-subheader"><strong>Teacher:</strong> {' '+teacher.user.firstName + ' ' + teacher.user.lastName} </div>
           <div className="reportcard-content">
             <div className="card">
-              <h2>Student: {user.name}</h2>
+              <h2>Student: {user.firstName} {user.lastName}</h2>
+              <h3>Teacher: {teacher.user.firstName} {teacher.user.lastName}</h3>
               <table>
                 <tbody>
                   <tr>
                     <th className="text">Subject</th>
                     <th>Graded Assignments</th>
                     <th>Total Assignments</th>
-                    <th>Partial Grade</th>
+                    <th>Partial Grade *</th>
                     <th>Final Grade</th>
                   </tr>
-                  <tr>
-                    <td className="text">English</td>
-                    <td>80</td>
-                    <td>4</td>
-                    <td>5</td>
-                    <td>80</td>
-                  </tr>
-                  <tr>
-                    <td className="text">Math</td>
-                    <td>80</td>
-                    <td>4</td>
-                    <td>5</td>
-                    <td>80</td>
-                  </tr>
-                  <tr>
-                    <td className="text">Science</td>
-                    <td>80</td>
-                    <td>4</td>
-                    <td>5</td>
-                    <td>80</td>
-                  </tr>
-                  <tr>
-                    <td className="text">Astrology</td>
-                    <td>80</td>
-                    <td>4</td>
-                    <td>5</td>
-                    <td>80</td>
-                  </tr>
-                  <tr>
-                    <td className="text">Cooking</td>
-                    <td>80</td>
-                    <td>4</td>
-                    <td>5</td>
-                    <td>80</td>
-                  </tr>
+                  {
+                    reportCard && reportCard.map((item, idx)=>{
+                      return (
+                        <tr key={idx}>
+                          <td className="text">{ item.subject }</td>
+                          <td>{ item.gradedAssignments }</td>
+                          <td>{ item.totalAssigments }</td>
+                          <td>{ item.partialGrade }</td>
+                          <td>{ item.finalGrade }</td>
+                        </tr>
+                      )    
+                    })
+                  }
                 </tbody>
               </table>
+              <p><small>* Average grade based only on graded assignments.</small></p>
             </div>
           </div>
         </section>

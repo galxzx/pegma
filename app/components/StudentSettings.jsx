@@ -29,12 +29,11 @@ const StudentSettings = ({user, teacher, handleSubmit, updateStudent}) => {
                   </div>
                 </fieldset>
               </form>
+              <UpdatePasswordContainer />
             </div>
           </section>
-
-
         </div>
-        <UpdatePasswordContainer />
+        
       </div>
     </div>
   )
