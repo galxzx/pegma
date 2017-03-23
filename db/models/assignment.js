@@ -28,6 +28,7 @@ const Assignment = db.define('assignments', {
     validate: {
       hasAssociationId: function(value) {
         if (value === 'quiz' && !this.quiz_id) throw new Error(`A assignment of type 'quiz' must have a quiz_id!`)
+        else if (value === 'task' && !this.task_id) throw new Error(`A assignment of type 'task' must have a taks_id!`)
       }
     }
   },
