@@ -365,6 +365,34 @@ footer {
 .list-archived {
   width: 25%; }
 
+/* REPORT CARD */
+.reportcard-content {
+  border: 1px solid #EEEEEC; }
+  .reportcard-content .card {
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #EEEEEC;
+    width: 80%; }
+    .reportcard-content .card h2 {
+      margin-top: 0;
+      margin-bottom: 10px; }
+    .reportcard-content .card table {
+      width: 100%;
+      border: 1px solid #EEEEEC;
+      border-spacing: 5px; }
+      .reportcard-content .card table th {
+        border: 1px solid #EEEEEC;
+        padding: 5px;
+        text-align: left;
+        background: #EEEEEC; }
+      .reportcard-content .card table td {
+        width: 20%;
+        border: 1px solid #EEEEEC;
+        padding: 5px;
+        text-align: right; }
+        .reportcard-content .card table td.text {
+          text-align: left; }
+
 /* SETTINGS */
 .settings-content fieldset {
   padding: 50px 35% 100px 35%; }
