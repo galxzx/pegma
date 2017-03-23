@@ -40,6 +40,7 @@ export const whoami = () =>
         const user = response.data
         // console.log('user   ', user)
         dispatch(authenticated(user))
+        return user
       })
       .catch(failed => dispatch(authenticated(null)))
 

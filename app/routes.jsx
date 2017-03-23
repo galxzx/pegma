@@ -49,7 +49,10 @@ const onEnterSignup = () => {
 
 const onEnterStudent = (nextState, replace, callback) => (
   store.dispatch(whoami())
-    .then(res => store.dispatch(loadStudent()))
+    .then(user => {
+      if(user.teacher_id && nextState.params && nextState.params.assignmentId) return replace (`/teacher/assignment/${nextState.params.assignmentId}`)
+      return store.dispatch(loadStudent())
+    })
     .then(res => callback())
 
     .catch(err => console.error(err))
@@ -74,19 +77,22 @@ const onEnterQuiz = () => {
 }
 
 const onEnterAssignment = (nextState, replace, done) => {
-  const user = store.getState().auth
-   if(user.teacher_id) replace(`/teacher/assignment/${nextState.params.assignmentId}`)
-  return store.dispatch(loadCurrentAssignment(nextState.params.assignmentId))
-    .then(assignment => {
-      if(assignment.status === 'completed' || assignment.status === 'archived'){
-        replace(`/student/completed/${assignment.id}`)
-      }
-      if(assignment.type === 'quiz') return store.dispatch(loadQuiz(assignment.quiz_id))
-          .then(() => done())
-      else if (assignment.type === 'task') return store.dispatch(loadTask(assignment.task_id))
-          .then(() => done())
-      return done()
-    })
+  store.dispatch(whoami())
+    .then(res => {
+      const user = store.getState().auth
+       if(user.teacher_id) return replace(`/teacher/assignment/${nextState.params.assignmentId}`)
+      return store.dispatch(loadCurrentAssignment(nextState.params.assignmentId))
+        .then(assignment => {
+          if(assignment.status === 'completed' || assignment.status === 'archived'){
+            replace(`/student/completed/${assignment.id}`)
+          }
+          if(assignment.type === 'quiz') return store.dispatch(loadQuiz(assignment.quiz_id))
+              .then(() => done())
+          else if (assignment.type === 'task') return store.dispatch(loadTask(assignment.task_id))
+              .then(() => done())
+          return done()
+        })
+      })
     .catch(err => console.error(err))
 }
 
@@ -141,7 +147,7 @@ export default function Root () {
           <Router path="/teacher" component={TeacherAppContainer} onEnter={onEnterTeacher}>
             <Route path="dashboard" component={TeacherDashboardContainer} onEnter={onEnterTeacher} />
             <Route path="assignments" component={TeacherFunctionsContainer} onEnter={onEnterTeacherFunctions} />
-            <Route path="students" component={TeacherStudentsContainer} onEnter={onEnterTeacher} />            
+            <Route path="students" component={TeacherStudentsContainer} onEnter={onEnterTeacher} />
             <Route path="student/:studentId" component={StudentTrackerContainer} onEnter={onEnterTeacherTracker} />
             <Route path="library" component={LibraryContainer} onEnter={onEnterTeacher} />
             <Route path="settings" component={TeacherSettingsContainer} onEnter={onEnterTeacher} />
