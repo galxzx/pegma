@@ -26,7 +26,7 @@ module.exports = require('express').Router()
 				model: Student,
 				include: {
 					model:User,
-					attributes:['name']
+					attributes:['firstName', 'lastName']
 				}
 			}
 		})
