@@ -4,11 +4,16 @@ import {Board} from 'APP/react-trello'
 
 
 const Tracker = (props) => {
+
+  const studentName = props.user.student_id ? 
+    props.user.firstName + ' ' + props.user.lastName :
+    props.currentStudent.firstName + ' ' + props.currentStudent.lastName
+
   return (
     <div>
       <div className="container panel-container">
         <section className="flex-child panel">
-          <div className="panel-header">{`${props.currentStudent.name}'s Tracker Board`}</div> 
+          <div className="panel-header">{`${studentName}'s Tracker Board`}</div> 
 
           <div key="StudentTracker">
               <Board 

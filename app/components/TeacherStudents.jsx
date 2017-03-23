@@ -19,7 +19,7 @@ const TeacherStudents = ({user, students}) => {
               <th>ID</th>              
               <th>Avatar</th>              
               <th>Full Name</th>
-              <th>Info?</th>
+              <th>Grade</th>
               <th>Manage Student</th>
             </tr>
           {students.map((student) => {
@@ -27,7 +27,7 @@ const TeacherStudents = ({user, students}) => {
               <tr key={student.id} className="student">
                 <td className="">{student.id}</td>
                 <td className=""><img src={student.user.avatar} className="avatar" /></td>
-                <td className="">{student.user.name}</td>
+                <td className="">{student.user.lastName + ', ' + student.user.firstName}</td>
                 <td className=""></td>                
                 <td className="options">
                   <a className="icon-star" href={'mailto:' + student.user.email}></a>
