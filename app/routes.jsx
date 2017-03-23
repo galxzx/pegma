@@ -72,8 +72,11 @@ const onEnterAssignment = (nextState) => {
   .then(() => {
     return store.dispatch(loadCurrentAssignment(nextState.params.assignmentId))
       .then(currentAssignment => {
-        if (currentAssignment.type === 'quiz') browserHistory.push(`/student/assignment/${currentAssignment.id}/quiz/${currentAssignment.quiz_id}`)
-    })
+        if (currentAssignment.type === 'quiz') {
+          store.dispatch(loadQuiz(currentAssignment.quiz_id))
+          browserHistory.push(`/student/assignment/${currentAssignment.id}/quiz/${currentAssignment.quiz_id}`)
+        }
+      })
   })
     .catch(err => console.error(err))
 }

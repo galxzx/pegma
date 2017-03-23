@@ -75,7 +75,8 @@ const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll, due_
 
               <th><input type="checkbox" onChange={(evt) => toggleCheckAll('#students', evt.target.checked)}/></th>
               <th>ID</th>
-              <th>Full Name</th>
+              <th>Last Name</th>
+              <th>First Name</th>
               <th>info </th>
               <th>info </th>
               <th>info </th>
@@ -86,7 +87,8 @@ const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll, due_
                 <td className="select"><input defaultValue={student.id} type="checkbox" /></td>
 
                 <td className="">{student.id}</td>
-                <td className="">{student.user.name}</td>
+                <td className="">{student.user.lastName}</td>
+                <td className="">{student.user.firstName}</td>
                 <td className="">{student.name}</td>
                 <td className="">{student.name}</td>
                 <td className="">{student.name}</td>
