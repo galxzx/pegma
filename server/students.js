@@ -5,10 +5,10 @@ const Student = db.model('students')
 const Assignment = db.model('assignments')
 const Teacher = db.model('teachers')
 const User = db.model('users')
-
+const Quiz = db.model('quizzes')
+const Task = db.model('tasks')
 
 const {mustBeLoggedIn, forbidden} = require('./auth.filters')
-
 
 module.exports = require('express').Router()
 	.get('/:studentId/assignments', mustBeLoggedIn, (req, res, next) =>
@@ -37,7 +37,7 @@ module.exports = require('express').Router()
 		{include: [
 			{model:User, attributes:['firstName', 'lastName']}, 
 			{model:Teacher, include:[{model:User, attributes:['firstName', 'lastName']}]}, 
-			{model: Assignment}]
+			{model: Assignment, include:[Quiz, Task]}]
 		})
 		.then(student => res.json(student))
 		.catch(next))
