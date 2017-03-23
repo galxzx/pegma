@@ -2,7 +2,7 @@ import React from 'react'
 
 const StudentCalendar= ({user, assignments}) => {
   return (
-    <div className="dashboard">
+    <div  key="StudentCalendar" className="dashboard">
       <div className="container panel-container">
 
         <section className="flex-child panel-calendar">

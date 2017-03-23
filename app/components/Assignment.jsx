@@ -2,7 +2,7 @@ import React from 'react'
 
 const Assignment = ({user, currentAssignment, children}) => {
   return (
-    <div className="dashboard">
+    <div key="Assignment" className="dashboard">
     	<div className="container panel-container">
 		      <section className="panel single-assignment">
 		      	<div className="panel-header">{ currentAssignment.title }</div>

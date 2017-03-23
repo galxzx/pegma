@@ -5,7 +5,7 @@ import UpdatePasswordContainer from '../containers/UpdatePasswordContainer'
 const StudentSettings = ({user, teacher, handleSubmit, updateStudent}) => {
 
   return (
-    <div className="dashboard">
+    <div key="StudentSettings" className="dashboard">
       <div className="container panel-container">
 
         <div className="flex-container">

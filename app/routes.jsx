@@ -92,10 +92,10 @@ export default function Root () {
           <Route path="/home" component={HomeContainer} />
           <IndexRedirect to="/home" />
           <Route path="/signup" component={SignUpContainer} onEnter={onEnterSignup} />
-          <Router path="/student"  component={StudentAppContainer} onEnter={onEnterStudent}>
-            <Route path="dashboard" component={StudentDashboardContainer} />
+          <Router path="/student"  component={StudentAppContainer} onEnter={onEnterStudent} >
+            <Route path="dashboard" component={StudentDashboardContainer} onEnter={onEnterStudent} />
             <Route path="tracker" component={StudentTrackerContainer} onEnter={onEnterStudentTracker}/>
-            <Route path="settings" component={StudentSettingsContainer} />
+            <Route path="settings" component={StudentSettingsContainer} onEnter={onEnterStudent} />
             <Route path="calendar" component={StudentCalendarContainer} />
             <Router path="assignment/:assignmentId" component={AssignmentContainer} onEnter={onEnterAssignment} >
               <Route path="quiz/:quizId" component={QuizContainer} onEnter={onEnterQuiz} />
@@ -104,11 +104,11 @@ export default function Root () {
             <IndexRedirect to="dashboard" />
           </Router>
           <Router path="/teacher" component={TeacherAppContainer} onEnter={onEnterTeacher}>
-            <Route path="dashboard" component={TeacherDashboardContainer} />
+            <Route path="dashboard" component={TeacherDashboardContainer} onEnter={onEnterTeacher} />
             <Route path="assignments" component={TeacherFunctionsContainer} onEnter={onEnterTeacherFunctions} />
-            <Route path="student/:studentId" component={StudentTrackerContainer} />
-            <Route path="library" component={LibraryContainer} />
-            <Route path="settings" component={TeacherSettingsContainer} />
+            <Route path="student/:studentId" component={StudentTrackerContainer} onEnter={onEnterTeacher} />
+            <Route path="library" component={LibraryContainer} onEnter={onEnterTeacher} />
+            <Route path="settings" component={TeacherSettingsContainer} onEnter={onEnterTeacher} />
             <Route path="calendar" component={TeacherCalendarContainer} />
             <Route path="createquiz" component={CreateQuizContainer} />
             <IndexRedirect to="dashboard" />
