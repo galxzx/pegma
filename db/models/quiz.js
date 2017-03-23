@@ -18,7 +18,7 @@ const Quiz = db.define('quizzes', {
   },
   subject: {
   	type: Sequelize.STRING,
-  	defaultValue: 'No Subject'
+  	allowNull: false
   }	
 });
 
