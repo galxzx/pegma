@@ -10,13 +10,13 @@ const TeacherStudents = ({user, students}) => {
     <div>
 
       <div className="flex-container">
-        <section className="flex-child panel functions">
+        <section className="flex-child panel">
           <div className="panel-header">{`${teacherName}'s`} Students</div>
         </section>
       </div>
 
       <div className="flex-container">
-        <table className="student-list fancy-colors">           
+        <table className="teacher-students fancy-colors">           
           <tbody id="students">
             <tr>
               <th>ID</th>              

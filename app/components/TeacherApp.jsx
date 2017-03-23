@@ -1,5 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+
 import Login from './Login'
 
 const TeacherApp = ({ user, children }) => {
@@ -33,16 +35,25 @@ const TeacherApp = ({ user, children }) => {
           </Link>
         </ul>
       </nav>
-      {children}
-    </div>
+      <ReactCSSTransitionGroup
+        transitionName="app"
+        transitionEnterTimeout={200}
+        transitionLeaveTimeout={200}
+        transitionAppear={true}
+        transitionAppearTimeout={200}>
+        {
+        React.cloneElement(children, {key: window.location.pathname})
+        }          
+    </ReactCSSTransitionGroup>         
+  </div>
   )
   :
   (
-    <div className="not-logged">
-      <span className="icon icon-exclamation-triangle"></span>
-      <h3>You must be logged in as a Teacher to see this page.</h3>
-      <Login />
-    </div>
+  <div className="not-logged">
+    <span className="icon icon-exclamation-triangle"></span>
+    <h3>You must be logged in as a Teacher to see this page.</h3>
+    <Login />
+  </div>
   )
 }
 
