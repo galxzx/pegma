@@ -15,7 +15,7 @@ const seedStudents = () => db.Promise.map([
   {id: 1, user: {firstName: 'Cody', lastName: 'the dog', email: 'cody@example.com', password: '1234'}, teacher_id: 1},
   {id: 2, user: {firstName: 'Corryn', lastName: 'Young', email: 'corryn.young@example.com', password: '1234'}, teacher_id: 1},
   {id: 3, user: {firstName: 'Jonathan', lastName: 'Mann', email: 'jonathan.mann@example.com', password: '1234'}, teacher_id: 1},
-  {id: 4, user: {name: 'Fabiano', lastName: 'Pires da Silva', email: 'fabiano.piresdasliva@example.com', password: '1234'}, teacher_id: 1},
+  {id: 4, user: {firstName: 'Fabiano', lastName: 'Pires da Silva', email: 'fabiano.piresdasliva@example.com', password: '1234'}, teacher_id: 1},
   {id: 5, user: {firstName: 'Aaron', lastName: 'Aichlmayr', email: 'aaron.aichlmayr@example.com', password: '1234'}, teacher_id: 1},
   {id: 6, user: {firstName: 'Jason', lastName: 'Lam', email: 'jason.lam@example.com', password: '1234'}, teacher_id: 1},
   {id: 7, user: {firstName: 'Jason', lastName: 'Powell', email: 'jason.powell@example.com', password: '1234'}, teacher_id: 1},
