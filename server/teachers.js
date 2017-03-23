@@ -17,7 +17,7 @@ module.exports = require('express').Router()
       .catch(next))
 	.get('/:teacherId/students', mustBeLoggedIn, (req, res, next) =>
 		Teacher.findById(req.params.teacherId)
-		.then(teacher => teacher.getStudents({include: [Assignment, User]}))
+		.then(teacher => teacher.getStudents({order:['id'],include: [Assignment, User]}))
 		.then(students => res.json(students))
 		.catch(next))
 	.post('/:teacherId/assignments', mustBeLoggedIn, (req, res, next) => {
@@ -25,18 +25,23 @@ module.exports = require('express').Router()
 		let item = req.body.item
 		let students = req.body.students
 		Teacher.findById(teacherId)
-		.then(teacher => teacher.getStudents({where: {id: {$in: students}}, include: [Assignment, User]}))	
+		.then(teacher => teacher.getStudents({where: {id: {$in: students}}, include: [Assignment, User]}))
 		.then(students => {
 			const assignments = students.map(student => {
 				return Object.assign({}, {student_id: student.id, teacher_id: teacherId}, item)
 			})
 			return Assignment.bulkCreate(assignments)
 		})
-		.then(() => Assignment.findAll({where: {teacher_id: teacherId}}))
-		.then((assignments) => {
-			res.json(assignments)
+		.then(() => Student.findAll({order: ['id'], where: {teacher_id: teacherId}, include: [Assignment, User]}))
+		.then((students) => {
+			res.json(students)
 		})
 		.catch(next)
 	})
-
+	.put('/assignments/:assignmentId', (req, res, next) =>
+	  Assignment.findById(req.params.assignmentId)
+	  	.then(assignment =>
+	  		assignment.update(req.body))
+	  	.then(assignment => res.json(assignment))
+	  	.catch(next))
 

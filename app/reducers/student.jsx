@@ -27,7 +27,7 @@ export const updateAssignment = (assignment) => ({ type: UPDATE_ASSIGNMENT, assi
 
 const initialState = {
   assignments: [],
-  currentAssignment: {id: 1, due_date: '2017-04-01', student_id: 1, status:'inProgress', teacher_id: 1, type:'quiz', quiz_id: 3, reward: 3, ETC: '2017-5-11', quiz_answers:{}},
+  currentAssignment: {},
   teacher: {},
   quiz: { questions:[] }
 }
