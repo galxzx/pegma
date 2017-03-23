@@ -20,7 +20,9 @@ const Signup = ({handleSubmit, typeValue, teachers, createAccount}) => {
                 <fieldset>
                   <div className="form-group">
 
-                    <Field type="text" name="name" label="Name" component={RenderField} /><br/>
+                    <Field type="text" name="firstName" label="First Name" component={RenderField} /><br/>
+
+                    <Field type="text" name="lastName" label="Last Name" component={RenderField} /><br/>
 
                     <Field type="text" name="email" label="Email" component={RenderField} /><br/>
 
@@ -49,7 +51,7 @@ const Signup = ({handleSubmit, typeValue, teachers, createAccount}) => {
                         <Field name="teacher" component="select">
                           <option></option>
                           {teachers.map(teacher =>
-                            <option key={teacher.id} value={teacher.id}>{teacher.user.name}</option>
+                            <option key={teacher.id} value={teacher.id}>{teacher.user.firstName + ' ' + teacher.user.lastName}</option>
                             )}
                         </Field>
                       </div>
