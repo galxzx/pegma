@@ -31,12 +31,13 @@ import TeacherFunctionsContainer from './containers/TeacherFunctionsContainer'
 import SignUpContainer from './containers/SignUpContainer'
 import CreateQuizContainer from './containers/CreateQuizContainer'
 import CompletedAssignmentContainer from './containers/CompletedAssignmentContainer'
+import TeacherStudentsContainer from './containers/TeacherStudentsContainer'
 
 
 import {whoami} from './reducers/auth'
 
 import {loadAssignments, loadCurrentAssignment, loadStudent, loadQuiz} from './reducers/student'
-import {loadStudents} from './reducers/teacher'
+import {loadStudents, loadCurrentStudent} from './reducers/teacher'
 import {loadLibrary} from './reducers/library'
 
 import {loadBoard} from './reducers/tracker'
@@ -51,9 +52,11 @@ const onEnterStudent = (nextState, replace) => (
     .then(res => store.dispatch(loadStudent()))
 )
 
-const onEnterTeacher = (nextState, replace) => (
+const onEnterTeacher = (nextState, replace, done) => (
   store.dispatch(whoami())
     .then(res => store.dispatch(loadStudents()))
+    .then(res => done())
+    .catch(err => console.error(err))
 )
 
 const onEnterTeacherFunctions = (nextState, replace) => (
@@ -91,9 +94,15 @@ const onEntercompAssign = (nextState) => {
 const onEnterStudentTracker = (nextState, replace, done) => {
   onEnterStudent(nextState, replace)
   .then(res => store.dispatch(loadBoard()))
-  .then(done())
+  .then(done)
 }
 
+const onEnterTeacherTracker = (nextState, replace, done) => {
+  store.dispatch(loadCurrentStudent(nextState.params.studentId))
+  .then(res => store.dispatch(loadBoard()))
+  .then(done)
+  .catch(err => console.error(err))
+}
 
 export default function Root () {
   return (
@@ -118,7 +127,8 @@ export default function Root () {
           <Router path="/teacher" component={TeacherAppContainer} onEnter={onEnterTeacher}>
             <Route path="dashboard" component={TeacherDashboardContainer} onEnter={onEnterTeacher} />
             <Route path="assignments" component={TeacherFunctionsContainer} onEnter={onEnterTeacherFunctions} />
-            <Route path="student/:studentId" component={StudentTrackerContainer} onEnter={onEnterTeacher} />
+            <Route path="students" component={TeacherStudentsContainer} onEnter={onEnterTeacher} />            
+            <Route path="student/:studentId" component={StudentTrackerContainer} onEnter={onEnterTeacherTracker} />
             <Route path="library" component={LibraryContainer} onEnter={onEnterTeacher} />
             <Route path="settings" component={TeacherSettingsContainer} onEnter={onEnterTeacher} />
             <Route path="calendar" component={TeacherCalendarContainer} />

@@ -1,16 +1,13 @@
 import axios from 'axios'
 import { browserHistory } from 'react-router'
 
-
 /* -----------------    ACTIONS     ------------------ */
 
 export const SET_ASSIGNMENTS = 'SET_ASSIGNMENTS'
 export const SET_CURRENT_ASSIGNMENT  = 'SET_CURRENT_ASSIGNMENT'
 export const SET_TEACHER = 'SET_TEACHER'
 export const SET_QUIZ = 'SET_QUIZ'
-
 export const UPDATE_ASSIGNMENT = 'UPDATE_ASSIGNMENT'
-
 
 /* ------------   ACTION CREATORS     ------------------ */
 
@@ -18,10 +15,7 @@ export const setAssignments = (assignments) => ({ type: SET_ASSIGNMENTS, assignm
 export const setCurrentAssignment = (assignment) => ({ type: SET_CURRENT_ASSIGNMENT, assignment })
 export const setTeacher = (teacher) => ({ type: SET_TEACHER, teacher })
 export const setQuiz = (quiz) => ({ type: SET_QUIZ, quiz})
-
 export const updateAssignment = (assignment) => ({ type: UPDATE_ASSIGNMENT, assignment })
-
-
 
 /* ------------       REDUCERS     ------------------ */
 
@@ -30,8 +24,7 @@ const initialState = {
   currentAssignment: {},
   teacher: {},
   quiz: { questions:[] }
-}
-
+} 
 
 export default function reducer(prevState = initialState, action) {
 

@@ -2,21 +2,21 @@ import axios from 'axios'
 import { browserHistory } from 'react-router'
 import { loadCurrentAssignment } from './student'
 
-
 /* -----------------    ACTIONS     ------------------ */
 
 export const SET_STUDENTS  = 'SET_STUDENTS'
-// export const SET_ASSIGNMENTS = 'ADD_ASSIGNMENTS'
+export const SET_CURRENT_STUDENT  = 'SET_CURRENT_STUDENT'
 
 /* ------------   ACTION CREATORS     ------------------ */
 
 export const setStudents = (students) => ({ type: SET_STUDENTS, students })
-// export const setAssignments = (assignments) => ({ type: ADD_ASSIGNMENTS, assignments })
+export const setCurrentStudent = (student) => ({ type: SET_CURRENT_STUDENT, student })
 
 /* ------------       REDUCERS     ------------------ */
 
 const initialState = {
-  students: []
+  students: [],
+  currentStudent: {}
 }
 
 export default function reducer(prevState = initialState, action) {
@@ -29,11 +29,9 @@ export default function reducer(prevState = initialState, action) {
       newState.students = action.students
       break
 
-    // case SET_ASSIGNMENTS:
-    //   action.assignments.forEach(assignment =>
-    //     newState.student[assignment.student_id].assignments.push(assignment)
-    //   )
-    //   break
+    case SET_CURRENT_STUDENT:
+      newState.currentStudent = action.student
+      break
 
     default:
       return prevState
@@ -42,8 +40,6 @@ export default function reducer(prevState = initialState, action) {
 }
 
 /* ------------       DISPATCHERS     ------------------ */
-
-// Add a new user
 
 export const loadStudents = () => (dispatch, getState) => {
   let teacherId = getState().auth.teacher_id
@@ -64,10 +60,16 @@ export const addAssignmentsRequest = (item, students) => (dispatch, getState) =>
     .catch(err => console.error(err))
 }
 
-export const updateGrade = (grade, assignmentId) =>
-  (dispatch) =>{
-    axios.put(`/api/teachers/assignments/${assignmentId}`, {grade, status:'archived'})
-      .then(res => res.data)
-      .then(assignment => dispatch(loadCurrentAssignment(assignment.id)))
+export const updateGrade = (grade, assignmentId) => (dispatch) => {
+  axios.put(`/api/teachers/assignments/${assignmentId}`, {grade, status:'archived'})
+    .then(res => res.data)
+    .then(assignment => dispatch(loadCurrentAssignment(assignment.id)))
+  .catch(err => console.error(err))
+}
+
+export const loadCurrentStudent = (studentId) => (dispatch, getState) => 
+   axios.get(`/api/students/${studentId}/`)
+    .then(res => res.data)
+    .then(student => dispatch(setCurrentStudent(student)))
     .catch(err => console.error(err))
-  }
+

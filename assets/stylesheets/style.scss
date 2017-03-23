@@ -45,7 +45,7 @@ html {
 
 .app-enter.app-enter-active {
   opacity: 1;
-  transition: opacity 5000ms ease-in;
+  transition: opacity 200ms ease-in;
 }
 
 .app-leave {
@@ -54,7 +54,7 @@ html {
 
 .app-leave.app-leave-active {
   opacity: 0.01;
-  transition: opacity 5000ms ease-in;
+  transition: opacity 200ms ease-in;
 }
 
 .app-appear {
@@ -63,7 +63,7 @@ html {
 
 .app-appear.app-appear-active {
   opacity: 1;
-  transition: opacity 500ms ease-in;
+  transition: opacity 200ms ease-in;
 }
 
 
@@ -830,12 +830,14 @@ table.student-list {
 		text-align: center;	
 		padding: 10px;
 		width: 18%;		
-
 	}
 
 	td:first-child, td:nth-child(2) {
-			width: 5%;
-		}	
+		width: 5%;
+	}	
+	tr {
+		background: #f8f8f8;
+	}
 	tr:nth-child(odd) {
 		background: #f1f1f1;
 	}
@@ -847,4 +849,35 @@ table.student-list {
 		}
 	}
 
+	td.options > * {
+		text-decoration: none;
+		color: #fff;
+		background: $red;
+		font-size: 24pt;
+		padding: 10px;
+		padding-bottom: 5px;
+		margin: 10px;
+	}
+	td.options > *:hover {
+		opacity: .7;
+	}	
+	td.options > *:first-child {
+		background: $blue;
+	}		
+}
+
+table.student-list.fancy-colors {
+	th {
+		background: $red;
+
+	}
+	tr {
+    -webkit-transition: all 200ms; 
+    transition: all 200ms;		
+	}
+	tr:hover {
+		background: $yellow;
+    -webkit-transition: all 200ms; 
+    transition: all 200ms;				
+	}
 }

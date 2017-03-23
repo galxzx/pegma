@@ -36,8 +36,6 @@ const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll, due_
             }
             </select>
 
-
-
             <select id="quizzes" name="quizzes">
               <option>Assign Quiz...</option>
             {
@@ -54,7 +52,6 @@ const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll, due_
             }
             </select>
 
-
             <label>Due Date</label>
             <DatePicker selected={ due_date } onChange={handleChange} />
 
@@ -65,31 +62,30 @@ const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll, due_
 
           </form>
         </div>
-
       </div>
 
       <div className="flex-container">
         <table className="student-list">
           <tbody id="students">
             <tr id="filters">
-
               <th><input type="checkbox" onChange={(evt) => toggleCheckAll('#students', evt.target.checked)}/></th>
               <th>ID</th>
               <th>Full Name</th>
-              <th>info </th>
-              <th>info </th>
-              <th>info </th>
+              <th>Assigned</th>
+              <th>Doing </th>              
+              <th>Completed </th>
+              <th>Archived </th>
             </tr>
           {students.map((student) => {
             return (
               <tr key={student.id} className="student">
                 <td className="select"><input defaultValue={student.id} type="checkbox" /></td>
-
                 <td className="">{student.id}</td>
                 <td className="">{student.user.name}</td>
                 <td className="">{student.name}</td>
                 <td className="">{student.name}</td>
                 <td className="">{student.name}</td>
+                <td className="">{student.name}</td>                
               </tr>
             )
           })}

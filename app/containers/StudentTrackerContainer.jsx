@@ -13,8 +13,8 @@ import {
 const mapState = (state) => {
   return {
     user: state.auth,
-    assignments: state.student.assignments,
-    board: state.tracker.board
+    board: state.tracker.board,
+    currentStudent: state.teacher.currentStudent
   }
 }
 
