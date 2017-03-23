@@ -12,7 +12,7 @@ const {mustBeLoggedIn, forbidden} = require('./auth.filters')
 module.exports = require('express').Router()
 
   .get('/', (req, res, next) =>
-    Teacher.findAll({include:{model: User, attributes:['name']}})
+    Teacher.findAll({include:{model: User, attributes:['firstName', 'lastName']}})
       .then(teachers => res.json(teachers))
       .catch(next))
 	.get('/:teacherId/students', mustBeLoggedIn, (req, res, next) =>

@@ -1,14 +1,16 @@
 import React from 'react'
-
-const Assignment = ({user, currentAssignment, children}) => {
+import QuizContainer from '../containers/QuizContainer'
+import TaskContainer from '../containers/TaskContainer'
+const Assignment = ({user, currentAssignment}) => {
   return (
     <div key="Assignment" className="dashboard">
     	<div className="container panel-container">
 		      <section className="panel single-assignment">
 		      	<div className="panel-header">{ currentAssignment.title }</div>
 			      <div className="panel-subheader">Grade: {currentAssignment.grade ? currentAssignment.grade : 0}/100</div>
-			      {children}
-			    </section> 
+			    </section>
+          {currentAssignment.type === 'quiz' ? <QuizContainer /> : null }
+          {currentAssignment.type === 'task' ? <TaskContainer /> : null }
 	    </div>
     </div>
   )

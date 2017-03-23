@@ -36,7 +36,7 @@ import TeacherStudentsContainer from './containers/TeacherStudentsContainer'
 
 import {whoami} from './reducers/auth'
 
-import {loadAssignments, loadCurrentAssignment, loadStudent, loadQuiz} from './reducers/student'
+import {loadAssignments, loadCurrentAssignment, loadStudent, loadQuiz, loadTask} from './reducers/student'
 import {loadStudents, loadCurrentStudent} from './reducers/teacher'
 import {loadLibrary} from './reducers/library'
 
@@ -47,9 +47,26 @@ const onEnterSignup = () => {
   store.dispatch(loadTeachers())
 }
 
-const onEnterStudent = (nextState, replace) => (
+const onEnterStudent = (nextState, replace, callback) => (
   store.dispatch(whoami())
     .then(res => store.dispatch(loadStudent()))
+    .then(res => {
+      // if(nextState.params.assignmentId){
+      //   console.log('assignmentId')
+      //   return store.dispatch(loadCurrentAssignment(nextState.params.assignmentId))
+      //     .then(assignment => {
+      //       if(assignment.type === 'quiz') return store.dispatch(loadQuiz(assignment.quiz_id))
+      //           .then(() => callback())
+      //       else if (assignment.type === 'task') return store.dispatch(loadTask(assignment.task_id))
+      //           .then(() => callback())
+      //       return callback()
+      //     })
+
+      // }
+        callback()
+    })
+
+    .catch(err => console.error(err))
 )
 
 const onEnterTeacher = (nextState, replace, done) => (
@@ -70,16 +87,20 @@ const onEnterQuiz = () => {
   if (currentAssignment.type === 'quiz' && currentAssignment.status === 'completed') browserHistory.push(`/student/assignment/${currentAssignment.id}/completedQuiz`)
 }
 
-const onEnterAssignment = (nextState) => {
-  store.dispatch(whoami())
-  .then(() => {
-    return store.dispatch(loadCurrentAssignment(nextState.params.assignmentId))
-      .then(currentAssignment => {
-        if (currentAssignment.type === 'quiz') browserHistory.push(`/student/assignment/${currentAssignment.id}/quiz/${currentAssignment.quiz_id}`)
-    })
-  })
-    .catch(err => console.error(err))
+const onEnterAssignment = (nextState, replace, done) => {
+
+        return store.dispatch(loadCurrentAssignment(nextState.params.assignmentId))
+          .then(assignment => {
+            if(assignment.type === 'quiz') return store.dispatch(loadQuiz(assignment.quiz_id))
+                .then(() => done())
+            else if (assignment.type === 'task') return store.dispatch(loadTask(assignment.task_id))
+                .then(() => done())
+            return done()
+          })
+          .catch(err => console.error(err))
 }
+
+
 
 const onEntercompAssign = (nextState) => {
   store.dispatch(whoami())
@@ -113,12 +134,12 @@ export default function Root () {
           <IndexRedirect to="/home" />
           <Route path="/signup" component={SignUpContainer} onEnter={onEnterSignup} />
           <Router path="/student"  component={StudentAppContainer} onEnter={onEnterStudent}>
-            <Route path="dashboard" component={StudentDashboardContainer} onEnter={onEnterStudent}/>
+            <Route path="dashboard" component={StudentDashboardContainer} />
             <Route path="tracker" component={StudentTrackerContainer} onEnter={onEnterStudentTracker}/>
-            <Route path="reportcard" component={StudentReportCardContainer} onEnter={onEnterStudent}/>
+            <Route path="reportcard" component={StudentReportCardContainer} />
             <Route path="settings" component={StudentSettingsContainer} />
             <Route path="calendar" component={StudentCalendarContainer} />
-            <Router path="assignment/:assignmentId" component={AssignmentContainer} onEnter={onEnterAssignment} >
+            <Router path="assignment/:assignmentId" component={AssignmentContainer} onEnter={onEnterAssignment}>
               <Route path="quiz/:quizId" component={QuizContainer} onEnter={onEnterQuiz} />
               <Route path="completedQuiz" component={CompletedQuizContainer} />
             </Router>

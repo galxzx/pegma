@@ -81,7 +81,8 @@ const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll, due_
               <tr key={student.id} className="student">
                 <td className="select"><input defaultValue={student.id} type="checkbox" /></td>
                 <td className="">{student.id}</td>
-                <td className="">{student.user.name}</td>
+                <td className="">{student.user.lastName}</td>
+                <td className="">{student.user.firstName}</td>
                 <td className="">{student.name}</td>
                 <td className="">{student.name}</td>
                 <td className="">{student.name}</td>
