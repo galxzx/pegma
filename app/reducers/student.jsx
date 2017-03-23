@@ -142,7 +142,7 @@ export const gradeQuiz = () => (dispatch, getState) => {
     .then(res => res.data)
     .then(assignment => {
       dispatch(setCurrentAssignment(assignment))
-      browserHistory.push(`/student/assignment/${assignment.id}/completedQuiz`)
+      browserHistory.push(`/student/completed/${assignment.id}/`)
     })
     .catch(err => console.error(err))
 }
