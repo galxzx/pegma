@@ -6,23 +6,23 @@ const db = require('APP/db')
 const User = db.model('users')
 const Question = db.model('questions')
 const seedTeachers = () => db.Promise.map([
-  {user: {name: 'Geoff Bass', email: 'geoff.bass@example.com', password: '1234'}},
-  {user: {name: 'Freda Nada', email: 'freda.nada@example.com', password: '1234'}},
-  {user: {name: 'Andrew Gionfriddo', email: 'andrew.gionfriddo@example.com', password: '1234'}}
+  {id: 1, user: {firstName: 'Geoff', lastName: 'Bass', email: 'geoff.bass@example.com', password: '1234'}},
+  {id: 2, user: {firstName: 'Freda', lastName: 'Nada', email: 'freda.nada@example.com', password: '1234'}},
+  {id: 3, user: {firstName: 'Andrew', lastName: 'Gionfriddo', email: 'andrew.gionfriddo@example.com', password: '1234'}}
 ], teacher => db.model('teachers').create(teacher, {include:[User]}))
 
 const seedStudents = () => db.Promise.map([
-  {user: {name: 'Cody', email: 'cody@example.com', password: '1234'}, teacher_id: 1},
-  {user: {name: 'Corryn Young', email: 'corryn.young@example.com', password: '1234'}, teacher_id: 1},
-  {user: {name: 'Jonathan', email: 'jonathan.mann@example.com', password: '1234'}, teacher_id: 1},
-  {user: {name: 'Fabiano Pires da Silva', email: 'fabiano.piresdasliva@example.com', password: '1234'}, teacher_id: 1},
-  {user: {name: 'Aaron Aichlmayr', email: 'aaron.aichlmayr@example.com', password: '1234'}, teacher_id: 1},
-  {user: {name: 'Jason Lam', email: 'jason.lam@example.com', password: '1234'}, teacher_id: 1},
-  {user: {name: 'Jason Powell', email: 'jason.powell@example.com', password: '1234'}, teacher_id: 1},
-  {user: {name: 'Alan', email: 'alan.cambell@example.com', password: '1234'}, teacher_id: 1},
-  {user: {name: 'Andrew Basore', email: 'andrew.basore@example.com', password: '1234'}, teacher_id: 1},
-  {user: {name: 'Jamie Yu', email: 'jamie.yu@example.com', password: '1234'}, teacher_id: 1},
-  {user: {name: 'Kimberly Winston-Jackson', email: 'kimberly.winstonjackson@example.com', password: '1234'}, teacher_id: 1}
+  {id: 1, user: {firstName: 'Cody', lastName: 'the dog', email: 'cody@example.com', password: '1234'}, teacher_id: 1},
+  {id: 2, user: {firstName: 'Corryn', lastName: 'Young', email: 'corryn.young@example.com', password: '1234'}, teacher_id: 1},
+  {id: 3, user: {firstName: 'Jonathan', lastName: 'Mann', email: 'jonathan.mann@example.com', password: '1234'}, teacher_id: 1},
+  {id: 4, user: {name: 'Fabiano', lastName: 'Pires da Silva', email: 'fabiano.piresdasliva@example.com', password: '1234'}, teacher_id: 1},
+  {id: 5, user: {firstName: 'Aaron', lastName: 'Aichlmayr', email: 'aaron.aichlmayr@example.com', password: '1234'}, teacher_id: 1},
+  {id: 6, user: {firstName: 'Jason', lastName: 'Lam', email: 'jason.lam@example.com', password: '1234'}, teacher_id: 1},
+  {id: 7, user: {firstName: 'Jason', lastName: 'Powell', email: 'jason.powell@example.com', password: '1234'}, teacher_id: 1},
+  {id: 8, user: {firstName: 'Alan', lastName: 'Campbell', email: 'alan.cambell@example.com', password: '1234'}, teacher_id: 1},
+  {id: 9, user: {firstName: 'Andrew', lastName: 'Basore', email: 'andrew.basore@example.com', password: '1234'}, teacher_id: 1},
+  {id: 10, user: {firstName: 'Jamie', lastName: 'Yu', email: 'jamie.yu@example.com', password: '1234'}, teacher_id: 1},
+  {id: 11, user: {firstName: 'Kimberly', lastName: 'Winston-Jackson', email: 'kimberly.winstonjackson@example.com', password: '1234'}, teacher_id: 1}
 ], students => db.model('students').create(students, {include:[User]}))
 
 //http://www.mathplanet.com/education/pre-algebra
