@@ -19,6 +19,7 @@ import TeacherDashboardContainer from './containers/TeacherDashboardContainer'
 import StudentTrackerContainer from './containers/StudentTrackerContainer'
 import StudentSettingsContainer from './containers/StudentSettingsContainer'
 import StudentCalendarContainer from './containers/StudentCalendarContainer'
+import StudentReportCardContainer from './containers/StudentReportCardContainer'
 import AssignmentContainer from './containers/AssignmentContainer'
 import ClassTrackerContainer from './containers/ClassTrackerContainer'
 import LibraryContainer from './containers/LibraryContainer'
@@ -95,6 +96,7 @@ export default function Root () {
           <Router path="/student"  component={StudentAppContainer} onEnter={onEnterStudent}>
             <Route path="dashboard" component={StudentDashboardContainer} />
             <Route path="tracker" component={StudentTrackerContainer} onEnter={onEnterStudentTracker}/>
+            <Route path="reportcard" component={StudentReportCardContainer} onEnter={onEnterStudent}/>
             <Route path="settings" component={StudentSettingsContainer} />
             <Route path="calendar" component={StudentCalendarContainer} />
             <Router path="assignment/:assignmentId" component={AssignmentContainer} onEnter={onEnterAssignment} >
