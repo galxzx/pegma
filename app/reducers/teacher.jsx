@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { browserHistory } from 'react-router'
+import { loadCurrentAssignment } from './student'
 
 
 /* -----------------    ACTIONS     ------------------ */
@@ -62,3 +63,11 @@ export const addAssignmentsRequest = (item, students) => (dispatch, getState) =>
     })
     .catch(err => console.error(err))
 }
+
+export const updateGrade = (grade, assignmentId) =>
+  (dispatch) =>{
+    axios.put(`/api/teachers/assignments/${assignmentId}`, {grade, status:'archived'})
+      .then(res => res.data)
+      .then(assignment => dispatch(loadCurrentAssignment(assignment.id)))
+    .catch(err => console.error(err))
+  }

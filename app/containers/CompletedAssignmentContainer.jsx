@@ -1,6 +1,7 @@
 import {connect} from 'react-redux'
 
 import CompletedAssignment from '../components/CompletedAssignment'
+import { updateGrade } from '../reducers/teacher'
 
 
 const mapState = (state) => {
@@ -9,4 +10,6 @@ const mapState = (state) => {
     currentAssignment: state.student.currentAssignment
   }
 }
-export default connect(mapState)(CompletedAssignment)
+
+const mapDispatch = { updateGrade }
+export default connect(mapState, mapDispatch)(CompletedAssignment)
