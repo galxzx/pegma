@@ -62,6 +62,7 @@
     "pretty-error": "^2.0.2",
     "rc-datepicker": "^5.0.4",
     "react": "^15.3.2",
+    "react-addons-css-transition-group": "^15.4.2",
     "react-datepicker": "^0.43.0",
     "react-dnd": "^2.2.4",
     "react-dnd-html5-backend": "^2.2.4",

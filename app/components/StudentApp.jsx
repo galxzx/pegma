@@ -1,5 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+
 import Login from './Login'
 
 const StudentApp = ({ user, children }) => {
@@ -28,8 +30,15 @@ const StudentApp = ({ user, children }) => {
             <div className="nav-text">Settings</div>
           </Link>
         </ul>
-      </nav>      
-      {children}
+      </nav>   
+      <ReactCSSTransitionGroup
+          transitionName="app"
+          transitionEnterTimeout={5000}
+          transitionLeaveTimeout={5000}
+          transitionAppear={true}
+          transitionAppearTimeout={500}>
+        {children}
+      </ReactCSSTransitionGroup>         
     </div>
   )
   : 

@@ -8,7 +8,7 @@ import StudentAssignmentsPanel from './Dashboard/StudentAssignmentsPanel'
 const StudentDashboard = ({user, assignments, teacher}) => {
 
   return (
-		<div className="dashboard">
+		<div key="StudentDashboard" className="dashboard">
       <div className="container panel-container">
         
         <StudentStats assignments={assignments} />

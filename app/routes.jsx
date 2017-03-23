@@ -116,11 +116,11 @@ export default function Root () {
             <IndexRedirect to="dashboard" />
           </Router>
           <Router path="/teacher" component={TeacherAppContainer} onEnter={onEnterTeacher}>
-            <Route path="dashboard" component={TeacherDashboardContainer} />
+            <Route path="dashboard" component={TeacherDashboardContainer} onEnter={onEnterTeacher} />
             <Route path="assignments" component={TeacherFunctionsContainer} onEnter={onEnterTeacherFunctions} />
-            <Route path="student/:studentId" component={StudentTrackerContainer} />
-            <Route path="library" component={LibraryContainer} />
-            <Route path="settings" component={TeacherSettingsContainer} />
+            <Route path="student/:studentId" component={StudentTrackerContainer} onEnter={onEnterTeacher} />
+            <Route path="library" component={LibraryContainer} onEnter={onEnterTeacher} />
+            <Route path="settings" component={TeacherSettingsContainer} onEnter={onEnterTeacher} />
             <Route path="calendar" component={TeacherCalendarContainer} />
             <Route path="createquiz" component={CreateQuizContainer} />
             <Route path="assignment/:assignmentId" component={CompletedAssignmentContainer} onEnter={onEntercompAssign} />
