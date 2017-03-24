@@ -81,7 +81,17 @@ export const addQuiz = () => (dispatch, getState) => {
     return Object.assign(question, {answer, type:'multiple-choice'})
   })
   const formattedQuiz = Object.assign({}, newQuiz, {questions, teacher_id: getState().auth.teacher_id} )
-  axios.post('/api/library/quiz', formattedQuiz)
+  return axios.post('/api/library/quiz', formattedQuiz)
     .then(() => dispatch(loadLibrary))
+    .then(() => browserHistory.push('/teacher/assignments'))
+    .catch(err => console.error(err))
+}
+
+export const addTask = () => (dispatch, getState) => {
+  const newTask = getState().form.createtask.values
+  const teacher_id = getState().auth.teacher_id
+  return axios.post('/api/library/task', Object.assign(newTask, {teacher_id}))
+    .then(() => dispatch(loadLibrary))
+    .then(() => browserHistory.push('/teacher/assignments'))
     .catch(err => console.error(err))
 }

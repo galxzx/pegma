@@ -24,9 +24,9 @@ const CreateTask = ({handleSubmit, submitting, addTask}) => {
         <div className="flex-container">
 
           <section className="flex-child panel settings">
-            <div className="panel-header">Create New Quiz</div>
+            <div className="panel-header">Create New Task</div>
             <div className="settings-content">
-              <form onSubmit={handleSubmit(addQuiz)}>
+              <form onSubmit={handleSubmit(addTask)}>
                 <fieldset>
                   <div className="form-group">
                     <Field name="title" type="text" component={RenderField} label="Title"/>
@@ -54,7 +54,7 @@ const CreateTask = ({handleSubmit, submitting, addTask}) => {
                         </Field>
                         <Field name="grade_level" component={renderError} />
                     </div>
-                    <Field name="description" type="textarea" component={renderTextArea} label="Description"/>
+                    <Field name="description" type="textarea" component={renderTextArea} label="Description" />
 
                     <button type="submit" disabled={submitting} className="btn btn-primary">Create Task</button>
                   </div>

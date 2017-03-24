@@ -31,3 +31,7 @@ module.exports = require('express').Router()
     Quiz.create(req.body, {include:[Question]})
       .then(quiz => res.send(quiz))
       .catch(next))
+  .post('/task', (req, res, next) =>
+    Task.create(req.body)
+    .then(task => res.send(task))
+    .catch(next))
