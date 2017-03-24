@@ -17,6 +17,9 @@ html {
   align-items: stretch;
   min-height: 100vh; }
 
+.disabled {
+  color: #9C9C9B !important; }
+
 .app-enter {
   opacity: 0.01; }
 
