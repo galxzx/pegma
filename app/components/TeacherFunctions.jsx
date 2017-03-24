@@ -6,7 +6,7 @@ import moment from 'moment'
 import { Link } from 'react-router'
 import DueDate from '../containers/DueDateContainer'
 
-const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll, due_date, handleChange}) => {
+const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll, due_date, handleChange, message}) => {
 
   const studentStats = (assignments) => {
     const stats = {'assigned':0, 'doing':0, 'completed':0, 'archived':0}
@@ -67,13 +67,17 @@ const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll, due_
 
             <button type="submit">Assign Task</button>
 
-
-            <span id="message-box"></span>
-
           </form>
         </div>
-      </div>
 
+       </div>
+ 
+      <div className="flex-container"> 
+        <div className="flex-child">
+          <div id="message-box">{ message }</div>
+        </div>  
+      </div>
+ 
       <div className="flex-container">
         <table className="teacher-assignments">
           <tbody id="students">
