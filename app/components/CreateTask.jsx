@@ -4,7 +4,7 @@ import { Field, FieldArray, reduxForm } from 'redux-form'
 import RenderField from './RenderField'
 import renderQuestions from './CreateQuestions'
 
-const renderError = ({ meta: { touched, error } }) => touched && error && <span><span className="icon icon-burst-new blue"></span><span className="formError">{error}</span></span>  || null
+const renderError = ({ meta: { touched, error } }) => touched && error && <span><span className="icon icon-exclamation-circle red"></span><span className="formError"> {error}</span></span>  || null
 
 const renderTextArea = ({input, label, type,  meta: { touched, error, warning }}) => (
     <div>
@@ -23,7 +23,7 @@ const CreateTask = ({handleSubmit, submitting, addTask}) => {
 
         <div className="flex-container">
 
-          <section className="flex-child panel settings">
+          <section className="flex-child panel functions">
             <div className="panel-header">Create New Task</div>
             <div className="settings-content">
               <form onSubmit={handleSubmit(addTask)}>
