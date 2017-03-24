@@ -3,7 +3,7 @@ import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import DatePicker from 'react-datepicker'
 import moment from 'moment'
-
+import { Link } from 'react-router'
 import DueDate from '../containers/DueDateContainer'
 
 
@@ -13,6 +13,10 @@ const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll, due_
       <div className="flex-container">
         <section className="flex-child panel">
           <div className="panel-header">Teacher Functions</div>
+          <div className="panel-subheader">
+            <Link to="/teacher/createtask"><button>Make New Task</button></Link>
+            <Link to="/teacher/createquiz"><button>Make New Quiz</button></Link>
+          </div>
         </section>
       </div>
 
@@ -71,9 +75,9 @@ const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll, due_
               <th><input type="checkbox" onChange={(evt) => toggleCheckAll('#students', evt.target.checked)}/></th>
               <th>ID</th>
               <th>Last</th>
-              <th>First</th>              
+              <th>First</th>
               <th>Assigned</th>
-              <th>Doing </th>              
+              <th>Doing </th>
               <th>Completed </th>
               <th>Archived </th>
             </tr>
@@ -87,7 +91,7 @@ const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll, due_
                 <td className="">{student.studentStats.assigned}</td>
                 <td className="">{student.studentStats.doing}</td>
                 <td className="">{student.studentStats.completed}</td>
-                <td className="">{student.studentStats.archived}</td>                
+                <td className="">{student.studentStats.archived}</td>
               </tr>
             )
           })}
