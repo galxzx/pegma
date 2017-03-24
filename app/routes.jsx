@@ -6,7 +6,6 @@ import {connect, Provider} from 'react-redux'
 
 import store from './store'
 
-
 import Login from './components/Login'
 import WhoAmI from './components/WhoAmI'
 
@@ -34,13 +33,11 @@ import CreateTaskContainer from './containers/CreateTaskContainer'
 import CompletedAssignmentContainer from './containers/CompletedAssignmentContainer'
 import TeacherStudentsContainer from './containers/TeacherStudentsContainer'
 
-
 import {whoami} from './reducers/auth'
 
 import {loadAssignments, loadCurrentAssignment, loadStudent, loadQuiz, loadTask} from './reducers/student'
 import {loadStudents, loadCurrentStudent} from './reducers/teacher'
 import {loadLibrary} from './reducers/library'
-
 import {loadBoard} from './reducers/tracker'
 import {loadTeachers} from './reducers/signup'
 
@@ -97,8 +94,6 @@ const onEnterAssignment = (nextState, replace, done) => {
       })
     .catch(err => console.error(err))
 }
-
-
 
 const onEntercompAssign = (nextState, replace, done) => {
   store.dispatch(whoami())

@@ -8,6 +8,7 @@ const rootReducer = combineReducers({
   library: require('./library').default,
   tracker: require('./tracker').default,
   signup: require('./signup').default,
+  chatbox: require('./chatbox').default,
   form
 })
 
