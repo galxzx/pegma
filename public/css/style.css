@@ -449,8 +449,6 @@ footer {
     .quiz .question-group .inquiry-options {
       list-style: none;
       padding: 0; }
-    .quiz .question-group .bucetudo {
-      background: purple; }
     .quiz .question-group .inquiry-option {
       margin-bottom: 5px; }
       .quiz .question-group .inquiry-option input {
@@ -472,6 +470,10 @@ footer {
 .quiz-completed .inquiry-options {
   list-style: disc !important;
   margin-left: 19px !important; }
+
+.quiz-completed-description {
+  padding: 10px 30px;
+  font-style: italic; }
 
 /* STUDENT-TRACKER */
 #student-tracker div.list-container {
