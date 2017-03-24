@@ -2,18 +2,18 @@ import React from 'react'
 
 const StudentReportCard = ({user, assignments, teacher}) => {
   const reportCard = [];
-  // Loop through assignments
+  
+  // CALCULATE GRADES
   assignments.forEach(assignment => {
     let instance;
     // Find out if it is a quiz or task
-    if (assignment.quiz) instance = assignment.quiz;
-    else if (assignment.task) instance = assignment.task;
-    let subject = instance.subject;
-    // If subject object doesn't exist in Report Card
+    if (assignment.quiz) instance = assignment.quiz
+    else if (assignment.task) instance = assignment.task
+    let subject = instance.subject
+    // If subject object doesn't exist in Report Card, create a new one
     let subjectIndex = reportCard.findIndex((obj) => {
       return obj.subject == subject     
     })
-    // If subect doesn't exist, create it
     if (subjectIndex === -1) {
       let newSubject = {
         subject: subject,
@@ -25,15 +25,17 @@ const StudentReportCard = ({user, assignments, teacher}) => {
       }
       reportCard.push(newSubject);
       // Reassign index
-      subjectIndex = reportCard.length - 1;
+      subjectIndex = reportCard.length - 1
     }
-    reportCard[subjectIndex].totalAssigments++;
+    reportCard[subjectIndex].totalAssigments++
     if (assignment.grade) {
-      reportCard[subjectIndex].totalGrade += assignment.grade;
-      reportCard[subjectIndex].gradedAssignments++;
+      reportCard[subjectIndex].totalGrade += +assignment.grade
+      reportCard[subjectIndex].gradedAssignments++
     }
-    reportCard[subjectIndex].partialGrade = Math.round(reportCard[subjectIndex].totalGrade / reportCard[subjectIndex].gradedAssignments);
-    reportCard[subjectIndex].finalGrade = Math.round(reportCard[subjectIndex].totalGrade / reportCard[subjectIndex].totalAssigments); 
+    reportCard[subjectIndex].partialGrade = Math.round(reportCard[subjectIndex].totalGrade / reportCard[subjectIndex].gradedAssignments)
+    if (isNaN(reportCard[subjectIndex].partialGrade)) reportCard[subjectIndex].partialGrade = 0
+    reportCard[subjectIndex].finalGrade = Math.round(reportCard[subjectIndex].totalGrade / reportCard[subjectIndex].totalAssigments)
+
   })
 
   return (
