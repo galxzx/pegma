@@ -2,21 +2,19 @@ import React from 'react'
 import QuizContainer from '../containers/QuizContainer'
 import TaskContainer from '../containers/TaskContainer'
 const Chatbox = ({open, handleToggleChatbox, messages}) => {
+    console.log(messages, '<======')
     return (
 
         <div id="chatbox-container">
-            <div className="panel panel-primary">
-                <div className="panel-heading">
-                    <span className="glyphicon glyphicon-comment"></span> Chat
-                    <div className="btn-group pull-right">
-                        <button type="button" className="btn btn-default btn-xs" onClick={handleToggleChatbox}>
-                            <span className={`glyphicon ${open ? 'glyphicon-chevron-down' : 'glyphicon-chevron-up'}`}></span>
-                        </button>
-                    </div>
+            <div className="chatbox-panel">
+                <div className="heading">
+                    <span className="glyphicon glyphicon-comment"></span> 
+                    <span className="chatbox-title">Chat</span>
+                    <button type="button" className={`show-chatbox ${open ? 'icon-down' : 'icon-up'}`} onClick={handleToggleChatbox}>                     </button>
                 </div>
                 { open ? (
                 <div>
-                    <div className="panel-body">
+                    <div className="body">
                         <ul className="chat">
                          {  messages.map((message, idx) => {
                                 return(
@@ -37,7 +35,7 @@ const Chatbox = ({open, handleToggleChatbox, messages}) => {
                         }) }
                         </ul>
                     </div>
-                    <div className="panel-footer">
+                    <div className="footer">
                         <div className="input-group">
                             <input id="btn-input" type="text" className="form-control input-sm" placeholder="Type your message here..." />
                             <span className="input-group-btn">
