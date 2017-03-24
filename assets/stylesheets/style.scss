@@ -817,6 +817,31 @@ div.teacher-assignments {
 	padding: 2px;
 }
 
+.functions {
+	
+	.create-menu {
+	  text-align: center;
+    padding: 20px;
+
+    a {
+    	color: $black;
+    	padding: 0 10px;
+    }
+  }
+
+  .teacher-assignments {
+  	padding: 15px;
+
+  	select {
+  		margin: 10px 10px 10px 0;
+  	}
+
+  	.due-date-picker {
+  		margin: 10px 0;
+  	}
+  }
+}
+
 table.teacher-assignments, table.teacher-students {
 	margin: 15px;
 	margin-top: 15px;
@@ -859,8 +884,8 @@ table.teacher-assignments, table.teacher-students {
 }
 
 table.teacher-assignments {
-	width: 50%;
-	font-size: 10pt;
+
+	font-size: 0.85em;
 	td {
 		width: 5% !important;
 	}
@@ -885,7 +910,6 @@ table.teacher-students.fancy-colors {
 }
 
 #message-box {
-	width: 100%;
 	margin: 15px;
 	margin-bottom: 0px;
 	padding: 15px;
