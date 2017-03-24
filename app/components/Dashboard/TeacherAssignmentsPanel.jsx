@@ -20,7 +20,7 @@ class TeacherAssignmentsPanel extends React.Component {
     let allStudents = [...this.props.students]
     let allStudentsAssignments = []
 
-    allStudents.forEach(student => { 
+    allStudents.forEach(student => {
     	student.assignments.forEach(assignment => {
     		assignment.studentName = `${student.user.firstName} ${student.user.lastName}`;
     		allStudentsAssignments.push(assignment);
@@ -55,7 +55,7 @@ class TeacherAssignmentsPanel extends React.Component {
 
   render() {
   	const allAssignments = this.state.sortedAssignments
-  	
+
 	  return (
 	    <section className="panel assignments">
 	      <div className="panel-header">
@@ -81,13 +81,13 @@ class TeacherAssignmentsPanel extends React.Component {
 	      </div>
 	      <ul className="assignments-list">
 	      	{
-	      		(allAssignments.length) ? 
+	      		(allAssignments.length) ?
 	      			allAssignments.map((assignment, i) => {
 
 	      				let type = `${assignment.type[0].toUpperCase()}${assignment.type.substring(1)}`
 
 	      				return (
-	      					<Link key={assignment.id}>
+	      					<Link to={`/teacher/assignment/${assignment.id}`}key={assignment.id}>
 		      					<li>
 						          <div className="summary">
 						            <h3 className="title">{ assignment.title }  <small><i>{ type }</i></small></h3>
