@@ -13,7 +13,7 @@ const Assignment = ({user, currentAssignment, updateGrade}) => {
             <div className="panel-header">{ currentAssignment.title }</div>
             <div className="panel-subheader">
               <strong>Name:</strong> {currentAssignment.student.user.firstName + ' ' + currentAssignment.student.user.lastName} <br/>
-              <strong>Current Grade:</strong> {currentAssignment.grade ? currentAssignment.grade : 0}/100
+              <strong>Current Grade:</strong> {currentAssignment.grade ? Math.floor(currentAssignment.grade) : 0}/100
               {user.teacher_id ? (
                 <div>
                   <form onSubmit={(evt) => {
@@ -28,7 +28,7 @@ const Assignment = ({user, currentAssignment, updateGrade}) => {
                 ) : null
               }
             </div>
-            <div>{currentAssignment.description}</div>
+            <div className="quiz-completed-description">{currentAssignment.description}</div>
             {currentAssignment.type === 'quiz' ? <CompletedQuizContainer /> : null}
           </section>
           ) : (<div> Oops! This assignment doesn't belong to you </div>)

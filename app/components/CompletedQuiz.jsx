@@ -4,7 +4,7 @@ import React from 'react'
 
 const CompletedQuiz = ({ currentAssignment, quiz }) => {
     const quizAnswers = currentAssignment.quiz_answers
-    console.log('quiz', quiz)
+
   return (
     <div className="quiz quiz-completed">
       {quiz.questions.map((question, indexNum) => {
@@ -15,7 +15,7 @@ const CompletedQuiz = ({ currentAssignment, quiz }) => {
             <ul className="inquiry-options">
               {question.answer.map((answer, idx) =>{
                 let gotRight = +question.solution === +quizAnswers['q_'+question.id] && +question.solution === +idx
-                console.log(gotRight)
+
                 return (
                   <li key={answer} className="inquiry-option">
                       {answer}
