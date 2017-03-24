@@ -30,6 +30,7 @@ import CompletedQuizContainer from './containers/CompletedQuizContainer'
 import TeacherFunctionsContainer from './containers/TeacherFunctionsContainer'
 import SignUpContainer from './containers/SignUpContainer'
 import CreateQuizContainer from './containers/CreateQuizContainer'
+import CreateTaskContainer from './containers/CreateTaskContainer'
 import CompletedAssignmentContainer from './containers/CompletedAssignmentContainer'
 import TeacherStudentsContainer from './containers/TeacherStudentsContainer'
 
@@ -77,6 +78,7 @@ const onEnterQuiz = () => {
 }
 
 const onEnterAssignment = (nextState, replace, done) => {
+
   store.dispatch(whoami())
     .then(res => {
       const user = store.getState().auth
@@ -135,7 +137,7 @@ export default function Root () {
           <Route path="/signup" component={SignUpContainer} onEnter={onEnterSignup} />
           <Router path="/student"  component={StudentAppContainer} onEnter={onEnterStudent}>
             <Route path="dashboard" component={StudentDashboardContainer} />
-            <Route path="tracker" component={StudentTrackerContainer} onEnter={onEnterStudentTracker}/>
+            <Route path="tracker" component={StudentTrackerContainer} onEnter={onEnterStudentTracker} />
             <Route path="reportcard" component={StudentReportCardContainer} />
             <Route path="settings" component={StudentSettingsContainer} />
             <Route path="calendar" component={StudentCalendarContainer} />
@@ -153,6 +155,7 @@ export default function Root () {
             <Route path="settings" component={TeacherSettingsContainer} onEnter={onEnterTeacher} />
             <Route path="calendar" component={TeacherCalendarContainer} />
             <Route path="createquiz" component={CreateQuizContainer} />
+            <Route path="createtask" component={CreateTaskContainer} />
             <Route path="assignment/:assignmentId" component={CompletedAssignmentContainer} onEnter={onEntercompAssign} />
             <IndexRedirect to="dashboard" />
           </Router>
