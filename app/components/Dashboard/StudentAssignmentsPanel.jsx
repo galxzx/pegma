@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 import _ from 'lodash'
+import { connect } from 'react-redux'
 
 class AssignmentsPanel extends React.Component {
   constructor(props) {
@@ -12,8 +13,9 @@ class AssignmentsPanel extends React.Component {
     this.handleSortChange = this.handleSortChange.bind(this)
   }
 
-  componentWillReceiveProps(props) {
-    this.setState({ sortedAssignments: [...props.assignments] })
+  componentWillMount(props) {
+    console.log('assingment prop', this.props.assignments)
+    this.setState({ sortedAssignments: [...this.props.assignments] })
   }
 
   handleSortChange(event) {
@@ -23,7 +25,7 @@ class AssignmentsPanel extends React.Component {
 
   render() {
     const assignments = this.state.sortedAssignments
-  
+    console.log('panelState', this.state)
     return (
       <section className="panel assignments">
         <div className="panel-header">
@@ -67,4 +69,6 @@ class AssignmentsPanel extends React.Component {
   }
 }
 
-export default AssignmentsPanel
+const mapState = state => ({assignments: state.student.assignments})
+
+export default connect(mapState)(AssignmentsPanel)

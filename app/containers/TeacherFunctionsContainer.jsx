@@ -8,7 +8,8 @@ class TeacherFunctionsContainer extends Component {
   constructor () {
     super()
     this.state = {
-      due_date: moment()
+      due_date: moment(),
+      message: ''
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -48,12 +49,11 @@ class TeacherFunctionsContainer extends Component {
         this.props.addAssignmentsRequest({status: 'assigned', type: 'quiz', quiz_id: quizId, title: quizTitle, due_date: this.state.due_date}, studentIds)
         numCreated += studentIds.length
       }
-    clearForm()
-    // update this to retrieve from state...
-    displayMessage(`${numCreated} assignments were created for ${numStudents} students`)
-    }
+      this.setState({message: `${numCreated} assignments were created for ${numStudents} students`})
+      clearForm()
+    } 
     else {
-      displayMessage('')
+      this.setState({message: 'Please select a student'})
     }
   }
 
@@ -65,12 +65,10 @@ class TeacherFunctionsContainer extends Component {
 
   render(){
     return (
-      <TeacherFunctions {...this.props} handleSubmit={this.handleSubmit} handleChange={this.handleChange} due_date={this.state.due_date} />
+      <TeacherFunctions {...this.props} handleSubmit={this.handleSubmit} handleChange={this.handleChange} due_date={this.state.due_date} message={this.state.message} />
     )
   }
 }
-
-
 
 const toggleCheckAll = (tbodyId, status) => (dispatch) => {
 	let checkboxes = document.querySelectorAll(`${tbodyId} td.select input[type="checkbox"]`)
@@ -79,7 +77,6 @@ const toggleCheckAll = (tbodyId, status) => (dispatch) => {
 		checkbox.checked = status
 	})
 }
-
 
 const clearForm = () => {
 	let checkboxes = document.querySelectorAll('input[type="checkbox"]')
