@@ -12,19 +12,19 @@ const TeacherDashboard = ({students}) => {
     <div className="dashboard dashboard-teacher">
       <div className="container panel-container">
 
-        <TeacherStats />
+        <TeacherStats students={students}/>
 
         <div className="flex-container">
           <div className="flex-child">
 
-            <TeacherNotifications />
+            <TeacherNotifications students={students}/>
 
             <CalendarSmall />
 
           </div>
           <div className="flex-child">
 
-            <TeacherAssignmentsPanel />
+            <TeacherAssignmentsPanel students={students}/>
 
           </div>
         </div>

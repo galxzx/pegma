@@ -22,7 +22,7 @@ class TeacherAssignmentsPanel extends React.Component {
   }
 
   render() {
-
+  	console.log(this.props)
 	  return (
 	    <section className="panel assignments">
 	      <div className="panel-header">
