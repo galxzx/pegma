@@ -22,8 +22,7 @@ class Home extends React.Component {
   }
 
   render() {
-    console.log('this.props', this.props)
-    console.log('this.state', this.state)
+
   	return (
         <section className="index-container">
           <div className="index-content">

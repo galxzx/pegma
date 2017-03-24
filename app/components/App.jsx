@@ -11,18 +11,18 @@ const App = ({ user, children }) => {
 	        <div className="logo">Pegma</div>
 	        <div className="user-information">{user ? <WhoAmI/> : null}</div>
 	      </div>
-	    </header>    
+	    </header>
 
       {children}
-    
+
       {user ? <ChatboxContainer /> : ''}
 
 	    <footer>
 	      <div className="container footer-content">
-	        <p>© Pegma 2017</p>    
+	        <p>© Pegma 2017</p>
 	      </div>
 	    </footer>
-	  </div> 
+	  </div>
   )
 }
 
