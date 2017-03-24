@@ -5,7 +5,7 @@ const db = require('APP/db')
  //  {name: 'Andrew Gionfriddo', email: 'andrew.gionfriddo@example.com', password: '1234'}
 const User = db.model('users')
 const Question = db.model('questions')
-const seedTeachers = () => db.Promise.map([
+const seedTeachers = () => db.Promise.each([
   {user: {firstName: 'Geoff', lastName: 'Bass', email: 'geoff.bass@example.com', password: '1234'}},
   {user: {firstName: 'Freda', lastName: 'Nada', email: 'freda.nada@example.com', password: '1234'}},
   {user: {firstName: 'Andrew', lastName: 'Gionfriddo', email: 'andrew.gionfriddo@example.com', password: '1234'}}
@@ -25,7 +25,7 @@ const allStudents = [
   { user: {firstName: 'Kimberly', lastName: 'Winston-Jackson', email: 'kimberly.winstonjackson@example.com', password: '1234'}, teacher_id: 1}
 ]
 
-const seedStudents = () => db.Promise.map(allStudents, students => db.model('students').create(students, {include:[User]}))
+const seedStudents = () => db.Promise.each(allStudents, students => db.model('students').create(students, {include:[User]}))
 
 //http://www.mathplanet.com/education/pre-algebra
 const allTasks = [
@@ -65,7 +65,7 @@ const allTasks = [
   { subject: 'History', topic: 'MJ', title: 'Essay #1', description: 'Write an essay about life and death of Michael Jackson', teacher_id: 1, grade_level: 1},
 ]
 
-const seedTasks = () => db.Promise.map(allTasks, task => db.model('tasks').create(task))
+const seedTasks = () => db.Promise.each(allTasks, task => db.model('tasks').create(task))
 
 const allQuizzes = [
   // Math
@@ -140,7 +140,7 @@ const allQuizzes = [
    ]},
 ]
 
-const seedQuizzes = () => db.Promise.map(allQuizzes, quiz => db.model('quizzes').create(quiz, {include: [Question ]}))
+const seedQuizzes = () => db.Promise.each(allQuizzes, quiz => db.model('quizzes').create(quiz, {include: [Question ]}))
 
 // Generate array of dates from 2 days ago and 4 days ahead
 const generateDates = () => {
@@ -221,7 +221,7 @@ const generateAssignments = () => {
 
 let allAssignments = generateAssignments();
 
-const seedAssignments = () => db.Promise.map(allAssignments, assignment => db.model('assignments').create(assignment))
+const seedAssignments = () => db.Promise.each(allAssignments, assignment => db.model('assignments').create(assignment))
 
 
 
