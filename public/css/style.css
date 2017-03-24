@@ -606,6 +606,13 @@ table.teacher-students.fancy-colors tr:hover {
   -webkit-transition: all 200ms;
   transition: all 200ms; }
 
+table.teacher-students {
+  margin: 20px; }
+  table.teacher-students .avatar {
+    width: 100px; }
+    table.teacher-students .avatar img {
+      border: 1px solid #9C9C9B; }
+
 #message-box {
   margin: 15px;
   margin-bottom: 0px;
