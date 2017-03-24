@@ -22,7 +22,8 @@ class Home extends React.Component {
   }
 
   render() {
-    console.log(this.props.user)
+    console.log('this.props', this.props)
+    console.log('this.state', this.state)
   	return (
         <section className="index-container">
           <div className="index-content">
@@ -38,7 +39,7 @@ class Home extends React.Component {
                   ) : (
                     <nav>
                       {
-                        this.props.user.student_id ? 
+                        this.props.user.student_id ?
                         (
                           <Link to="/student/dashboard"><button className="btn btn-signup">Go to Dashboard</button></Link>
                         ) :
