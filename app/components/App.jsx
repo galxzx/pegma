@@ -1,6 +1,8 @@
 import React from 'react'
 import WhoAmI from './WhoAmI'
 
+import ChatboxContainer from '../containers/ChatboxContainer'
+
 const App = ({ user, children }) => {
   return (
 	  <div id="app">
@@ -13,6 +15,8 @@ const App = ({ user, children }) => {
 
       {children}
     
+      {user ? <ChatboxContainer /> : ''}
+
 	    <footer>
 	      <div className="container footer-content">
 	        <p>© Pegma 2017</p>    
