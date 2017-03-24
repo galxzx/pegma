@@ -6,8 +6,14 @@ import moment from 'moment'
 
 import DueDate from '../containers/DueDateContainer'
 
-
 const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll, due_date, handleChange}) => {
+
+  const studentStats = (assignments) => {
+    const stats = {'assigned':0, 'doing':0, 'completed':0, 'archived':0}
+    assignments.forEach(assignment => stats[assignment.status]++)
+    return stats
+  }
+
   return (
     <div>
       <div className="flex-container">
@@ -78,16 +84,17 @@ const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll, due_
               <th>Archived </th>
             </tr>
           {students.map((student) => {
+            let stats = studentStats(student.assignments)
             return (
               <tr key={student.id} className="student">
                 <td className="select"><input defaultValue={student.id} type="checkbox" /></td>
                 <td className="">{student.id}</td>
                 <td className="">{student.user.lastName}</td>
                 <td className="">{student.user.firstName}</td>
-                <td className="">{student.studentStats.assigned}</td>
-                <td className="">{student.studentStats.doing}</td>
-                <td className="">{student.studentStats.completed}</td>
-                <td className="">{student.studentStats.archived}</td>                
+                <td className="">{stats.assigned}</td>
+                <td className="">{stats.doing}</td>
+                <td className="">{stats.completed}</td>
+                <td className="">{stats.archived}</td>                
               </tr>
             )
           })}
