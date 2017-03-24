@@ -77,14 +77,14 @@ const onEnterQuiz = () => {
 }
 
 const onEnterAssignment = (nextState, replace, done) => {
-<!--   return store.dispatch(loadCurrentAssignment(nextState.params.assignmentId))
-    .then(assignment => {
-      if(assignment.type === 'quiz') return store.dispatch(loadQuiz(assignment.quiz_id))
-          .then(() => done())
-      else if (assignment.type === 'task') return store.dispatch(loadTask(assignment.task_id))
-          .then(() => done())
-      return done()
-    }) -->
+// <!--   return store.dispatch(loadCurrentAssignment(nextState.params.assignmentId))
+//     .then(assignment => {
+//       if(assignment.type === 'quiz') return store.dispatch(loadQuiz(assignment.quiz_id))
+//           .then(() => done())
+//       else if (assignment.type === 'task') return store.dispatch(loadTask(assignment.task_id))
+//           .then(() => done())
+//       return done()
+//     }) -->
   store.dispatch(whoami())
     .then(res => {
       const user = store.getState().auth
