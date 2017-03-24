@@ -909,6 +909,18 @@ table.teacher-students.fancy-colors {
 	}
 }
 
+table.teacher-students {
+
+	margin: 20px;
+
+	.avatar {
+		width: 100px;
+		img {
+			border: 1px solid $mediumGrey;
+		}
+	}
+}
+
 #message-box {
 	margin: 15px;
 	margin-bottom: 0px;

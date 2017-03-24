@@ -29,7 +29,7 @@ const TeacherStudents = ({user, students}) => {
             return (
               <tr key={student.id} className="student">
                 <td className="">{student.id}</td>
-                <td className=""><img src={student.user.avatar} className="avatar" /></td>
+                <td className="avatar"><img src={`/avatars/${student.user.avatar}`} className="avatar" /></td>
                 <td className="">{student.user.lastName + ', ' + student.user.firstName}</td>
                 <td className=""></td>                
                 <td className="options">
