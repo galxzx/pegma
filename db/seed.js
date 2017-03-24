@@ -6,23 +6,23 @@ const db = require('APP/db')
 const User = db.model('users')
 const Question = db.model('questions')
 const seedTeachers = () => db.Promise.each([
-  {user: {firstName: 'Geoff', lastName: 'Bass', email: 'geoff.bass@example.com', password: '1234'}},
-  {user: {firstName: 'Freda', lastName: 'Nada', email: 'freda.nada@example.com', password: '1234'}},
-  {user: {firstName: 'Andrew', lastName: 'Gionfriddo', email: 'andrew.gionfriddo@example.com', password: '1234'}}
+  {user: {firstName: 'Geoff', lastName: 'Bass', email: 'geoff.bass@example.com', password: '1234', avatar: '/avatars_geoff.jpg'}},
+  {user: {firstName: 'Freda', lastName: 'Nada', email: 'freda.nada@example.com', password: '1234', avatar: '/avatars_freda.jpg'}},
+  {user: {firstName: 'Andrew', lastName: 'Gionfriddo', email: 'andrew.gionfriddo@example.com', password: '1234', avatar: '/avatars_andrewg.jpg'}}
 ], teacher => db.model('teachers').create(teacher, {include:[User]}))
 
 const allStudents = [
-  {user: {firstName: 'Cody', lastName: 'the dog', email: 'cody@example.com', password: '1234'}, teacher_id: 1},
-  {user: {firstName: 'Corryn', lastName: 'Young', email: 'corryn.young@example.com', password: '1234'}, teacher_id: 1},
-  {user: {firstName: 'Jonathan', lastName: 'Mann', email: 'jonathan.mann@example.com', password: '1234'}, teacher_id: 1},
-  {user: {firstName: 'Fabiano', lastName: 'Pires da Silva', email: 'fabiano.piresdasliva@example.com', password: '1234'}, teacher_id: 1},
-  {user: {firstName: 'Aaron', lastName: 'Aichlmayr', email: 'aaron.aichlmayr@example.com', password: '1234'}, teacher_id: 1},
-  {user: {firstName: 'Jason', lastName: 'Lam', email: 'jason.lam@example.com', password: '1234'}, teacher_id: 1},
-  {user: {firstName: 'Jason', lastName: 'Powell', email: 'jason.powell@example.com', password: '1234'}, teacher_id: 1},
-  {user: {firstName: 'Alan', lastName: 'Campbell', email: 'alan.cambell@example.com', password: '1234'}, teacher_id: 1},
-  {user: {firstName: 'Andrew', lastName: 'Basore', email: 'andrew.basore@example.com', password: '1234'}, teacher_id: 1},
-  { user: {firstName: 'Jamie', lastName: 'Yu', email: 'jamie.yu@example.com', password: '1234'}, teacher_id: 1},
-  { user: {firstName: 'Kimberly', lastName: 'Winston-Jackson', email: 'kimberly.winstonjackson@example.com', password: '1234'}, teacher_id: 1}
+  {user: {firstName: 'Cody', lastName: 'the dog', email: 'cody@example.com', password: '1234'}, teacher_id: 1, avatar: '/avatars_.jpg'},
+  {user: {firstName: 'Corryn', lastName: 'Young', email: 'corryn.young@example.com', password: '1234'}, teacher_id: 1, avatar: '/avatars_corry.jpg'},
+  {user: {firstName: 'Jonathan', lastName: 'Mann', email: 'jonathan.mann@example.com', password: '1234'}, teacher_id: 1, avatar: '/avatars_jonathan.jpg'},
+  {user: {firstName: 'Fabiano', lastName: 'Pires da Silva', email: 'fabiano.piresdasliva@example.com', password: '1234'}, teacher_id: 1, avatar: '/avatars_fabiano.jpg'},
+  {user: {firstName: 'Aaron', lastName: 'Aichlmayr', email: 'aaron.aichlmayr@example.com', password: '1234'}, teacher_id: 1, avatar: '/avatars_aaron.jpg'},
+  {user: {firstName: 'Jason', lastName: 'Lam', email: 'jason.lam@example.com', password: '1234'}, teacher_id: 1, avatar: '/avatars_jasonl.jpg'},
+  {user: {firstName: 'Jason', lastName: 'Powell', email: 'jason.powell@example.com', password: '1234'}, teacher_id: 1, avatar: '/avatars_jasonp.jpg'},
+  {user: {firstName: 'Alan', lastName: 'Campbell', email: 'alan.cambell@example.com', password: '1234'}, teacher_id: 1, avatar: '/avatars_alan.jpg'},
+  {user: {firstName: 'Andrew', lastName: 'Basore', email: 'andrew.basore@example.com', password: '1234'}, teacher_id: 1, avatar: '/avatars_andrewb.jpg'},
+  { user: {firstName: 'Jamie', lastName: 'Yu', email: 'jamie.yu@example.com', password: '1234'}, teacher_id: 1, avatar: '/avatars_jamie.jpg'},
+  { user: {firstName: 'Kimberly', lastName: 'Winston-Jackson', email: 'kimberly.winstonjackson@example.com', password: '1234'}, teacher_id: 1, avatar: '/avatars_kim.jpg'}
 ]
 
 const seedStudents = () => db.Promise.each(allStudents, students => db.model('students').create(students, {include:[User]}))
