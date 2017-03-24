@@ -314,6 +314,9 @@ footer {
   overflow-y: scroll;
   height: 150px;
   cursor: pointer; }
+  .notifications-list a {
+    text-decoration: none;
+    color: #222221; }
   .notifications-list .overdue {
     color: #C60034; }
   .notifications-list li {

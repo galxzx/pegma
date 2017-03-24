@@ -463,6 +463,11 @@ footer {
 	height: 150px;
 	cursor: pointer;
 
+	a {
+		text-decoration: none;
+		color: $black;
+	}
+
 	.overdue {
 		color: $red;
 	}
