@@ -49,7 +49,7 @@ class AssignmentsPanel extends React.Component {
                     <li>
                       <div className="summary">
                         <h3 className="title">{ assignment.title }</h3>
-                        <span className="snippet">{ type } - { assignment.snippet }</span>
+                        <span className="snippet">{ assignment.status === 'completed' || assignment.status === 'archived' ? (<span className="icon icon-paper-check green"></span>) : null} { type } - { assignment.snippet }</span>
                       </div>
                       <div className="due">
                         <h4>Due</h4>
