@@ -7,13 +7,13 @@ const NotificationsPanel = ({assignments}) => {
 
   assignments.forEach((assignment, idx) => {
     if (assignment.overdue) {
-      notifications.push(<li key={idx}><span className="icon icon-clock-o red"></span>Assignment "{assignment.title}" is overdue.<span className="icon float-right icon-external-link-square"></span></li>)
+      notifications.push(<Link to={`/student/assignment/${assignment.id}`} key={idx}><li><span className="icon icon-clock-o red"></span>Assignment "{assignment.title}" is overdue.<span className="icon float-right icon-external-link-square"></span></li></Link>)
     }
     else if (assignment.isNew && assignment.status === 'assigned') {
-      notifications.push(<li key={idx}><span className="icon icon-burst-new blue"></span>New Assignment "{assignment.title}".<span className="icon float-right icon-external-link-square"></span></li>)
+      notifications.push(<Link to={`/student/assignment/${assignment.id}`} key={idx}><li><span className="icon icon-burst-new blue"></span>New Assignment "{assignment.title}".<span className="icon float-right icon-external-link-square"></span></li></Link>)
     }
     else if (assignment.recentlyUpdated && assignment.grade) {
-      notifications.push(<li key={idx}>Assignment "{assignment.title}" was graded.<span className="icon float-right icon-external-link-square"></span></li>)
+      notifications.push(<Link to={`/student/assignment/${assignment.id}`} key={idx}><li>Assignment "{assignment.title}" was graded.<span className="icon float-right icon-external-link-square"></span></li></Link>)
     }
   })
 

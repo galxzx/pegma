@@ -463,6 +463,11 @@ footer {
 	height: 150px;
 	cursor: pointer;
 
+	a {
+		text-decoration: none;
+		color: $black;
+	}
+
 	.overdue {
 		color: $red;
 	}
@@ -523,6 +528,8 @@ footer {
 		padding: 0;
 		margin: 0;
 		list-style: none;
+		max-height: 80vh;
+		overflow: auto;
 
 		li {
 			padding: 5px;
