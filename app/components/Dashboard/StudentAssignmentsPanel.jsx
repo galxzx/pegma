@@ -14,7 +14,6 @@ class AssignmentsPanel extends React.Component {
   }
 
   componentWillMount(props) {
-    console.log('assingment prop', this.props.assignments)
     this.setState({ sortedAssignments: [...this.props.assignments] })
   }
 
@@ -25,7 +24,7 @@ class AssignmentsPanel extends React.Component {
 
   render() {
     const assignments = this.state.sortedAssignments
-    console.log('panelState', this.state)
+
     return (
       <section className="panel assignments">
         <div className="panel-header">
@@ -55,7 +54,7 @@ class AssignmentsPanel extends React.Component {
                       </div>
                       <div className="due">
                         <h4>Due</h4>
-                        <p className="date"> { assignment.formattedDate }</p>
+                        <p className="date">{ assignment.formattedDate }</p>
                       </div>
                     </li>
                   </Link>

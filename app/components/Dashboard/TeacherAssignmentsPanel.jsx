@@ -16,7 +16,7 @@ class TeacherAssignmentsPanel extends React.Component {
   }
 
   componentWillMount(props) {
-    console.log('assingment prop', this.props.students)
+
     let allStudents = [...this.props.students]
     let allStudentsAssignments = []
 
@@ -55,7 +55,7 @@ class TeacherAssignmentsPanel extends React.Component {
 
   render() {
   	const allAssignments = this.state.sortedAssignments
-  	console.log(allAssignments)
+  	
 	  return (
 	    <section className="panel assignments">
 	      <div className="panel-header">
