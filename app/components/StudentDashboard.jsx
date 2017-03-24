@@ -10,7 +10,7 @@ const StudentDashboard = ({user, assignments, teacher}) => {
   return (
 		<div key="StudentDashboard" className="dashboard">
       <div className="container panel-container">
-        
+
         <StudentStats assignments={assignments} />
 
         <div className="flex-container">
@@ -19,11 +19,11 @@ const StudentDashboard = ({user, assignments, teacher}) => {
             <StudentNotificationsPanel assignments={assignments} />
 
             <CalendarSmall />
-            
+
           </div>
           <div className="flex-child">
 
-            <StudentAssignmentsPanel assignments={assignments}/>
+            <StudentAssignmentsPanel />
 
           </div>
         </div>
