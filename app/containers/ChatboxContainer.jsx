@@ -90,6 +90,9 @@ class ChatboxContainer extends Component {
     messages.push(newMessage)
     this.setState({messages})
     socket.emit('send:message', newMessage)
+
+    let input = document.querySelector('#chatbox-container .footer input')
+    input.value = ''
   }
   render () {
     return <Chatbox {...this.props} messages={this.state.messages} handleMessageSubmit={this.handleMessageSubmit} />

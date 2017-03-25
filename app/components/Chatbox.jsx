@@ -18,11 +18,12 @@ const Chatbox = ({open, handleToggleChatbox, messages, handleMessageSubmit, user
                          {  messages.map((message, idx) => {
                             console.log(message.user === user.firstName)
                                 return(
-                                     <li key={idx}
-                                        className={"clearfix" + (message.user === user.firstName) ? " float-right" : ""}><span className="chat-img pull-left">
-                                        <img src="http://placehold.it/50/55C1E7/fff&amp;text=U" alt="User Avatar" className="img-circle" />
-                                    </span>
-                                        <div className="chat-body clearfix">
+                                    <li key={idx}
+                                        className={(message.user === user.firstName ? "align-right" : "")}>
+                                        <span className="chat-img pull-left">
+                                            <img src="http://placehold.it/50/55C1E7/fff&amp;text=U" alt="User Avatar" className="img-circle" />
+                                        </span>
+                                        <div className="chat-body">
                                             <div className="header">
                                                 <strong className="primary-font">{message.user}</strong> <small className="pull-right text-muted">
                                                     <span className="icon-clock-o"></span>12 mins ago</small>
@@ -41,9 +42,7 @@ const Chatbox = ({open, handleToggleChatbox, messages, handleMessageSubmit, user
                             <form onSubmit={handleMessageSubmit} >
                                 <input id="btn-input" name="message" type="text" className="form-control input-sm" placeholder="Type your message here..." />
                                 <span className="input-group-btn">
-                                    <button type="submit" className="btn btn-warning btn-sm" id="btn-chat">
-                                        Send
-                                    </button>
+                                    <button type="submit" className="" id="btn-chat">Send</button>
                                 </span>
                             </form>
                         </div>
