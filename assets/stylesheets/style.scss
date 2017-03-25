@@ -955,9 +955,14 @@ table.teacher-students.fancy-colors {
 		height: 30px;
 		width: 100%;
 	}
-	.chatbox-title {
+	#chatbox-title {
+		color: #fff;
+		position: relative;
+		top: 4px;
+		padding: 15px;
+		padding-left: 5px;
 		font-size: 14pt;
-		
+		font-weight: 700;
 	}
 	.show-chatbox {
 		height: 25px;
@@ -988,9 +993,31 @@ table.teacher-students.fancy-colors {
 	}
 	.footer {
 		height: 45px;
-		background: #ffffff;
+		background: $darkGrey;
 	}
-
+	.footer input {
+		position: relative;
+		top: 10px;
+		left: 10px;
+		height: 16px;
+    padding: 0.25rem 0.5rem;
+    font-size: 1rem;
+    border: 1px solid transparent; 
+    width: 210px;   
+	}
+	.footer button {
+		position: relative;
+		top: 10px;
+		right: 10px;
+		height: 25px;
+		width: 60px;
+		float: right;
+		border-radius: 0px !important;
+	}	
+	.footer button:focus {
+		width: 60px;
+		height: 35px;
+	}
 }
 
 

@@ -7,9 +7,8 @@ const Chatbox = ({open, handleToggleChatbox, messages}) => {
 
         <div id="chatbox-container">
             <div className="chatbox-panel">
-                <div className="heading">
-                    <span className="glyphicon glyphicon-comment"></span> 
-                    <span className="chatbox-title">Chat</span>
+                <div className="heading">  
+                    <span id="chatbox-title">Classroom Chatbox</span>
                     <button type="button" className={`show-chatbox ${open ? 'icon-down' : 'icon-up'}`} onClick={handleToggleChatbox}>                     </button>
                 </div>
                 { open ? (
@@ -24,7 +23,7 @@ const Chatbox = ({open, handleToggleChatbox, messages}) => {
                                         <div className="chat-body clearfix">
                                             <div className="header">
                                                 <strong className="primary-font">{message.user}</strong> <small className="pull-right text-muted">
-                                                    <span className="glyphicon glyphicon-time"></span>12 mins ago</small>
+                                                    <span className="icon-clock-o"></span>12 mins ago</small>
                                             </div>
                                             <p>
                                                 {message.text}

@@ -639,8 +639,14 @@ table.teacher-students.fancy-colors tr:hover {
     background: #0B9CCC !important;
     height: 30px;
     width: 100%; }
-  #chatbox-container .chatbox-title {
-    font-size: 14pt; }
+  #chatbox-container #chatbox-title {
+    color: #fff;
+    position: relative;
+    top: 4px;
+    padding: 15px;
+    padding-left: 5px;
+    font-size: 14pt;
+    font-weight: 700; }
   #chatbox-container .show-chatbox {
     height: 25px;
     width: 25px;
@@ -663,4 +669,24 @@ table.teacher-students.fancy-colors tr:hover {
     background-color: #555; }
   #chatbox-container .footer {
     height: 45px;
-    background: #ffffff; }
+    background: #4B4B4A; }
+  #chatbox-container .footer input {
+    position: relative;
+    top: 10px;
+    left: 10px;
+    height: 16px;
+    padding: 0.25rem 0.5rem;
+    font-size: 1rem;
+    border: 1px solid transparent;
+    width: 210px; }
+  #chatbox-container .footer button {
+    position: relative;
+    top: 10px;
+    right: 10px;
+    height: 25px;
+    width: 60px;
+    float: right;
+    border-radius: 0px !important; }
+  #chatbox-container .footer button:focus {
+    width: 60px;
+    height: 35px; }
