@@ -47,19 +47,19 @@
 .icon-calendar:before {
   content: "\63";
 }
-.icon-calendar-check-o:before {
+.icon-calendar-check:before {
   content: "\64";
 }
-.icon-calendar-minus-o:before {
+.icon-calendar-minus:before {
   content: "\65";
 }
-.icon-calendar-o:before {
+.icon-calendar-blank:before {
   content: "\66";
 }
-.icon-calendar-plus-o:before {
+.icon-calendar-plus:before {
   content: "\67";
 }
-.icon-calendar-times-o:before {
+.icon-calendar-times:before {
   content: "\68";
 }
 .icon-cog:before {
@@ -101,7 +101,7 @@
 .icon-users:before {
   content: "\75";
 }
-.icon-list-alt:before {
+.icon-dashboard:before {
   content: "\76";
 }
 .icon-sign-in:before {
@@ -116,10 +116,10 @@
 .icon-line-chart:before {
   content: "\7a";
 }
-.icon-exclamation-circle:before {
+.icon-error-circle:before {
   content: "\41";
 }
-.icon-exclamation-triangle:before {
+.icon-error-triangle:before {
   content: "\42";
 }
 .icon-file:before {
@@ -131,13 +131,13 @@
 .icon-graduation-cap:before {
   content: "\45";
 }
-.icon-paper-alert:before {
+.icon-file-alert:before {
   content: "\46";
 }
-.icon-paper-check:before {
+.icon-file-check:before {
   content: "\47";
 }
-.icon-paper-plus:before {
+.icon-file-plus:before {
   content: "\48";
 }
 .icon-google-plus-square:before {
@@ -149,13 +149,13 @@
 .icon-report-card:before {
   content: "\4a";
 }
-.icon-comment:before {
+.icon-chat:before {
   content: "\4c";
 }
 .icon-mail:before {
   content: "\4d";
 }
-.icon-android-alarm-clock:before {
+.icon-clock-alarm:before {
   content: "\4e";
 }
 .icon-paper-clip:before {
