@@ -46,6 +46,12 @@ const onEnterSignup = () => {
   store.dispatch(loadTeachers())
 }
 
+const onEnterApp = (nextState, replace, done) => {
+  store.dispatch(whoami())
+  .then(() => done())
+  .catch(err => console.error(err))
+}
+
 const onEnterStudent = (nextState, replace, callback) => (
   store.dispatch(whoami())
     .then(user => {
