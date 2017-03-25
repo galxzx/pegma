@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 
-const TeacherNotifications = ({students}) => {
+const TeacherNotificationsPanel = ({students}) => {
 
   const notifications = []
 
@@ -40,4 +40,4 @@ const TeacherNotifications = ({students}) => {
   )
 }
 
-export default TeacherNotifications
+export default TeacherNotificationsPanel

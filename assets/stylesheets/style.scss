@@ -251,7 +251,6 @@ form {
 
 		h1 {
 			text-transform: uppercase;
-			padding-top: 50px;
 		}
 
 		h4 {
@@ -277,6 +276,7 @@ form {
 	padding-top: 15px;
 	padding-bottom: 15px;
 	flex: 0 1 auto;
+
 }
 
 .main,
@@ -288,6 +288,16 @@ form {
 .header-content {
 	display: flex;
 	justify-content: space-between;
+
+	a {
+		text-decoration: none;
+		color: $black;
+		cursor: pointer;
+
+		&:hover {
+			color: $yellow;
+		}
+	}
 
 	.logo {
 		font-weight: bold;

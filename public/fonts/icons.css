@@ -149,3 +149,15 @@
 .icon-report-card:before {
   content: "\4a";
 }
+.icon-comment:before {
+  content: "\4c";
+}
+.icon-mail:before {
+  content: "\4d";
+}
+.icon-android-alarm-clock:before {
+  content: "\4e";
+}
+.icon-paper-clip:before {
+  content: "\4f";
+}

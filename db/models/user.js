@@ -43,6 +43,10 @@ const User = db.define('users', {
       if(this.student_id) return 'student'
       if(this.teacher_id) return 'teacher'
       return ''
+    },
+    imageUrl () {
+      if (this.avatar.startsWith('http')) return this.avatar
+      else return `/images/avatars/${this.avatar}`
     }
   }
 })

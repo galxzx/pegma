@@ -1,7 +1,7 @@
 import React from 'react'
 
 import TeacherStats from './Dashboard/TeacherStats'
-import TeacherNotifications from './Dashboard/TeacherNotifications'
+import TeacherNotificationsPanel from './Dashboard/TeacherNotificationsPanel'
 import CalendarSmall from './Dashboard/CalendarSmall'
 import TeacherAssignmentsPanel from './Dashboard/TeacherAssignmentsPanel'
 
@@ -17,7 +17,7 @@ const TeacherDashboard = ({students}) => {
         <div className="flex-container">
           <div className="flex-child">
 
-            <TeacherNotifications students={students}/>
+            <TeacherNotificationsPanel students={students}/>
 
             <CalendarSmall />
 
