@@ -1,6 +1,7 @@
 import React from 'react'
-import WhoAmI from './WhoAmI'
+import { Link } from 'react-router'
 
+import WhoAmI from './WhoAmI'
 import ChatboxContainer from '../containers/ChatboxContainer'
 
 const App = ({ user, children }) => {
@@ -8,7 +9,7 @@ const App = ({ user, children }) => {
 	  <div id="app">
 	    <header className="top-menu">
 	      <div className="container header-content">
-	        <div className="logo">Pegma</div>
+	        <Link to="/home" className="logo">Pegma</Link>
 	        <div className="user-information">{user ? <WhoAmI/> : null}</div>
 	      </div>
 	    </header>

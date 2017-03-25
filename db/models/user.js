@@ -17,7 +17,7 @@ const User = db.define('users', {
   },
   avatar: {
     type: Sequelize.STRING,
-    defaultValue: 'http://placehold.it/100x100'
+    defaultValue: 'avatar_default.jpg'
   },
   // We support oauth, so users may or may not have passwords.
   password_digest: Sequelize.STRING, // This column stores the hashed password in the DB, via the beforeCreate/beforeUpdate hooks
@@ -43,6 +43,10 @@ const User = db.define('users', {
       if(this.student_id) return 'student'
       if(this.teacher_id) return 'teacher'
       return ''
+    },
+    imageUrl () {
+      if (this.avatar.startsWith('http')) return this.avatar
+      else return `/images/avatars/${this.avatar}`
     }
   }
 })

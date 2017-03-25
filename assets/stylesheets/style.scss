@@ -35,7 +35,9 @@ html {
   min-height: 100vh;
 }
 
-
+.disabled {
+	color: $mediumGrey !important;
+}
 
 
 
@@ -249,7 +251,6 @@ form {
 
 		h1 {
 			text-transform: uppercase;
-			padding-top: 50px;
 		}
 
 		h4 {
@@ -275,6 +276,7 @@ form {
 	padding-top: 15px;
 	padding-bottom: 15px;
 	flex: 0 1 auto;
+
 }
 
 .main,
@@ -286,6 +288,16 @@ form {
 .header-content {
 	display: flex;
 	justify-content: space-between;
+
+	a {
+		text-decoration: none;
+		color: $black;
+		cursor: pointer;
+
+		&:hover {
+			color: $yellow;
+		}
+	}
 
 	.logo {
 		font-weight: bold;
@@ -899,6 +911,18 @@ table.teacher-students.fancy-colors {
 		background: $yellow;
     -webkit-transition: all 200ms;
     transition: all 200ms;
+	}
+}
+
+table.teacher-students {
+
+	margin: 20px;
+
+	.avatar {
+		width: 100px;
+		img {
+			border: 1px solid $mediumGrey;
+		}
 	}
 }
 

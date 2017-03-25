@@ -17,6 +17,9 @@ html {
   align-items: stretch;
   min-height: 100vh; }
 
+.disabled {
+  color: #9C9C9B !important; }
+
 .app-enter {
   opacity: 0.01; }
 
@@ -169,8 +172,7 @@ form .formError {
     width: 250px;
     text-align: center; }
     .index-container .index-content h1 {
-      text-transform: uppercase;
-      padding-top: 50px; }
+      text-transform: uppercase; }
     .index-container .index-content h4 {
       font-weight: normal; }
     .index-container .index-content nav {
@@ -195,6 +197,12 @@ form .formError {
 .header-content {
   display: flex;
   justify-content: space-between; }
+  .header-content a {
+    text-decoration: none;
+    color: #222221;
+    cursor: pointer; }
+    .header-content a:hover {
+      color: #FFC943; }
   .header-content .logo {
     font-weight: bold;
     text-transform: uppercase; }
@@ -600,6 +608,13 @@ table.teacher-students.fancy-colors tr:hover {
   background: #FFC943;
   -webkit-transition: all 200ms;
   transition: all 200ms; }
+
+table.teacher-students {
+  margin: 20px; }
+  table.teacher-students .avatar {
+    width: 100px; }
+    table.teacher-students .avatar img {
+      border: 1px solid #9C9C9B; }
 
 #message-box {
   margin: 15px;

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 
-const TeacherNotifications = ({students}) => {
+const TeacherNotificationsPanel = ({students}) => {
 
   const notifications = []
 
@@ -15,10 +15,10 @@ const TeacherNotifications = ({students}) => {
       let updated = assignment.recentlyUpdated
 
       if (overdue) {
-        notifications.push(<Link to={'/'} key={`${idxS}-${idxA}`}><li><span className="icon icon-clock-o red"></span> {currentStudent}'s assignment "{title}" is late.<span className="icon float-right icon-external-link-square"></span></li></Link>)
+        notifications.push(<Link to={`/teacher/assignment/${assignment.id}`} key={`${idxS}-${idxA}`}><li><span className="icon icon-clock-o red"></span> {currentStudent}'s assignment "{title}" is late.<span className="icon float-right icon-external-link-square"></span></li></Link>)
       }
       else if (status === 'completed' && type === 'task') {
-        notifications.push(<Link to={'/'} key={`${idxS}-${idxA}`}><li>{currentStudent}'s task "{title}" is ready to grade.<span className="icon float-right icon-external-link-square"></span></li></Link>)
+        notifications.push(<Link to={`/teacher/assignment/${assignment.id}`} key={`${idxS}-${idxA}`}><li>{currentStudent}'s task "{title}" is ready to grade.<span className="icon float-right icon-external-link-square"></span></li></Link>)
       }
 
     })
@@ -40,4 +40,4 @@ const TeacherNotifications = ({students}) => {
   )
 }
 
-export default TeacherNotifications
+export default TeacherNotificationsPanel

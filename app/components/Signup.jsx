@@ -16,6 +16,7 @@ const Signup = ({handleSubmit, typeValue, teachers, createAccount}) => {
           <section className="flex-child panel settings">
             <div className="panel-header">Create New Account</div>
             <div className="settings-content">
+              <h3>Welcome to Pegma</h3>
               <form onSubmit={handleSubmit(createAccount)}>
                 <fieldset>
                   <div className="form-group">
