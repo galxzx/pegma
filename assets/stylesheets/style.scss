@@ -79,6 +79,9 @@ html {
 	float: right;
 }
 
+
+.clearfix:before, .clearfix:after {     content: " ";     display: table; }  .clearfix:after {     clear: both; }  .clearfix {     *zoom: 1; }
+
 /* BUTTONS */
 
 .btn {
@@ -159,7 +162,7 @@ form {
   border: 1px solid $lightGrey;
   max-width: 80%;
 	left: 50%;
-	top: 50%; 
+	top: 50%;
 	transform: translate(-50%, -50%);
 }
 
@@ -811,7 +814,7 @@ div.teacher-assignments {
 }
 
 .functions {
-	
+
 	.create-menu {
 	  text-align: center;
     padding: 20px;
@@ -840,21 +843,21 @@ table.teacher-assignments, table.teacher-students {
 	margin-top: 15px;
 	border: 3px solid $lightGrey;
 	tr {
-		background: $lightGrey;		
+		background: $lightGrey;
 		th {
-			text-align: center;	
+			text-align: center;
 			background: $red;
 			padding: 10px;
-			color: #ffffff;	
-		}			
+			color: #ffffff;
+		}
 		td {
-			text-align: center;	
+			text-align: center;
 			padding: 10px;
 		}
 
 		td:first-child, td:nth-child(2) {
 			width: 5%;
-		}	
+		}
 		td.options > * {
 			text-decoration: none;
 			color: #fff;
@@ -866,10 +869,10 @@ table.teacher-assignments, table.teacher-students {
 		}
 		td.options > *:hover {
 			opacity: .7;
-		}	
+		}
 		td.options > *:first-child {
 			background: $blue;
-		}				
+		}
 	}
 	tr:nth-child(odd) {
 		background: #ffffff;
@@ -884,21 +887,21 @@ table.teacher-assignments {
 	}
 	td:nth-child(3), td:nth-child(4) {
 		text-align: left;
-	}	
+	}
 }
 
 table.teacher-students.fancy-colors {
 	tr {
-    -webkit-transition: all 200ms; 
-    transition: all 200ms;		
+    -webkit-transition: all 200ms;
+    transition: all 200ms;
 		th {
 			background: $red;
-		}    
+		}
 	}
 	tr:hover {
 		background: $yellow;
-    -webkit-transition: all 200ms; 
-    transition: all 200ms;				
+    -webkit-transition: all 200ms;
+    transition: all 200ms;
 	}
 }
 
@@ -929,10 +932,12 @@ table.teacher-students.fancy-colors {
   margin: 0;
   padding: 0;
 		li {
+			width: 100%;
+			display: block;
 	    margin-bottom: 10px;
 	    padding-bottom: 5px;
 	    border-bottom: 1px dotted #B3A9A9;
-		}	 
+		}
 		li.left .body {
 	    margin-left: 60px;
 		}
@@ -1002,8 +1007,8 @@ table.teacher-students.fancy-colors {
 		height: 16px;
     padding: 0.25rem 0.5rem;
     font-size: 1rem;
-    border: 1px solid transparent; 
-    width: 210px;   
+    border: 1px solid transparent;
+    width: 210px;
 	}
 	.footer button {
 		position: relative;
@@ -1013,7 +1018,7 @@ table.teacher-students.fancy-colors {
 		width: 60px;
 		float: right;
 		border-radius: 0px !important;
-	}	
+	}
 	.footer button:focus {
 		width: 60px;
 		height: 35px;

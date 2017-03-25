@@ -1,13 +1,13 @@
 import React from 'react'
 import QuizContainer from '../containers/QuizContainer'
 import TaskContainer from '../containers/TaskContainer'
-const Chatbox = ({open, handleToggleChatbox, messages}) => {
+const Chatbox = ({open, handleToggleChatbox, messages, handleMessageSubmit, user}) => {
     console.log(messages, '<======')
     return (
 
         <div id="chatbox-container">
             <div className="chatbox-panel">
-                <div className="heading">  
+                <div className="heading">
                     <span id="chatbox-title">Classroom Chatbox</span>
                     <button type="button" className={`show-chatbox ${open ? 'icon-down' : 'icon-up'}`} onClick={handleToggleChatbox}>                     </button>
                 </div>
@@ -16,8 +16,10 @@ const Chatbox = ({open, handleToggleChatbox, messages}) => {
                     <div className="body">
                         <ul className="chat">
                          {  messages.map((message, idx) => {
+                            console.log(message.user === user.firstName)
                                 return(
-                                     <li key={idx} className="left clearfix"><span className="chat-img pull-left">
+                                     <li key={idx}
+                                        className={"clearfix" + (message.user === user.firstName) ? " float-right" : ""}><span className="chat-img pull-left">
                                         <img src="http://placehold.it/50/55C1E7/fff&amp;text=U" alt="User Avatar" className="img-circle" />
                                     </span>
                                         <div className="chat-body clearfix">
@@ -36,12 +38,14 @@ const Chatbox = ({open, handleToggleChatbox, messages}) => {
                     </div>
                     <div className="footer">
                         <div className="input-group">
-                            <input id="btn-input" type="text" className="form-control input-sm" placeholder="Type your message here..." />
-                            <span className="input-group-btn">
-                                <button className="btn btn-warning btn-sm" id="btn-chat">
-                                    Send
-                                </button>
-                            </span>
+                            <form onSubmit={handleMessageSubmit} >
+                                <input id="btn-input" name="message" type="text" className="form-control input-sm" placeholder="Type your message here..." />
+                                <span className="input-group-btn">
+                                    <button type="submit" className="btn btn-warning btn-sm" id="btn-chat">
+                                        Send
+                                    </button>
+                                </span>
+                            </form>
                         </div>
                     </div>
                 </div>
