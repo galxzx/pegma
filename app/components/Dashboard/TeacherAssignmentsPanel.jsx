@@ -87,7 +87,7 @@ class TeacherAssignmentsPanel extends React.Component {
 	      				let type = `${assignment.type[0].toUpperCase()}${assignment.type.substring(1)}`
 
 	      				return (
-	      					<Link to={`/teacher/assignment/${assignment.id}`}key={assignment.id}>
+	      					<Link to={`/teacher/assignment/${assignment.id}`} key={assignment.id}>
 		      					<li>
 						          <div className="summary">
 						            <h3 className="title">{ assignment.title }  <small><i>{ type }</i></small></h3>

@@ -172,8 +172,7 @@ form .formError {
     width: 250px;
     text-align: center; }
     .index-container .index-content h1 {
-      text-transform: uppercase;
-      padding-top: 50px; }
+      text-transform: uppercase; }
     .index-container .index-content h4 {
       font-weight: normal; }
     .index-container .index-content nav {
@@ -198,6 +197,12 @@ form .formError {
 .header-content {
   display: flex;
   justify-content: space-between; }
+  .header-content a {
+    text-decoration: none;
+    color: #222221;
+    cursor: pointer; }
+    .header-content a:hover {
+      color: #FFC943; }
   .header-content .logo {
     font-weight: bold;
     text-transform: uppercase; }

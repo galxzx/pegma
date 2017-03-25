@@ -26,10 +26,11 @@ const TeacherStudents = ({user, students}) => {
               <th>Manage Student</th>
             </tr>
           {students.map((student) => {
+            console.log(student.user.imageUrl)
             return (
               <tr key={student.id} className="student">
                 <td className="">{student.id}</td>
-                <td className="avatar"><img src={`/avatars/${student.user.avatar}`} className="avatar" /></td>
+                <td className="avatar"><img src={`${student.user.imageUrl}`} className="avatar" /></td>
                 <td className="">{student.user.lastName + ', ' + student.user.firstName}</td>
                 <td className=""></td>                
                 <td className="options">
