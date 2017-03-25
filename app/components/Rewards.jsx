@@ -1,29 +1,11 @@
 
 import React from 'react'
-import { Field, reduxForm } from 'redux-form'
-import DatePicker from 'react-datepicker'
-import moment from 'moment'
-import { Link } from 'react-router'
-import DueDate from '../containers/DueDateContainer'
 
-const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll, due_date, handleChange, message}) => {
-
-  const studentStats = (assignments) => {
-    const stats = {
-      'assigned':0,
-      'doing':0,
-      'completed':0,
-      'archived':0
-    }
-    
-    assignments.forEach(assignment => stats[assignment.status]++)
-    
-    return stats
-  }
+const Rewards = ({user}) => {
 
   return (
     <div className="dashboard dashboard-teacher">
-      <div className="container panel-container functions">
+      <div className="container panel-container rewards">
         <div className="flex-container">
           <div className="flex-child panel">
             <div className="panel-header">Rewards Panel</div>
@@ -37,4 +19,4 @@ const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll, due_
   )
 }
 
-export default TeacherFunctions
+export default Rewards
