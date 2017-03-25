@@ -18,7 +18,8 @@ html {
   min-height: 100vh; }
 
 .disabled {
-  color: #9C9C9B !important; }
+  color: #9C9C9B !important;
+  cursor: default !important; }
 
 .app-enter {
   opacity: 0.01; }
@@ -109,7 +110,7 @@ form .formError {
 .modal {
   position: absolute;
   z-index: 1001;
-  background: #fff;
+  background: #FFFFFF;
   padding: 30px;
   box-shadow: 5px 5px 20px;
   border: 1px solid #EEEEEC;
@@ -121,7 +122,7 @@ form .formError {
 .modal-close {
   float: right;
   padding: 5px 10px;
-  border: 1px solid #fff;
+  border: 1px solid #FFFFFF;
   margin-right: -20px;
   margin-top: -20px;
   border-radius: 3px;
@@ -139,11 +140,11 @@ form .formError {
     padding: 20px;
     text-align: center; }
     .modal-login nav button {
-      color: #fff;
+      color: #FFFFFF;
       margin: 0 5px; }
       .modal-login nav button > span.icon {
         font-size: 1em;
-        color: #fff !important;
+        color: #FFFFFF !important;
         margin-right: 5px; }
   .modal-login form {
     padding: 20px; }
@@ -210,7 +211,7 @@ form .formError {
 /* FOOTER */
 footer {
   background: #222;
-  color: #fff;
+  color: #FFFFFF;
   padding: 5px;
   text-align: center;
   flex: 0 1 auto; }
@@ -263,7 +264,7 @@ footer {
   .stats li {
     width: 25%;
     padding: 15px;
-    color: #fff;
+    color: #FFFFFF;
     margin-right: 20px;
     display: flex;
     justify-content: space-between; }
@@ -271,7 +272,7 @@ footer {
       margin-right: 0 !important; }
     .stats li .icon {
       font-size: 2.5em;
-      color: #fff; }
+      color: #FFFFFF; }
     .stats li .info {
       text-align: right; }
     .stats li .quantity {
@@ -310,7 +311,7 @@ footer {
   font-weight: bold; }
 
 .panel-subheader {
-  background: #fff;
+  background: #FFFFFF;
   padding: 5px;
   border-bottom: 1px solid #EEEEEC; }
 
@@ -353,13 +354,14 @@ footer {
 
 /* ASSIGNMENTS */
 .dashboard {
-  background: #fff; }
+  background: #FFFFFF; }
   .dashboard .assignments .panel-header {
     display: flex;
     justify-content: space-between; }
     .dashboard .assignments .panel-header select {
       font-weight: normal;
-      font-size: 80%; }
+      font-size: 80%;
+      margin-left: 5px; }
   .dashboard .assignments-list {
     padding: 0;
     margin: 0;
@@ -389,9 +391,20 @@ footer {
       .dashboard .assignments-list li .date {
         margin: 5px 0;
         font-size: 120%; }
+      .dashboard .assignments-list li .status {
+        color: #4B4B4A;
+        font-style: italic;
+        font-size: 80%; }
     .dashboard .assignments-list a {
       text-decoration: none;
       color: #222221; }
+
+.label-overdue {
+  background: #C60034;
+  color: #FFFFFF;
+  padding: 0 3px;
+  border-radius: 3px;
+  font-size: 80%; }
 
 .list-pending,
 .list-inprogress,
@@ -470,7 +483,7 @@ footer {
         font-size: 80%;
         text-transform: uppercase;
         padding: 2px 5px;
-        color: #fff;
+        color: #FFFFFF;
         border-radius: 5px;
         margin-left: 5px; }
         .quiz .question-group .inquiry-option .answer.answer-correct {
@@ -503,10 +516,10 @@ footer {
 
 article[data-class="overdue"], article[data-class="overdue"]:hover {
   background: #C60034;
-  color: #ffffff; }
+  color: #FFFFFF; }
   article[data-class="overdue"] div, article[data-class="overdue"]:hover div {
     background: #C60034;
-    color: #ffffff; }
+    color: #FFFFFF; }
 
 article[data-class="reminder"], article[data-class="reminder"]:hover {
   background: #FFC943; }
@@ -514,6 +527,24 @@ article[data-class="reminder"], article[data-class="reminder"]:hover {
     background: #FFC943; }
 
 /* COLOR CLASSSES */
+.bg-black {
+  background: #222221; }
+
+.black {
+  color: #222221; }
+
+.bg-light-grey {
+  background: #EEEEEC; }
+
+.light-grey {
+  color: #EEEEEC; }
+
+.bg-dark-grey {
+  background: #4B4B4A; }
+
+.dark-grey {
+  color: #4B4B4A; }
+
 .bg-red {
   background: #C60034; }
 
@@ -573,28 +604,29 @@ table.teacher-assignments, table.teacher-students {
     background: #EEEEEC; }
     table.teacher-assignments tr th, table.teacher-students tr th {
       text-align: center;
-      background: #C60034;
+      background: #4B4B4A;
       padding: 10px;
-      color: #ffffff; }
+      color: #FFFFFF; }
     table.teacher-assignments tr td, table.teacher-students tr td {
       text-align: center;
       padding: 10px; }
     table.teacher-assignments tr td:first-child, table.teacher-assignments tr td:nth-child(2), table.teacher-students tr td:first-child, table.teacher-students tr td:nth-child(2) {
       width: 5%; }
-    table.teacher-assignments tr td.options > *, table.teacher-students tr td.options > * {
+    table.teacher-assignments tr td.options > a, table.teacher-students tr td.options > a {
       text-decoration: none;
-      color: #fff;
-      background: #C60034;
+      color: #FFFFFF;
+      background: #00C692;
       font-size: 24pt;
       padding: 10px;
       padding-bottom: 5px;
-      margin: 10px; }
+      margin: 10px;
+      border-radius: 3px; }
     table.teacher-assignments tr td.options > *:hover, table.teacher-students tr td.options > *:hover {
       opacity: .7; }
     table.teacher-assignments tr td.options > *:first-child, table.teacher-students tr td.options > *:first-child {
-      background: #0B9CCC; }
+      background: #FF8943; }
   table.teacher-assignments tr:nth-child(odd), table.teacher-students tr:nth-child(odd) {
-    background: #ffffff; }
+    background: #FFFFFF; }
 
 table.teacher-assignments {
   font-size: 0.85em; }
@@ -607,7 +639,7 @@ table.teacher-students.fancy-colors tr {
   -webkit-transition: all 200ms;
   transition: all 200ms; }
   table.teacher-students.fancy-colors tr th {
-    background: #C60034; }
+    background: #4B4B4A; }
 
 table.teacher-students.fancy-colors tr:hover {
   background: #FFC943;

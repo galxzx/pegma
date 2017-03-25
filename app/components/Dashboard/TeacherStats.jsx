@@ -19,14 +19,14 @@ const TeacherStats = ({students}) => {
   return (
     <ul className="stats">
       <li className="stats-ready">
-        <span className="icon icon-paper-alert"></span>
+        <span className="icon icon-file-alert"></span>
         <div className="info">
           <div className="quantity">{ readyToGrade }</div>
           <div className="type">Ready to Grade</div>
         </div>
       </li>
       <li className="stats-selfgraded">
-        <span className="icon icon-paper-check"></span>
+        <span className="icon icon-file-check"></span>
         <div className="info">
           <div className="quantity">{ selfGraded }</div>
           <div className="type">Self Graded</div>

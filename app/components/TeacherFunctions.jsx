@@ -9,8 +9,15 @@ import DueDate from '../containers/DueDateContainer'
 const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll, due_date, handleChange, message}) => {
 
   const studentStats = (assignments) => {
-    const stats = {'assigned':0, 'doing':0, 'completed':0, 'archived':0}
+    const stats = {
+      'assigned':0,
+      'doing':0,
+      'completed':0,
+      'archived':0
+    }
+    
     assignments.forEach(assignment => stats[assignment.status]++)
+    
     return stats
   }
 
@@ -19,7 +26,7 @@ const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll, due_
       <div className="container panel-container functions">
         <div className="flex-container">
           <div className="flex-child panel">
-            <div className="panel-header">Teacher Functions</div>
+            <div className="panel-header">Control Panel</div>
             <section className="create-menu">
               <Link to="/teacher/createtask"><button className="btn btn-primary">Create New Task</button></Link>
               <Link to="/teacher/createquiz"><button className="btn btn-primary">Create New Quiz</button></Link>

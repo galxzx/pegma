@@ -91,7 +91,7 @@ class TeacherAssignmentsPanel extends React.Component {
 		      					<li>
 						          <div className="summary">
 						            <h3 className="title">{ assignment.title }  <small><i>{ type }</i></small></h3>
-						            <span className="student-name">{ assignment.overdue ? <span className="red"><i>Overdue</i></span> : null} { assignment.studentName } ({ assignment.status })</span>
+						            <span className="student-name">{ assignment.overdue ? <span className="icon-clock-o red"></span> : null} { assignment.studentName } <span className="status">({ assignment.status })</span></span>
 						          </div>
 						          <div className="due">
 						            <h4>Due</h4>
