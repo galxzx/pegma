@@ -917,8 +917,8 @@ table.teacher-students.fancy-colors {
 
 #chatbox-container {
 	position: fixed;
-	bottom: 15px;
-	right: 15px;
+	bottom: 0px;
+	right: 0px;
 	z-index: 10;
 	width: 350px;
 
@@ -964,7 +964,10 @@ table.teacher-students.fancy-colors {
 			    .chat-img {
 			    	display: inline-block;
 			    	clear: both;
-			    	img {border-radius: 50%;}
+			    	img {
+			    		border-radius: 50%;
+			    		border: 2px solid $mediumGrey;
+			    	}
 			    }
 			    .chat-body p {
 				    margin: 0px;
