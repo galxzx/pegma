@@ -34,14 +34,14 @@ const StudentStats = ({assignments}) => {
         </div>
       </li>
       <li className="stats-new">
-        <span className="icon icon-calendar-plus-o"></span>
+        <span className="icon icon-calendar-plus"></span>
         <div className="info">
           <div className="quantity">{ totalNew }</div>
           <div className="type">New</div>
         </div>
       </li>
       <li className="stats-complete">
-        <span className="icon icon-calendar-check-o"></span>
+        <span className="icon icon-calendar-check"></span>
         <div className="info">
           <div className="quantity">{ totalCompleted }</div>
           <div className="type">Completed</div>

@@ -1,5 +1,6 @@
 /* COLOR PALETTE */
 
+$white: #FFFFFF;
 $black: #222221;
 $lightGrey: #EEEEEC;
 $mediumGrey: #9C9C9B;
@@ -37,9 +38,8 @@ html {
 
 .disabled {
 	color: $mediumGrey !important;
+	cursor: default !important;
 }
-
-
 
 .app-enter {
   opacity: 0.01;
@@ -155,7 +155,7 @@ form {
 .modal {
 	position: absolute;
 	z-index: 1001;
-  background: #fff;
+  background: $white;
   padding: 30px;
   box-shadow: 5px 5px 20px;
   border: 1px solid $lightGrey;
@@ -168,7 +168,7 @@ form {
 .modal-close {
 	float: right;
   padding: 5px 10px;
-  border: 1px solid #fff;
+  border: 1px solid $white;
   margin-right: -20px;
   margin-top: -20px;
   border-radius: 3px;
@@ -193,12 +193,12 @@ form {
   	text-align: center;
 
   	button {
-  		color: #fff;
+  		color: $white;
   		margin: 0 5px;
 
   		> span.icon {
   			font-size: 1em;
-  			color: #fff !important;
+  			color: $white !important;
   			margin-right: 5px;
   		}
   	}
@@ -309,7 +309,7 @@ form {
 
 footer {
 	background: #222;
-	color: #fff;
+	color: $white;
 	padding: 5px;
 	text-align: center;
 	flex: 0 1 auto;
@@ -381,7 +381,7 @@ footer {
 	li {
 		width: 25%;
 		padding: 15px;
-		color: #fff;
+		color: $white;
 		margin-right: 20px;
 		display: flex;
 		justify-content: space-between;
@@ -392,7 +392,7 @@ footer {
 
 		.icon {
 			font-size: 2.5em;
-			color: #fff;
+			color: $white;
 		}
 
 		.info {
@@ -460,7 +460,7 @@ footer {
 }
 
 .panel-subheader {
-	background: #fff;
+	background: $white;
 	padding: 5px;
 	border-bottom: 1px solid $lightGrey;
 }
@@ -517,7 +517,7 @@ footer {
 
 .dashboard {
 
-	background: #fff;
+	background: $white;
 
 	.assignments {
 		.panel-header {
@@ -527,6 +527,7 @@ footer {
 			select {
 				font-weight: normal;
 				font-size: 80%;
+				margin-left: 5px;
 			}
 		}
 	}
@@ -571,12 +572,27 @@ footer {
 				margin: 5px 0;
 				font-size: 120%;
 			}
+
+			.status {
+				color: $darkGrey;
+				font-style: italic;
+				font-size: 80%;
+			}
 		}
+
 	a {
 		    text-decoration: none;
 		    color: $black;
   		}
 	}
+}
+
+.label-overdue {
+	background: $red;
+  color: $white;
+  padding: 0 3px;
+  border-radius: 3px;
+  font-size: 80%;
 }
 
 .list-pending,
@@ -694,7 +710,7 @@ footer {
 		    font-size: 80%;
 		    text-transform: uppercase;
 		    padding: 2px 5px;
-		    color: #fff;
+		    color: $white;
 		    border-radius: 5px;
 		    margin-left: 5px;
 
@@ -757,10 +773,10 @@ footer {
 
 article[data-class="overdue"], article[data-class="overdue"]:hover {
 	background: $red;
-	color: #ffffff;
+	color: $white;
 	div {
 		background: $red;
-		color: #ffffff;
+		color: $white;
 	}
 }
 
@@ -772,6 +788,30 @@ article[data-class="reminder"], article[data-class="reminder"]:hover {
 }
 
 /* COLOR CLASSSES */
+
+.bg-black {
+	background: $black;
+}
+
+.black {
+	color: $black;
+}
+
+.bg-light-grey {
+	background: $lightGrey;
+}
+
+.light-grey {
+	color: $lightGrey;
+}
+
+.bg-dark-grey {
+	background: $darkGrey;
+}
+
+.dark-grey {
+	color: $darkGrey;
+}
 
 .bg-red {
 	background: $red;
@@ -854,11 +894,11 @@ table.teacher-assignments, table.teacher-students {
 	tr {
 		background: $lightGrey;
 		th {
-			text-align: center;
-			background: $red;
+			text-align: center;	
+			background: $darkGrey;
 			padding: 10px;
-			color: #ffffff;
-		}
+			color: $white;	
+		}			
 		td {
 			text-align: center;
 			padding: 10px;
@@ -866,25 +906,26 @@ table.teacher-assignments, table.teacher-students {
 
 		td:first-child, td:nth-child(2) {
 			width: 5%;
-		}
-		td.options > * {
+		}	
+		td.options > a {
 			text-decoration: none;
-			color: #fff;
-			background: $red;
+			color: $white;
+			background: $green;
 			font-size: 24pt;
 			padding: 10px;
 			padding-bottom: 5px;
 			margin: 10px;
+	    border-radius: 3px;
 		}
 		td.options > *:hover {
 			opacity: .7;
 		}
 		td.options > *:first-child {
-			background: $blue;
-		}
+			background: $orange;
+		}				
 	}
 	tr:nth-child(odd) {
-		background: #ffffff;
+		background: $white;
 	}
 }
 
@@ -904,8 +945,8 @@ table.teacher-students.fancy-colors {
     -webkit-transition: all 200ms;
     transition: all 200ms;
 		th {
-			background: $red;
-		}
+			background: $darkGrey;
+		}    
 	}
 	tr:hover {
 		background: $yellow;
