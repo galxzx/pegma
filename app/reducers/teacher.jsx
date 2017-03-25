@@ -30,6 +30,7 @@ export default function reducer(prevState = initialState, action) {
       break
 
     case SET_CURRENT_STUDENT:
+    console.log('newest student', action.student)
       newState.currentStudent = action.student
       break
 
@@ -70,6 +71,9 @@ export const updateGrade = (grade, assignmentId) => (dispatch) => {
 export const loadCurrentStudent = (studentId) => (dispatch, getState) => 
    axios.get(`/api/students/${studentId}/`)
     .then(res => res.data)
-    .then(student => dispatch(setCurrentStudent(student)))
+    .then(student => {
+      console.log('new student   ==================', student)
+      dispatch(setCurrentStudent(student))
+    })
     .catch(err => console.error(err))
 

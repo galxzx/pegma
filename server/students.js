@@ -32,8 +32,8 @@ module.exports = require('express').Router()
 		})
 		.then(assignment => res.json(assignment))
 		.catch(next))
-	.get('/:studentId/', mustBeLoggedIn, (req, res, next) =>
-		Student.findById(req.params.studentId, 
+	.get('/:studentId', mustBeLoggedIn, (req, res, next) =>
+		Student.findById(+req.params.studentId, 
 		{include: [
 			{model:User, attributes:['firstName', 'lastName']}, 
 			{model:Teacher, include:[{model:User, attributes:['firstName', 'lastName']}]}, 

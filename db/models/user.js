@@ -45,7 +45,8 @@ const User = db.define('users', {
       return ''
     },
     imageUrl () {
-      return `/images/avatars/${this.avatar}`
+      if (this.avatar && this.avatar.startsWith('http')) return this.avatar
+      else return `/images/avatars/${this.avatar}`
     }
   }
 })
