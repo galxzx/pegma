@@ -63,7 +63,7 @@ class ChatboxContainer extends Component {
     users.push(name);
     messages.push({
       user: 'APPLICATION BOT',
-      text : name +' Joined'
+      text: name + ' Joined'
     });
     this.setState({users, messages});
   }
@@ -93,19 +93,27 @@ class ChatboxContainer extends Component {
   // }
 
   handleMessageSubmit(event) {
+    let newMessage
     event.preventDefault()
-    console.log(event.target.message.value, 'in handle message')
+
     const {messages} = this.state
-    let newMessage = {user:this.state.chatName, text:event.target.message.value}
+
+    if(!event.target.to.value) {
+       newMessage = {user:this.state.chatName, text:event.target.message.value}
+      this.socket.emit('send:message', newMessage)
+    } else {
+      newMessage = {user:this.state.chatName, text:'Private: ' + event.target.message.value}
+      this.socket.emit('send:privateMessage', {message: newMessage, to: event.target.to.value})
+    }
     messages.push(newMessage)
     this.setState({messages})
-    this.socket.emit('send:message', newMessage)
+
 
     let input = document.querySelector('#chatbox-container .footer input')
     input.value = ''
   }
   render () {
-    return <Chatbox {...this.props} chatName={this.state.chatName} messages={this.state.messages} handleMessageSubmit={this.handleMessageSubmit} />
+    return <Chatbox {...this.props} {...this.state} handleMessageSubmit={this.handleMessageSubmit} />
   }
 }
 

@@ -32,6 +32,13 @@ var userNames = (function () {
   // };
 
   // check the name and add a # if necessary
+  const setId = (name, socketId) => {
+    names[name] = socketId
+  }
+
+  const getId = (name) => {
+    return names[name]
+  }
 
   const checkName = (name) => {
     let idx = 1
@@ -64,7 +71,9 @@ var userNames = (function () {
     free,
     get,
     //getGuestName,
-    checkName
+    checkName,
+    setId,
+    getId
   };
 }());
 
@@ -72,11 +81,10 @@ var userNames = (function () {
 module.exports = function (socket) {
   // var name = userNames.getGuestName();
 
-  console.log('new user connected')
-  console.log('data', socket.handshake.query)
+
   //set name on connection
   const name = userNames.checkName(socket.handshake.query.name)
-  console.log(name)
+
   //join room on connection
   let room = socket.handshake.query.room
   socket.join(room, () => {
@@ -89,6 +97,7 @@ module.exports = function (socket) {
     users: userNames.get()
   });
 
+  userNames.setId(name, socket)
 
 
   // broadcast a user's message to other users
@@ -96,6 +105,11 @@ module.exports = function (socket) {
     console.log(data)
     socket.broadcast.emit('send:message', {user: name, text: data.text});
   });
+
+  socket.on('send:privateMessage', (data) => {
+    console.log(data, 'private message data')
+    userNames.getId(data.to).emit('send:message', {user: name, text: data.message.text})
+  })
 
   // validate a user's name change, and broadcast it on success
   // socket.on('change:name', function (data) {

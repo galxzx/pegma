@@ -1,7 +1,7 @@
 import React from 'react'
 import QuizContainer from '../containers/QuizContainer'
 import TaskContainer from '../containers/TaskContainer'
-const Chatbox = ({open, handleToggleChatbox, messages, handleMessageSubmit, user, chatName}) => {
+const Chatbox = ({open, handleToggleChatbox, messages, handleMessageSubmit, user, chatName, users}) => {
     console.log(messages, '<======')
     return (
 
@@ -43,7 +43,16 @@ const Chatbox = ({open, handleToggleChatbox, messages, handleMessageSubmit, user
                                 <input id="btn-input" name="message" type="text" className="form-control input-sm" placeholder="Type your message here..." />
                                 <span className="input-group-btn">
                                     <button type="submit" className="" id="btn-chat">Send</button>
-                                </span>
+                                </span><br/>
+                                <label>Private Message To...</label>
+                                <select name="to" defaultValue="">
+                                    <option value="">Everybody</option>
+                                    {users.map(user => {
+                                        return (
+                                            <option key={user} value={user}>{user}</option>
+                                        )
+                                    })}
+                                </select>
                             </form>
                         </div>
                     </div>
