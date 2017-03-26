@@ -7,14 +7,16 @@ import {handleToggleChatbox} from '../reducers/chatbox'
 const socket = io.connect('http://localhost:1337')
 
 class ChatboxContainer extends Component {
-  constructor () {
+  constructor (props) {
     super ()
     this.state = {
       users: [],
       messages: [{user: 'me', text: 'this is a message'}, {user:'you', text: 'this is another message'}],
       text: '',
       chatUser: '',
-      user: ''
+      user: '',
+      room: props.user.teacher_id ? "" + props.user.teacher_id : "" + props.student.teacher.id
+
 
     }
     this.handleMessageSubmit = this.handleMessageSubmit.bind(this)
@@ -25,8 +27,14 @@ class ChatboxContainer extends Component {
     // this._userChangedName = this._userChangedName.bind(this)
   }
 
+  componentWillUpdate(nextProps, nextState){
+    console.log(nextState, 'nextState')
+    console.log(nextProps, 'nextProps')
+    if(nextProps.student.teacher && this.state.room !== ''+nextProps.student.teacher.id) this.setState({room: '' + nextProps.student.teacher.id})
+  }
+
   componentDidMount() {
-    console.log('user is loaded?', this.props.user)
+    console.log('current state', this.state)
     socket.on('init', this._initialize);
     socket.on('send:message', this._messageRecieve);
     socket.on('user:join', this._userJoined);
@@ -102,7 +110,8 @@ class ChatboxContainer extends Component {
 const mapState = (state) => {
   return {
     user: state.auth,
-    open: state.chatbox.open
+    open: state.chatbox.open,
+    student: state.student
   }
 }
 const mapDispatch = {handleToggleChatbox}

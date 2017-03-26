@@ -16,7 +16,7 @@ const App = ({ user, children }) => {
 
       {children}
 
-      {user ? <ChatboxContainer /> : ''}
+
 
 	    <footer>
 	      <div className="container footer-content">
