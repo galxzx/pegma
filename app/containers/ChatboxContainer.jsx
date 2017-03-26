@@ -102,7 +102,7 @@ class ChatboxContainer extends Component {
        newMessage = {user:this.state.chatName, text:event.target.message.value}
       this.socket.emit('send:message', newMessage)
     } else {
-      newMessage = {user:this.state.chatName, text:'Private: ' + event.target.message.value}
+      newMessage = {user:this.state.chatName, text:`To ${event.target.to.value}: ${event.target.message.value}`}
       this.socket.emit('send:privateMessage', {message: newMessage, to: event.target.to.value})
     }
     messages.push(newMessage)

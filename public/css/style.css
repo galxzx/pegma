@@ -658,8 +658,8 @@ table.teacher-students {
 /* Chatbox */
 #chatbox-container {
   position: fixed;
-  bottom: 15px;
-  right: 15px;
+  bottom: 0px;
+  right: 0px;
   z-index: 10;
   width: 350px; }
   #chatbox-container .chatbox-panel {
@@ -702,7 +702,8 @@ table.teacher-students {
             display: inline-block;
             clear: both; }
             #chatbox-container .chatbox-panel .body ul.chat li .chat-img img {
-              border-radius: 50%; }
+              border-radius: 50%;
+              border: 2px solid #9C9C9B; }
           #chatbox-container .chatbox-panel .body ul.chat li .chat-body p {
             margin: 0px;
             color: #777777;
