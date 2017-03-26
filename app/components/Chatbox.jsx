@@ -1,7 +1,7 @@
 import React from 'react'
 import QuizContainer from '../containers/QuizContainer'
 import TaskContainer from '../containers/TaskContainer'
-const Chatbox = ({open, handleToggleChatbox, messages, handleMessageSubmit, user}) => {
+const Chatbox = ({open, handleToggleChatbox, messages, handleMessageSubmit, user, chatName}) => {
     console.log(messages, '<======')
     return (
 
@@ -16,10 +16,10 @@ const Chatbox = ({open, handleToggleChatbox, messages, handleMessageSubmit, user
                     <div className="body">
                         <ul className="chat">
                          {  messages.map((message, idx) => {
-                            console.log(message.user === user.firstName)
+
                                 return(
                                     <li key={idx}
-                                        className={(message.user === user.firstName ? "align-right" : "")}>
+                                        className={(message.user === chatName ? "align-right" : "")}>
                                         <span className="chat-img pull-left">
                                             <img src="http://placehold.it/50/55C1E7/fff&amp;text=U" alt="User Avatar" className="img-circle" />
                                         </span>

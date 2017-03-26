@@ -4,7 +4,8 @@ import React, { Component } from 'react'
 import Chatbox from '../components/Chatbox'
 import {handleToggleChatbox} from '../reducers/chatbox'
 
-const socket = io.connect('http://localhost:1337')
+//const socket = io()
+// io.connect('http://localhost:1337?')
 
 class ChatboxContainer extends Component {
   constructor (props) {
@@ -13,7 +14,7 @@ class ChatboxContainer extends Component {
       users: [],
       messages: [{user: 'me', text: 'this is a message'}, {user:'you', text: 'this is another message'}],
       text: '',
-      chatUser: '',
+      chatName: '',
       user: '',
       room: props.user.teacher_id ? "" + props.user.teacher_id : "" + props.student.teacher.id
 
@@ -35,17 +36,18 @@ class ChatboxContainer extends Component {
 
   componentDidMount() {
     console.log('current state', this.state)
-    socket.on('init', this._initialize);
-    socket.on('send:message', this._messageRecieve);
-    socket.on('user:join', this._userJoined);
-    socket.on('user:left', this._userLeft);
+    this.socket = io.connect('', {query: `room=${this.state.room}&name=${this.props.user.firstName}`})
+    this.socket.on('init', this._initialize);
+    this.socket.on('send:message', this._messageRecieve);
+    this.socket.on('user:join', this._userJoined);
+    this.socket.on('user:left', this._userLeft);
     // socket.on('change:name', this._userChangedName);
-    socket.emit('change:name', {name: this.props.user.firstName})
+    //this.socket.emit('change:name', {name: this.props.user.firstName})
   }
 
   _initialize(data) {
     var {users, name} = data;
-    this.setState({users});
+    this.setState({users, chatName: name});
   }
 
   _messageRecieve(message) {
@@ -94,16 +96,16 @@ class ChatboxContainer extends Component {
     event.preventDefault()
     console.log(event.target.message.value, 'in handle message')
     const {messages} = this.state
-    let newMessage = {user:this.props.user.firstName, text:event.target.message.value}
+    let newMessage = {user:this.state.chatName, text:event.target.message.value}
     messages.push(newMessage)
     this.setState({messages})
-    socket.emit('send:message', newMessage)
+    this.socket.emit('send:message', newMessage)
 
     let input = document.querySelector('#chatbox-container .footer input')
     input.value = ''
   }
   render () {
-    return <Chatbox {...this.props} messages={this.state.messages} handleMessageSubmit={this.handleMessageSubmit} />
+    return <Chatbox {...this.props} chatName={this.state.chatName} messages={this.state.messages} handleMessageSubmit={this.handleMessageSubmit} />
   }
 }
 
