@@ -475,6 +475,11 @@ footer {
 	height: 150px;
 	cursor: pointer;
 
+	a {
+		text-decoration: none;
+		color: $black;
+	}
+
 	.overdue {
 		color: $red;
 	}
@@ -649,8 +654,18 @@ footer {
 
 .settings-content {
 
+	.settings-form {
+		display: flex;
+
+		img {
+			border: 1px solid $mediumGrey;
+			width: 60%;
+		}
+	}
+
 	fieldset {
-		padding: 50px 35% 100px 35%;
+		padding: 30px 25% 10px 25%;
+		border: 0;
 	}
 
 	input {
