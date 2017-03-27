@@ -10,9 +10,7 @@ const reducer = (state=null, action) => {
 }
 
 const AUTHENTICATED = 'AUTHENTICATED'
-export const authenticated = user => ({
-  type: AUTHENTICATED, user
-})
+export const authenticated = user => ({type: AUTHENTICATED, user})
 
 export const login = (username, password) =>
   (dispatch, getState) =>
@@ -57,6 +55,16 @@ export const updateStudent = () =>
       .catch(err => console.error(err))
 }
 
+export const updateTeacher = () =>
+  (dispatch, getState) => {
+    const state = getState()
+    const userId = state.auth.id
+    const newInfo = state.form.teacherSettings.values
+    return axios.put(`/api/users/${userId}`, newInfo)
+      .then(() => dispatch(whoami()))
+      .catch(err => console.error(err))
+}
+
 export const checkPassword = (values) =>
   (dispatch, getState) => {
     const user =  getState().auth
@@ -82,7 +90,6 @@ export const checkEmail = (values) =>
     axios.post('/api/auth/checkEmail', {email: values.email})
       .then(() => {})
       .catch(() => ({email: 'User already exists with that email'}))
-
 
 
 export default reducer

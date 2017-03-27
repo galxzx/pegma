@@ -30,7 +30,7 @@ const TeacherApp = ({ user, children }) => {
             <span className="nav-icon icon-calendar"></span>
             <div className="nav-text">Calendar</div>
           </Link>
-          <Link className="nav-item disabled" to="/teacher/settings">
+          <Link className="nav-item" to="/teacher/settings">
             <span className="nav-icon icon-cog"></span>
             <div className="nav-text">Settings</div>
           </Link>
