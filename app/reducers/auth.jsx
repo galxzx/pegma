@@ -10,9 +10,7 @@ const reducer = (state=null, action) => {
 }
 
 const AUTHENTICATED = 'AUTHENTICATED'
-export const authenticated = user => ({
-  type: AUTHENTICATED, user
-})
+export const authenticated = user => ({type: AUTHENTICATED, user})
 
 export const login = (username, password) =>
   (dispatch, getState) =>
@@ -92,7 +90,6 @@ export const checkEmail = (values) =>
     axios.post('/api/auth/checkEmail', {email: values.email})
       .then(() => {})
       .catch(() => ({email: 'User already exists with that email'}))
-
 
 
 export default reducer
