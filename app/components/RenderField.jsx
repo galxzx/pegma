@@ -5,7 +5,7 @@ const RenderField = ({ input, label, type, meta: { asyncValidating, touched, err
     <label>{label}</label>
     <div className={asyncValidating ? 'async-validating' : ''}>
       <input {...input} type={type} placeholder={label}/>
-      {touched && error && <span><span className="icon icon-burst-new blue"></span><span className="formError">{error}</span></span>}
+      {touched && error && <span><span className="icon icon-error-circle red"></span><span className="formError">{error}</span></span>}
     </div>
   </div>
 )

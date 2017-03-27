@@ -207,6 +207,8 @@ form .formError {
   .header-content .logo {
     font-weight: bold;
     text-transform: uppercase; }
+  .header-content .classroom {
+    font-style: italic; }
 
 /* FOOTER */
 footer {
@@ -323,6 +325,9 @@ footer {
   overflow-y: scroll;
   height: 150px;
   cursor: pointer; }
+  .notifications-list a {
+    text-decoration: none;
+    color: #222221; }
   .notifications-list .overdue {
     color: #C60034; }
   .notifications-list li {
@@ -436,8 +441,15 @@ footer {
           text-align: left; }
 
 /* SETTINGS */
+.settings-content .settings-form {
+  display: flex; }
+  .settings-content .settings-form img {
+    border: 1px solid #9C9C9B;
+    width: 60%; }
+
 .settings-content fieldset {
-  padding: 50px 35% 100px 35%; }
+  padding: 30px 25% 10px 25%;
+  border: 0; }
 
 .settings-content input {
   margin-top: 5px;
@@ -616,10 +628,12 @@ table.teacher-assignments, table.teacher-students {
       padding-bottom: 5px;
       margin: 10px;
       border-radius: 3px; }
-    table.teacher-assignments tr td.options > *:hover, table.teacher-students tr td.options > *:hover {
+    table.teacher-assignments tr td.options > #email, table.teacher-students tr td.options > #email {
       opacity: .7; }
-    table.teacher-assignments tr td.options > *:first-child, table.teacher-students tr td.options > *:first-child {
+    table.teacher-assignments tr td.options > #tracker, table.teacher-students tr td.options > #tracker {
       background: #FF8943; }
+    table.teacher-assignments tr td.options > #delete, table.teacher-students tr td.options > #delete {
+      background: #C60034; }
   table.teacher-assignments tr:nth-child(odd), table.teacher-students tr:nth-child(odd) {
     background: #FFFFFF; }
 

@@ -10,7 +10,8 @@ import WhoAmIContainer, {WhoAmI} from './WhoAmI'
 
 describe('<WhoAmI/>', () => {
   const user = {
-    name: 'Dr. Bones',
+    firstName: 'Dr. Bones',
+    lastName: 'Potato'
   }
   const logout = spy() 
   let root
@@ -19,7 +20,9 @@ describe('<WhoAmI/>', () => {
   )
 
   it('greets the user', () => {
-    expect(root.text()).to.contain(user.name)
+    expect(root.text()).to.contain('Welcome')
+    expect(root.text()).to.contain(user.firstName)
+    expect(root.text()).to.contain(user.lastName)
   })
 
   it('has a logout button', () => {

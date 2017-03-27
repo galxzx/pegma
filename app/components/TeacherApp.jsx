@@ -52,7 +52,7 @@ const TeacherApp = ({ user, children }) => {
   :
   (
   <div className="not-logged">
-    <span className="icon icon-exclamation-triangle"></span>
+    <span className="icon icon-error-triangle"></span>
     <h3>You must be logged in as a Teacher to see this page.</h3>
     <Login />
   </div>

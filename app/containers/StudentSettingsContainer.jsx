@@ -8,8 +8,8 @@ import { updateStudent } from '../reducers/auth'
 
 const mapState = (state) => {
   return {
-    initialValues: Object.assign({}, state.auth, {teacher: state.student.teacher.user.firstName + ' ' + state.student.teacher.user.lastName})
-
+    initialValues: Object.assign({}, state.auth, {teacher: state.student.teacher.user.firstName + ' ' + state.student.teacher.user.lastName}),
+    user: state.auth
   }
 }
 

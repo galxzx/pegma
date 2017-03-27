@@ -303,6 +303,9 @@ form {
 		font-weight: bold;
 		text-transform: uppercase;
 	}
+	.classroom {
+		font-style: italic;
+	}
 }
 
 /* FOOTER */
@@ -474,6 +477,11 @@ footer {
 	overflow-y: scroll;
 	height: 150px;
 	cursor: pointer;
+
+	a {
+		text-decoration: none;
+		color: $black;
+	}
 
 	.overdue {
 		color: $red;
@@ -649,8 +657,18 @@ footer {
 
 .settings-content {
 
+	.settings-form {
+		display: flex;
+
+		img {
+			border: 1px solid $mediumGrey;
+			width: 60%;
+		}
+	}
+
 	fieldset {
-		padding: 50px 35% 100px 35%;
+		padding: 30px 25% 10px 25%;
+		border: 0;
 	}
 
 	input {
@@ -917,11 +935,14 @@ table.teacher-assignments, table.teacher-students {
 			margin: 10px;
 	    border-radius: 3px;
 		}
-		td.options > *:hover {
+		td.options > #email {
 			opacity: .7;
 		}
-		td.options > *:first-child {
+		td.options > #tracker {
 			background: $orange;
+		}
+		td.options > #delete {
+			background: $red;
 		}
 	}
 	tr:nth-child(odd) {

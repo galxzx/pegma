@@ -6,11 +6,13 @@ import { loadCurrentAssignment } from './student'
 
 export const SET_STUDENTS  = 'SET_STUDENTS'
 export const SET_CURRENT_STUDENT  = 'SET_CURRENT_STUDENT'
+export const DROP_STUDENT  = 'DROP_STUDENT'
 
 /* ------------   ACTION CREATORS     ------------------ */
 
 export const setStudents = (students) => ({ type: SET_STUDENTS, students })
 export const setCurrentStudent = (student) => ({ type: SET_CURRENT_STUDENT, student })
+export const dropStudent = (studentId) => ({ type: DROP_STUDENT, studentId })
 
 /* ------------       REDUCERS     ------------------ */
 
@@ -30,8 +32,11 @@ export default function reducer(prevState = initialState, action) {
       break
 
     case SET_CURRENT_STUDENT:
-    console.log('newest student', action.student)
       newState.currentStudent = action.student
+      break
+
+    case DROP_STUDENT:
+      newState.students = newState.students.filter(student => student.id !== action.studentId)
       break
 
     default:
@@ -69,11 +74,17 @@ export const updateGrade = (grade, assignmentId) => (dispatch) => {
 }
 
 export const loadCurrentStudent = (studentId) => (dispatch, getState) => 
-   axios.get(`/api/students/${studentId}/`)
+ axios.get(`/api/students/${studentId}/`)
+  .then(res => res.data)
+  .then(student => {
+    dispatch(setCurrentStudent(student))
+  })
+  .catch(err => console.error(err))
+
+
+export const dropStudentRequest = (studentId) => (dispatch) => 
+  axios.put(`/api/students/${studentId}/drop`)
     .then(res => res.data)
-    .then(student => {
-      console.log('new student   ==================', student)
-      dispatch(setCurrentStudent(student))
-    })
-    .catch(err => console.error(err))
+    .then(dropped => dispatch(dropStudent(studentId)))
+  .catch(err => console.error(err))
 
