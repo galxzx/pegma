@@ -5,6 +5,7 @@ import RenderField from './RenderField'
 import RenderError from './RenderError'
 
 const TeacherSettings = ({user, handleSubmit, updateTeacher}) => {
+  console.log(user)
   return (
     <div className="dashboard dashboard-teacher">
       <div className="container panel-container settings">
