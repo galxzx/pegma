@@ -167,3 +167,9 @@
 .icon-angle-double-down:before {
   content: "\51";
 }
+.icon-delete:before {
+  content: "\52";
+}
+.icon-refresh:before {
+  content: "\53";
+}
