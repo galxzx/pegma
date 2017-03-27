@@ -1,6 +1,8 @@
 import React from 'react'
 import { Field } from 'redux-form'
 import UpdatePasswordContainer from '../containers/UpdatePasswordContainer'
+import RenderField from './RenderField'
+import RenderError from './RenderError'
 
 const StudentSettings = ({user, teacher, handleSubmit, updateStudent}) => {
 
@@ -20,15 +22,15 @@ const StudentSettings = ({user, teacher, handleSubmit, updateStudent}) => {
                       <img src={user.imageUrl} /><br/>
                       <label>Avatar URL</label><br/>
                       <span className="alert-inline">Your new image must be a url.</span>
-                      <Field type="text" name="avatar" component="input" /><br/>
+                      <Field type="text" name="avatar" component="input" component={RenderField}/><br/>
                     </div>
                     <div className="flex-child">
                       <label>First Name</label><br/>
-                      <Field type="text" name="firstName" component="input" /><br/>
+                      <Field type="text" name="firstName" component="input" component={RenderField}/><br/>
                       <label>Last Name</label><br/>
-                      <Field type="text" name="lastName" component="input" /><br/>
+                      <Field type="text" name="lastName" component="input" component={RenderField}/><br/>
                       <label>E-mail</label><br/>
-                      <Field type="text" name="email" component="input" /><br/>
+                      <Field type="text" name="email" component="input" component={RenderField}/><br/>
                       <label>Teacher</label><br/>
                       <span className="alert-inline">You are not allowed to change your teacher.</span><br/>
                       <Field type="text" name="teacher"  component="input" disabled /><br/>
