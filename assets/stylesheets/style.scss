@@ -1013,7 +1013,7 @@ table.teacher-students {
     margin-right: 5px;
 		.heading {
 			padding: 5px;
-			background: $mediumGrey !important;
+			background: $blue !important;
 			height: 30px;
 			width: 335px;
 			#chatbox-title {
@@ -1031,7 +1031,6 @@ table.teacher-students {
 				height: 25px;
 				width: 25px;
 				position: absolute;
-				top: 7.5px;
 				right: 14px;
 			}
 		}
@@ -1040,6 +1039,7 @@ table.teacher-students {
 	    overflow-y: scroll;
 	    height: 250px;
 	    border: 1px solid $mediumGrey;
+	    background: $lightGrey;
 			ul.chat {
 			  list-style: none;
 			  margin: 0;
