@@ -681,7 +681,7 @@ table.teacher-students {
     margin-right: 5px; }
     #chatbox-container .chatbox-panel .heading {
       padding: 5px;
-      background: #0B9CCC !important;
+      background: #9C9C9B !important;
       height: 30px;
       width: 335px; }
       #chatbox-container .chatbox-panel .heading #chatbox-title {
@@ -703,7 +703,8 @@ table.teacher-students {
     #chatbox-container .chatbox-panel .body {
       padding: 15px;
       overflow-y: scroll;
-      height: 250px; }
+      height: 250px;
+      border: 1px solid #9C9C9B; }
       #chatbox-container .chatbox-panel .body ul.chat {
         list-style: none;
         margin: 0;
