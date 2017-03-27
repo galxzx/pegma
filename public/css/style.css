@@ -207,6 +207,8 @@ form .formError {
   .header-content .logo {
     font-weight: bold;
     text-transform: uppercase; }
+  .header-content .classroom {
+    font-style: italic; }
 
 /* FOOTER */
 footer {
