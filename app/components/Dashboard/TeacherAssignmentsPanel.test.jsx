@@ -5,6 +5,7 @@ import {shallow, mount} from 'enzyme'
 import {spy} from 'sinon'
 chai.use(require('sinon-chai'))
 import {createStore} from 'redux'
+import store from './../../store'
 
 import TeacherAssignmentsPanel from './TeacherAssignmentsPanel'
 
@@ -12,7 +13,7 @@ describe('<TeacherAssignmentsPanel/>', () => {
 
   let root
   beforeEach('render the root', () =>
-    root = shallow(<TeacherAssignmentsPanel />)
+    root = shallow(<Provider store={store}><TeacherAssignmentsPanel /></Provider>)
   )
 
   it('should have a select input', () => {
