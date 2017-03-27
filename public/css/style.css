@@ -396,6 +396,8 @@ footer {
     .dashboard .assignments-list a {
       text-decoration: none;
       color: #222221; }
+  .dashboard .signup h3 {
+    text-align: center; }
 
 .label-overdue {
   background: #C60034;
