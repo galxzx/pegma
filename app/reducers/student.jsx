@@ -8,7 +8,6 @@ export const SET_CURRENT_ASSIGNMENT  = 'SET_CURRENT_ASSIGNMENT'
 export const SET_TEACHER = 'SET_TEACHER'
 export const SET_QUIZ = 'SET_QUIZ'
 export const SET_TASK = 'SET_TASK'
-
 export const UPDATE_ASSIGNMENT = 'UPDATE_ASSIGNMENT'
 
 /* ------------   ACTION CREATORS     ------------------ */
@@ -67,7 +66,7 @@ export default function reducer(prevState = initialState, action) {
       newState.task = action.task
       break
 
-    default:
+     default:
       return prevState
   }
   return newState
@@ -151,3 +150,4 @@ export const updateAssignmentRequest = (assignment) => (dispatch, getState) => {
     })
     .catch(err => console.error(err))
 }
+

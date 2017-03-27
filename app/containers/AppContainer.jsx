@@ -5,7 +5,8 @@ import App from '../components/App'
 
 const mapState = (state) => {
   return {
-    user: state.auth
+    user: state.auth,
+    teacher: state.student ? state.student.teacher : null
   }
 }
 export default connect (mapState) (App)
