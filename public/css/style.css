@@ -751,9 +751,9 @@ table.teacher-students {
         width: 308px; }
       #chatbox-container .chatbox-panel .footer #recipient-label {
         border: 1px solid #EEEEEC;
-        background: #C60034;
+        background: #EEEEEC;
         padding: 4px;
-        color: #EEEEEC;
+        color: #4B4B4A;
         width: 80px;
         height: 25px; }
       #chatbox-container .chatbox-panel .footer select#recipient {
@@ -765,5 +765,5 @@ table.teacher-students {
         width: 65px;
         border-radius: 0px !important; }
       #chatbox-container .chatbox-panel .footer button:focus, #chatbox-container .chatbox-panel .footer button:hover {
-        width: 60px;
+        width: 65px;
         height: 25px; }

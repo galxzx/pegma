@@ -1098,9 +1098,9 @@ table.teacher-students {
 			}				
 			#recipient-label {
 				border: 1px solid $lightGrey;
-				background: $red;
+				background: $lightGrey;
 				padding: 4px;
-				color: $lightGrey;
+				color: $darkGrey;
 				width: 80px;				
 				height: 25px;
 			}			
@@ -1115,7 +1115,7 @@ table.teacher-students {
 				border-radius: 0px !important;
 			}
 			button:focus, button:hover {
-				width: 60px;
+				width: 65px;
 				height: 25px;
 			}					
 		}
