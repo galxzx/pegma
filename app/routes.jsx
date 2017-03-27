@@ -55,8 +55,7 @@ const onEnterApp = (nextState, replace, done) => {
 const onEnterStudent = (nextState, replace, done) => (
   store.dispatch(whoami())
     .then(user => {
-      console.log(user, 'user')
-     if(user.teacher_id && nextState.params && nextState.params.assignmentId) return replace (`/teacher/assignment/${nextState.params.assignmentId}`)
+      if(user.teacher_id && nextState.params && nextState.params.assignmentId) return replace (`/teacher/assignment/${nextState.params.assignmentId}`)
       return store.dispatch(loadStudent())
     })
     .then(() => done())
