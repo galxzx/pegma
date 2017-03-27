@@ -2,6 +2,7 @@ import React from 'react'
 import {Link} from 'react-router'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
+import ChatboxContainer from '../containers/ChatboxContainer'
 import Login from './Login'
 
 const TeacherApp = ({ user, children }) => {
@@ -12,7 +13,7 @@ const TeacherApp = ({ user, children }) => {
           <Link className="nav-item" to='/teacher/dashboard'>
             <span className="nav-icon icon-dashboard"></span>
             <div className="nav-text">Dashboard</div>
-          </Link> 
+          </Link>
           <Link className="nav-item" to='/teacher/assignments'>
             <span className="nav-icon icon-clipboard"></span>
             <div className="nav-text">Assignments</div>
@@ -20,7 +21,7 @@ const TeacherApp = ({ user, children }) => {
           <Link className="nav-item" to='/teacher/students'>
             <span className="nav-icon icon-users"></span>
             <div className="nav-text">Students</div>
-          </Link>       
+          </Link>
           <Link className="nav-item disabled" to='/teacher/rewards'>
             <span className="nav-icon icon-trophy"></span>
             <div className="nav-text">Rewards</div>
@@ -43,8 +44,9 @@ const TeacherApp = ({ user, children }) => {
         transitionAppearTimeout={200}>
         {
         React.cloneElement(children, {key: window.location.pathname})
-        }          
-    </ReactCSSTransitionGroup>         
+        }
+    </ReactCSSTransitionGroup>
+    {user ? <ChatboxContainer /> : ''}
   </div>
   )
   :
