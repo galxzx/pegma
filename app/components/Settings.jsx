@@ -4,10 +4,10 @@ import UpdatePasswordContainer from '../containers/UpdatePasswordContainer'
 import RenderField from './RenderField'
 import RenderError from './RenderError'
 
-const StudentSettings = ({user, teacher, handleSubmit, updateStudent}) => {
+const Settings = ({user, teacher, handleSubmit, updateUser}) => {
 
   return (
-    <div key="StudentSettings" className="dashboard">
+    <div key="Settings" className="dashboard">
       <div className="container panel-container">
 
         <div className="flex-container">
@@ -15,7 +15,7 @@ const StudentSettings = ({user, teacher, handleSubmit, updateStudent}) => {
           <section className="flex-child panel settings">
             <div className="panel-header">Settings</div>
             <div className="settings-content">
-              <form onSubmit={handleSubmit(updateStudent)}>
+              <form onSubmit={handleSubmit(updateUser)}>
                 <fieldset>
                   <div className="form-group settings-form">
                     <div className="flex-child">
@@ -31,9 +31,15 @@ const StudentSettings = ({user, teacher, handleSubmit, updateStudent}) => {
                       <Field type="text" name="lastName" component="input" component={RenderField}/><br/>
                       <label>E-mail</label><br/>
                       <Field type="text" name="email" component="input" component={RenderField}/><br/>
-                      <label>Teacher</label><br/>
-                      <span className="alert-inline">You are not allowed to change your teacher.</span><br/>
-                      <Field type="text" name="teacher"  component="input" disabled /><br/>
+                      {
+                        user.userType === 'student' ? (
+                        <div>
+                          <label>Teacher</label><br/>
+                          <span className="alert-inline">You are not allowed to change your teacher.</span><br/>
+                          <Field type="text" name="teacher"  component="input" disabled /><br/>
+                        </div>
+                        ) : null
+                      }
                       <button type="submit" className="btn btn-primary">Update Information</button>
                     </div>
                   </div>
@@ -50,4 +56,4 @@ const StudentSettings = ({user, teacher, handleSubmit, updateStudent}) => {
   )
 }
 
-export default StudentSettings
+export default Settings

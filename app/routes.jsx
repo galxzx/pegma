@@ -16,13 +16,11 @@ import TeacherAppContainer from './containers/TeacherAppContainer'
 import StudentDashboardContainer from './containers/StudentDashboardContainer'
 import TeacherDashboardContainer from './containers/TeacherDashboardContainer'
 import StudentTrackerContainer from './containers/StudentTrackerContainer'
-import StudentSettingsContainer from './containers/StudentSettingsContainer'
 import StudentCalendarContainer from './containers/StudentCalendarContainer'
 import StudentReportCardContainer from './containers/StudentReportCardContainer'
 import AssignmentContainer from './containers/AssignmentContainer'
 import ClassTrackerContainer from './containers/ClassTrackerContainer'
 import LibraryContainer from './containers/LibraryContainer'
-import TeacherSettingsContainer from './containers/TeacherSettingsContainer'
 import TeacherCalendarContainer from './containers/TeacherCalendarContainer'
 import RewardsContainer from './containers/RewardsContainer'
 import QuizContainer from './containers/QuizContainer'
@@ -33,6 +31,7 @@ import CreateQuizContainer from './containers/CreateQuizContainer'
 import CreateTaskContainer from './containers/CreateTaskContainer'
 import CompletedAssignmentContainer from './containers/CompletedAssignmentContainer'
 import TeacherStudentsContainer from './containers/TeacherStudentsContainer'
+import SettingsContainer from './containers/SettingsContainer'
 
 import {whoami} from './reducers/auth'
 
@@ -143,7 +142,7 @@ export default function Root () {
             <Route path="dashboard" component={StudentDashboardContainer} />
             <Route path="tracker" component={StudentTrackerContainer} onEnter={onEnterStudentTracker} />
             <Route path="reportcard" component={StudentReportCardContainer} />
-            <Route path="settings" component={StudentSettingsContainer} />
+            <Route path="settings" component={SettingsContainer} />
             <Route path="calendar" component={StudentCalendarContainer} />
             <Route path="assignment/:assignmentId" component={AssignmentContainer} onEnter={onEnterAssignment} />
             <Route path="completed/:assignmentId" component={CompletedAssignmentContainer} onEnter={onEntercompAssign} />
@@ -156,7 +155,7 @@ export default function Root () {
             <Route path="students" component={TeacherStudentsContainer} onEnter={onEnterTeacher} />
             <Route path="student/:studentId" component={StudentTrackerContainer} onEnter={onEnterTeacherTracker} />
             <Route path="library" component={LibraryContainer} onEnter={onEnterTeacher} />
-            <Route path="settings" component={TeacherSettingsContainer} onEnter={onEnterTeacher} />
+            <Route path="settings" component={SettingsContainer} onEnter={onEnterTeacher} />
             <Route path="rewards" component={RewardsContainer} onEnter={onEnterTeacher} />
             <Route path="calendar" component={TeacherCalendarContainer} />
             <Route path="createquiz" component={CreateQuizContainer} />
