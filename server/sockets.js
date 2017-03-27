@@ -94,7 +94,8 @@ module.exports = function (socket) {
   })
   // send the new user their name and a list of users
   socket.emit('init', {
-    users: userNames.get()
+    users: userNames.get(),
+    name
   });
 
   userNames.setId(name, socket)
@@ -102,13 +103,13 @@ module.exports = function (socket) {
 
   // broadcast a user's message to other users
   socket.on('send:message', function (data) {
-    console.log(data)
-    socket.broadcast.emit('send:message', {user: name, text: data.text});
+
+    socket.broadcast.emit('send:message', data);
   });
 
   socket.on('send:privateMessage', (data) => {
-    console.log(data, 'private message data')
-    userNames.getId(data.to).emit('send:message', {user: name, text: data.message.text})
+
+    userNames.getId(data.to).emit('send:message', data)
   })
 
   // validate a user's name change, and broadcast it on success

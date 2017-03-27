@@ -724,6 +724,8 @@ table.teacher-students {
             text-align: right !important; }
             #chatbox-container .chatbox-panel .body ul.chat li.align-right .chat-body p {
               text-align: right !important; }
+        #chatbox-container .chatbox-panel .body ul.chat img {
+          max-width: 50px; }
     #chatbox-container .chatbox-panel ::-webkit-scrollbar-track {
       -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
       background-color: #F5F5F5; }

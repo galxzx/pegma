@@ -21,7 +21,7 @@ const Chatbox = ({open, handleToggleChatbox, messages, handleMessageSubmit, user
                                     <li key={idx}
                                         className={(message.user === chatName ? "align-right" : "")}>
                                         <span className="chat-img pull-left">
-                                            <img src="http://placehold.it/50/55C1E7/fff&amp;text=U" alt="User Avatar" className="img-circle" />
+                                            <img src={message.imageUrl} alt="User Avatar" className="img-circle" />
                                         </span>
                                         <div className="chat-body">
                                             <div className="header">
@@ -29,7 +29,7 @@ const Chatbox = ({open, handleToggleChatbox, messages, handleMessageSubmit, user
                                                     <span className="icon-clock-o"></span>12 mins ago</small>
                                             </div>
                                             <p>
-                                                {message.text}
+                                                <strong>{`TO ${message.to}: `}</strong>{message.text}
                                             </p>
                                         </div>
                                     </li>
@@ -52,7 +52,7 @@ const Chatbox = ({open, handleToggleChatbox, messages, handleMessageSubmit, user
                                 </select>
                                 <span className="input-group-btn">
                                     <button type="submit" className="" id="btn-chat">Send</button>
-                                </span><br/>                                
+                                </span><br/>
                             </form>
                         </div>
                     </div>

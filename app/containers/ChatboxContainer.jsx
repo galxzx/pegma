@@ -12,14 +12,18 @@ class ChatboxContainer extends Component {
     super ()
     this.state = {
       users: [],
-      messages: [{user: 'me', text: 'this is a message'}, {user:'you', text: 'this is another message'}],
+      messages: [
+        {user: 'PEGMA',
+        text: 'Welcome to chat...',
+        imageUrl: '/favicon.png',
+        to: 'Everyone'},
+        ],
       text: '',
       chatName: '',
       user: '',
       room: props.user.teacher_id ? "" + props.user.teacher_id : "" + props.student.teacher.id
-
-
     }
+
     this.handleMessageSubmit = this.handleMessageSubmit.bind(this)
     this._messageRecieve = this._messageRecieve.bind(this)
     this._initialize = this._initialize.bind(this)
@@ -47,23 +51,27 @@ class ChatboxContainer extends Component {
 
   _initialize(data) {
     var {users, name} = data;
+    console.log('name from initialize', name)
     this.setState({users, chatName: name});
   }
 
   _messageRecieve(message) {
+    console.log(message, 'this is the message from the server')
     var {messages} = this.state;
     messages.push(message);
     this.setState({messages});
   }
 
   _userJoined(data) {
-    console.log('user joined')
+
     var {users, messages} = this.state;
     var {name} = data;
     users.push(name);
     messages.push({
-      user: 'APPLICATION BOT',
-      text: name + ' Joined'
+      user: 'PEGMA',
+      text: name + ' Joined',
+      to: 'Everyone',
+      imageUrl: '/favicon.png'
     });
     this.setState({users, messages});
   }
@@ -96,14 +104,15 @@ class ChatboxContainer extends Component {
     let newMessage
     event.preventDefault()
 
-    const {messages} = this.state
+    const {messages, chatName} = this.state
+    const {imageUrl} = this.props.user
 
     if(!event.target.to.value) {
-       newMessage = {user:this.state.chatName, text:event.target.message.value}
+       newMessage = {user: chatName, text:event.target.message.value, to: 'Everyone', imageUrl}
       this.socket.emit('send:message', newMessage)
     } else {
-      newMessage = {user:this.state.chatName, text:`To ${event.target.to.value}: ${event.target.message.value}`}
-      this.socket.emit('send:privateMessage', {message: newMessage, to: event.target.to.value})
+      newMessage = {user: chatName, text: event.target.message.value, to: event.target.to.value, imageUrl}
+      this.socket.emit('send:privateMessage', newMessage)
     }
     messages.push(newMessage)
     this.setState({messages})

@@ -894,11 +894,11 @@ table.teacher-assignments, table.teacher-students {
 	tr {
 		background: $lightGrey;
 		th {
-			text-align: center;	
+			text-align: center;
 			background: $darkGrey;
 			padding: 10px;
-			color: $white;	
-		}			
+			color: $white;
+		}
 		td {
 			text-align: center;
 			padding: 10px;
@@ -906,7 +906,7 @@ table.teacher-assignments, table.teacher-students {
 
 		td:first-child, td:nth-child(2) {
 			width: 5%;
-		}	
+		}
 		td.options > a {
 			text-decoration: none;
 			color: $white;
@@ -922,7 +922,7 @@ table.teacher-assignments, table.teacher-students {
 		}
 		td.options > *:first-child {
 			background: $orange;
-		}				
+		}
 	}
 	tr:nth-child(odd) {
 		background: $white;
@@ -946,7 +946,7 @@ table.teacher-students.fancy-colors {
     transition: all 200ms;
 		th {
 			background: $darkGrey;
-		}    
+		}
 	}
 	tr:hover {
 		background: $yellow;
@@ -1010,7 +1010,7 @@ table.teacher-students {
 				position: absolute;
 				top: 7.5px;
 				right: 14px;
-			}			
+			}
 		}
 		.body {
 			padding: 15px;
@@ -1019,7 +1019,7 @@ table.teacher-students {
 			ul.chat {
 			  list-style: none;
 			  margin: 0;
-			  padding: 0;	
+			  padding: 0;
 				li {
 					width: 100%;
 					display: block;
@@ -1038,30 +1038,33 @@ table.teacher-students {
 				    margin: 0px;
 				    color: #777777;
 				    word-wrap: break-word;
-					}	    				    	
+					}
 		    }
 				li.align-left {
 					text-align: left !important;
 			    .chat-body {
-			    	margin-left: 0px;			    	
+			    	margin-left: 0px;
 			    	margin-right: 60px;
 						text-align: left !important;
 						p {
-							text-align: left !important;					
+							text-align: left !important;
 						}
 			    }
-				}			  											
+				}
 				li.align-right {
 					text-align: right !important;
 			    .chat-body {
-			    	margin-left: 60px;			    	
+			    	margin-left: 60px;
 			    	margin-right: 0px;
 						text-align: right !important;
 						p {
-							text-align: right !important;					
+							text-align: right !important;
 						}
 			    }
-				}			  			
+				}
+				img {
+					max-width: 50px;
+				}
 			}
 		}
 		::-webkit-scrollbar-track {
@@ -1084,7 +1087,7 @@ table.teacher-students {
 			input, select#recipient, button, #recipient-label {
 				height: 25px;
 				margin-top: 10px;
-				margin-left: 10px;		
+				margin-left: 10px;
 			}
 			input {
 				position: relative;
@@ -1093,19 +1096,19 @@ table.teacher-students {
 		    font-size: 1rem;
 		    border: 1px solid transparent;
 		    width: 308px;
-			}				
+			}
 			#recipient-label {
 				border: 1px solid $lightGrey;
 				background: $blue;
 				padding: 4px;
 				color: $lightGrey;
-				width: 80px;				
+				width: 80px;
 				height: 25px;
-			}			
-			select#recipient {	
+			}
+			select#recipient {
 				height: 25px;
 		    width: 110px;
-			}				
+			}
 			button {
 				position: relative;
 				height: 25px;
@@ -1115,9 +1118,9 @@ table.teacher-students {
 			button:focus, button:hover {
 				width: 60px;
 				height: 25px;
-			}					
+			}
 		}
 	}
 }
 
-	
+
