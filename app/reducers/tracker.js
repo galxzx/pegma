@@ -102,7 +102,7 @@ export const handleDragEnd = (cardId, sourceLaneId, targetLaneId) => (dispatch, 
 
 export const handleCardClick = (cardId, metadata) => (dispatch, getState) => {
 
-  browserHistory.push(`/student/assignment/${cardId}`)
+  browserHistory.push(`/teacher/assignment/${cardId}`)
 
   // getState().auth.student_id ?
   //   browserHistory.push(`/student/assignment/${cardId}`) :

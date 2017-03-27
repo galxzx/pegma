@@ -41,11 +41,8 @@ const Chatbox = ({open, handleToggleChatbox, messages, handleMessageSubmit, user
                         <div className="input-group">
                             <form onSubmit={handleMessageSubmit} >
                                 <input id="btn-input" name="message" type="text" className="form-control input-sm" placeholder="Type your message here..." />
-                                <span className="input-group-btn">
-                                    <button type="submit" className="" id="btn-chat">Send</button>
-                                </span><br/>
-                                <label>Private Message To...</label>
-                                <select name="to" defaultValue="">
+                                <span id="recipient-label">Send Message To</span>
+                                <select id="recipient" name="to" defaultValue="Send Message To Everybody">
                                     <option value="">Everybody</option>
                                     {users.map(user => {
                                         return (
@@ -53,6 +50,9 @@ const Chatbox = ({open, handleToggleChatbox, messages, handleMessageSubmit, user
                                         )
                                     })}
                                 </select>
+                                <span className="input-group-btn">
+                                    <button type="submit" className="" id="btn-chat">Send</button>
+                                </span><br/>                                
                             </form>
                         </div>
                     </div>

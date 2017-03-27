@@ -1079,25 +1079,37 @@ table.teacher-students {
 		    background-color: #555;
 		}
 		.footer {
-			height: 45px;
+			height: 81px;
 			background: $darkGrey;
+			input, select#recipient, button, #recipient-label {
+				height: 25px;
+				margin-top: 10px;
+				margin-left: 10px;		
+			}
 			input {
 				position: relative;
-				top: 10px;
-				left: 10px;
 				height: 16px;
 		    padding: 0.25rem 0.5rem;
 		    font-size: 1rem;
 		    border: 1px solid transparent;
-		    width: 210px;
-			}	
+		    width: 308px;
+			}				
+			#recipient-label {
+				border: 1px solid $lightGrey;
+				background: $blue;
+				padding: 4px;
+				color: $lightGrey;
+				width: 80px;				
+				height: 25px;
+			}			
+			select#recipient {	
+				height: 25px;
+		    width: 110px;
+			}				
 			button {
 				position: relative;
-				top: 10px;
-				right: 10px;
 				height: 25px;
-				width: 60px;
-				float: right;
+				width: 65px;
 				border-radius: 0px !important;
 			}
 			button:focus, button:hover {

@@ -734,24 +734,33 @@ table.teacher-students {
       -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
       background-color: #555; }
     #chatbox-container .chatbox-panel .footer {
-      height: 45px;
+      height: 81px;
       background: #4B4B4A; }
+      #chatbox-container .chatbox-panel .footer input, #chatbox-container .chatbox-panel .footer select#recipient, #chatbox-container .chatbox-panel .footer button, #chatbox-container .chatbox-panel .footer #recipient-label {
+        height: 25px;
+        margin-top: 10px;
+        margin-left: 10px; }
       #chatbox-container .chatbox-panel .footer input {
         position: relative;
-        top: 10px;
-        left: 10px;
         height: 16px;
         padding: 0.25rem 0.5rem;
         font-size: 1rem;
         border: 1px solid transparent;
-        width: 210px; }
+        width: 308px; }
+      #chatbox-container .chatbox-panel .footer #recipient-label {
+        border: 1px solid #EEEEEC;
+        background: #0B9CCC;
+        padding: 4px;
+        color: #EEEEEC;
+        width: 80px;
+        height: 25px; }
+      #chatbox-container .chatbox-panel .footer select#recipient {
+        height: 25px;
+        width: 110px; }
       #chatbox-container .chatbox-panel .footer button {
         position: relative;
-        top: 10px;
-        right: 10px;
         height: 25px;
-        width: 60px;
-        float: right;
+        width: 65px;
         border-radius: 0px !important; }
       #chatbox-container .chatbox-panel .footer button:focus, #chatbox-container .chatbox-panel .footer button:hover {
         width: 60px;
