@@ -9,7 +9,7 @@ const Chatbox = ({open, handleToggleChatbox, messages, handleMessageSubmit, user
             <div className="chatbox-panel">
                 <div className="heading">
                     <span id="chatbox-title">Classroom Chatbox</span>
-                    <button type="button" className={`show-chatbox ${open ? 'icon-angle-arrow-down' : 'icon-angle-arrow-up'}`} onClick={handleToggleChatbox}>                     </button>
+                    <button type="button" className={`show-chatbox ${open ? 'icon-angle-double-down' : 'icon-angle-double-up'}`} onClick={handleToggleChatbox}>                     </button>
                 </div>
                 { open ? (
                 <div>
