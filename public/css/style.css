@@ -679,6 +679,8 @@ table.teacher-students {
         font-size: 14pt;
         font-weight: 700; }
       #chatbox-container .chatbox-panel .heading .show-chatbox {
+        font-size: 24pt;
+        background: none;
         height: 25px;
         width: 25px;
         position: absolute;
@@ -749,7 +751,7 @@ table.teacher-students {
         width: 308px; }
       #chatbox-container .chatbox-panel .footer #recipient-label {
         border: 1px solid #EEEEEC;
-        background: #0B9CCC;
+        background: #C60034;
         padding: 4px;
         color: #EEEEEC;
         width: 80px;
