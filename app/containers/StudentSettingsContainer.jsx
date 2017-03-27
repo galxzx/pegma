@@ -4,8 +4,6 @@ import { reduxForm } from 'redux-form'
 import StudentSettings from '../components/StudentSettings'
 import { updateStudent } from '../reducers/auth'
 
-
-
 const mapState = (state) => {
   return {
     initialValues: Object.assign({}, state.auth, {teacher: state.student.teacher.user.firstName + ' ' + state.student.teacher.user.lastName}),
@@ -14,7 +12,6 @@ const mapState = (state) => {
 }
 
 const mapDispatch = {updateStudent}
-
 
 const SettingsForm = reduxForm({
   form: 'studentSettings',
