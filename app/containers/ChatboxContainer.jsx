@@ -50,7 +50,6 @@ class ChatboxContainer extends Component {
 
   _initialize(data) {
     var {users, name} = data;
-    console.log('name from initialize', name)
     this.setState({users, chatName: name});
   }
 
