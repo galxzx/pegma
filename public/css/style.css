@@ -370,7 +370,9 @@ footer {
   .dashboard .assignments-list {
     padding: 0;
     margin: 0;
-    list-style: none; }
+    list-style: none;
+    max-height: 60vh;
+    overflow-y: auto; }
     .dashboard .assignments-list li {
       padding: 5px;
       border-bottom: 1px solid #EEEEEC;
