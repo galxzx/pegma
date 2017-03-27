@@ -2,6 +2,8 @@
 import React from 'react'
 import {Link} from 'react-router'
 
+import GradeCircleContainer from '../containers/GradeCircleContainer'
+
 const TeacherStudents = ({user, students, dropStudentRequest}) => {
 
   const teacherName = user.firstName + ' ' + user.lastName
@@ -24,15 +26,21 @@ const TeacherStudents = ({user, students, dropStudentRequest}) => {
                 {
                   students.map((student) => {
                     return (
-                      <tr key={student.id} className="student">
+                      <tr key={student.id} id={`s${student.id}`} className="student">
                         <td className="">{student.id}</td>
                         <td className="avatar"><img src={`${student.user.imageUrl}`} className="avatar" /></td>
                         <td className="">{student.user.lastName + ', ' + student.user.firstName}</td>
-                        <td className=""></td>                
+                        <td className=""><GradeCircleContainer studentId={student.id} /></td>                
                         <td className="options">
-                          <a id="email" className="icon-mail" href={'mailto:' + student.user.email}></a>
-                          <Link id="tracker" className="icon-files" to={`/teacher/student/${student.id}`} ></Link>
-                          <a id="delete" className="icon-delete" onClick={() => dropStudentRequest(student.id)}></a>
+                          <a id="email" className="icon-mail tooltip" href={'mailto:' + student.user.email}>
+                            <span className="tooltip-text">E-mail Student</span>
+                          </a>
+                          <Link id="tracker" className="icon-files tooltip" to={`/teacher/student/${student.id}`} >
+                            <span className="tooltip-text">View Tracker</span>
+                          </Link>
+                          <a id="delete" className="icon-delete tooltip" onClick={() => dropStudentRequest(student.id)}>
+                            <span className="tooltip-text">Drop Student</span>
+                          </a>
                         </td>
                       </tr>
                     )

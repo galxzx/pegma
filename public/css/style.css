@@ -789,3 +789,31 @@ table.teacher-students {
       #chatbox-container .chatbox-panel .footer button:focus, #chatbox-container .chatbox-panel .footer button:hover {
         width: 65px;
         height: 25px; }
+
+/* Grade Circle */
+.arc text {
+  font: 10px sans-serif;
+  text-anchor: middle; }
+
+.arc path {
+  stroke: #fff; }
+
+/* Tooltips */
+.tooltip {
+  position: relative; }
+  .tooltip .tooltip-text {
+    visibility: hidden;
+    width: 90px;
+    font-size: 12pt;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    left: -17px;
+    top: 66px;
+    z-index: 100; }
+
+.tooltip:hover .tooltip-text {
+  visibility: visible; }
