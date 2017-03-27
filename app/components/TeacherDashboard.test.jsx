@@ -8,7 +8,7 @@ import {createStore} from 'redux'
 
 import TeacherDashboard from './TeacherDashboard'
 import TeacherStats from './Dashboard/TeacherStats'
-import TeacherNotifications from './Dashboard/TeacherNotifications'
+import TeacherNotificationsPanel from './Dashboard/TeacherNotificationsPanel'
 import CalendarSmall from './Dashboard/CalendarSmall'
 import TeacherAssignmentsPanel from './Dashboard/TeacherAssignmentsPanel'
 
@@ -25,7 +25,7 @@ describe('<TeacherDashboard/>', () => {
   })
 
   it('should have a Notifications panel', () => {
-    expect(root.find(TeacherNotifications)).to.have.length(1)
+    expect(root.find(TeacherNotificationsPanel)).to.have.length(1)
   })
 
   it('should have a Calendar panel', () => {
