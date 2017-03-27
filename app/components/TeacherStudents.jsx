@@ -32,7 +32,7 @@ const TeacherStudents = ({user, students, dropStudentRequest}) => {
                         <td className="options">
                           <a id="email" className="icon-mail" href={'mailto:' + student.user.email}></a>
                           <Link id="tracker" className="icon-files" to={`/teacher/student/${student.id}`} ></Link>
-                          <i id="delete" className="icon-delete" onClick={() => dropStudentRequest(student.id)}>Delete</i>
+                          <a id="delete" className="icon-delete" onClick={() => dropStudentRequest(student.id)}></a>
                         </td>
                       </tr>
                     )
