@@ -1,15 +1,10 @@
 import React from 'react'
 import { Field } from 'redux-form'
 import RenderField from './RenderField'
-
-const RenderError = ({ meta: { touched, error } }) => touched && error ?
-  <span className="formError">{error}</span> : false
+import RenderError from './RenderError'
 
 const Signup = ({handleSubmit, typeValue, teachers, createAccount}) => {
-  console.log(handleSubmit)
-  console.log(typeValue)
-  console.log(teachers)
-  console.log(createAccount)
+
   return (
     <div className="dashboard flex-main">
       <div className="container panel-container">

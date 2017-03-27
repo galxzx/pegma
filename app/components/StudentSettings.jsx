@@ -3,7 +3,7 @@ import { Field } from 'redux-form'
 import UpdatePasswordContainer from '../containers/UpdatePasswordContainer'
 
 const StudentSettings = ({user, teacher, handleSubmit, updateStudent}) => {
-  console.log(user.imageUrl)
+
   return (
     <div key="StudentSettings" className="dashboard">
       <div className="container panel-container">
