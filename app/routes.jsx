@@ -52,13 +52,14 @@ const onEnterApp = (nextState, replace, done) => {
   .catch(err => console.error(err))
 }
 
-const onEnterStudent = (nextState, replace, callback) => (
+const onEnterStudent = (nextState, replace, done) => (
   store.dispatch(whoami())
     .then(user => {
-      if(user.teacher_id && nextState.params && nextState.params.assignmentId) return replace (`/teacher/assignment/${nextState.params.assignmentId}`)
+      console.log(user, 'user')
+     if(user.teacher_id && nextState.params && nextState.params.assignmentId) return replace (`/teacher/assignment/${nextState.params.assignmentId}`)
       return store.dispatch(loadStudent())
     })
-    .then(res => callback())
+    .then(() => done())
 
     .catch(err => console.error(err))
 )
@@ -86,6 +87,7 @@ const onEnterAssignment = (nextState, replace, done) => {
   store.dispatch(whoami())
     .then(res => {
       const user = store.getState().auth
+      console.log('user in assignment', user)
        if(user.teacher_id) return replace(`/teacher/assignment/${nextState.params.assignmentId}`)
       return store.dispatch(loadCurrentAssignment(nextState.params.assignmentId))
         .then(assignment => {
