@@ -1005,6 +1005,8 @@ table.teacher-students {
 				font-weight: 700;
 			}
 			.show-chatbox {
+				font-size: 24pt;
+				background: none;
 				height: 25px;
 				width: 25px;
 				position: absolute;
@@ -1098,10 +1100,8 @@ table.teacher-students {
 		    width: 308px;
 			}
 			#recipient-label {
-				border: 1px solid $lightGrey;
-				background: $blue;
 				padding: 4px;
-				color: $lightGrey;
+				color: #fff;
 				width: 80px;
 				height: 25px;
 			}
@@ -1116,7 +1116,7 @@ table.teacher-students {
 				border-radius: 0px !important;
 			}
 			button:focus, button:hover {
-				width: 60px;
+				width: 65px;
 				height: 25px;
 			}
 		}

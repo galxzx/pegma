@@ -82,8 +82,10 @@ class ChatboxContainer extends Component {
     var index = users.indexOf(name);
     users.splice(index, 1);
     messages.push({
-      user: 'APPLICATION BOT',
-      text : name +' Left'
+      user: 'PEGMA',
+      text : name +' Left',
+      to: 'Everyone',
+      imageUrl: '/favicon.png'
     });
     this.setState({users, messages});
   }

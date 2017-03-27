@@ -9,7 +9,7 @@ const Chatbox = ({open, handleToggleChatbox, messages, handleMessageSubmit, user
             <div className="chatbox-panel">
                 <div className="heading">
                     <span id="chatbox-title">Classroom Chatbox</span>
-                    <button type="button" className={`show-chatbox ${open ? 'icon-down' : 'icon-up'}`} onClick={handleToggleChatbox}>                     </button>
+                    <i className={`show-chatbox ${open ? 'icon-angle-double-down' : 'icon-angle-double-up'}`} onClick={handleToggleChatbox}></i>
                 </div>
                 { open ? (
                 <div>
@@ -29,7 +29,7 @@ const Chatbox = ({open, handleToggleChatbox, messages, handleMessageSubmit, user
                                                     <span className="icon-clock-o"></span>12 mins ago</small>
                                             </div>
                                             <p>
-                                                <strong>{`TO ${message.to}: `}</strong>{message.text}
+                                                <strong>{`TO ${message.to.toUpperCase()}: `}</strong>{message.text}
                                             </p>
                                         </div>
                                     </li>

@@ -679,6 +679,8 @@ table.teacher-students {
         font-size: 14pt;
         font-weight: 700; }
       #chatbox-container .chatbox-panel .heading .show-chatbox {
+        font-size: 24pt;
+        background: none;
         height: 25px;
         width: 25px;
         position: absolute;
@@ -750,10 +752,8 @@ table.teacher-students {
         border: 1px solid transparent;
         width: 308px; }
       #chatbox-container .chatbox-panel .footer #recipient-label {
-        border: 1px solid #EEEEEC;
-        background: #0B9CCC;
         padding: 4px;
-        color: #EEEEEC;
+        color: #fff;
         width: 80px;
         height: 25px; }
       #chatbox-container .chatbox-panel .footer select#recipient {
@@ -765,5 +765,5 @@ table.teacher-students {
         width: 65px;
         border-radius: 0px !important; }
       #chatbox-container .chatbox-panel .footer button:focus, #chatbox-container .chatbox-panel .footer button:hover {
-        width: 60px;
+        width: 65px;
         height: 25px; }

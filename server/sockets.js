@@ -6,40 +6,32 @@
 
 
 // Keep track of which names are used so that there are no duplicates
-var userNames = (function () {
-  var names = {};
+const userFunc = (function () {
+  const names = {}
+  const rooms = {}
 
-  var claim = function (name) {
+  const claim = name => {
     if (!name || names[name]) {
-      return false;
+      return false
     } else {
-      names[name] = true;
-      return true;
+      names[name] = true
+      return true
     }
-  };
-
-  // find the lowest unused "guest" name and claim it
-  // var getGuestName = function () {
-  //   var name,
-  //     nextUserId = 1;
-
-  //   do {
-  //     name = 'Guest ' + nextUserId;
-  //     nextUserId += 1;
-  //   } while (!claim(name));
-
-  //   return name;
-  // };
-
-  // check the name and add a # if necessary
-  const setId = (name, socketId) => {
-    names[name] = socketId
   }
 
-  const getId = (name) => {
+
+
+  //set the socket on the name in the names object
+  const setSocket = (name, socket) => {
+    names[name] = socket
+  }
+
+  //gets the associated socket from the names object
+  const getSocket = (name) => {
     return names[name]
   }
 
+  //adds # name if already taken
   const checkName = (name) => {
     let idx = 1
     endName = name.slice();
@@ -50,93 +42,90 @@ var userNames = (function () {
     return endName
   }
 
-  // serialize claimed names as an array
-  var get = function () {
-    var res = [];
-    for (user in names) {
-      res.push(user);
-    }
 
-    return res;
-  };
-
-  var free = function (name) {
+  const free = name => {
     if (names[name]) {
       delete names[name];
     }
+    for (let room in rooms){
+      let index = rooms[room].indexOf(name)
+      if (index > -1){
+        rooms[room].splice(index, 1)
+      }
+    }
   };
+
+  const addToRoom = (room, name) => {
+    if(!rooms[room]) rooms[room] = []
+    rooms[room].push(name)
+  }
+
+  const getUsersInRoom = room => {
+    return rooms[room];
+  }
+
 
   return {
     claim,
     free,
-    get,
-    //getGuestName,
     checkName,
-    setId,
-    getId
+    setSocket,
+    getSocket,
+    addToRoom,
+    getUsersInRoom,
   };
 }());
 
 // export function for listening to the socket
 module.exports = function (socket) {
-  // var name = userNames.getGuestName();
+  // var name = userFunc.getGuestName();
 
 
   //set name on connection
-  const name = userNames.checkName(socket.handshake.query.name)
+  const name = userFunc.checkName(socket.handshake.query.name)
 
   //join room on connection
   let room = socket.handshake.query.room
+
+  //add user to rooms object
+  userFunc.addToRoom(room, name)
+
+  //join user to room and emit event to everyone in room
   socket.join(room, () => {
-    socket.to(room).emit('user:join', {
+    socket.broadcast.to(room).emit('user:join', {
         name: name
       })
   })
   // send the new user their name and a list of users
   socket.emit('init', {
-    users: userNames.get(),
+    users: userFunc.getUsersInRoom(room),
     name
   });
 
-  userNames.setId(name, socket)
+  //save socket in names object
+  userFunc.setSocket(name, socket)
 
 
-  // broadcast a user's message to other users
-  socket.on('send:message', function (data) {
-
-    socket.broadcast.emit('send:message', data);
-  });
-
-  socket.on('send:privateMessage', (data) => {
-
-    userNames.getId(data.to).emit('send:message', data)
+  // broadcast a user's message to other users in room
+  socket.on('send:message', data => {
+    console.log(data, 'data')
+    socket.broadcast.to(room).emit('send:message', data)
   })
 
-  // validate a user's name change, and broadcast it on success
-  // socket.on('change:name', function (data) {
-  //   console.log('name', data)
-  //   if (userNames.claim(data.name)) {
-  //     var oldName = name;
-  //     userNames.free(oldName);
+  //get socket from names and emit to that socket
+  socket.on('send:privateMessage', (data) => {
 
-  //     name = data.name;
+    userFunc.getSocket(data.to).emit('send:message', data)
+  })
 
-  //     // notify other clients that a new user has joined
-  //     socket.broadcast.emit('user:join', {
-  //       name: name
-  //     });
 
-  //   } else {
-  //     return
-  //   }
-  // });
 
   // clean up when a user leaves, and broadcast it to other users
-  socket.on('disconnect', function () {
+  socket.on('disconnect',  () => {
     console.log('user left')
-    socket.broadcast.emit('user:left', {
+    socket.broadcast.to(room).emit('user:left', {
       name: name
     });
-    userNames.free(name);
+    userFunc.free(name);
   });
 };
