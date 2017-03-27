@@ -1,10 +1,14 @@
-import React from 'react'
-import QuizContainer from '../containers/QuizContainer'
-import TaskContainer from '../containers/TaskContainer'
-const Chatbox = ({open, handleToggleChatbox, messages, handleMessageSubmit, user, chatName, users}) => {
-    console.log(messages, '<======')
-    return (
+import React, { Component } from 'react'
 
+class Chatbox extends Component {
+
+
+
+    render() {
+
+    const { open, handleToggleChatbox, messages, handleMessageSubmit, user, chatName, users } = this.props
+
+    return (
         <div id="chatbox-container">
             <div className="chatbox-panel">
                 <div className="heading">
@@ -13,7 +17,7 @@ const Chatbox = ({open, handleToggleChatbox, messages, handleMessageSubmit, user
                 </div>
                 { open ? (
                 <div>
-                    <div className="body">
+                    <div className="body" ref={(div) => { this.messageList = div }} >
                         <ul className="chat">
                          {  messages.map((message, idx) => {
 
@@ -63,6 +67,20 @@ const Chatbox = ({open, handleToggleChatbox, messages, handleMessageSubmit, user
         </div>
 
     )
+    }
+
+     scrollToBottom() {
+        if(this.messageList){
+          const scrollHeight = this.messageList.scrollHeight;
+          const height = this.messageList.clientHeight;
+          const maxScrollTop = scrollHeight - height;
+          this.messageList.scrollTop = maxScrollTop > 0 ? maxScrollTop : 0;
+        }
+    }
+
+    componentDidUpdate() {
+      this.scrollToBottom();
+    }
 }
 
 export default Chatbox

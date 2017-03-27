@@ -32,22 +32,21 @@ class ChatboxContainer extends Component {
     // this._userChangedName = this._userChangedName.bind(this)
   }
 
-  componentWillUpdate(nextProps, nextState){
-    console.log(nextState, 'nextState')
-    console.log(nextProps, 'nextProps')
-    if(nextProps.student.teacher && this.state.room !== ''+nextProps.student.teacher.id) this.setState({room: '' + nextProps.student.teacher.id})
-  }
+  // componentWillUpdate(nextProps, nextState){
+  //   if(nextProps.student.teacher && this.state.room !== ''+nextProps.student.teacher.id) this.setState({room: '' + nextProps.student.teacher.id})
+  // }
 
   componentDidMount() {
-    console.log('current state', this.state)
+
     this.socket = io.connect('', {query: `room=${this.state.room}&name=${this.props.user.firstName}`})
     this.socket.on('init', this._initialize);
     this.socket.on('send:message', this._messageRecieve);
     this.socket.on('user:join', this._userJoined);
     this.socket.on('user:left', this._userLeft);
-    // socket.on('change:name', this._userChangedName);
-    //this.socket.emit('change:name', {name: this.props.user.firstName})
+
   }
+
+
 
   _initialize(data) {
     var {users, name} = data;

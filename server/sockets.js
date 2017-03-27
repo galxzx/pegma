@@ -108,7 +108,6 @@ module.exports = function (socket) {
 
   // broadcast a user's message to other users in room
   socket.on('send:message', data => {
-    console.log(data, 'data')
     socket.broadcast.to(room).emit('send:message', data)
   })
 
@@ -122,7 +121,6 @@ module.exports = function (socket) {
 
   // clean up when a user leaves, and broadcast it to other users
   socket.on('disconnect',  () => {
-    console.log('user left')
     socket.broadcast.to(room).emit('user:left', {
       name: name
     });
