@@ -2,7 +2,7 @@ import {connect} from 'react-redux'
 import {browserHistory} from 'react-router'
 
 import TeacherStudents from '../components/TeacherStudents'
-//import {} from '../reducers/tracker'
+import {dropStudentRequest} from '../reducers/teacher'
 
 const mapState = (state) => {
   return {
@@ -11,6 +11,6 @@ const mapState = (state) => {
   }
 }
 
-//const mapDispatch = {}
+const mapDispatch = {dropStudentRequest}
 
-export default connect (mapState) (TeacherStudents)
+export default connect (mapState, mapDispatch) (TeacherStudents)
