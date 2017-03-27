@@ -323,6 +323,9 @@ footer {
   overflow-y: scroll;
   height: 150px;
   cursor: pointer; }
+  .notifications-list a {
+    text-decoration: none;
+    color: #222221; }
   .notifications-list .overdue {
     color: #C60034; }
   .notifications-list li {
@@ -436,8 +439,15 @@ footer {
           text-align: left; }
 
 /* SETTINGS */
+.settings-content .settings-form {
+  display: flex; }
+  .settings-content .settings-form img {
+    border: 1px solid #9C9C9B;
+    width: 60%; }
+
 .settings-content fieldset {
-  padding: 50px 35% 100px 35%; }
+  padding: 30px 25% 10px 25%;
+  border: 0; }
 
 .settings-content input {
   margin-top: 5px;
