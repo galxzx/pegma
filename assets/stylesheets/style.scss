@@ -935,12 +935,15 @@ table.teacher-assignments, table.teacher-students {
 			margin: 10px;
 	    border-radius: 3px;
 		}
-		td.options > *:hover {
+		td.options > #email {
 			opacity: .7;
 		}
-		td.options > *:first-child {
+		td.options > #tracker {
 			background: $orange;
 		}				
+		td.options > #delete {
+			background: $red;
+		}
 	}
 	tr:nth-child(odd) {
 		background: $white;

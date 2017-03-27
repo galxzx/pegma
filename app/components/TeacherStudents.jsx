@@ -2,7 +2,7 @@
 import React from 'react'
 import {Link} from 'react-router'
 
-const TeacherStudents = ({user, students}) => {
+const TeacherStudents = ({user, students, dropStudentRequest}) => {
 
   const teacherName = user.firstName + ' ' + user.lastName
 
@@ -30,8 +30,9 @@ const TeacherStudents = ({user, students}) => {
                         <td className="">{student.user.lastName + ', ' + student.user.firstName}</td>
                         <td className=""></td>                
                         <td className="options">
-                          <a className="icon-mail" href={'mailto:' + student.user.email}></a>
-                          <Link to={`/teacher/student/${student.id}`} className="icon-files"></Link>
+                          <a id="email" className="icon-mail" href={'mailto:' + student.user.email}></a>
+                          <Link id="tracker" className="icon-files" to={`/teacher/student/${student.id}`} ></Link>
+                          <i id="delete" className="icon-delete" onClick={() => dropStudentRequest(student.id)}>Delete</i>
                         </td>
                       </tr>
                     )

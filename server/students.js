@@ -41,6 +41,10 @@ module.exports = require('express').Router()
 		})
 		.then(student => res.json(student))
 		.catch(next))
+	.put('/:studentId/drop', (req, res, next) => 
+		Student.update({teacher_id: null}, {where:{id: +req.params.studentId}})
+		.then(dropped => 	res.json(dropped))
+		.catch(next))	
 	.put('/:studentId/assignments/:assignmentId', (req, res, next) =>
 	  Assignment.findById(req.params.assignmentId)
 	  .then(assignment =>

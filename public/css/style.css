@@ -628,10 +628,12 @@ table.teacher-assignments, table.teacher-students {
       padding-bottom: 5px;
       margin: 10px;
       border-radius: 3px; }
-    table.teacher-assignments tr td.options > *:hover, table.teacher-students tr td.options > *:hover {
+    table.teacher-assignments tr td.options > #email, table.teacher-students tr td.options > #email {
       opacity: .7; }
-    table.teacher-assignments tr td.options > *:first-child, table.teacher-students tr td.options > *:first-child {
+    table.teacher-assignments tr td.options > #tracker, table.teacher-students tr td.options > #tracker {
       background: #FF8943; }
+    table.teacher-assignments tr td.options > #delete, table.teacher-students tr td.options > #delete {
+      background: #C60034; }
   table.teacher-assignments tr:nth-child(odd), table.teacher-students tr:nth-child(odd) {
     background: #FFFFFF; }
 
