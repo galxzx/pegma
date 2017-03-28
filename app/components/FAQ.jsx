@@ -16,7 +16,9 @@ const FAQ = () => {
     a: 'From the Assignments panel, click on "Create New Quiz." In the new quiz form, you may add as many multiple choice questions that you like. Each question must have four choices and only one correct answer. Once the quiz is created, it will be available on the Assignments panel'
   },
   {q: 'I can\'t find a student on my Students list',
-    a: 'Go to the Students list page, scroll all the way to the bottom of the page and click on the button "Add Students to My Classroom". In the following page, you will see all students in the system that don\'t have a teacher assigned to them. Then, you may click on the plus button to add him/she to your classroom'}
+    a: 'Go to the Students list page, scroll all the way to the bottom of the page and click on the button "Add Students to My Classroom". In the following page, you will see all students in the system that don\'t have a teacher assigned to them. Then, you may click on the plus button to add him/she to your classroom'},
+  {q: 'Can Students archive an assignment?',
+    a: 'No. Only the teacher is able to archive or unarchive an assignment.'}
   ]
 
   return (
