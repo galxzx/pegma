@@ -136,6 +136,12 @@ form {
 	}
 }
 
+input.calendar-email {
+	width: 30%;
+  min-width: 320px;
+  margin-right: 15px;
+}
+
 /* NOT-LOGGED ALERTS */
 
 .not-logged {
@@ -514,14 +520,40 @@ footer {
 .calendar-content-sm {
   width: 100%;
   height: 350px;
-	border: 0;
+	border: 0;   
 	border-top: 2px solid $mediumGrey;
+	background: $mediumGrey;
+	text-align: center;
+
+	a {
+		text-decoration: none;
+		color: $black;
+	}
+
+	p {
+		
+		font-style: italic;
+	}
+
+	button {
+		margin-top: 15px;
+	}
+
 }
 
 .calendar-content-max {
 	width: 100% !important;
 	height: 450px !important;
 	border: 0;
+	background: $mediumGrey;
+
+	p {
+		padding-top: 50px;
+		text-align: center;
+		font-style: italic;
+	}
+
+	
 }
 
 /* ASSIGNMENTS */

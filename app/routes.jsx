@@ -36,7 +36,7 @@ import SettingsContainer from './containers/SettingsContainer'
 import {whoami} from './reducers/auth'
 
 import {loadAssignments, loadCurrentAssignment, loadStudent, loadQuiz, loadTask} from './reducers/student'
-import {loadStudents, loadCurrentStudent} from './reducers/teacher'
+import {loadCalendar, loadStudents, loadCurrentStudent} from './reducers/teacher'
 import {loadLibrary} from './reducers/library'
 import {loadBoard} from './reducers/tracker'
 import {loadTeachers} from './reducers/signup'
@@ -66,6 +66,7 @@ const onEnterStudent = (nextState, replace, done) => (
 const onEnterTeacher = (nextState, replace, done) => (
   store.dispatch(whoami())
     .then(res => store.dispatch(loadStudents()))
+    .then(res => store.dispatch(loadCalendar()))
     .then(res => done())
     .catch(err => console.error(err))
 )
@@ -156,10 +157,10 @@ export default function Root () {
             <Route path="assignments" component={TeacherFunctionsContainer} onEnter={onEnterTeacherFunctions} />
             <Route path="students" component={TeacherStudentsContainer}  />
             <Route path="student/:studentId" component={StudentTrackerContainer} onEnter={onEnterTeacherTracker} />
-            <Route path="library" component={LibraryContainer}  />
-            <Route path="settings" component={SettingsContainer}  />
-            <Route path="rewards" component={RewardsContainer}  />
-            <Route path="calendar" component={TeacherCalendarContainer} />
+            <Route path="library" component={LibraryContainer} onEnter={onEnterTeacher} />
+            <Route path="settings" component={SettingsContainer} onEnter={onEnterTeacher} />
+            <Route path="rewards" component={RewardsContainer} onEnter={onEnterTeacher} />
+            <Route path="calendar" component={TeacherCalendarContainer} onEnter={onEnterTeacher}  />
             <Route path="createquiz" component={CreateQuizContainer} />
             <Route path="createtask" component={CreateTaskContainer} />
             <Route path="assignment/:assignmentId" component={CompletedAssignmentContainer} onEnter={onEntercompAssign} />

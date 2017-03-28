@@ -2,7 +2,7 @@ import React from 'react'
 
 import StudentStats from './Dashboard/StudentStats'
 import StudentNotificationsPanel from './Dashboard/StudentNotificationsPanel'
-import CalendarSmall from './Dashboard/CalendarSmall'
+import StudentCalendarSmall from './Dashboard/StudentCalendarSmall'
 import StudentAssignmentsPanel from './Dashboard/StudentAssignmentsPanel'
 
 const StudentDashboard = ({user, assignments, teacher}) => {
@@ -18,7 +18,7 @@ const StudentDashboard = ({user, assignments, teacher}) => {
 
             <StudentNotificationsPanel assignments={assignments} />
 
-            <CalendarSmall />
+            <StudentCalendarSmall teacher={teacher} />
 
           </div>
           <div className="flex-child">
