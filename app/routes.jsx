@@ -16,13 +16,11 @@ import TeacherAppContainer from './containers/TeacherAppContainer'
 import StudentDashboardContainer from './containers/StudentDashboardContainer'
 import TeacherDashboardContainer from './containers/TeacherDashboardContainer'
 import StudentTrackerContainer from './containers/StudentTrackerContainer'
-import StudentSettingsContainer from './containers/StudentSettingsContainer'
 import StudentCalendarContainer from './containers/StudentCalendarContainer'
 import StudentReportCardContainer from './containers/StudentReportCardContainer'
 import AssignmentContainer from './containers/AssignmentContainer'
 import ClassTrackerContainer from './containers/ClassTrackerContainer'
 import LibraryContainer from './containers/LibraryContainer'
-import TeacherSettingsContainer from './containers/TeacherSettingsContainer'
 import TeacherCalendarContainer from './containers/TeacherCalendarContainer'
 import RewardsContainer from './containers/RewardsContainer'
 import QuizContainer from './containers/QuizContainer'
@@ -56,8 +54,7 @@ const onEnterApp = (nextState, replace, done) => {
 const onEnterStudent = (nextState, replace, done) => (
   store.dispatch(whoami())
     .then(user => {
-      console.log(user, 'user')
-     if(user.teacher_id && nextState.params && nextState.params.assignmentId) return replace (`/teacher/assignment/${nextState.params.assignmentId}`)
+      if(user.teacher_id && nextState.params && nextState.params.assignmentId) return replace (`/teacher/assignment/${nextState.params.assignmentId}`)
       return store.dispatch(loadStudent())
     })
     .then(() => done())

@@ -16,7 +16,8 @@ class ChatboxContainer extends Component {
         {user: 'PEGMA',
         text: 'Welcome to chat...',
         imageUrl: '/favicon.png',
-        to: 'Everyone'},
+        to: 'Everyone',
+        born: Date.now()},
         ],
       text: '',
       chatName: '',
@@ -32,9 +33,6 @@ class ChatboxContainer extends Component {
     // this._userChangedName = this._userChangedName.bind(this)
   }
 
-  // componentWillUpdate(nextProps, nextState){
-  //   if(nextProps.student.teacher && this.state.room !== ''+nextProps.student.teacher.id) this.setState({room: '' + nextProps.student.teacher.id})
-  // }
 
   componentDidMount() {
 
@@ -54,7 +52,6 @@ class ChatboxContainer extends Component {
   }
 
   _messageRecieve(message) {
-    console.log(message, 'this is the message from the server')
     var {messages} = this.state;
     messages.push(message);
     this.setState({messages});
@@ -69,7 +66,8 @@ class ChatboxContainer extends Component {
       user: 'PEGMA',
       text: name + ' Joined',
       to: 'Everyone',
-      imageUrl: '/favicon.png'
+      imageUrl: '/favicon.png',
+      born: Date.now()
     });
     this.setState({users, messages});
   }
@@ -83,22 +81,11 @@ class ChatboxContainer extends Component {
       user: 'PEGMA',
       text : name +' Left',
       to: 'Everyone',
-      imageUrl: '/favicon.png'
+      imageUrl: '/favicon.png',
+      born: Date.now()
     });
     this.setState({users, messages});
   }
-
-  // _userChangedName(data) {
-  //   var {oldName, newName} = data;
-  //   var {users, messages} = this.state;
-  //   var index = users.indexOf(oldName);
-  //   users.splice(index, 1, newName);
-  //   messages.push({
-  //     user: 'APPLICATION BOT',
-  //     text : 'Change Name : ' + oldName + ' ==> '+ newName
-  //   });
-  //   this.setState({users, messages});
-  // }
 
   handleMessageSubmit(event) {
     let newMessage
@@ -108,10 +95,10 @@ class ChatboxContainer extends Component {
     const {imageUrl} = this.props.user
 
     if(!event.target.to.value) {
-       newMessage = {user: chatName, text:event.target.message.value, to: 'Everyone', imageUrl}
+       newMessage = {user: chatName, text:event.target.message.value, to: 'Everyone', imageUrl, born: Date.now()}
       this.socket.emit('send:message', newMessage)
     } else {
-      newMessage = {user: chatName, text: event.target.message.value, to: event.target.to.value, imageUrl}
+      newMessage = {user: chatName, text: event.target.message.value, to: event.target.to.value, imageUrl, born: Date.now()}
       this.socket.emit('send:privateMessage', newMessage)
     }
     messages.push(newMessage)

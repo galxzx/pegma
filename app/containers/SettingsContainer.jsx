@@ -6,9 +6,8 @@ import { updateUser } from '../reducers/auth'
 
 const mapState = (state) => {
 	let currentTeacher = null;
-	if (state.student) currentTeacher = `${state.student.teacher.user.firstName} ${state.student.teacher.user.lastName}`
+	if (state.student.teacher && state.student.teacher.user) currentTeacher = `${state.student.teacher.user.firstName} ${state.student.teacher.user.lastName}`
 
-	console.log(state)
   return {
     initialValues: Object.assign({}, state.auth, {teacher: currentTeacher}),
     user: state.auth
