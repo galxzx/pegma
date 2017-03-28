@@ -30,8 +30,8 @@ function getIdx(status) {
   if(status === 'assigned') return 0
   if(status === 'doing') return 1
   if(status === 'completed') return 2
-  if(status === 'archived') return 3  
-}    
+  if(status === 'archived') return 3
+}
 
 export default function reducer(prevState = initialState, action) {
   const newState = Object.assign({}, prevState)
@@ -50,12 +50,12 @@ export default function reducer(prevState = initialState, action) {
 
       action.assignments.forEach(assignment => {
         if(assignment.due_date) {
-          let dueDate = `${assignment.due_date.substring(5,7)}/${assignment.due_date.substring(8,10)}`    
-          assignment.label = dueDate      
+          let dueDate = `${assignment.due_date.substring(5,7)}/${assignment.due_date.substring(8,10)}`
+          assignment.label = dueDate
         }
         assignment.id = assignment.id + ''
-        let cards = newState.board.lanes[getIdx(assignment.status)].cards  
-        newState.board.lanes[getIdx(assignment.status)].cards = [...cards, assignment]     
+        let cards = newState.board.lanes[getIdx(assignment.status)].cards
+        newState.board.lanes[getIdx(assignment.status)].cards = [...cards, assignment]
       })
       break
     case UPDATE_STATUS:
@@ -97,12 +97,12 @@ export const handleDragEnd = (cardId, sourceLaneId, targetLaneId) => (dispatch, 
   axios.put(`/api/students/${studentId}/assignments/${cardId}`, update)
     .then(res => res.data)
     .then(assignments => dispatch(updateStatus(update)))
-    .catch(err => console.error(err))  
+    .catch(err => console.error(err))
 }
 
 export const handleCardClick = (cardId, metadata) => (dispatch, getState) => {
 
-  browserHistory.push(`/teacher/assignment/${cardId}`)
+  browserHistory.push(`/student/assignment/${cardId}`)
 
   // getState().auth.student_id ?
   //   browserHistory.push(`/student/assignment/${cardId}`) :
