@@ -14,7 +14,7 @@ const TeacherNotificationsPanel = ({students}) => {
       let overdue = assignment.overdue
       let updated = assignment.recentlyUpdated
 
-      if (overdue) {
+      if (overdue && status !== 'complete' && status !== 'archived') {
         notifications.push(<Link to={`/teacher/assignment/${assignment.id}`} key={`${idxS}-${idxA}`}><li><span className="icon icon-clock-o red"></span> {currentStudent}'s assignment "{title}" is late.<span className="icon float-right icon-external-link-square"></span></li></Link>)
       }
       else if (status === 'completed' && type === 'task') {

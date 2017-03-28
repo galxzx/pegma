@@ -22,7 +22,7 @@ const Assignment = ({user, currentAssignment, updateGrade}) => {
                   }}>
                     <label>New Grade</label>
                     <input name="grade" type="text" defaultValue={currentAssignment.grade} />
-                    <button type="submit">Update and Archive</button>
+                    <button className="btn btn-primary" type="submit">Update and Archive</button>
                   </form>
                 </div>
                 ) : null
