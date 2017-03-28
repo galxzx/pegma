@@ -109,8 +109,7 @@ export const loadCurrentStudent = (studentId) => (dispatch, getState) =>
   .catch(err => console.error(err))
 
 export const dropStudentRequest = (studentId) => (dispatch) =>
-  axios.put(`/api/students/${studentId}/drop`)
-    .then(res => res.data)
+  axios.put(`/api/students/${studentId}/`, {teacher_id: null})
     .then(dropped => dispatch(dropStudent(studentId)))
   .catch(err => console.error(err))
 
