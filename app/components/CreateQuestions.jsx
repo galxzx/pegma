@@ -1,12 +1,13 @@
 import React from 'react'
 import { Field, FieldArray, reduxForm } from 'redux-form'
 import RenderField from './RenderField'
+import RenderError from './RenderError'
 
-const CreateQuestions = ({ fields, meta: { touched, error } }) => (
+const CreateQuestions = ({ fields, meta: { touched, error, submitFailed } }) => (
   <ul>
 
-    <button type="button" onClick={() => fields.push({})}>Add Question</button>
-
+    <button type="button" onClick={() => fields.push({})}>Add Question</button><br/>
+    {(touched || submitFailed) && error && <span className="icon icon-error-circle red" >{error}</span>}
 
 
     {fields.map((question, index) =>
@@ -53,6 +54,7 @@ const CreateQuestions = ({ fields, meta: { touched, error } }) => (
                   )
                 )}
               </Field>
+              <Field name={`${question}.solution`} component={RenderError} />
           </div>
 
       </li>

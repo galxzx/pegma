@@ -23,7 +23,8 @@ export const getGrades = (array) => {
         gradedAssignments: 0,
         partialGrade: 0,
         finalGrade: 0,
-        totalGrade: 0
+        totalGrade: 0,
+        spread: {numOfAs: 0, numOfBs: 0, numOfCs: 0, numOfFs: 0, incomplete: 0}
       }
       report.push(newSubject)
       // Reassign index
@@ -34,6 +35,13 @@ export const getGrades = (array) => {
     if (assignment.grade) {
       report[subjectIndex].totalGrade += +assignment.grade
       report[subjectIndex].gradedAssignments++
+      if(assignment.grade >= 90) report[subjectIndex].spread.numOfAs ++
+      else if(assignment.grade >= 80 && assignment.grade < 90) report[subjectIndex].spread.numOfBs ++
+      else if(assignment.grade >= 70 && assignment.grade < 80) report[subjectIndex].spread.numOfCs ++
+      else if(assignment.grade < 70) report[subjectIndex].spread.numOfFs ++
+    }
+    else {
+      report[subjectIndex].spread.incomplete ++    
     }
     report[subjectIndex].partialGrade = Math.round(report[subjectIndex].totalGrade / report[subjectIndex].gradedAssignments)
     if (isNaN(report[subjectIndex].partialGrade)) report[subjectIndex].partialGrade = 0
@@ -42,3 +50,22 @@ export const getGrades = (array) => {
 
   return report
 }
+
+// Calculates the overall GPA
+export const GPA = (report) => {
+  let result = report.reduce((total, subject) => {
+    if(subject.gradedAssignments > 0) {
+      return (subject.totalGrade / subject.gradedAssignments) + total
+    }
+    else return total
+  }, 0) / report.length
+  return (result > 0) ? result : null
+}
+
+// Used for calculating the spread of the overal GPA only
+export const letterSpread = (report) => {
+  let spread = {}
+  report.forEach(subject => {spread = Object.assign({}, spread, subject.spread)})
+  return spread
+}
+

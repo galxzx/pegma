@@ -8,6 +8,7 @@ import store from './store'
 
 import Login from './components/Login'
 import WhoAmI from './components/WhoAmI'
+import FAQ from './components/FAQ'
 
 import AppContainer from './containers/AppContainer'
 import HomeContainer from './containers/HomeContainer'
@@ -33,6 +34,7 @@ import CompletedAssignmentContainer from './containers/CompletedAssignmentContai
 import TeacherStudentsContainer from './containers/TeacherStudentsContainer'
 import TeacherClaimStudentsContainer from './containers/TeacherClaimStudentsContainer'
 import SettingsContainer from './containers/SettingsContainer'
+import GradeViewContainer from './containers/GradeViewContainer'
 
 import {whoami} from './reducers/auth'
 
@@ -57,6 +59,7 @@ const onEnterStudent = (nextState, replace, done) => (
   store.dispatch(whoami())
     .then(user => {
       if(user.teacher_id && nextState.params && nextState.params.assignmentId) return replace (`/teacher/assignment/${nextState.params.assignmentId}`)
+      else if(user.teacher_id) return replace('/teacher/dashboard')
       return store.dispatch(loadStudent())
     })
     .then(() => done())
@@ -66,7 +69,9 @@ const onEnterStudent = (nextState, replace, done) => (
 
 const onEnterTeacher = (nextState, replace, done) => (
   store.dispatch(whoami())
-    .then(res => store.dispatch(loadStudents()))
+    .then(user => {
+          if (user.student_id) return replace('/student/dashboard')
+          else return store.dispatch(loadStudents())})
     .then(res => store.dispatch(loadCalendar()))
     .then(res => done())
     .catch(err => console.error(err))
@@ -140,12 +145,19 @@ const onEnterTeacherTracker = (nextState, replace, done) => {
   .catch(err => console.error(err))
 }
 
+const onEnterGrades = (nextState, replace, done) => {
+  store.dispatch(loadCurrentStudent(nextState.params.studentId))
+  .then(res => done())
+  .catch(err => console.error(err))
+}
+
 export default function Root () {
   return (
     <Provider store={store}>
       <Router history={browserHistory}>
         <Route path="/" component={AppContainer}>
           <Route path="/home" component={HomeContainer} />
+          <Route path="/FAQ" component={FAQ} />
           <IndexRedirect to="/home" />
           <Route path="/signup" component={SignUpContainer} onEnter={onEnterSignup} />
           <Router path="/student"  component={StudentAppContainer} onEnter={onEnterStudent}>
@@ -165,6 +177,7 @@ export default function Root () {
             <Route path="students" component={TeacherStudentsContainer}  />
             <Route path="claim" component={TeacherClaimStudentsContainer} onEnter={onEnterClaimStudents} />
             <Route path="student/:studentId" component={StudentTrackerContainer} onEnter={onEnterTeacherTracker} />
+            <Route path="student/:studentId/grades" component={GradeViewContainer} onEnter={onEnterGrades} />
             <Route path="library" component={LibraryContainer} onEnter={onEnterTeacher} />
             <Route path="settings" component={SettingsContainer} onEnter={onEnterTeacher} />
             <Route path="rewards" component={RewardsContainer} onEnter={onEnterTeacher} />
@@ -172,6 +185,7 @@ export default function Root () {
             <Route path="createquiz" component={CreateQuizContainer} />
             <Route path="createtask" component={CreateTaskContainer} />
             <Route path="assignment/:assignmentId" component={CompletedAssignmentContainer} onEnter={onEntercompAssign} />
+            <Route path="FAQ" component={FAQ} />
             <IndexRedirect to="dashboard" />
           </Router>
         </Route>

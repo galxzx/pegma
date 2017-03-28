@@ -25,6 +25,8 @@ class StudentTrackerContainer extends Component {
     this.props.user.firstName + ' ' + this.props.user.lastName :
     this.props.currentStudent.user.firstName + ' ' + this.props.currentStudent.user.lastName
 
+    const teacherView = this.props.user.teacher_id ? true : false
+
     return (
       <div>
         <div className="container panel-container">
@@ -38,6 +40,7 @@ class StudentTrackerContainer extends Component {
                 handleDragEnd={this.props.handleDragEnd}
                 onCardClick={this.props.handleCardClick}
                 laneSortFunction={this.props.defineSortFunction}
+                teacherView={teacherView}
               />
           </div>               
           </section>

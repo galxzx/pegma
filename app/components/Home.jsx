@@ -50,19 +50,11 @@ class Home extends React.Component {
                   )
               }
             {
-              (this.state.modal === 'login') ? (
+              (this.state.modal !== 'login') ? null : !this.props.user ? (
                 <div className="modal modal-home">
                   <div className="modal-close" onClick={()=>this.closeModal()}>x</div>
                     <div className="modal-content">
-                      {
-                        (!this.props.user) ? (
                           <Login />
-                        ) : (
-                          <div className="modal-login">
-                            <h3>You are already logged in as { this.props.user.name }.</h3>
-                          </div>
-                        )
-                      }
                     </div>
                   </div>
               ) : null

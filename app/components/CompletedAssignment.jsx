@@ -18,11 +18,17 @@ const Assignment = ({user, currentAssignment, updateGrade}) => {
                 <div>
                   <form onSubmit={(evt) => {
                     evt.preventDefault()
-                    updateGrade(evt.target.grade.value, currentAssignment.id)
+                    updateGrade(evt.target.grade.value, evt.target.status.value, currentAssignment.id)
                   }}>
                     <label>New Grade</label>
                     <input name="grade" type="text" defaultValue={currentAssignment.grade} />
-                    <button className="btn btn-primary" type="submit">Update and Archive</button>
+                    <select name="status" defaultValue={currentAssignment.status}>
+                      <option value="archived">archived</option>
+                      <option value="completed">completed</option>
+                      <option value="doing">doing</option>
+                      <option value="assigned">assigned</option>
+                    </select>
+                    <button className="btn btn-primary" type="submit">Update</button>
                   </form>
                 </div>
                 ) : null

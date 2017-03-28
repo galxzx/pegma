@@ -53,18 +53,18 @@ module.exports = require('express').Router()
 		.then(assignment => res.json(assignment))
 		.catch(next))
 	.get('/:studentId', mustBeLoggedIn, (req, res, next) =>
-		Student.findById(+req.params.studentId, 
+		Student.findById(+req.params.studentId,
 		{include: [
-			{model:User, attributes:['firstName', 'lastName']}, 
-			{model:Teacher, include:[{model:User, attributes:['firstName', 'lastName']}]}, 
+			{model:User, attributes:['firstName', 'lastName']},
+			{model:Teacher, include:[{model:User, attributes:['firstName', 'lastName']}]},
 			{model: Assignment, include:[Quiz, Task]}]
 		})
 		.then(student => res.json(student))
 		.catch(next))
-	.put('/:studentId/drop', (req, res, next) => 
-		Student.update({teacher_id: null}, {where:{id: +req.params.studentId}})
-		.then(dropped => 	res.json(dropped))
-		.catch(next))	
+	.put('/:studentId/', (req, res, next) =>
+		Student.update(req.body, {where:{id: +req.params.studentId}})
+		.then(updated => 	res.json(updated))
+		.catch(next))
 	.put('/:studentId/assignments/:assignmentId', (req, res, next) =>
 	  Assignment.findById(req.params.assignmentId)
 	  .then(assignment =>
@@ -72,5 +72,3 @@ module.exports = require('express').Router()
 	  .then(assignment =>
 	  	res.send(assignment))
 	  .catch(next))
-
-	

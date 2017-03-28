@@ -5,9 +5,6 @@ import CreateTask from '../components/CreateTask'
 import validateQuiz from '../validators/validateQuiz'
 import { addTask } from '../reducers/library'
 
-
-
-
 const mapState = (state) => {
   return {
   }
