@@ -682,7 +682,8 @@ table.teacher-students {
   bottom: 0px;
   right: 0px;
   z-index: 10;
-  width: 350px; }
+  width: 350px;
+  max-height: 100vh; }
   #chatbox-container .chatbox-panel {
     background: #fff;
     margin-right: 5px; }
@@ -709,7 +710,7 @@ table.teacher-students {
     #chatbox-container .chatbox-panel .body {
       padding: 15px;
       overflow-y: scroll;
-      height: 250px;
+      max-height: 50vh;
       border: 1px solid #9C9C9B;
       background: #EEEEEC; }
       #chatbox-container .chatbox-panel .body ul.chat {
