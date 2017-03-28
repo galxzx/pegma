@@ -96,6 +96,11 @@ html {
 form .formError {
   color: #C60034; }
 
+input.calendar-email {
+  width: 30%;
+  min-width: 320px;
+  margin-right: 15px; }
+
 /* NOT-LOGGED ALERTS */
 .not-logged {
   text-align: center;
@@ -351,10 +356,12 @@ footer {
   height: 350px;
   border: 0;
   border-top: 2px solid #9C9C9B;
-  background: #9C9C9B; }
+  background: #9C9C9B;
+  text-align: center; }
   .calendar-content-sm p {
-    text-align: center;
     font-style: italic; }
+  .calendar-content-sm button {
+    margin-top: 15px; }
 
 .calendar-content-max {
   width: 100% !important;

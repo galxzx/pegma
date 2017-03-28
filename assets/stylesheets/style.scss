@@ -136,6 +136,12 @@ form {
 	}
 }
 
+input.calendar-email {
+	width: 30%;
+  min-width: 320px;
+  margin-right: 15px;
+}
+
 /* NOT-LOGGED ALERTS */
 
 .not-logged {
@@ -517,11 +523,16 @@ footer {
 	border: 0;   
 	border-top: 2px solid $mediumGrey;
 	background: $mediumGrey;
+	text-align: center;
 
 	p {
-		text-align: center;
+		
 		font-style: italic;
-	} 
+	}
+
+	button {
+		margin-top: 15px;
+	}
 }
 
 .calendar-content-max {
@@ -535,6 +546,8 @@ footer {
 		text-align: center;
 		font-style: italic;
 	}
+
+	
 }
 
 /* ASSIGNMENTS */

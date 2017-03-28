@@ -4,12 +4,14 @@ import { loadCurrentAssignment } from './student'
 
 /* -----------------    ACTIONS     ------------------ */
 
+export const SET_CALENDAR = 'SET_CALENDAR'
 export const SET_STUDENTS  = 'SET_STUDENTS'
 export const SET_CURRENT_STUDENT  = 'SET_CURRENT_STUDENT'
 export const DROP_STUDENT  = 'DROP_STUDENT'
 
 /* ------------   ACTION CREATORS     ------------------ */
 
+export const setCalendar = (calendar) => ({ type: SET_CALENDAR, calendar })
 export const setStudents = (students) => ({ type: SET_STUDENTS, students })
 export const setCurrentStudent = (student) => ({ type: SET_CURRENT_STUDENT, student })
 export const dropStudent = (studentId) => ({ type: DROP_STUDENT, studentId })
@@ -18,6 +20,7 @@ export const dropStudent = (studentId) => ({ type: DROP_STUDENT, studentId })
 
 const initialState = {
   students: [],
+  calendar: {},
   currentStudent: {}
 }
 
@@ -26,6 +29,10 @@ export default function reducer(prevState = initialState, action) {
   const newState = Object.assign({}, prevState)
 
   switch (action.type) {
+
+    case SET_CALENDAR:
+      newState.calendar = action.calendar
+      break
 
     case SET_STUDENTS:
       newState.students = action.students
@@ -46,6 +53,26 @@ export default function reducer(prevState = initialState, action) {
 }
 
 /* ------------       DISPATCHERS     ------------------ */
+
+export const loadCalendar = () => (dispatch, getState) => {
+  let teacherId = getState().auth.teacher_id
+  axios.get(`/api/teachers/${teacherId}`)
+    .then(res => res.data)
+    .then(teacher => dispatch(setCalendar(teacher.calendar)))
+    .catch(err => console.error(err))
+}
+
+export const updateCalendar = () => (dispatch, getState) => {
+    const state = getState()
+    const teacherId = state.auth.teacher_id
+    const email = state.form.calendar.values.email
+    email.replace('@', '%40')
+    const newInfo = { calendar: `https://calendar.google.com/calendar/embed?src=${email}`}
+    return axios.put(`/api/teachers/${teacherId}`, newInfo)
+      .then(res => res.data)
+      .then(res => dispatch(setCalendar(res.calendar)))
+      .catch(err => console.error(err))
+}
 
 export const loadStudents = () => (dispatch, getState) => {
   let teacherId = getState().auth.teacher_id
@@ -80,7 +107,6 @@ export const loadCurrentStudent = (studentId) => (dispatch, getState) =>
     dispatch(setCurrentStudent(student))
   })
   .catch(err => console.error(err))
-
 
 export const dropStudentRequest = (studentId) => (dispatch) => 
   axios.put(`/api/students/${studentId}/drop`)
