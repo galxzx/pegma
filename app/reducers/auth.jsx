@@ -45,6 +45,16 @@ export const whoami = () =>
       })
       .catch(failed => dispatch(authenticated(null)))
 
+export const updateUser = () =>
+  (dispatch, getState) => {
+    const state = getState()
+    const userId = state.auth.id
+    const newInfo = state.form.userSettings.values
+    return axios.put(`/api/users/${userId}`, newInfo)
+      .then(() => dispatch(whoami()))
+      .catch(err => console.error(err))
+}
+
 export const updateStudent = () =>
   (dispatch, getState) => {
     const state = getState()
