@@ -543,9 +543,16 @@ footer {
   #student-tracker div.list-container::last-child {
     margin-right: 2%; }
 
-.kjauoa {
+section.kjauoa {
   margin: 1.6% !important;
   min-width: 20% !important; }
+  section.kjauoa header span.ggHFfo {
+    font-weight: bold; }
+
+section.kjauoa:last-child {
+  background: #9C9C9B; }
+  section.kjauoa:last-child article {
+    opacity: .5 !important; }
 
 article[data-class="overdue"], article[data-class="overdue"]:hover {
   background: #C60034;
@@ -809,3 +816,47 @@ table.teacher-students {
       #chatbox-container .chatbox-panel .footer button:focus, #chatbox-container .chatbox-panel .footer button:hover {
         width: 65px;
         height: 25px; }
+
+/* Grade Circle */
+.arc text {
+  font: 10px sans-serif;
+  text-anchor: middle; }
+
+.arc path {
+  stroke: #fff; }
+
+/* Tooltips */
+.tooltip {
+  position: relative; }
+  .tooltip .tooltip-text {
+    visibility: hidden;
+    width: 90px;
+    font-size: 12pt;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    left: -17px;
+    top: 66px;
+    z-index: 100; }
+
+.tooltip:hover .tooltip-text {
+  visibility: visible; }
+
+/* Grade View */
+.grade-view {
+  background: #FFFFFF;
+  padding-bottom: 30px; }
+  .grade-view .subject {
+    overflow: hidden;
+    background: #43B9FF;
+    padding-bottom: 30px; }
+    .grade-view .subject .subject-title {
+      width: 100%;
+      text-align: center;
+      background: #EEEEEC;
+      margin-bottom: 30px; }
+  .grade-view .count-circle {
+    text-align: center; }

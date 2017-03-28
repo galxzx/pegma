@@ -99,17 +99,13 @@ export const updateGrade = (grade, status, assignmentId) => (dispatch) =>
     .then(assignment => dispatch(loadCurrentAssignment(assignment.id)))
   .catch(err => console.error(err))
 
-
-export const loadCurrentStudent = (studentId) => (dispatch, getState) =>
+export const loadCurrentStudent = (studentId) => (dispatch) => 
  axios.get(`/api/students/${studentId}/`)
   .then(res => res.data)
-  .then(student => {
-    dispatch(setCurrentStudent(student))
-  })
+  .then(student => dispatch(setCurrentStudent(student)))
   .catch(err => console.error(err))
 
 export const dropStudentRequest = (studentId) => (dispatch) =>
   axios.put(`/api/students/${studentId}/`, {teacher_id: null})
     .then(dropped => dispatch(dropStudent(studentId)))
   .catch(err => console.error(err))
-
