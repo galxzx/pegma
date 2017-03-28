@@ -52,7 +52,6 @@ class ChatboxContainer extends Component {
   }
 
   _messageRecieve(message) {
-    console.log(message, 'this is the message from the server')
     var {messages} = this.state;
     messages.push(message);
     this.setState({messages});

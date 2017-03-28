@@ -13,8 +13,7 @@ class ChatMessageContainer extends Component {
   constructor(props) {
     super()
     this.state = {
-      born: props.message.born,
-      age: 0
+      age: findAge(props.message.born)
     }
   }
 
@@ -22,13 +21,11 @@ class ChatMessageContainer extends Component {
 
   componentDidMount () {
     this.updateAge = setInterval(()=>{
-
       let age = findAge(this.props.message.born)
       this.setState({age: age})
     }, 60000)
   }
   componentWillUnmount (){
-    console.log('unmounted =========================')
     clearInterval(this.updateAge)
   }
 
