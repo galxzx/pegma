@@ -86,6 +86,7 @@ class ChatboxContainer extends Component {
   }
 
   handleMessageSubmit(event) {
+    console.log('insde handle Message Submit ==============================')
     let newMessage
     event.preventDefault()
 

@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import ChatMessageContainer from '../Containers/ChatMessageContainer'
+
 class Chatbox extends Component {
 
 
@@ -22,21 +24,7 @@ class Chatbox extends Component {
                          {  messages.map((message, idx) => {
 
                                 return(
-                                    <li key={idx}
-                                        className={(message.user === chatName ? "align-right" : "")}>
-                                        <span className="chat-img pull-left">
-                                            <img src={message.imageUrl} alt="User Avatar" className="img-circle" />
-                                        </span>
-                                        <div className="chat-body">
-                                            <div className="header">
-                                                <strong className="primary-font">{message.user}</strong> <small className="pull-right text-muted">
-                                                    <span className="icon-clock-o"></span>12 mins ago</small>
-                                            </div>
-                                            <p>
-                                                <strong>{`TO ${message.to.toUpperCase()}: `}</strong>{message.text}
-                                            </p>
-                                        </div>
-                                    </li>
+                                    <ChatMessageContainer chatName={chatName} message={message} key={idx} />
                                 )
                         }) }
                         </ul>
