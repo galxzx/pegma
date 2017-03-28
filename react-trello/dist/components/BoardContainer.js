@@ -97,11 +97,12 @@ var BoardContainer = function (_Component) {
               handleDragEnd = _props.handleDragEnd,
               onCardClick = _props.onCardClick,
               onLaneScroll = _props.onLaneScroll,
-              laneSortFunction = _props.laneSortFunction;
+              laneSortFunction = _props.laneSortFunction,
+              teacherView = _props.teacherView;
 
           return _react2.default.createElement(_Lane2.default, _extends({ key: id,
             id: id
-          }, otherProps, { draggable: draggable, handleDragStart: handleDragStart, handleDragEnd: handleDragEnd, onCardClick: onCardClick, onLaneScroll: onLaneScroll, laneSortFunction: laneSortFunction }));
+          }, otherProps, { draggable: draggable, handleDragStart: handleDragStart, handleDragEnd: handleDragEnd, onCardClick: onCardClick, onLaneScroll: onLaneScroll, laneSortFunction: laneSortFunction, teacherView: teacherView }));
         })
       );
     }
@@ -119,7 +120,8 @@ BoardContainer.propTypes = {
   draggable: _react.PropTypes.bool,
   handleDragStart: _react.PropTypes.func,
   handleDragEnd: _react.PropTypes.func,
-  onDataChange: _react.PropTypes.func
+  onDataChange: _react.PropTypes.func,
+  teacherView: _react.PropTypes.bool
 };
 
 var mapStateToProps = function mapStateToProps(state) {

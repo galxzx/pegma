@@ -4,6 +4,8 @@ import {Link} from 'react-router'
 
 import GradeCircleContainer from '../containers/GradeCircleContainer'
 
+import {getGrades, GPA, letterSpread} from '../utils'
+
 const TeacherStudents = ({user, students, dropStudentRequest}) => {
 
   const teacherName = user.firstName + ' ' + user.lastName
@@ -25,12 +27,26 @@ const TeacherStudents = ({user, students, dropStudentRequest}) => {
                 </tr>
                 {
                   students.map((student) => {
+                    let studentReport = getGrades(student.assignments)
+                    let studentGPA = GPA(studentReport)
+                    let studentLetterSpread = letterSpread(studentReport)                    
                     return (
-                      <tr key={student.id} id={`s${student.id}`} className="student">
+                      <tr key={student.id} id={`student${student.id}`} className="student">
                         <td className="">{student.id}</td>
                         <td className="avatar"><img src={`${student.user.imageUrl}`} className="avatar" /></td>
                         <td className="">{student.user.lastName + ', ' + student.user.firstName}</td>
-                        <td className=""><GradeCircleContainer studentId={student.id} /></td>                
+                        <td className="">
+                          <Link to={`/teacher/student/${student.id}/grades`}>
+                            <GradeCircleContainer 
+                              studentId={student.id} 
+                              GPA={studentGPA} 
+                              numOfAs={studentLetterSpread.numOfAs}
+                              numOfBs={studentLetterSpread.numOfBs}
+                              numOfCs={studentLetterSpread.numOfCs}
+                              numOfFs={studentLetterSpread.numOfFs}
+                              />
+                          </Link>
+                        </td>                
                         <td className="options">
                           <a id="email" className="icon-mail tooltip" href={'mailto:' + student.user.email}>
                             <span className="tooltip-text">E-mail Student</span>

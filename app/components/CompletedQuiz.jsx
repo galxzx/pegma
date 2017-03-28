@@ -1,7 +1,5 @@
 import React from 'react'
 
-
-
 const CompletedQuiz = ({ currentAssignment, quiz }) => {
     const quizAnswers = currentAssignment.quiz_answers
 

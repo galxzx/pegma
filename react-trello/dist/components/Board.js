@@ -67,5 +67,6 @@ Board.propTypes = {
   draggable: _react.PropTypes.bool,
   handleDragStart: _react.PropTypes.func,
   handleDragEnd: _react.PropTypes.func,
-  onDataChange: _react.PropTypes.func
+  onDataChange: _react.PropTypes.func,
+  teacherView: _react.PropTypes.bool
 };

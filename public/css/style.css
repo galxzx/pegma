@@ -524,9 +524,16 @@ footer {
   #student-tracker div.list-container::last-child {
     margin-right: 2%; }
 
-.kjauoa {
+section.kjauoa {
   margin: 1.6% !important;
   min-width: 20% !important; }
+  section.kjauoa header span.ggHFfo {
+    font-weight: bold; }
+
+section.kjauoa:last-child {
+  background: #9C9C9B; }
+  section.kjauoa:last-child article {
+    opacity: .5 !important; }
 
 article[data-class="overdue"], article[data-class="overdue"]:hover {
   background: #C60034;
@@ -817,3 +824,19 @@ table.teacher-students {
 
 .tooltip:hover .tooltip-text {
   visibility: visible; }
+
+/* Grade View */
+.grade-view {
+  background: #FFFFFF;
+  padding-bottom: 30px; }
+  .grade-view .subject {
+    overflow: hidden;
+    background: #43B9FF;
+    padding-bottom: 30px; }
+    .grade-view .subject .subject-title {
+      width: 100%;
+      text-align: center;
+      background: #EEEEEC;
+      margin-bottom: 30px; }
+  .grade-view .count-circle {
+    text-align: center; }
