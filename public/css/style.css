@@ -350,12 +350,21 @@ footer {
   width: 100%;
   height: 350px;
   border: 0;
-  border-top: 2px solid #9C9C9B; }
+  border-top: 2px solid #9C9C9B;
+  background: #9C9C9B; }
+  .calendar-content-sm p {
+    text-align: center;
+    font-style: italic; }
 
 .calendar-content-max {
   width: 100% !important;
   height: 450px !important;
-  border: 0; }
+  border: 0;
+  background: #9C9C9B; }
+  .calendar-content-max p {
+    padding-top: 50px;
+    text-align: center;
+    font-style: italic; }
 
 /* ASSIGNMENTS */
 .dashboard {

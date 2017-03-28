@@ -16,6 +16,15 @@ module.exports = require('express').Router()
     Teacher.findAll({include:{model: User, attributes:['firstName', 'lastName']}})
       .then(teachers => res.json(teachers))
       .catch(next))
+  .get('/:teacherId', (req, res, next) =>
+    Teacher.findById(req.params.teacherId)
+      .then(teacher => res.json(teacher))
+      .catch(next))
+  .put('/:teacherId', (req, res, next) =>
+    Teacher.findById(req.params.teacherId)
+      .then(teacher => teacher.update(req.body))
+      .then(teacher => res.json(teacher))
+      .catch(next))
 	.get('/:teacherId/students', mustBeLoggedIn, (req, res, next) =>
 		Teacher.findById(req.params.teacherId)
 		.then(teacher => teacher.getStudents({
@@ -44,8 +53,7 @@ module.exports = require('express').Router()
 	})
 	.put('/assignments/:assignmentId', (req, res, next) =>
 	  Assignment.findById(req.params.assignmentId)
-	  	.then(assignment =>
-	  		assignment.update(req.body))
+	  	.then(assignment => assignment.update(req.body))
 	  	.then(assignment => res.json(assignment))
 	  	.catch(next))
 
