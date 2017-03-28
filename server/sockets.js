@@ -34,12 +34,12 @@ const userFunc = (function () {
   //adds # name if already taken
   const checkName = (name) => {
     if(!name) return Guest
-    let idx = 1
-    endName = name.slice();
-    while(!claim(endName)){
-      endName = name.slice() + idx
-      idx++
-    }
+      let idx = 1
+      endName = name.slice();
+      while(!claim(endName)){
+        endName = name.slice() + idx
+        idx++
+      }
     return endName
   }
 

@@ -32,9 +32,6 @@ class ChatboxContainer extends Component {
     // this._userChangedName = this._userChangedName.bind(this)
   }
 
-  // componentWillUpdate(nextProps, nextState){
-  //   if(nextProps.student.teacher && this.state.room !== ''+nextProps.student.teacher.id) this.setState({room: '' + nextProps.student.teacher.id})
-  // }
 
   componentDidMount() {
 
@@ -87,18 +84,6 @@ class ChatboxContainer extends Component {
     });
     this.setState({users, messages});
   }
-
-  // _userChangedName(data) {
-  //   var {oldName, newName} = data;
-  //   var {users, messages} = this.state;
-  //   var index = users.indexOf(oldName);
-  //   users.splice(index, 1, newName);
-  //   messages.push({
-  //     user: 'APPLICATION BOT',
-  //     text : 'Change Name : ' + oldName + ' ==> '+ newName
-  //   });
-  //   this.setState({users, messages});
-  // }
 
   handleMessageSubmit(event) {
     let newMessage
