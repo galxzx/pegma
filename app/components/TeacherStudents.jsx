@@ -32,10 +32,10 @@ const TeacherStudents = ({user, students, dropStudentRequest}) => {
                     let studentLetterSpread = letterSpread(studentReport)                    
                     return (
                       <tr key={student.id} id={`student${student.id}`} className="student">
-                        <td className="">{student.id}</td>
-                        <td className="avatar"><img src={`${student.user.imageUrl}`} className="avatar" /></td>
-                        <td className="">{student.user.lastName + ', ' + student.user.firstName}</td>
-                        <td className="">
+                        <td>{student.id}</td>
+                        <td><img src={`${student.user.imageUrl}`} className="avatar" /></td>
+                        <td>{student.user.lastName + ', ' + student.user.firstName}</td>
+                        <td>
                           <Link to={`/teacher/student/${student.id}/grades`}>
                             <GradeCircleContainer 
                               studentId={student.id} 
