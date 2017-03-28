@@ -40,6 +40,10 @@ const TeacherStudents = ({user, students, dropStudentRequest}) => {
                 }
               </tbody>
             </table>
+            <div className="options">
+              <p>If you can't find a student, you may look for all students that don't have a teacher assigned and add him/her to your class.</p>
+              <Link to='/teacher/claim'><button className="btn btn-primary">Adds Students to Classroom</button></Link>
+            </div>
           </section>
         </div>
       </div>

@@ -25,16 +25,6 @@ module.exports = require('express').Router()
       .then(teacher => teacher.update(req.body))
       .then(teacher => res.json(teacher))
       .catch(next))
-  .get('/:teacherId/claim', (req, res, next) =>
-    Student.findAll({
-    	where: {
-    		teacher_id: null
-    	},
-    	order: ['id'],
-    	include: [User]
-    })
-      .then(students => res.json(students))
-      .catch(next))
 	.get('/:teacherId/students', mustBeLoggedIn, (req, res, next) =>
 		Teacher.findById(req.params.teacherId)
 		.then(teacher => teacher.getStudents({

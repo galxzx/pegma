@@ -27,7 +27,7 @@ const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll, due_
         <div className="flex-container">
           <div className="flex-child panel">
             <div className="panel-header">Control Panel</div>
-            <section className="create-menu">
+            <section className="options">
               <Link to="/teacher/createtask"><button className="btn btn-primary">Create New Task</button></Link>
               <Link to="/teacher/createquiz"><button className="btn btn-primary">Create New Quiz</button></Link>
             </section>
