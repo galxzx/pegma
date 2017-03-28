@@ -57,6 +57,7 @@ const onEnterStudent = (nextState, replace, done) => (
   store.dispatch(whoami())
     .then(user => {
       if(user.teacher_id && nextState.params && nextState.params.assignmentId) return replace (`/teacher/assignment/${nextState.params.assignmentId}`)
+      else if(user.teacher_id) return replace('/teacher/dashboard')
       return store.dispatch(loadStudent())
     })
     .then(() => done())
@@ -66,7 +67,9 @@ const onEnterStudent = (nextState, replace, done) => (
 
 const onEnterTeacher = (nextState, replace, done) => (
   store.dispatch(whoami())
-    .then(res => store.dispatch(loadStudents()))
+    .then(user => {
+          if (user.student_id) return replace('/student/dashboard')
+          else return store.dispatch(loadStudents())})
     .then(res => store.dispatch(loadCalendar()))
     .then(res => done())
     .catch(err => console.error(err))
