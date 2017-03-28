@@ -525,6 +525,11 @@ footer {
 	background: $mediumGrey;
 	text-align: center;
 
+	a {
+		text-decoration: none;
+		color: $black;
+	}
+
 	p {
 		
 		font-style: italic;

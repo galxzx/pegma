@@ -14,7 +14,7 @@ const TeacherCalendarSmall = ({calendar}) => {
 	      ) : (
 	      	<div className="calendar-content-sm">
 	      		<p>You haven't set a google calendar for your students yet.</p>
-	      		<button className="btn btn-primary">Add Calendar Link</button>
+	      		<Link to='/teacher/calendar'><button className="btn btn-primary">Add Calendar Link</button></Link>
 	      		</div>
 	      )
       }
