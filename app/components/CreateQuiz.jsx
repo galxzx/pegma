@@ -4,14 +4,14 @@ import { Field, FieldArray, reduxForm } from 'redux-form'
 import RenderField from './RenderField'
 import renderQuestions from './CreateQuestions'
 
-const renderError = ({ meta: { touched, error } }) => touched && error && <span><span className="icon icon-exclamation-circle red"></span><span className="formError"> {error}</span></span>  || null
+const renderError = ({ meta: { touched, error } }) => touched && error && <span className="icon icon-error-circle red"> {error}</span> || null
 
 const renderTextArea = ({input, label, type,  meta: { touched, error, warning }}) => (
     <div>
         <label>{label}</label>
         <div>
-            <textarea {...input} placeholder="Content" rows="10" cols="40"/>
-            {touched && ((error && <span className="formError">{error}</span>) || (warning && <span>{warning}</span>))}
+            <textarea {...input} placeholder="Content" rows="10" cols="40"/><br/>
+            {touched && ((error && <span className="icon icon-error-circle red">{error}</span>) || (warning && <span className="icon icon-error-circle red">{warning}</span>))}
         </div>
     </div>
 )

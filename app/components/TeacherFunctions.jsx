@@ -15,9 +15,9 @@ const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll, due_
       'completed':0,
       'archived':0
     }
-    
+
     assignments.forEach(assignment => stats[assignment.status]++)
-    
+
     return stats
   }
 
@@ -48,7 +48,7 @@ const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll, due_
                       </option>
                     )
                 }
-                </select>  
+                </select>
 
                 <select id="quizzes" name="quizzes">
                   <option>Assign Quiz...</option>
@@ -76,7 +76,8 @@ const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll, due_
             <section>
               <div id="message-box">{ message }</div>
             </section>
-            <section>
+            <section className="teacher-assignments">
+              <p>Select students to assign...</p>
               <table className="teacher-assignments">
                 <tbody id="students">
                   <tr id="filters">
@@ -101,7 +102,7 @@ const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll, due_
                       <td className="">{stats.assigned}</td>
                       <td className="">{stats.doing}</td>
                       <td className="">{stats.completed}</td>
-                      <td className="">{stats.archived}</td>               
+                      <td className="">{stats.archived}</td>
                     </tr>
                   )
                 })}

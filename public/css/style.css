@@ -96,6 +96,11 @@ html {
 form .formError {
   color: #C60034; }
 
+input.calendar-email {
+  width: 30%;
+  min-width: 320px;
+  margin-right: 15px; }
+
 /* NOT-LOGGED ALERTS */
 .not-logged {
   text-align: center;
@@ -350,12 +355,26 @@ footer {
   width: 100%;
   height: 350px;
   border: 0;
-  border-top: 2px solid #9C9C9B; }
+  border-top: 2px solid #9C9C9B;
+  background: #9C9C9B;
+  text-align: center; }
+  .calendar-content-sm a {
+    text-decoration: none;
+    color: #222221; }
+  .calendar-content-sm p {
+    font-style: italic; }
+  .calendar-content-sm button {
+    margin-top: 15px; }
 
 .calendar-content-max {
   width: 100% !important;
   height: 450px !important;
-  border: 0; }
+  border: 0;
+  background: #9C9C9B; }
+  .calendar-content-max p {
+    padding-top: 50px;
+    text-align: center;
+    font-style: italic; }
 
 /* ASSIGNMENTS */
 .dashboard {
@@ -689,7 +708,8 @@ table.teacher-students {
   bottom: 0px;
   right: 0px;
   z-index: 10;
-  width: 350px; }
+  width: 350px;
+  max-height: 100vh; }
   #chatbox-container .chatbox-panel {
     background: #fff;
     margin-right: 5px; }
@@ -716,7 +736,7 @@ table.teacher-students {
     #chatbox-container .chatbox-panel .body {
       padding: 15px;
       overflow-y: scroll;
-      height: 250px;
+      max-height: 50vh;
       border: 1px solid #9C9C9B;
       background: #EEEEEC; }
       #chatbox-container .chatbox-panel .body ul.chat {

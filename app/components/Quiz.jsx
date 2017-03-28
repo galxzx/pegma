@@ -8,7 +8,7 @@ const renderError = ({ meta: { touched, error } }) => touched && error ?
 const required = value => (value || value === 0) ? undefined : 'Required'
 
 
-const Quiz = ({ handleSubmit, quiz, gradeQuiz, quizForm }) => {
+const Quiz = ({ handleSubmit, quiz, gradeQuiz, quizForm, user }) => {
   return (
     <form className="quiz" onSubmit={handleSubmit(gradeQuiz)}>
       <p>{ quiz.description }</p>
@@ -34,7 +34,7 @@ const Quiz = ({ handleSubmit, quiz, gradeQuiz, quizForm }) => {
         )
       })}
       <div>
-        <button className="btn btn-primary" type="submit">Submit Quiz</button>
+        <button className="btn btn-primary" type="submit" disabled={user.teacher_id}>Submit Quiz</button>
       </div>
     </form>
 

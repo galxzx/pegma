@@ -8,6 +8,7 @@ import store from './store'
 
 import Login from './components/Login'
 import WhoAmI from './components/WhoAmI'
+import FAQ from './components/FAQ'
 
 import AppContainer from './containers/AppContainer'
 import HomeContainer from './containers/HomeContainer'
@@ -37,13 +38,14 @@ import GradeViewContainer from './containers/GradeViewContainer'
 import {whoami} from './reducers/auth'
 
 import {loadAssignments, loadCurrentAssignment, loadStudent, loadQuiz, loadTask} from './reducers/student'
-import {loadStudents, loadCurrentStudent} from './reducers/teacher'
+import {loadCalendar, loadStudents, loadCurrentStudent} from './reducers/teacher'
 import {loadLibrary} from './reducers/library'
 import {loadBoard} from './reducers/tracker'
 import {loadTeachers} from './reducers/signup'
 
 const onEnterSignup = () => {
   store.dispatch(loadTeachers())
+  .catch(console.error.bind(console))
 }
 
 const onEnterApp = (nextState, replace, done) => {
@@ -56,6 +58,7 @@ const onEnterStudent = (nextState, replace, done) => (
   store.dispatch(whoami())
     .then(user => {
       if(user.teacher_id && nextState.params && nextState.params.assignmentId) return replace (`/teacher/assignment/${nextState.params.assignmentId}`)
+      else if(user.teacher_id) return replace('/teacher/dashboard')
       return store.dispatch(loadStudent())
     })
     .then(() => done())
@@ -65,14 +68,16 @@ const onEnterStudent = (nextState, replace, done) => (
 
 const onEnterTeacher = (nextState, replace, done) => (
   store.dispatch(whoami())
-    .then(res => store.dispatch(loadStudents()))
+    .then(user => {
+          if (user.student_id) return replace('/student/dashboard')
+          else return store.dispatch(loadStudents())})
+    .then(res => store.dispatch(loadCalendar()))
     .then(res => done())
     .catch(err => console.error(err))
 )
 
 const onEnterTeacherFunctions = (nextState, replace) => (
-  store.dispatch(whoami())
-    .then(res => store.dispatch(loadLibrary()))
+  store.dispatch(loadLibrary())
 )
 
 const onEnterQuiz = () => {
@@ -118,9 +123,12 @@ const onEntercompAssign = (nextState, replace, done) => {
 }
 
 const onEnterStudentTracker = (nextState, replace, done) => {
-  onEnterStudent(nextState, replace)
-  .then(res => store.dispatch(loadBoard()))
+  //onEnterStudent(nextState, replace)
+  //.then(res => store.dispatch(loadBoard()))
+  //.then(done)
+  store.dispatch(loadBoard())
   .then(done)
+
 }
 
 const onEnterTeacherTracker = (nextState, replace, done) => {
@@ -142,6 +150,7 @@ export default function Root () {
       <Router history={browserHistory}>
         <Route path="/" component={AppContainer}>
           <Route path="/home" component={HomeContainer} />
+          <Route path="/FAQ" component={FAQ} />
           <IndexRedirect to="/home" />
           <Route path="/signup" component={SignUpContainer} onEnter={onEnterSignup} />
           <Router path="/student"  component={StudentAppContainer} onEnter={onEnterStudent}>
@@ -156,18 +165,19 @@ export default function Root () {
             <IndexRedirect to="dashboard" />
           </Router>
           <Router path="/teacher" component={TeacherAppContainer} onEnter={onEnterTeacher}>
-            <Route path="dashboard" component={TeacherDashboardContainer} onEnter={onEnterTeacher} />
+            <Route path="dashboard" component={TeacherDashboardContainer}  />
             <Route path="assignments" component={TeacherFunctionsContainer} onEnter={onEnterTeacherFunctions} />
-            <Route path="students" component={TeacherStudentsContainer} onEnter={onEnterTeacher} />
+            <Route path="students" component={TeacherStudentsContainer}  />
             <Route path="student/:studentId" component={StudentTrackerContainer} onEnter={onEnterTeacherTracker} />
             <Route path="student/:studentId/grades" component={GradeViewContainer} onEnter={onEnterGrades} />
             <Route path="library" component={LibraryContainer} onEnter={onEnterTeacher} />
             <Route path="settings" component={SettingsContainer} onEnter={onEnterTeacher} />
             <Route path="rewards" component={RewardsContainer} onEnter={onEnterTeacher} />
-            <Route path="calendar" component={TeacherCalendarContainer} />
+            <Route path="calendar" component={TeacherCalendarContainer} onEnter={onEnterTeacher}  />
             <Route path="createquiz" component={CreateQuizContainer} />
             <Route path="createtask" component={CreateTaskContainer} />
             <Route path="assignment/:assignmentId" component={CompletedAssignmentContainer} onEnter={onEntercompAssign} />
+            <Route path="FAQ" component={FAQ} />
             <IndexRedirect to="dashboard" />
           </Router>
         </Route>
