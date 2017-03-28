@@ -18,7 +18,7 @@ class Chatbox extends Component {
                     <i className={`show-chatbox ${open ? 'icon-angle-double-down' : 'icon-angle-double-up'}`} onClick={handleToggleChatbox}></i>
                 </div>
                 { open ? (
-                <div>
+                    <div>
                     <div className="body" ref={(div) => { this.messageList = div }} >
                         <ul className="chat">
                          {  messages.map((message, idx) => {
@@ -48,7 +48,8 @@ class Chatbox extends Component {
                             </form>
                         </div>
                     </div>
-                </div>
+                    </div>
+
                 ) : <div></div>
                 }
             </div>

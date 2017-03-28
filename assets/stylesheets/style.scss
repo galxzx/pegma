@@ -538,6 +538,7 @@ footer {
 	button {
 		margin-top: 15px;
 	}
+
 }
 
 .calendar-content-max {
@@ -1049,6 +1050,7 @@ table.teacher-students {
 	right: 0px;
 	z-index: 10;
 	width: 350px;
+	max-height: 100vh;
 
 	.chatbox-panel {
 		background: #fff;
@@ -1079,7 +1081,7 @@ table.teacher-students {
 		.body {
 			padding: 15px;
 	    overflow-y: scroll;
-	    height: 250px;
+	    max-height: 50vh;
 	    border: 1px solid $mediumGrey;
 	    background: $lightGrey;
 			ul.chat {

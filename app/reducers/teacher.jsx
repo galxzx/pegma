@@ -76,7 +76,7 @@ export const updateCalendar = () => (dispatch, getState) => {
 
 export const loadStudents = () => (dispatch, getState) => {
   let teacherId = getState().auth.teacher_id
-  axios.get(`/api/teachers/${teacherId}/students`)
+  return axios.get(`/api/teachers/${teacherId}/students`)
     .then(res => res.data)
     .then(students => dispatch(setStudents(students)))
     .catch(err => console.error(err))
@@ -100,7 +100,7 @@ export const updateGrade = (grade, assignmentId) => (dispatch) => {
   .catch(err => console.error(err))
 }
 
-export const loadCurrentStudent = (studentId) => (dispatch, getState) => 
+export const loadCurrentStudent = (studentId) => (dispatch, getState) =>
  axios.get(`/api/students/${studentId}/`)
   .then(res => res.data)
   .then(student => {
@@ -108,7 +108,7 @@ export const loadCurrentStudent = (studentId) => (dispatch, getState) =>
   })
   .catch(err => console.error(err))
 
-export const dropStudentRequest = (studentId) => (dispatch) => 
+export const dropStudentRequest = (studentId) => (dispatch) =>
   axios.put(`/api/students/${studentId}/drop`)
     .then(res => res.data)
     .then(dropped => dispatch(dropStudent(studentId)))
