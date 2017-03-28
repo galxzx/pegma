@@ -43,6 +43,7 @@ import {loadTeachers} from './reducers/signup'
 
 const onEnterSignup = () => {
   store.dispatch(loadTeachers())
+  .catch(console.error.bind(console))
 }
 
 const onEnterApp = (nextState, replace, done) => {
@@ -70,8 +71,7 @@ const onEnterTeacher = (nextState, replace, done) => (
 )
 
 const onEnterTeacherFunctions = (nextState, replace) => (
-  store.dispatch(whoami())
-    .then(res => store.dispatch(loadLibrary()))
+  store.dispatch(loadLibrary())
 )
 
 const onEnterQuiz = () => {
@@ -117,9 +117,12 @@ const onEntercompAssign = (nextState, replace, done) => {
 }
 
 const onEnterStudentTracker = (nextState, replace, done) => {
-  onEnterStudent(nextState, replace)
-  .then(res => store.dispatch(loadBoard()))
+  //onEnterStudent(nextState, replace)
+  //.then(res => store.dispatch(loadBoard()))
+  //.then(done)
+  store.dispatch(loadBoard())
   .then(done)
+
 }
 
 const onEnterTeacherTracker = (nextState, replace, done) => {
@@ -149,13 +152,13 @@ export default function Root () {
             <IndexRedirect to="dashboard" />
           </Router>
           <Router path="/teacher" component={TeacherAppContainer} onEnter={onEnterTeacher}>
-            <Route path="dashboard" component={TeacherDashboardContainer} onEnter={onEnterTeacher} />
+            <Route path="dashboard" component={TeacherDashboardContainer}  />
             <Route path="assignments" component={TeacherFunctionsContainer} onEnter={onEnterTeacherFunctions} />
-            <Route path="students" component={TeacherStudentsContainer} onEnter={onEnterTeacher} />
+            <Route path="students" component={TeacherStudentsContainer}  />
             <Route path="student/:studentId" component={StudentTrackerContainer} onEnter={onEnterTeacherTracker} />
-            <Route path="library" component={LibraryContainer} onEnter={onEnterTeacher} />
-            <Route path="settings" component={SettingsContainer} onEnter={onEnterTeacher} />
-            <Route path="rewards" component={RewardsContainer} onEnter={onEnterTeacher} />
+            <Route path="library" component={LibraryContainer}  />
+            <Route path="settings" component={SettingsContainer}  />
+            <Route path="rewards" component={RewardsContainer}  />
             <Route path="calendar" component={TeacherCalendarContainer} />
             <Route path="createquiz" component={CreateQuizContainer} />
             <Route path="createtask" component={CreateTaskContainer} />
