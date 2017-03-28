@@ -176,3 +176,6 @@
 .icon-plus-circle:before {
   content: "\54";
 }
+.icon-question:before {
+  content: "\55";
+}
