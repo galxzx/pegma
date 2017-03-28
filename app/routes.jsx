@@ -8,6 +8,7 @@ import store from './store'
 
 import Login from './components/Login'
 import WhoAmI from './components/WhoAmI'
+import FAQ from './components/FAQ'
 
 import AppContainer from './containers/AppContainer'
 import HomeContainer from './containers/HomeContainer'
@@ -139,6 +140,7 @@ export default function Root () {
       <Router history={browserHistory}>
         <Route path="/" component={AppContainer}>
           <Route path="/home" component={HomeContainer} />
+          <Route path="/FAQ" component={FAQ} />
           <IndexRedirect to="/home" />
           <Route path="/signup" component={SignUpContainer} onEnter={onEnterSignup} />
           <Router path="/student"  component={StudentAppContainer} onEnter={onEnterStudent}>
@@ -164,6 +166,7 @@ export default function Root () {
             <Route path="createquiz" component={CreateQuizContainer} />
             <Route path="createtask" component={CreateTaskContainer} />
             <Route path="assignment/:assignmentId" component={CompletedAssignmentContainer} onEnter={onEntercompAssign} />
+            <Route path="FAQ" component={FAQ} />
             <IndexRedirect to="dashboard" />
           </Router>
         </Route>
