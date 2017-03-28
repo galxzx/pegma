@@ -51,6 +51,7 @@ var Card = function (_Component) {
           connectDragSource = _props.connectDragSource,
           connectDropTarget = _props.connectDropTarget,
           isDragging = _props.isDragging,
+          teacherView = _props.teacherView,
           otherProps = _objectWithoutProperties(_props, ['id', 'title', 'description', 'label', 'connectDragSource', 'connectDropTarget', 'isDragging']);
 
       var opacity = isDragging ? 0 : 1;
@@ -106,6 +107,10 @@ var cardSource = {
 
     if(!dropResult || !dropResult.listId) return;
 
+     else if(!props.teacherView && dropResult.listId === 'archived') {
+      props.removeCard(dropResult.listId, item.id);
+      props.handleDragEnd(dropResult.id, dropResult.listId, item.listId);
+     }
     else if (dropResult && dropResult.listId !== item.listId) {
       props.removeCard(item.listId, item.id);
       props.handleDragEnd(item.id, item.listId, dropResult.listId);
