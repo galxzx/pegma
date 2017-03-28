@@ -5,6 +5,7 @@ const Student = db.model('students')
 const Assignment = db.model('assignments')
 const Teacher = db.model('teachers')
 const User = db.model('users')
+const Quiz = db.model('quizzes')
 const Task = db.model('tasks')
 
 const {mustBeLoggedIn, forbidden} = require('./auth.filters')
@@ -17,7 +18,10 @@ module.exports = require('express').Router()
       .catch(next))
 	.get('/:teacherId/students', mustBeLoggedIn, (req, res, next) =>
 		Teacher.findById(req.params.teacherId)
-		.then(teacher => teacher.getStudents({order:['id'],include: [Assignment, User]}))
+		.then(teacher => teacher.getStudents({
+			order:['id'],
+			include: [
+				{model: Assignment, include:[Quiz, Task]}, User]}))
 		.then(students => res.json(students))
 		.catch(next))
 	.post('/:teacherId/assignments', mustBeLoggedIn, (req, res, next) => {
