@@ -21,15 +21,10 @@ var _update2 = _interopRequireDefault(_update);
 var _DragType = require('../helpers/DragType');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
 var laneActions = require('../actions/LaneActions');
 
 var Lane = function (_Component) {
@@ -37,9 +32,7 @@ var Lane = function (_Component) {
 
   function Lane() {
     var _ref;
-
     var _temp, _this, _ret;
-
     _classCallCheck(this, Lane);
 
     for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
@@ -67,9 +60,7 @@ var Lane = function (_Component) {
       }
     }, _this.moveCard = function (dragIndex, hoverIndex) {
       var cards = _this.state.cards;
-
       var dragCard = cards[dragIndex];
-
       _this.setState((0, _update2.default)(_this.state, {
         cards: {
           $splice: [[dragIndex, 1], [hoverIndex, 0, dragCard]]
@@ -86,7 +77,8 @@ var Lane = function (_Component) {
           connectDropTarget = _this$props.connectDropTarget,
           laneSortFunction = _this$props.laneSortFunction,
           onCardClick = _this$props.onCardClick,
-          id = _this$props.id;
+          id = _this$props.id,
+          teacherView = _this$props.teacherView;
 
       return connectDropTarget(_react2.default.createElement(
         'div',
@@ -99,7 +91,7 @@ var Lane = function (_Component) {
               key: card.id,
               index: idx,
               listId: id,
-              draggable: _this.props.draggable,
+              draggable: (_this.props.draggable && id !== 'archived') || teacherView,
               handleDragStart: _this.props.handleDragStart,
               handleDragEnd: _this.props.handleDragEnd,
               title: card.title,
@@ -142,11 +134,11 @@ var Lane = function (_Component) {
     key: 'render',
     value: function render() {
       var loading = this.state.loading;
-
+      console.log(this.props, 'p')
       var _props = this.props,
           id = _props.id,
           title = _props.title,
-          label = _props.label,
+          label = `[ ${this.props.cards.length} ]`,
           otherProps = _objectWithoutProperties(_props, ['id', 'title', 'label']);
 
       return _react2.default.createElement(

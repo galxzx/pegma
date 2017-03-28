@@ -168,7 +168,9 @@ Card.propTypes = {
   connectDragSource: _react.PropTypes.func.isRequired,
   isDragging: _react.PropTypes.bool.isRequired,
   handleDragStart: _react2.default.PropTypes.func,
-  handleDragEnd: _react2.default.PropTypes.func
+  handleDragEnd: _react2.default.PropTypes.func,
+  teacherView: _react2.default.PropTypes.bool
+
 };
 
 exports.default = flow((0, _reactDnd.DropTarget)(_DragType.DragType.CARD, cardTarget, function (connect) {
