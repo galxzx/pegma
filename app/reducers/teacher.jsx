@@ -8,6 +8,7 @@ export const SET_CALENDAR = 'SET_CALENDAR'
 export const SET_STUDENTS  = 'SET_STUDENTS'
 export const SET_CURRENT_STUDENT  = 'SET_CURRENT_STUDENT'
 export const DROP_STUDENT  = 'DROP_STUDENT'
+export const SET_UNCLAIMED_STUDENTS = 'UNCLAIMED_STUDENTS'
 
 /* ------------   ACTION CREATORS     ------------------ */
 
@@ -15,13 +16,15 @@ export const setCalendar = (calendar) => ({ type: SET_CALENDAR, calendar })
 export const setStudents = (students) => ({ type: SET_STUDENTS, students })
 export const setCurrentStudent = (student) => ({ type: SET_CURRENT_STUDENT, student })
 export const dropStudent = (studentId) => ({ type: DROP_STUDENT, studentId })
+export const setUnclaimedStudents = (unclaimedStudents) => ({ type: SET_UNCLAIMED_STUDENTS, unclaimedStudents })
 
 /* ------------       REDUCERS     ------------------ */
 
 const initialState = {
   students: [],
   calendar: {},
-  currentStudent: {}
+  currentStudent: {},
+  unclaimedStudents: []
 }
 
 export default function reducer(prevState = initialState, action) {
@@ -44,6 +47,10 @@ export default function reducer(prevState = initialState, action) {
 
     case DROP_STUDENT:
       newState.students = newState.students.filter(student => student.id !== action.studentId)
+      break
+
+    case SET_UNCLAIMED_STUDENTS:
+      newState.unclaimedStudents = action.unclaimedStudents
       break
 
     default:
@@ -114,3 +121,10 @@ export const dropStudentRequest = (studentId) => (dispatch) =>
     .then(dropped => dispatch(dropStudent(studentId)))
   .catch(err => console.error(err))
 
+export const loadUnclaimedStudents = () => (dispatch, getState) => {
+  let teacherId = getState().auth.teacher_id
+  return axios.get(`/api/teachers/${teacherId}/claim`)
+  .then(res => res.data)
+  .then(students => dispatch(setUnclaimedStudents(students)))
+  .catch(err => console.error(err))
+}
