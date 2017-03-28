@@ -93,12 +93,12 @@ export const addAssignmentsRequest = (item, students) => (dispatch, getState) =>
     .catch(err => console.error(err))
 }
 
-export const updateGrade = (grade, assignmentId) => (dispatch) => {
-  axios.put(`/api/teachers/assignments/${assignmentId}`, {grade, status:'archived'})
+export const updateGrade = (grade, status, assignmentId) => (dispatch) =>
+  axios.put(`/api/teachers/assignments/${assignmentId}`, {grade, status})
     .then(res => res.data)
     .then(assignment => dispatch(loadCurrentAssignment(assignment.id)))
   .catch(err => console.error(err))
-}
+
 
 export const loadCurrentStudent = (studentId) => (dispatch, getState) =>
  axios.get(`/api/students/${studentId}/`)
