@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 const ChatMessage = ({message, chatName, age}) => {
+
   return (
     <li
       className={(message.user === chatName ? "align-right" : "")}>
@@ -10,7 +11,7 @@ const ChatMessage = ({message, chatName, age}) => {
       <div className="chat-body">
           <div className="header">
               <strong className="primary-font">{message.user}</strong> <small className="pull-right text-muted">
-                  <span className="icon-clock-o"></span>{age + " "} mins ago</small>
+                  <span className="icon-clock-o"></span>{age + ' '} mins ago</small>
           </div>
           <p>
               <strong>{`TO ${message.to.toUpperCase()}: `}</strong>{message.text}
