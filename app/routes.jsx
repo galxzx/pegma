@@ -162,10 +162,9 @@ export default function Root () {
             <Route path="assignments" component={TeacherFunctionsContainer} onEnter={onEnterTeacherFunctions} />
             <Route path="students" component={TeacherStudentsContainer} onEnter={onEnterTeacher} />
             <Route path="student/:studentId" component={StudentTrackerContainer} onEnter={onEnterTeacherTracker} />
-            <Route path="library" component={LibraryContainer} onEnter={onEnterTeacher} />
-            <Route path="settings" component={SettingsContainer} onEnter={onEnterTeacher} />
-            <Route path="rewards" component={RewardsContainer} onEnter={onEnterTeacher} />
-            <Route path="calendar" component={TeacherCalendarContainer} onEnter={onEnterTeacher}  />
+            <Route path="library" component={LibraryContainer}  />
+            <Route path="settings" component={SettingsContainer}  />
+            <Route path="calendar" component={TeacherCalendarContainer}  />
             <Route path="createquiz" component={CreateQuizContainer} />
             <Route path="createtask" component={CreateTaskContainer} />
             <Route path="assignment/:assignmentId" component={CompletedAssignmentContainer} onEnter={onEntercompAssign} />

@@ -57,7 +57,7 @@ export default function reducer(prevState = initialState, action) {
 
 export const loadCalendar = () => (dispatch, getState) => {
   let teacherId = getState().auth.teacher_id
-  axios.get(`/api/teachers/${teacherId}`)
+  return axios.get(`/api/teachers/${teacherId}`)
     .then(res => res.data)
     .then(teacher => dispatch(setCalendar(teacher.calendar)))
     .catch(err => console.error(err))
