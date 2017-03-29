@@ -15,6 +15,15 @@ class TeacherFunctionsContainer extends Component {
     this.handleChange = this.handleChange.bind(this)
   }
 
+  componentDidMount(){
+    window.scrollTo(0,0)
+  }
+
+  componentWillUpdate(){
+    window.scrollTo(0,0)
+
+  }
+
   handleSubmit (evt) {
 
     evt.preventDefault()
@@ -51,7 +60,7 @@ class TeacherFunctionsContainer extends Component {
       }
       this.setState({message: `${numCreated} assignments were created for ${numStudents} students`})
       clearForm()
-    } 
+    }
     else {
       this.setState({message: 'Please select a student'})
     }

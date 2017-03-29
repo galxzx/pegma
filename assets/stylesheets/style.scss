@@ -520,7 +520,7 @@ footer {
 .calendar-content-sm {
   width: 100%;
   height: 350px;
-	border: 0;   
+	border: 0;
 	border-top: 2px solid $mediumGrey;
 	background: $mediumGrey;
 	text-align: center;
@@ -531,7 +531,7 @@ footer {
 	}
 
 	p {
-		
+
 		font-style: italic;
 	}
 
@@ -553,7 +553,7 @@ footer {
 		font-style: italic;
 	}
 
-	
+
 }
 
 /* ASSIGNMENTS */
@@ -1254,4 +1254,15 @@ table.teacher-students {
 	.count-circle {
 		text-align: center;
 	}
+}
+
+/* Alert */
+
+.alert{
+  position: absolute;
+  top: 9%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  background: yellow;
 }

@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { browserHistory } from 'react-router'
 import { loadCurrentAssignment } from './student'
+import { setAlert, openAlert } from './alert'
 
 /* -----------------    ACTIONS     ------------------ */
 
@@ -87,8 +88,9 @@ export const addAssignmentsRequest = (item, students) => (dispatch, getState) =>
   axios.post(`/api/teachers/${teacherId}/assignments/`, {item: item, students: students})
     .then(res => res.data)
     .then(students => {
-      console.log('returned students', students)
        dispatch(setStudents(students))
+       dispatch(setAlert(`Added assignment ${item.title}`))
+       dispatch(openAlert())
     })
     .catch(err => console.error(err))
 }
@@ -99,7 +101,7 @@ export const updateGrade = (grade, status, assignmentId) => (dispatch) =>
     .then(assignment => dispatch(loadCurrentAssignment(assignment.id)))
   .catch(err => console.error(err))
 
-export const loadCurrentStudent = (studentId) => (dispatch) => 
+export const loadCurrentStudent = (studentId) => (dispatch) =>
  axios.get(`/api/students/${studentId}/`)
   .then(res => res.data)
   .then(student => dispatch(setCurrentStudent(student)))

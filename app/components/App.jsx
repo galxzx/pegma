@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router'
 
 import WhoAmI from './WhoAmI'
-import ChatboxContainer from '../containers/ChatboxContainer'
+import AlertModalContainer from '../containers/AlertModalContainer'
 
 const App = ({ user, children, teacher}) => {
   return (
@@ -19,6 +19,7 @@ const App = ({ user, children, teacher}) => {
           <div className="user-information">{user ? <WhoAmI/> : null}</div>
         </div>
       </header>
+      <AlertModalContainer />
 
       {children}
 
