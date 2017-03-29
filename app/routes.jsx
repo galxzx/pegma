@@ -34,6 +34,7 @@ import CompletedAssignmentContainer from './containers/CompletedAssignmentContai
 import TeacherStudentsContainer from './containers/TeacherStudentsContainer'
 import TeacherClaimStudentsContainer from './containers/TeacherClaimStudentsContainer'
 import SettingsContainer from './containers/SettingsContainer'
+import GradeViewContainer from './containers/GradeViewContainer'
 
 import {whoami} from './reducers/auth'
 
@@ -144,6 +145,12 @@ const onEnterTeacherTracker = (nextState, replace, done) => {
   .catch(err => console.error(err))
 }
 
+const onEnterGrades = (nextState, replace, done) => {
+  store.dispatch(loadCurrentStudent(nextState.params.studentId))
+  .then(res => done())
+  .catch(err => console.error(err))
+}
+
 export default function Root () {
   return (
     <Provider store={store}>
@@ -171,9 +178,11 @@ export default function Root () {
             <Route path="students" component={TeacherStudentsContainer} onEnter={onEnterTeacher} />
             <Route path="claim" component={TeacherClaimStudentsContainer} onEnter={onEnterClaimStudents} />
             <Route path="student/:studentId" component={StudentTrackerContainer} onEnter={onEnterTeacherTracker} />
-            <Route path="library" component={LibraryContainer}  />
-            <Route path="settings" component={SettingsContainer}  />
-            <Route path="calendar" component={TeacherCalendarContainer}  />
+    <Route path="student/:studentId/grades" component={GradeViewContainer} onEnter={onEnterGrades} />
+            <Route path="library" component={LibraryContainer} onEnter={onEnterTeacher} />
+            <Route path="settings" component={SettingsContainer} onEnter={onEnterTeacher} />
+            <Route path="rewards" component={RewardsContainer} onEnter={onEnterTeacher} />
+           <Route path="calendar" component={TeacherCalendarContainer} onEnter={onEnterTeacher}  />
             <Route path="createquiz" component={CreateQuizContainer} />
             <Route path="createtask" component={CreateTaskContainer} />
             <Route path="assignment/:assignmentId" component={CompletedAssignmentContainer} onEnter={onEntercompAssign} />
