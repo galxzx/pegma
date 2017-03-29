@@ -174,14 +174,15 @@ export default function Root () {
           <Router path="/teacher" component={TeacherAppContainer} onEnter={onEnterTeacher}>
             <Route path="dashboard" component={TeacherDashboardContainer}  />
             <Route path="assignments" component={TeacherFunctionsContainer} onEnter={onEnterTeacherFunctions} />
-            <Route path="students" component={TeacherStudentsContainer}  />
+
+            <Route path="students" component={TeacherStudentsContainer} onEnter={onEnterTeacher} />
             <Route path="claim" component={TeacherClaimStudentsContainer} onEnter={onEnterClaimStudents} />
             <Route path="student/:studentId" component={StudentTrackerContainer} onEnter={onEnterTeacherTracker} />
-            <Route path="student/:studentId/grades" component={GradeViewContainer} onEnter={onEnterGrades} />
+    <Route path="student/:studentId/grades" component={GradeViewContainer} onEnter={onEnterGrades} />
             <Route path="library" component={LibraryContainer} onEnter={onEnterTeacher} />
             <Route path="settings" component={SettingsContainer} onEnter={onEnterTeacher} />
             <Route path="rewards" component={RewardsContainer} onEnter={onEnterTeacher} />
-            <Route path="calendar" component={TeacherCalendarContainer} onEnter={onEnterTeacher}  />
+           <Route path="calendar" component={TeacherCalendarContainer} onEnter={onEnterTeacher}  />
             <Route path="createquiz" component={CreateQuizContainer} />
             <Route path="createtask" component={CreateTaskContainer} />
             <Route path="assignment/:assignmentId" component={CompletedAssignmentContainer} onEnter={onEntercompAssign} />
