@@ -45,7 +45,7 @@ module.exports = require('express').Router()
 			})
 			return Assignment.bulkCreate(assignments)
 		})
-		.then(() => Student.findAll({order: ['id'], where: {teacher_id: teacherId}, include: [Assignment, User]}))
+		.then(() => Student.findAll({order: ['lastName'], where: {teacher_id: teacherId}, include: [Assignment, User]}))
 		.then((students) => {
 			res.json(students)
 		})

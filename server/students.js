@@ -16,7 +16,7 @@ module.exports = require('express').Router()
     	where: {
     		teacher_id: null
     	},
-    	order: ['id'],
+    	order: ['lastName'],
     	include: [User]
     })
     .then(students => res.json(students))
