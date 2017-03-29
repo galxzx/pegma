@@ -252,15 +252,21 @@ input.calendar-email {
 	flex: 1 1 auto;
 
 	.index-content {
-		width: 250px;
+		width: 300px;
 		text-align: center;
 
+		.logo-home {
+			width: 150px;
+		}
 		h1 {
 			text-transform: uppercase;
 		}
 
 		h4 {
 			font-weight: normal;
+			font-size: 90%;
+			margin-top: 5px;
+			margin-bottom: 40px;
 		}
 
 		nav {
@@ -306,13 +312,29 @@ input.calendar-email {
 	}
 
 	.logo {
-		font-weight: bold;
 		text-transform: uppercase;
+		line-height: 20px;
+		display: flex;
+		width: 60%;
+
+		img, span {
+			max-height: 20px;
+			display: inline-block;
+		}
+
+		img {
+			margin-right: 10px;
+		}
+
 	}
 	.classroom {
 		font-style: italic;
 	}
 }
+
+/* HOME */
+
+
 
 /* FOOTER */
 

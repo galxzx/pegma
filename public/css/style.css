@@ -175,12 +175,17 @@ input.calendar-email {
   align-items: center;
   flex: 1 1 auto; }
   .index-container .index-content {
-    width: 250px;
+    width: 300px;
     text-align: center; }
+    .index-container .index-content .logo-home {
+      width: 150px; }
     .index-container .index-content h1 {
       text-transform: uppercase; }
     .index-container .index-content h4 {
-      font-weight: normal; }
+      font-weight: normal;
+      font-size: 90%;
+      margin-top: 5px;
+      margin-bottom: 40px; }
     .index-container .index-content nav {
       display: flex;
       justify-content: space-around; }
@@ -210,11 +215,19 @@ input.calendar-email {
     .header-content a:hover {
       color: #FFC943; }
   .header-content .logo {
-    font-weight: bold;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    line-height: 20px;
+    display: flex;
+    width: 60%; }
+    .header-content .logo img, .header-content .logo span {
+      max-height: 20px;
+      display: inline-block; }
+    .header-content .logo img {
+      margin-right: 10px; }
   .header-content .classroom {
     font-style: italic; }
 
+/* HOME */
 /* FOOTER */
 footer {
   background: #222;
