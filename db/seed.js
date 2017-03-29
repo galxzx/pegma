@@ -156,6 +156,10 @@ const generateDates = () => {
     if (day < 10) day = '0' + day;
     let month = today.getMonth() + 1;
     if (month < 10) month = '0' + month;
+    if (day > 30) {
+      month++;
+      day -= 30;
+    }
    dates.push(`${today.getFullYear()}-${month}-${day}`)
   }
   return dates;
@@ -181,6 +185,7 @@ const generateAssignments = () => {
       assignment.student_id = i + 1;
       // Add due_date
       assignment.due_date = dates[((a+i)%6)];
+      console.log(assignment.due_date)
       // Add rewards
       assignment.reward = rewards[((a+i)%6)];
       // Add ETC
