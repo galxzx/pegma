@@ -32,10 +32,10 @@ const TeacherStudents = ({user, students, dropStudentRequest}) => {
                     let studentLetterSpread = letterSpread(studentReport)
                     return (
                       <tr key={student.id} id={`student${student.id}`} className="student">
-                        <td className="">{student.id}</td>
-                        <td className="avatar"><img src={`${student.user.imageUrl}`} className="avatar" /></td>
-                        <td className="">{student.user.lastName + ', ' + student.user.firstName}</td>
-                        <td className="">
+                        <td>{student.id}</td>
+                        <td><img src={`${student.user.imageUrl}`} className="avatar" /></td>
+                        <td>{student.user.lastName + ', ' + student.user.firstName}</td>
+                        <td>
                           <Link to={`/teacher/student/${student.id}/grades`}>
                             <GradeCircleContainer
                               studentId={student.id}
@@ -64,6 +64,10 @@ const TeacherStudents = ({user, students, dropStudentRequest}) => {
                 }
               </tbody>
             </table>
+            <div className="options">
+              <p>If you can't find a student, you may look for all students that don't have a teacher assigned and add him/her to your class.</p>
+              <Link to='/teacher/claim'><button className="btn btn-primary">Add Students to Classroom</button></Link>
+            </div>
           </section>
         </div>
       </div>

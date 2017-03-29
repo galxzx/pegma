@@ -32,12 +32,13 @@ import CreateQuizContainer from './containers/CreateQuizContainer'
 import CreateTaskContainer from './containers/CreateTaskContainer'
 import CompletedAssignmentContainer from './containers/CompletedAssignmentContainer'
 import TeacherStudentsContainer from './containers/TeacherStudentsContainer'
+import TeacherClaimStudentsContainer from './containers/TeacherClaimStudentsContainer'
 import SettingsContainer from './containers/SettingsContainer'
 
 import {whoami} from './reducers/auth'
 
 import {loadAssignments, loadCurrentAssignment, loadStudent, loadQuiz, loadTask} from './reducers/student'
-import {loadCalendar, loadStudents, loadCurrentStudent} from './reducers/teacher'
+import {loadCalendar, loadStudents, loadCurrentStudent, loadUnclaimedStudents} from './reducers/teacher'
 import {loadLibrary} from './reducers/library'
 import {loadBoard} from './reducers/tracker'
 import {loadTeachers} from './reducers/signup'
@@ -74,6 +75,12 @@ const onEnterTeacher = (nextState, replace, done) => (
     .then(res => done())
     .catch(err => console.error(err))
 )
+
+const onEnterClaimStudents = (nextState, replace, done) => {
+  store.dispatch(loadUnclaimedStudents())
+  .then(() => done())
+  .catch(console.error.bind(console))
+}
 
 const onEnterTeacherFunctions = (nextState, replace) => (
   store.dispatch(loadLibrary())
@@ -160,7 +167,9 @@ export default function Root () {
           <Router path="/teacher" component={TeacherAppContainer} onEnter={onEnterTeacher}>
             <Route path="dashboard" component={TeacherDashboardContainer}  />
             <Route path="assignments" component={TeacherFunctionsContainer} onEnter={onEnterTeacherFunctions} />
+
             <Route path="students" component={TeacherStudentsContainer} onEnter={onEnterTeacher} />
+            <Route path="claim" component={TeacherClaimStudentsContainer} onEnter={onEnterClaimStudents} />
             <Route path="student/:studentId" component={StudentTrackerContainer} onEnter={onEnterTeacherTracker} />
             <Route path="library" component={LibraryContainer}  />
             <Route path="settings" component={SettingsContainer}  />

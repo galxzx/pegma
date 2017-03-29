@@ -2,7 +2,7 @@ import React from 'react'
 import { getGrades } from '../utils'
 
 const StudentReportCard = ({user, assignments, teacher}) => {
-  const reportCard = getGrades(assignments);
+  const reportCard = getGrades(assignments)
 
   return (
     <div className="dashboard">

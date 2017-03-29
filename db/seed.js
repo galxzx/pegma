@@ -22,7 +22,11 @@ const allStudents = [
   {user: {firstName: 'Alan', lastName: 'Campbell', email: 'alan.cambell@example.com', password: '1234', avatar: 'avatars_alan.jpg'}, teacher_id: 1},
   {user: {firstName: 'Andrew', lastName: 'Basore', email: 'andrew.basore@example.com', password: '1234', avatar: 'avatars_andrewb.jpg'}, teacher_id: 1},
   { user: {firstName: 'Jamie', lastName: 'Yu', email: 'jamie.yu@example.com', password: '1234', avatar: 'avatars_jamie.jpg'}, teacher_id: 1},
-  { user: {firstName: 'Kimberly', lastName: 'Winston-Jackson', email: 'kimberly.winstonjackson@example.com', password: '1234', avatar: 'avatars_kim.jpg'}, teacher_id: 1}
+  { user: {firstName: 'Kimberly', lastName: 'Winston-Jackson', email: 'kimberly.winstonjackson@example.com', password: '1234', avatar: 'avatars_kim.jpg'}, teacher_id: 1},
+  { user: {firstName: 'Beyonce', lastName: 'Knowles', email: 'beyonce@example.com', password: '1234'}},
+  { user: {firstName: 'Elton', lastName: 'John', email: 'elton.john@example.com', password: '1234'}},
+  { user: {firstName: 'Michael', lastName: 'Jackson', email: 'michael.jackson@example.com', password: '1234'}},
+  { user: {firstName: 'Rachel', lastName: 'Green', email: 'rachel.green@example.com', password: '1234'}}
 ]
 
 const seedStudents = () => db.Promise.each(allStudents, students => db.model('students').create(students, {include:[User]}))
@@ -124,19 +128,19 @@ const allQuizzes = [
    // English
    { subject: 'English', title: 'Synonyms Quiz #1',  description: 'Review your notes from week 2 before solving this questions', teacher_id: 1, questions: [
     {inquiry: 'What is NOT a synonym for Scandalous?', answer:['sordid', 'improper', 'discreditable', 'seemly'], type:'multiple-choice', solution: 3},
-    {inquiry: 'What is a synonym for Trustworthy', answer:['unreliable', 'honorable', 'fickle', 'erratic'], type:'multiple-choice', solution: 1},
-    {inquiry: 'What is NOT a synonym for delicious', answer:['Pizza', 'Icecream', 'Chocolate', 'Broccoli'], type:'multiple-choice', solution: 3},
+    {inquiry: 'What is a synonym for Trustworthy?', answer:['unreliable', 'honorable', 'fickle', 'erratic'], type:'multiple-choice', solution: 1},
+    {inquiry: 'What is NOT a synonym for delicious?', answer:['Pizza', 'Icecream', 'Chocolate', 'Broccoli'], type:'multiple-choice', solution: 3},
    ]},
    { subject: 'English', title: 'English Quiz #1', description: 'Make sure you have your notes with you before solving this quiz. Also, remember to get the irregular verb list handed to you during class', teacher_id: 1, questions: [
     {inquiry: 'Complete the Beyonce\'s lyrics: If I were a boy...', answer:['...I think I could understand', '...I swear I\'d be a better man', '...All the single ladies', '...I would run the world'], type:'multiple-choice', solution: 0},
     {inquiry: 'What word is NOT a `to be` verb form?', answer:['was', 'been', 'potato', 'am'], type:'multiple-choice', solution: 2},
-    {inquiry: 'Which word is not a palindrome?', answer:['Civic', 'Racecar', 'Moon', 'Noon'], type:'multiple-choice', solution: 2},
+    {inquiry: 'Which word is NOT a palindrome?', answer:['Civic', 'Racecar', 'Moon', 'Noon'], type:'multiple-choice', solution: 2},
    ]},
    // Reading
    { subject: 'Reading', title: 'Reading Quiz #1', description: 'Finish reading the book "The Sad Elephant That Had No Friends, But Himself"', teacher_id: 1, questions: [
     {inquiry: 'What is the name of Bob\'s best friend?', answer:['Bob', 'Bart', 'Bert', 'Burt'], type:'multiple-choice', solution: 0},
     {inquiry: 'How many friends does Bob have?', answer:['0', '1, himself', '2', '12'], type:'multiple-choice', solution: 1},
-    {inquiry: 'Did Bob find strength in himself to be its own best friend', answer:['Yes, and that is very sad', 'No', 'I did not finish the book', 'I haven\'t started reading this book, so my guess is no'], type:'multiple-choice', solution: 0},
+    {inquiry: 'Did Bob find strength in himself to be its own best friend?', answer:['Yes, and that is very sad', 'No', 'I did not finish the book', 'I haven\'t started reading this book, so my guess is no'], type:'multiple-choice', solution: 0},
    ]},
 ]
 

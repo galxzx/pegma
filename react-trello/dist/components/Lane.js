@@ -100,6 +100,7 @@ var Lane = function (_Component) {
               label: card.label,
               description: card.description,
               daysLeft: card.daysLeft,
+              teacherView: teacherView,
               onClick: function onClick() {
                 return onCardClick && onCardClick(card.id, card.metadata);
               } });

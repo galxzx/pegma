@@ -11,6 +11,26 @@ const Task = db.model('tasks')
 const {mustBeLoggedIn, forbidden} = require('./auth.filters')
 
 module.exports = require('express').Router()
+	.get('/claim', mustBeLoggedIn, (req, res, next) =>
+    Student.findAll({
+    	where: {
+    		teacher_id: null
+    	},
+    	order: ['lastName'],
+    	include: [User]
+    })
+    .then(students => res.json(students))
+    .catch(next))
+	.put('/claim/:studentId', mustBeLoggedIn, (req, res, next) => {
+		console.log(req.body)
+		Student.update({teacher_id: req.body.teacherId}, {
+			where: {
+				id: +req.params.studentId
+			}
+		})
+		.then(claimed => res.json(claimed))
+		.catch(next)
+	})
 	.get('/:studentId/assignments', mustBeLoggedIn, (req, res, next) =>
 		Student.findById(req.params.studentId)
 		.then(student => student.getAssignments({order: ['status']}))
@@ -52,4 +72,3 @@ module.exports = require('express').Router()
 	  .then(assignment =>
 	  	res.send(assignment))
 	  .catch(next))
-	//

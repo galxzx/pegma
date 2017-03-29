@@ -622,10 +622,10 @@ div.teacher-assignments {
   margin-bottom: 0px;
   padding: 2px; }
 
-.functions .create-menu {
+.functions .options {
   text-align: center;
   padding: 20px; }
-  .functions .create-menu a {
+  .functions .options a {
     color: #222221;
     padding: 0 10px; }
 
@@ -816,6 +816,10 @@ table.teacher-students {
       #chatbox-container .chatbox-panel .footer button:focus, #chatbox-container .chatbox-panel .footer button:hover {
         width: 65px;
         height: 25px; }
+
+/* FAQ */
+.faq-answer {
+  padding: 15px; }
 
 /* Grade Circle */
 .arc text {
