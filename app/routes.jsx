@@ -33,7 +33,6 @@ import CreateTaskContainer from './containers/CreateTaskContainer'
 import CompletedAssignmentContainer from './containers/CompletedAssignmentContainer'
 import TeacherStudentsContainer from './containers/TeacherStudentsContainer'
 import SettingsContainer from './containers/SettingsContainer'
-import GradeViewContainer from './containers/GradeViewContainer'
 
 import {whoami} from './reducers/auth'
 
@@ -138,12 +137,6 @@ const onEnterTeacherTracker = (nextState, replace, done) => {
   .catch(err => console.error(err))
 }
 
-const onEnterGrades = (nextState, replace, done) => {
-  store.dispatch(loadCurrentStudent(nextState.params.studentId))
-  .then(res => done())
-  .catch(err => console.error(err))
-}
-
 export default function Root () {
   return (
     <Provider store={store}>
@@ -167,9 +160,8 @@ export default function Root () {
           <Router path="/teacher" component={TeacherAppContainer} onEnter={onEnterTeacher}>
             <Route path="dashboard" component={TeacherDashboardContainer}  />
             <Route path="assignments" component={TeacherFunctionsContainer} onEnter={onEnterTeacherFunctions} />
-            <Route path="students" component={TeacherStudentsContainer}  />
+            <Route path="students" component={TeacherStudentsContainer} onEnter={onEnterTeacher} />
             <Route path="student/:studentId" component={StudentTrackerContainer} onEnter={onEnterTeacherTracker} />
-            <Route path="student/:studentId/grades" component={GradeViewContainer} onEnter={onEnterGrades} />
             <Route path="library" component={LibraryContainer} onEnter={onEnterTeacher} />
             <Route path="settings" component={SettingsContainer} onEnter={onEnterTeacher} />
             <Route path="rewards" component={RewardsContainer} onEnter={onEnterTeacher} />
