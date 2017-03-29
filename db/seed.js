@@ -23,10 +23,10 @@ const allStudents = [
   {user: {firstName: 'Andrew', lastName: 'Basore', email: 'andrew.basore@example.com', password: '1234', avatar: 'avatars_andrewb.jpg'}, teacher_id: 1},
   { user: {firstName: 'Jamie', lastName: 'Yu', email: 'jamie.yu@example.com', password: '1234', avatar: 'avatars_jamie.jpg'}, teacher_id: 1},
   { user: {firstName: 'Kimberly', lastName: 'Winston-Jackson', email: 'kimberly.winstonjackson@example.com', password: '1234', avatar: 'avatars_kim.jpg'}, teacher_id: 1},
-  { user: {firstName: 'Beyonce', lastName: 'Knowles', email: 'beyonce@example.com', password: '1234'}},
-  { user: {firstName: 'Elton', lastName: 'John', email: 'elton.john@example.com', password: '1234'}},
-  { user: {firstName: 'Michael', lastName: 'Jackson', email: 'michael.jackson@example.com', password: '1234'}},
-  { user: {firstName: 'Rachel', lastName: 'Green', email: 'rachel.green@example.com', password: '1234'}}
+  { user: {firstName: 'Megan', lastName: 'Jones', email: 'meg.jones@example.com', password: '1234'}},
+  { user: {firstName: 'Jesse', lastName: 'Adams', email: 'jesse.adams@example.com', password: '1234'}},
+  { user: {firstName: 'Caroline', lastName: 'Jackson', email: 'caroline.jackson@example.com', password: '1234'}},
+  { user: {firstName: 'Hugo', lastName: 'Green', email: 'hugo.green@example.com', password: '1234'}}
 ]
 
 const seedStudents = () => db.Promise.each(allStudents, students => db.model('students').create(students, {include:[User]}))
