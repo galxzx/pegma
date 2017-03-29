@@ -99,6 +99,10 @@ export const updateGrade = (grade, status, assignmentId) => (dispatch) =>
   axios.put(`/api/teachers/assignments/${assignmentId}`, {grade, status})
     .then(res => res.data)
     .then(assignment => dispatch(loadCurrentAssignment(assignment.id)))
+    .then(() => {
+      dispatch(setAlert(`Set status to ${status} and grade to ${grade}`))
+      dispatch(openAlert())
+    })
   .catch(err => console.error(err))
 
 export const loadCurrentStudent = (studentId) => (dispatch) =>
@@ -107,7 +111,11 @@ export const loadCurrentStudent = (studentId) => (dispatch) =>
   .then(student => dispatch(setCurrentStudent(student)))
   .catch(err => console.error(err))
 
-export const dropStudentRequest = (studentId) => (dispatch) =>
-  axios.put(`/api/students/${studentId}/`, {teacher_id: null})
-    .then(dropped => dispatch(dropStudent(studentId)))
+export const dropStudentRequest = (student) => (dispatch) =>
+  axios.put(`/api/students/${student.id}/`, {teacher_id: null})
+    .then(dropped => {
+      dispatch(dropStudent(student.id))
+      dispatch(setAlert(`Dropped student: ${student.user.firstName} ${student.user.lastName}`))
+      dispatch(openAlert())
+    })
   .catch(err => console.error(err))
