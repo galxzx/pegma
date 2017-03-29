@@ -1,6 +1,5 @@
 import axios from 'axios'
 import { browserHistory } from 'react-router'
-import { setAlert, openAlert } from './alert'
 
 
 /* -----------------    ACTIONS     ------------------ */
@@ -84,16 +83,8 @@ export const addQuiz = () => (dispatch, getState) => {
   const formattedQuiz = Object.assign({}, newQuiz, {questions, teacher_id: getState().auth.teacher_id} )
   return axios.post('/api/library/quiz', formattedQuiz)
     .then(() => dispatch(loadLibrary))
-    .then(() => {
-      dispatch(setAlert(`Quiz ${formattedQuiz.title} created.`))
-      dispatch(openAlert())
-      browserHistory.push('/teacher/assignments')
-      })
-    .catch(err => {
-      dispatch(setAlert('Oops... Something went wrong making your quiz'))
-      dispatch(openAlert())
-      console.error(err)
-      })
+    .then(() => browserHistory.push('/teacher/assignments'))
+    .catch(err => console.error(err))
 }
 
 export const addTask = () => (dispatch, getState) => {
@@ -101,14 +92,6 @@ export const addTask = () => (dispatch, getState) => {
   const teacher_id = getState().auth.teacher_id
   return axios.post('/api/library/task', Object.assign(newTask, {teacher_id}))
     .then(() => dispatch(loadLibrary))
-    .then(() => {
-      dispatch(setAlert(`Task ${newTask.title} created.`))
-      dispatch(openAlert())
-      browserHistory.push('/teacher/assignments')
-      })
-    .catch(err => {
-      dispatch(setAlert('Oops... Something went wrong making your quiz'))
-      dispatch(openAlert())
-      console.error(err)
-      })
+    .then(() => browserHistory.push('/teacher/assignments'))
+    .catch(err => console.error(err))
 }
