@@ -845,6 +845,9 @@ table.teacher-students {
     left: -17px;
     top: 66px;
     z-index: 100; }
+  .tooltip .tooltip-text.grade {
+    top: -5px;
+    left: -44px; }
 
 .tooltip:hover .tooltip-text {
   visibility: visible; }
@@ -852,7 +855,7 @@ table.teacher-students {
 /* Grade View */
 .grade-view {
   background: #FFFFFF;
-  padding-bottom: 30px; }
+  padding-bottom: 15px; }
   .grade-view .subject {
     overflow: hidden;
     background: #43B9FF;

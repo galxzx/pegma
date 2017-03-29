@@ -36,7 +36,7 @@ const TeacherStudents = ({user, students, dropStudentRequest}) => {
                         <td><img src={`${student.user.imageUrl}`} className="avatar" /></td>
                         <td>{student.user.lastName + ', ' + student.user.firstName}</td>
                         <td>
-                          <Link to={`/teacher/student/${student.id}/grades`}>
+                          <Link to={`/teacher/student/${student.id}/grades`} className="tooltip">
                             <GradeCircleContainer 
                               studentId={student.id} 
                               GPA={studentGPA} 
@@ -45,6 +45,7 @@ const TeacherStudents = ({user, students, dropStudentRequest}) => {
                               numOfCs={studentLetterSpread.numOfCs}
                               numOfFs={studentLetterSpread.numOfFs}
                               />
+                            <span className="tooltip-text grade">Report Card</span>                              
                           </Link>
                         </td>                
                         <td className="options">
