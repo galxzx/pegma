@@ -1235,6 +1235,10 @@ table.teacher-students {
     top: 66px;
     z-index: 100;
   }
+  .tooltip-text.grade {
+  	top: -5px;
+  	left: -44px;
+  }
 }
 
 .tooltip:hover .tooltip-text {
@@ -1245,7 +1249,7 @@ table.teacher-students {
 
 .grade-view {
 	background: $white;
-	padding-bottom: 30px;
+	padding-bottom: 15px;
 	.subject {
 		overflow: hidden;
 		background: $cyan;

@@ -6,7 +6,7 @@ class countCircleContainer extends Component {
   constructor(props) {
 		super(props)
 		this.studentId = props.studentId
-		this.GPA = props.GPA || 'n/a'
+		this.GPA = props.GPA ? props.GPA.toFixed(0).toString() : '-'
 		this.default = 1
 		if((props.numOfAs + props.numOfBs + props.numOfCs + props.numOfFs) > 0) {
 			this.default = 0
@@ -64,7 +64,7 @@ class countCircleContainer extends Component {
 		g.append("text")
 		  .style("font-size", "18pt" )		
 		  .attr("transform", "translate(0, 8)")
-		  .text(this.GPA.toString())
+		  .text(this.GPA)
 
 		function letter(grade) {
 		  if(grade === '90-100') return 'A'
