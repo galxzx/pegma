@@ -5,6 +5,8 @@ import ChatboxContainer from '../containers/ChatboxContainer'
 import Login from './Login'
 
 const StudentApp = ({ user, children }) => {
+  console.log(user)
+
 	return (user && user.student_id) ? (
     <div className="flex-main">
       <nav className="container nav-content">

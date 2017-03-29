@@ -22,13 +22,13 @@ const TeacherApp = ({ user, children }) => {
             <span className="nav-icon icon-users"></span>
             <div className="nav-text">Students</div>
           </Link>
-          <Link className="nav-item" to='/teacher/FAQ'>
-            <span className="nav-icon icon-question"></span>
-            <div className="nav-text">FAQ</div>
-          </Link>
           <Link className="nav-item" to='/teacher/calendar'>
             <span className="nav-icon icon-calendar"></span>
             <div className="nav-text">Calendar</div>
+          </Link>
+          <Link className="nav-item" to='/teacher/FAQ'>
+            <span className="nav-icon icon-question"></span>
+            <div className="nav-text">FAQ</div>
           </Link>
           <Link className="nav-item" to="/teacher/settings">
             <span className="nav-icon icon-cog"></span>
