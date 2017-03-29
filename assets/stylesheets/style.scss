@@ -1264,5 +1264,6 @@ table.teacher-students {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 9999;
-  background: yellow;
+  background: $orange;
+  padding: 20px;
 }
