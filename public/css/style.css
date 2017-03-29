@@ -817,6 +817,10 @@ table.teacher-students {
         width: 65px;
         height: 25px; }
 
+/* FAQ */
+.faq-answer {
+  padding: 15px; }
+
 /* Grade Circle */
 .arc text {
   font: 10px sans-serif;
