@@ -185,7 +185,6 @@ const generateAssignments = () => {
       assignment.student_id = i + 1;
       // Add due_date
       assignment.due_date = dates[((a+i)%6)];
-      console.log(assignment.due_date)
       // Add rewards
       assignment.reward = rewards[((a+i)%6)];
       // Add ETC
