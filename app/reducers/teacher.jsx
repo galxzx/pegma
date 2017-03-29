@@ -1,7 +1,6 @@
 import axios from 'axios'
 import { browserHistory } from 'react-router'
 import { loadCurrentAssignment } from './student'
-import { setAlert, openAlert } from './alert'
 
 /* -----------------    ACTIONS     ------------------ */
 
@@ -70,7 +69,7 @@ export default function reducer(prevState = initialState, action) {
 
 export const loadCalendar = () => (dispatch, getState) => {
   let teacherId = getState().auth.teacher_id
-  return axios.get(`/api/teachers/${teacherId}`)
+  axios.get(`/api/teachers/${teacherId}`)
     .then(res => res.data)
     .then(teacher => dispatch(setCalendar(teacher.calendar)))
     .catch(err => console.error(err))
@@ -98,13 +97,9 @@ export const loadStudents = () => (dispatch, getState) => {
 
 export const addAssignmentsRequest = (item, students) => (dispatch, getState) => {
   let teacherId = getState().auth.teacher_id
-  return axios.post(`/api/teachers/${teacherId}/assignments/`, {item: item, students: students})
+  axios.post(`/api/teachers/${teacherId}/assignments/`, {item: item, students: students})
     .then(res => res.data)
-    .then(students => {
-       dispatch(setStudents(students))
-       dispatch(setAlert(`Added assignment ${item.title}`))
-       dispatch(openAlert())
-    })
+    .then(students => dispatch(setStudents(students)))
     .catch(err => console.error(err))
 }
 
@@ -112,25 +107,17 @@ export const updateGrade = (grade, status, assignmentId) => (dispatch) =>
   axios.put(`/api/teachers/assignments/${assignmentId}`, {grade, status})
     .then(res => res.data)
     .then(assignment => dispatch(loadCurrentAssignment(assignment.id)))
-    .then(() => {
-      dispatch(setAlert(`Set status to ${status} and grade to ${grade}`))
-      dispatch(openAlert())
-    })
   .catch(err => console.error(err))
 
-export const loadCurrentStudent = (studentId) => (dispatch) =>
+export const loadCurrentStudent = (studentId) => (dispatch) => 
  axios.get(`/api/students/${studentId}/`)
   .then(res => res.data)
   .then(student => dispatch(setCurrentStudent(student)))
   .catch(err => console.error(err))
 
-export const dropStudentRequest = (student) => (dispatch) =>
-  axios.put(`/api/students/${student.id}/`, {teacher_id: null})
-    .then(dropped => {
-      dispatch(dropStudent(student.id))
-      dispatch(setAlert(`Dropped student: ${student.user.firstName} ${student.user.lastName}`))
-      dispatch(openAlert())
-    })
+export const dropStudentRequest = (studentId) => (dispatch) =>
+  axios.put(`/api/students/${studentId}/`, {teacher_id: null})
+    .then(dropped => dispatch(dropStudent(studentId)))
   .catch(err => console.error(err))
 
 export const loadUnclaimedStudents = () => (dispatch) =>
