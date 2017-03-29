@@ -6,7 +6,7 @@ const CompletedQuiz = ({ currentAssignment, quiz }) => {
     const quizAnswers = currentAssignment.quiz_answers
 
   return (
-    currentAssignment.answers ? (
+    currentAssignment.quiz_answers ? (
       <div className="quiz quiz-completed">
         {quiz.questions.map((question, indexNum) => {
           let questionNum = indexNum + 1;
