@@ -12,7 +12,7 @@ const seedTeachers = () => db.Promise.each([
 ], teacher => db.model('teachers').create(teacher, {include:[User]}))
 
 const allStudents = [
-  {user: {firstName: 'Cody', lastName: 'the dog', email: 'cody@example.com', password: '1234', avatar: 'avatars_cody.jpg'}, teacher_id: 1},
+  {user: {firstName: 'Cody', lastName: 'Kelly', email: 'cody@example.com', password: '1234', avatar: 'avatars_cody.jpg'}, teacher_id: 1},
   {user: {firstName: 'Corryn', lastName: 'Young', email: 'corryn.young@example.com', password: '1234', avatar: 'avatars_correy.jpg'}, teacher_id: 1},
   {user: {firstName: 'Jonathan', lastName: 'Mann', email: 'jonathan.mann@example.com', password: '1234', avatar: 'avatars_jonathan.jpg'}, teacher_id: 1},
   {user: {firstName: 'Fabiano', lastName: 'Pires da Silva', email: 'fabiano.piresdasliva@example.com', password: '1234', avatar: 'avatars_fabiano.jpg'}, teacher_id: 1},
