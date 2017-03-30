@@ -26,7 +26,7 @@ class Home extends React.Component {
   	return (
         <section className="index-container">
           <div className="index-content">
-            <img className="logo-home" src="/images/pegma-logo.svg"/>
+            <img className="logo-home" src="/images/pegma-logo.png"/>
             <h4>New ways to teach. New ways to learn.</h4>
               {
                 !this.props.user ?
