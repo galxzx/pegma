@@ -30,6 +30,7 @@ const TeacherStudents = ({user, students, dropStudentRequest}) => {
                     let studentReport = getGrades(student.assignments)
                     let studentGPA = GPA(studentReport)
                     let studentLetterSpread = letterSpread(studentReport)
+                    console.log(student.user.firstName, studentLetterSpread)
                     return (
                       <tr key={student.id} id={`student${student.id}`} className="student">
                         <td>{student.id}</td>

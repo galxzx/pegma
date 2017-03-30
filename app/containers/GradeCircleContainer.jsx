@@ -21,7 +21,6 @@ class countCircleContainer extends Component {
 	  {grade: '0-69', count: props.numOfFs},
 	  {grade: '', count: this.default }    	      
 	 ]
-	 console.log('DATA', this.data)
   }
   componentDidMount() {
 
