@@ -32,40 +32,51 @@ export const getGrades = (array) => {
     }
     // Calculate numbers
     report[subjectIndex].totalAssigments++
+   
     if (assignment.grade) {
+
       report[subjectIndex].totalGrade += +assignment.grade
       report[subjectIndex].gradedAssignments++
+
+      report[subjectIndex].partialGrade = Math.round(report[subjectIndex].totalGrade / report[subjectIndex].gradedAssignments)
+      if (isNaN(report[subjectIndex].partialGrade)) report[subjectIndex].partialGrade = 0
+      report[subjectIndex].finalGrade = Math.round(report[subjectIndex].totalGrade / report[subjectIndex].totalAssigments)
+      console.log(assignment.grade)
       if(assignment.grade >= 90) report[subjectIndex].spread.numOfAs ++
       else if(assignment.grade >= 80 && assignment.grade < 90) report[subjectIndex].spread.numOfBs ++
       else if(assignment.grade >= 70 && assignment.grade < 80) report[subjectIndex].spread.numOfCs ++
-      else if(assignment.grade < 70) report[subjectIndex].spread.numOfFs ++
+      else if(assignment.grade < 70) report[subjectIndex].spread.numOfFs ++      
     }
+
     else {
       report[subjectIndex].spread.incomplete ++    
     }
-    report[subjectIndex].partialGrade = Math.round(report[subjectIndex].totalGrade / report[subjectIndex].gradedAssignments)
-    if (isNaN(report[subjectIndex].partialGrade)) report[subjectIndex].partialGrade = 0
-    report[subjectIndex].finalGrade = Math.round(report[subjectIndex].totalGrade / report[subjectIndex].totalAssigments)
   })
-
   return report
 }
 
 // Calculates the overall GPA
 export const GPA = (report) => {
+  let count = 0
   let result = report.reduce((total, subject) => {
     if(subject.gradedAssignments > 0) {
-      return (subject.partialGrade / subject.gradedAssignments) + total
+      count ++
+      return subject.partialGrade + total
     }
     else return total
-  }, 0) / report.length
+  }, 0) / count
   return (result > 0) ? result : null
 }
 
 // Used for calculating the spread of the overal GPA only
 export const letterSpread = (report) => {
-  let spread = {}
-  report.forEach(subject => {spread = Object.assign({}, spread, subject.spread)})
-  return spread
+  let spread = {numOfAs: 0, numOfBs: 0, numOfCs: 0, numOfFs: 0}
+  report.forEach(subject => {
+    spread.numOfAs += subject.spread.numOfAs
+    spread.numOfBs += subject.spread.numOfBs
+    spread.numOfCs += subject.spread.numOfCs
+    spread.numOfFs += subject.spread.numOfFs
+  })
+  return spread  
 }
 
