@@ -92,6 +92,15 @@ html {
 .btn-primary {
   background: #FFC943; }
 
+.btn-secondary {
+  background: #FFE299; }
+
+.btn-danger {
+  background: #FF2760; }
+
+.btn-small {
+  transform: scale(0.8); }
+
 /* FORMS */
 form .formError {
   color: #C60034; }
@@ -335,6 +344,29 @@ footer {
   padding: 5px;
   border-bottom: 1px solid #EEEEEC; }
 
+.panel-body {
+  padding: 15px; }
+
+.center {
+  text-align: center !important; }
+
+.functions .panel-body .assignment-dropdown {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px; }
+  .functions .panel-body .assignment-dropdown select {
+    width: 48%; }
+
+.functions .panel-body .nav {
+  text-align: center; }
+  .functions .panel-body .nav a {
+    color: #222221;
+    padding: 0 10px; }
+
+.functions .panel-body .due-date-picker {
+  text-align: center;
+  margin: 15px 0; }
+
 /* NOTIFICATIONS */
 .notifications-list {
   list-style: none;
@@ -363,6 +395,8 @@ footer {
 .panel-calendar {
   width: 100%;
   border: 0px; }
+  .panel-calendar li {
+    margin-bottom: 5px; }
 
 .calendar-content-sm {
   width: 100%;
@@ -509,6 +543,36 @@ footer {
   background: #FFC943;
   margin-top: 20px auto 10px auto; }
 
+/* CREATOR */
+.creator-content fieldset {
+  padding: 30px 25% 10px 25%;
+  border: 0; }
+  .creator-content fieldset input,
+  .creator-content fieldset textarea {
+    width: 100%;
+    margin-bottom: 10px; }
+  .creator-content fieldset select {
+    margin-bottom: 10px; }
+
+.creator-content .nav {
+  text-align: center;
+  margin-bottom: 15px; }
+
+.creator-content .create-question {
+  padding: 0; }
+  .creator-content .create-question li {
+    list-style: none;
+    border: 1px solid #EEEEEC;
+    padding: 15px;
+    margin-bottom: 15px; }
+    .creator-content .create-question li > div {
+      margin: 5px 0; }
+    .creator-content .create-question li h4 {
+      margin-top: 10px; }
+  .creator-content .create-question button {
+    margin: 0 auto;
+    display: block; }
+
 /* QUIZZES */
 .quiz {
   padding: 10px 30px; }
@@ -546,6 +610,18 @@ footer {
 .quiz-completed-description {
   padding: 10px 30px;
   font-style: italic; }
+
+/* TASKS */
+.task {
+  padding: 10px 30px;
+  border: 1px solid #EEEEEC; }
+  .task .topic, .task .subject {
+    padding: 5px;
+    margin-bottom: 10px; }
+  .task .body {
+    padding: 15px;
+    border: 1px solid #EEEEEC;
+    margin-bottom: 15px; }
 
 /* STUDENT-TRACKER */
 #student-tracker div.list-container {
@@ -637,7 +713,7 @@ div.teacher-assignments {
 
 .functions .options {
   text-align: center;
-  padding: 20px; }
+  padding: 15px 0; }
   .functions .options a {
     color: #222221;
     padding: 0 10px; }
@@ -646,8 +722,6 @@ div.teacher-assignments {
   padding: 15px; }
   .functions .teacher-assignments select {
     margin: 10px 10px 10px 0; }
-  .functions .teacher-assignments .due-date-picker {
-    margin: 10px 0; }
 
 table.teacher-assignments, table.teacher-students {
   margin: 15px;
@@ -709,8 +783,7 @@ table.teacher-students {
       border: 1px solid #9C9C9B; }
 
 #message-box {
-  margin: 15px;
-  margin-bottom: 0px;
+  margin: 15px 0 0 0;
   padding: 15px;
   height: 15px;
   background: #EEEEEC; }

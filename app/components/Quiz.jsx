@@ -7,11 +7,9 @@ const renderError = ({ meta: { touched, error } }) => touched && error ?
 
 const required = value => (value || value === 0) ? undefined : 'Required'
 
-
 const Quiz = ({ handleSubmit, quiz, gradeQuiz, quizForm, user }) => {
   return (
     <form className="quiz" onSubmit={handleSubmit(gradeQuiz)}>
-      <p>{ quiz.description }</p>
       {quiz.questions.map((question, indexNum) => {
         let questionNum = indexNum + 1;
         return (
