@@ -32,25 +32,22 @@ export const getGrades = (array) => {
     }
     // Calculate numbers
     report[subjectIndex].totalAssigments++
-   
     if (assignment.grade) {
-
       report[subjectIndex].totalGrade += +assignment.grade
       report[subjectIndex].gradedAssignments++
-
-      report[subjectIndex].partialGrade = Math.round(report[subjectIndex].totalGrade / report[subjectIndex].gradedAssignments)
-      if (isNaN(report[subjectIndex].partialGrade)) report[subjectIndex].partialGrade = 0
-      report[subjectIndex].finalGrade = Math.round(report[subjectIndex].totalGrade / report[subjectIndex].totalAssigments)
 
       if(assignment.grade >= 90) report[subjectIndex].spread.numOfAs ++
       else if(assignment.grade >= 80 && assignment.grade < 90) report[subjectIndex].spread.numOfBs ++
       else if(assignment.grade >= 70 && assignment.grade < 80) report[subjectIndex].spread.numOfCs ++
-      else if(assignment.grade < 70) report[subjectIndex].spread.numOfFs ++      
+      else if(assignment.grade < 70) report[subjectIndex].spread.numOfFs ++ 
     }
-
     else {
       report[subjectIndex].spread.incomplete ++    
     }
+
+    report[subjectIndex].partialGrade = Math.round(report[subjectIndex].totalGrade / report[subjectIndex].gradedAssignments)
+    if (isNaN(report[subjectIndex].partialGrade)) report[subjectIndex].partialGrade = 0
+    report[subjectIndex].finalGrade = Math.round(report[subjectIndex].totalGrade / report[subjectIndex].totalAssigments)
   })
   return report
 }
