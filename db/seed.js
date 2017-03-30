@@ -26,7 +26,8 @@ const allStudents = [
   { user: {firstName: 'Megan', lastName: 'Jones', email: 'meg.jones@example.com', password: '1234'}},
   { user: {firstName: 'Jesse', lastName: 'Adams', email: 'jesse.adams@example.com', password: '1234'}},
   { user: {firstName: 'Caroline', lastName: 'Jackson', email: 'caroline.jackson@example.com', password: '1234'}},
-  { user: {firstName: 'Hugo', lastName: 'Green', email: 'hugo.green@example.com', password: '1234'}}
+  { user: {firstName: 'Hugo', lastName: 'Green', email: 'hugo.green@example.com', password: '1234'}},
+  { user: {firstName: 'Emma', lastName: 'Clarke', email: 'emma.clarke@example.com', password: '1234'}, teacher_id: 1}
 ]
 
 const seedStudents = () => db.Promise.each(allStudents, students => db.model('students').create(students, {include:[User]}))
@@ -67,6 +68,89 @@ const allTasks = [
   { subject: 'History', topic: 'WWII', title: 'Reading #2', description: 'Read pages 23-42 from the textbook', teacher_id: 1, grade_level: 1},
   { subject: 'History', topic: 'WWI', title: 'Reading #3', description: 'Read pages 13-53 from the textbook', teacher_id: 1, grade_level: 1},
   { subject: 'History', topic: 'MJ', title: 'Essay #1', description: 'Write an essay about life and death of Michael Jackson', teacher_id: 1, grade_level: 1},
+  { subject: 'History', topic: 'American History', title: 'Important Moments in US History', description: 'Describe the five most important moments in US History', teacher_id: 1, grade_level: 1},
+  { subject: 'History', topic: 'American History', title: 'Influential Leaders', description: 'Write a persuasive essay on who you think was the most influential president.', teacher_id: 1, grade_level: 1},
+  { subject: 'History', topic: 'American History', title: 'Reading #2', description: 'Read chapters 2 and 3 from the textbook', teacher_id: 1, grade_level: 1},
+  { subject: 'History', topic: 'American History', title: 'Reading #3', description: 'Read chapters 4 and 5 from the textbook', teacher_id: 1, grade_level: 1},
+  { subject: 'History', topic: 'American History', title: 'Moments in history', description: 'Write a 5 paragraph essay on the most important invention of the 19th century', teacher_id: 1, grade_level: 1},{subject: 'Math', topic: 'Introducing Algebra', title: 'Operations in the correct order', description: 'default description', teacher_id: 1, grade_level: 8},
+  {subject: 'Math', topic: 'Introducing Algebra', title: 'The slope of a linear function', description: 'default description', teacher_id: 1, grade_level: 8},
+  {subject: 'Math', topic: 'Introducing Algebra', title: 'Identify properties', description: 'default description', teacher_id: 1, grade_level: 8},
+  {subject: 'Math', topic: 'Introducing Algebra', title: 'Equations with variables', description: 'default description', teacher_id: 1, grade_level: 8},
+  {subject: 'Math', topic: 'Introducing Algebra', title: 'Coordinate system and ordered pairs', description: 'default description', teacher_id: 1, grade_level: 8},
+  {subject: 'Math', topic: 'Introducing Algebra', title: 'Inequalities', description: 'default description', teacher_id: 1, grade_level: 8},
+
+  {subject: 'Math', topic: 'Graphing and functions', title: 'Linear equations in the coordinate plane II', description: 'default description', teacher_id: 1, grade_level: 8},
+  {subject: 'Math', topic: 'Graphing and functions', title: 'The slope of a linear function II', description: 'default description', teacher_id: 1, grade_level: 8},
+  {subject: 'Math', topic: 'Graphing and functions', title: 'Graphing linear inequalities II',description: 'default description', teacher_id: 1, grade_level: 8},
+  { subject: 'Math', topic: 'Graphing and functions', title: 'Linear equations in the coordinate plane III', description: 'default description', teacher_id: 1, grade_level: 8},
+  { subject: 'Math', topic: 'Graphing and functions', title: 'The slope of a linear function III', description: 'default description', teacher_id: 1, grade_level: 8},
+  { subject: 'Math', topic: 'Graphing and functions', title: 'Graphing linear inequalities III',description: 'default description', teacher_id: 1, grade_level: 8},
+  { subject: 'Math', topic: 'Graphing and functions', title: 'Solve systems of equations by graphing II',description: 'default description', teacher_id: 1, grade_level: 8},
+
+  { subject: 'Math', topic: 'Area and volumes', title: 'Measure areas',description: 'default description', teacher_id: 1, grade_level: 8},
+  { subject: 'Math', topic: 'Area and volumes', title: 'Solve systems of equations by graphing III',description: 'default description', teacher_id: 1, grade_level: 8},
+  // Science
+  { subject: 'Science', topic: 'Astronomy', title: 'Astronomy #1', description: 'List all planets in order', teacher_id: 1, grade_level: 1},
+  { subject: 'Science', topic: 'Astronomy', title: 'Write a paper about Pluto', description: 'Should it be a planet in the Solar System or not?', teacher_id: 1, grade_level: 1},
+  { subject: 'Science', topic: 'Anatomy', title: 'Anatomy List #1', description: 'List all bones from the human body', teacher_id: 1, grade_level: 1},
+  { subject: 'Science', topic: 'Anatomy', title: 'Science Essay #1', description: 'Watch an episode of Grey\'s Anatomy and write an Essay about it', teacher_id: 1, grade_level: 1},
+  // English
+  { subject: 'English', topic: 'Regular Verbs', title: 'Verb List #1', description: 'List 50 regular verbs and their present, past and past participle forms', teacher_id: 1, grade_level: 1},
+  { subject: 'English', topic: 'Irregular Verbs', title: 'Verb List #2', description: 'List 50 irregular verbs and their present, past and past participle forms', teacher_id: 1, grade_level: 1},
+  { subject: 'English', topic: 'Palindromes', title: 'Word List #1', description: 'List 10 palindromes in alphabetical order', teacher_id: 1, grade_level: 1},
+  { subject: 'English', topic: 'Poetry', title: 'All The Single Ladies', description: 'Read the lyrics for the poem "Put A Ring on It" written by the contemporary writer Beyonce Knowles', teacher_id: 1, grade_level: 1},
+  // History
+  { subject: 'History', topic: 'Presidents', title: 'Presidents List #1', description: 'List all American presidents in alphabetical order', teacher_id: 1, grade_level: 1},
+  { subject: 'History', topic: 'American History', title: 'History Essay #1', description: 'Write an essay about the whole American history since day one', teacher_id: 1, grade_level: 1},
+  { subject: 'History', topic: 'American History', title: 'Reading #1', description: 'Read pages 234-432 from the textbook about American History', teacher_id: 1, grade_level: 1},
+  { subject: 'History', topic: 'WWII', title: 'Reading #2', description: 'Read pages 23-42 from the textbook', teacher_id: 1, grade_level: 1},
+  { subject: 'History', topic: 'WWI', title: 'Reading #3', description: 'Read pages 13-53 from the textbook', teacher_id: 1, grade_level: 1},
+  { subject: 'History', topic: 'MJ', title: 'Essay #1', description: 'Write an essay about life and death of Michael Jackson', teacher_id: 1, grade_level: 1},
+  { subject: 'History', topic: 'American History', title: 'Important Moments in US History', description: 'Describe the five most important moments in US History', teacher_id: 1, grade_level: 1},
+  { subject: 'History', topic: 'American History', title: 'Influential Leaders', description: 'Write a persuasive essay on who you think was the most influential president.', teacher_id: 1, grade_level: 1},
+  { subject: 'History', topic: 'American History', title: 'Reading #2', description: 'Read chapters 2 and 3 from the textbook', teacher_id: 1, grade_level: 1},
+  { subject: 'History', topic: 'American History', title: 'Reading #3', description: 'Read chapters 4 and 5 from the textbook', teacher_id: 1, grade_level: 1},
+  { subject: 'History', topic: 'American History', title: 'Moments in history', description: 'Write a 5 paragraph essay on the most important invention of the 19th century', teacher_id: 1, grade_level: 1},
+  {subject: 'Math', topic: 'Introducing Algebra', title: 'Operations in the correct order', description: 'default description', teacher_id: 1, grade_level: 8},
+  {subject: 'Math', topic: 'Introducing Algebra', title: 'The slope of a linear function', description: 'default description', teacher_id: 1, grade_level: 8},
+  {subject: 'Math', topic: 'Introducing Algebra', title: 'Identify properties', description: 'default description', teacher_id: 1, grade_level: 8},
+  {subject: 'Math', topic: 'Introducing Algebra', title: 'Equations with variables', description: 'default description', teacher_id: 1, grade_level: 8},
+  {subject: 'Math', topic: 'Introducing Algebra', title: 'Coordinate system and ordered pairs', description: 'default description', teacher_id: 1, grade_level: 8},
+  {subject: 'Math', topic: 'Introducing Algebra', title: 'Inequalities', description: 'default description', teacher_id: 1, grade_level: 8},
+
+  {subject: 'Math', topic: 'Graphing and functions', title: 'Linear equations in the coordinate plane II', description: 'default description', teacher_id: 1, grade_level: 8},
+  {subject: 'Math', topic: 'Graphing and functions', title: 'The slope of a linear function II', description: 'default description', teacher_id: 1, grade_level: 8},
+  {subject: 'Math', topic: 'Graphing and functions', title: 'Graphing linear inequalities II',description: 'default description', teacher_id: 1, grade_level: 8},
+  { subject: 'Math', topic: 'Graphing and functions', title: 'Linear equations in the coordinate plane III', description: 'default description', teacher_id: 1, grade_level: 8},
+  { subject: 'Math', topic: 'Graphing and functions', title: 'The slope of a linear function III', description: 'default description', teacher_id: 1, grade_level: 8},
+  { subject: 'Math', topic: 'Graphing and functions', title: 'Graphing linear inequalities III',description: 'default description', teacher_id: 1, grade_level: 8},
+  { subject: 'Math', topic: 'Graphing and functions', title: 'Solve systems of equations by graphing II',description: 'default description', teacher_id: 1, grade_level: 8},
+
+  { subject: 'Math', topic: 'Area and volumes', title: 'Measure areas',description: 'default description', teacher_id: 1, grade_level: 8},
+  { subject: 'Math', topic: 'Area and volumes', title: 'Solve systems of equations by graphing III',description: 'default description', teacher_id: 1, grade_level: 8},
+  // Science
+  { subject: 'Science', topic: 'Astronomy', title: 'Astronomy #1', description: 'List all planets in order', teacher_id: 1, grade_level: 1},
+  { subject: 'Science', topic: 'Astronomy', title: 'Write a paper about Pluto', description: 'Should it be a planet in the Solar System or not?', teacher_id: 1, grade_level: 1},
+  { subject: 'Science', topic: 'Anatomy', title: 'Anatomy List #1', description: 'List all bones from the human body', teacher_id: 1, grade_level: 1},
+  { subject: 'Science', topic: 'Anatomy', title: 'Science Essay #1', description: 'Watch an episode of Grey\'s Anatomy and write an Essay about it', teacher_id: 1, grade_level: 1},
+  // English
+  { subject: 'English', topic: 'Regular Verbs', title: 'Verb List #1', description: 'List 50 regular verbs and their present, past and past participle forms', teacher_id: 1, grade_level: 1},
+  { subject: 'English', topic: 'Irregular Verbs', title: 'Verb List #2', description: 'List 50 irregular verbs and their present, past and past participle forms', teacher_id: 1, grade_level: 1},
+  { subject: 'English', topic: 'Palindromes', title: 'Word List #1', description: 'List 10 palindromes in alphabetical order', teacher_id: 1, grade_level: 1},
+  { subject: 'English', topic: 'Poetry', title: 'All The Single Ladies', description: 'Read the lyrics for the poem "Put A Ring on It" written by the contemporary writer Beyonce Knowles', teacher_id: 1, grade_level: 1},
+  // History
+  { subject: 'History', topic: 'Presidents', title: 'Presidents List #1', description: 'List all American presidents in alphabetical order', teacher_id: 1, grade_level: 1},
+  { subject: 'History', topic: 'American History', title: 'History Essay #1', description: 'Write an essay about the whole American history since day one', teacher_id: 1, grade_level: 1},
+  { subject: 'History', topic: 'American History', title: 'Reading #1', description: 'Read pages 234-432 from the textbook about American History', teacher_id: 1, grade_level: 1},
+  { subject: 'History', topic: 'WWII', title: 'Reading #2', description: 'Read pages 23-42 from the textbook', teacher_id: 1, grade_level: 1},
+  { subject: 'History', topic: 'WWI', title: 'Reading #3', description: 'Read pages 13-53 from the textbook', teacher_id: 1, grade_level: 1},
+  { subject: 'History', topic: 'MJ', title: 'Essay #1', description: 'Write an essay about life and death of Michael Jackson', teacher_id: 1, grade_level: 1},
+  { subject: 'History', topic: 'American History', title: 'Important Moments in US History', description: 'Describe the five most important moments in US History', teacher_id: 1, grade_level: 1},
+  { subject: 'History', topic: 'American History', title: 'Influential Leaders', description: 'Write a persuasive essay on who you think was the most influential president.', teacher_id: 1, grade_level: 1},
+  { subject: 'History', topic: 'American History', title: 'Reading #2', description: 'Read chapters 2 and 3 from the textbook', teacher_id: 1, grade_level: 1},
+  { subject: 'History', topic: 'American History', title: 'Reading #3', description: 'Read chapters 4 and 5 from the textbook', teacher_id: 1, grade_level: 1},
+  { subject: 'History', topic: 'American History', title: 'Moments in history', description: 'Write a 5 paragraph essay on the most important invention of the 19th century', teacher_id: 1, grade_level: 1}
+
 ]
 
 const seedTasks = () => db.Promise.each(allTasks, task => db.model('tasks').create(task))
@@ -117,7 +201,7 @@ const allQuizzes = [
    // History
    { subject: 'History', title: 'History Quiz #1', teacher_id: 1, description: 'American History questions about presidents', questions: [
     {inquiry: 'How was the first American president?', answer:['Obama', 'Washington', 'Jefferson', 'Lincoln'], type:'multiple-choice', solution: 1},
-    {inquiry: 'How was the second American president?', answer:['Adams', 'Washington', 'Trump', 'Lincoln'], type:'multiple-choice', solution: 0},
+    {inquiry: 'Who was the second American president?', answer:['Adams', 'Washington', 'Trump', 'Lincoln'], type:'multiple-choice', solution: 0},
     {inquiry: 'How was the 45th American president?', answer:['Bush', 'Obama', 'Trump', 'Hilary Clinton'], type:'multiple-choice', solution: 2},
    ]},
    { subject: 'History', title: 'History Quiz #2', teacher_id: 1, description: 'Read pages 35-57 before solving this quiz.', questions: [
@@ -171,12 +255,12 @@ const generateAssignments = () => {
   const rewards = [5,8,10,12,5,3];
   const grades = [53, 96, 65, 72, 88, 91]
   const etc = [1,2,3];
-  const status = ['assigned', 'doing', 'assigned', 'completed', 'assigned', 'archived']
+  const status = ['assigned', 'archived', 'doing','archived', 'completed', 'archived']
 
   for (let i = 0; i < allStudents.length; i++) {
     let quizIdsArr = [];
     let taskIdsArr = [];
-    for (let a = 0; a < 7; a++) {
+    for (let a = 0; a < 21; a++) {
 
       let assignment = {};
       // Add teacher (always 1)
