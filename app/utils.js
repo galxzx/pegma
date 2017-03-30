@@ -41,7 +41,7 @@ export const getGrades = (array) => {
       report[subjectIndex].partialGrade = Math.round(report[subjectIndex].totalGrade / report[subjectIndex].gradedAssignments)
       if (isNaN(report[subjectIndex].partialGrade)) report[subjectIndex].partialGrade = 0
       report[subjectIndex].finalGrade = Math.round(report[subjectIndex].totalGrade / report[subjectIndex].totalAssigments)
-      console.log(assignment.grade)
+
       if(assignment.grade >= 90) report[subjectIndex].spread.numOfAs ++
       else if(assignment.grade >= 80 && assignment.grade < 90) report[subjectIndex].spread.numOfBs ++
       else if(assignment.grade >= 70 && assignment.grade < 80) report[subjectIndex].spread.numOfCs ++
