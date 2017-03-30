@@ -32,7 +32,7 @@ const GradeView = ({studentId, studentName, GPA, studentReport, teacherName}) =>
       </div>
       <div className="container panel-container">
 
-        <section className="flex-child panel reportcard" style={{marginTop: '0px'}}>
+        <section className="flex-child panel teacher-reportcard">
           <div className="panel-header">Report Card</div>
           <div className="reportcard-content">
             <div className="card">

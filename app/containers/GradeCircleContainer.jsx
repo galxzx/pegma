@@ -30,7 +30,7 @@ class countCircleContainer extends Component {
 		    radius = Math.min(width, height) / 2;
 
 		const color = d3.scale.ordinal()
-		    .range(["#00C692", "#43B9FF", "#FFC943", "#C60034", "#000000"]);
+		    .range(["#27FFC6", "#0B9CCC", "#FFC943", "#C60034", "#000000"]);
 
 		const arc = d3.svg.arc()
 		    .outerRadius(radius - 10)

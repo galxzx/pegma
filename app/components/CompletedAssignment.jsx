@@ -12,24 +12,25 @@ const Assignment = ({user, currentAssignment, updateGrade}) => {
           <section className="panel single-assignment">
             <div className="panel-header">{ currentAssignment.title }</div>
             <div className="panel-subheader">
-              <strong>Name:</strong> {currentAssignment.student.user.firstName + ' ' + currentAssignment.student.user.lastName} <br/>
-              <strong>Current Grade:</strong> {currentAssignment.grade ? Math.floor(currentAssignment.grade) : 0}/100
+              <br/>
+              <strong>Name:</strong> {currentAssignment.student.user.firstName + ' ' + currentAssignment.student.user.lastName} <br/><br/>
+              <strong>Current Grade:</strong> {currentAssignment.grade ? Math.floor(currentAssignment.grade) : 0}/100<br/><br/>
               {user.teacher_id ? (
                 <div>
                   <form onSubmit={(evt) => {
                     evt.preventDefault()
                     updateGrade(evt.target.grade.value, evt.target.status.value, currentAssignment.id)
                   }}>
-                    <label>New Grade</label>
-                    <input name="grade" type="text" defaultValue={currentAssignment.grade} />
-                    <select name="status" defaultValue={currentAssignment.status}>
+                    <strong>New Grade: </strong>
+                    <input name="grade" type="text" className="normal" size="5" defaultValue={currentAssignment.grade} />
+                    <select name="status" className="normal" defaultValue={currentAssignment.status}>
                       <option value="archived">archived</option>
                       <option value="completed">completed</option>
                       <option value="doing">doing</option>
                       <option value="assigned">assigned</option>
                     </select>
                     <button className="btn btn-primary" type="submit">Update</button>
-                  </form>
+                  </form><br/>
                 </div>
                 ) : null
               }
