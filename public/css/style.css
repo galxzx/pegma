@@ -46,6 +46,15 @@ html {
   color: #222221;
   text-decoration: none; }
 
+input.normal {
+  height: 25px;
+  margin-right: 5px; }
+
+select.normal {
+  height: 30px;
+  margin-right: 5px;
+  width: 100%; }
+
 .float-left {
   float: left; }
 
@@ -479,6 +488,12 @@ footer {
         .reportcard-content .card table td.text {
           text-align: left; }
 
+.teacher-reportcard {
+  margin-top: 0px;
+  background: #4B4B4A; }
+  .teacher-reportcard .reportcard-content > .card {
+    background: #FFFFFF; }
+
 /* SETTINGS */
 .settings-content .settings-form {
   display: flex; }
@@ -647,7 +662,14 @@ div.teacher-assignments {
   .functions .teacher-assignments select {
     margin: 10px 10px 10px 0; }
   .functions .teacher-assignments .due-date-picker {
-    margin: 10px 0; }
+    margin: 10px 0;
+    width: 50%; }
+  .functions .teacher-assignments button.assign {
+    margin-top: 25px;
+    margin-left: 15px;
+    width: 50%; }
+  .functions .teacher-assignments label {
+    padding-bottom: 10px; }
 
 table.teacher-assignments, table.teacher-students {
   margin: 15px;
@@ -709,11 +731,14 @@ table.teacher-students {
       border: 1px solid #9C9C9B; }
 
 #message-box {
-  margin: 15px;
-  margin-bottom: 0px;
-  padding: 15px;
-  height: 15px;
-  background: #EEEEEC; }
+  display: block;
+  padding-top: 10px;
+  height: 30px;
+  margin-left: 18px;
+  margin-right: 18px;
+  text-align: center;
+  background: #FFFFFF;
+  border: 1px solid #EEEEEC; }
 
 /* Chatbox */
 #chatbox-container {

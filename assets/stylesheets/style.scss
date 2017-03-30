@@ -73,6 +73,17 @@ html {
 	text-decoration: none;
 }
 
+input.normal {
+	height: 25px;
+	margin-right: 5px;
+}
+
+select.normal {
+	height: 30px;
+	margin-right: 5px;	
+	width: 100%;
+}
+
 .float-left {
 	float: left;
 }
@@ -718,6 +729,14 @@ footer {
 	}
 }
 
+.teacher-reportcard {
+	margin-top: 0px;
+	background: $darkGrey;
+	.reportcard-content > .card {
+		background: $white;
+	}
+}
+
 /* SETTINGS */
 
 .settings-content {
@@ -975,6 +994,15 @@ div.teacher-assignments {
 
   	.due-date-picker {
   		margin: 10px 0;
+  		width: 50%;
+  	}
+  	button.assign {
+  		margin-top: 25px;
+  		margin-left: 15px;
+  		width: 50%;
+  	}
+  	label {
+  		padding-bottom: 10px;
   	}
   }
 }
@@ -1063,11 +1091,14 @@ table.teacher-students {
 }
 
 #message-box {
-	margin: 15px;
-	margin-bottom: 0px;
-	padding: 15px;
-	height: 15px;
-	background: $lightGrey;
+	display: block;
+	padding-top: 10px;
+	height: 30px;
+	margin-left: 18px;
+	margin-right: 18px;
+	text-align: center;
+	background: $white;
+	border: 1px solid $lightGrey;
 }
 
 
