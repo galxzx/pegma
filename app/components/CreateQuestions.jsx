@@ -6,7 +6,7 @@ import RenderError from './RenderError'
 const CreateQuestions = ({ fields, meta: { touched, error, submitFailed } }) => (
   <ul>
 
-    <button type="button" onClick={() => fields.push({})}>Add Question</button><br/>
+    <button type="button" className="btn btn-primary" onClick={() => fields.push({})}>Add Question</button><br/>
     {(touched || submitFailed) && error && <span className="icon icon-error-circle red" >{error}</span>}
 
 
@@ -14,7 +14,7 @@ const CreateQuestions = ({ fields, meta: { touched, error, submitFailed } }) => 
       <li key={index}>
 
         <h4>Question #{index + 1}</h4>
-         <button
+         <button className="btn btn-primary" 
           type="button"
           title="Remove Last Question"
           onClick={() => fields.remove(index)}>Remove Question</button>
