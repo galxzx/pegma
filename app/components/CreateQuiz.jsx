@@ -23,9 +23,9 @@ const createQuiz = ({handleSubmit, submitting, addQuiz}) => {
 
         <div className="flex-container">
 
-          <section className="flex-child panel functions">
+          <section className="flex-child panel creator">
             <div className="panel-header">Create New Quiz</div>
-            <div className="settings-content">
+            <div className="creator-content">
               <form onSubmit={handleSubmit(addQuiz)}>
                 <fieldset>
                   <div className="form-group">
@@ -56,7 +56,9 @@ const createQuiz = ({handleSubmit, submitting, addQuiz}) => {
                     </div>
                     <Field name="description" type="textarea" component={renderTextArea} label="Description"/>
                     <FieldArray name="questions" component={renderQuestions} />
-                    <button type="submit" disabled={submitting} className="btn btn-primary">Create Quiz</button>
+                    <div className="nav">
+                      <button type="submit" disabled={submitting} className="btn btn-primary">Create Quiz</button>
+                    </div>
                   </div>
                 </fieldset>
               </form>
