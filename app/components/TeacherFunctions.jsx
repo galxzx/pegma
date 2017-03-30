@@ -26,25 +26,23 @@ const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll, due_
       <div className="container panel-container functions">
         <div className="flex-container">
           <div className="flex-child panel">
-            <div className="panel-header">Control Panel</div>
-            <section className="panel-body">
-
-              <p>Here you can set assignments to your students. You may create your own tasks and quizzes or use any assignment previously created.</p>
-              <section className="center">
-                <h3>Create</h3>
-                <div className="nav">
-                  <Link to="/teacher/createtask"><button className="btn btn-primary">New Task</button></Link>
-                  <Link to="/teacher/createquiz"><button className="btn btn-primary">New Quiz</button></Link>
-                </div>
-              </section>
-              <section>
-                <p className="center">OR</p>
-                <h3 className="center">Assign</h3>
-                <p>Select a quiz and/or task to assign to students.</p>
-
-                <form onSubmit={(evt) => handleSubmit(evt)}>
-                  <div className="assignment-dropdown">
-                    <select id="tasks" name="tasks">
+            <div className="panel-header">New Assignments</div>
+            <section  className="teacher-assignments">
+              <p> Here you can give assignments to your students. You may use any assignment previously created or create your own tasks and quizzes.</p>
+            </section>
+            <section className="options">
+              <Link to="/teacher/createtask"><button className="btn btn-primary">Create New Task</button></Link>
+              <Link to="/teacher/createquiz"><button className="btn btn-primary">Create New Quiz</button></Link>
+            </section>
+          </div>
+          <div className="flex-child panel">   
+            <div className="panel-header">Existing Assignments</div>
+            <section className="teacher-assignments">
+              <p>Select a quiz and/or task to assign to students.</p>
+              <form onSubmit={(evt) => handleSubmit(evt)}>
+                <div className="flex-container">
+                  <div className="flex-child">                 
+                    <select id="tasks" name="tasks" className="normal full">
                       <option>Assign Task...</option>
                     {
                       library && library.tasks &&
@@ -58,8 +56,9 @@ const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll, due_
                         )
                     }
                     </select>
-
-                    <select id="quizzes" name="quizzes">
+                  </div>
+                  <div className="flex-child">                     
+                    <select id="quizzes" name="quizzes" className="normal full">
                       <option>Assign Quiz...</option>
                     {
                       library && library.quizzes &&
@@ -75,54 +74,57 @@ const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll, due_
                     }
                     </select>
                   </div>
-                  <div className="due-date-picker">
-                    <label>Due Date </label>
-                    <DatePicker selected={ due_date } onChange={handleChange} />
+                </div>
+                <div className="flex-container">
+                    <div className="flex-child due-date-picker">                
+                      <label>Due Date </label>
+                      <DatePicker selected={ due_date } onChange={handleChange}  />
+                    </div>
+                    <div className="flex-child"> 
+                      <label></label>                                                       
+                      <button type="submit" className="btn btn-primary normal assign">Set Assignments</button>
+                    </div>
                   </div>
+              </form>
+            </section>         
+          </div>
+        </div>
+        <div className="flex-container">
+          <div className="flex-child panel">          
+            <div className="panel-header">Select Students</div>            
+            <section className="teacher-assignments">
+              <h3 id="message-box">{ message }</h3>
+              <table className="teacher-assignments">
+                <tbody id="students">
+                  <tr id="filters">
+                    <th><input type="checkbox" onChange={(evt) => toggleCheckAll('#students', evt.target.checked)}/></th>
+                    <th>ID</th>
+                    <th>Last</th>
+                    <th>First</th>
+                    <th>Assigned</th>
+                    <th>Doing </th>
+                    <th>Completed </th>
+                    <th>Archived </th>
+                  </tr>
+                {students.map((student) => {
+                  let stats = studentStats(student.assignments)
+                  return (
+                    <tr key={student.id} className="student">
+                      <td className="select"><input defaultValue={student.id} type="checkbox" /></td>
+                      <td className="">{student.id}</td>
+                      <td className="">{student.user.lastName}</td>
+                      <td className="">{student.user.firstName}</td>
 
-                  <div id="message-box">{ message }</div>
-
-                  <section className="teacher-assignments">
-                    <h4>Select students to assign...</h4>
-                    <table className="teacher-assignments">
-                      <tbody id="students">
-                        <tr id="filters">
-                          <th><input type="checkbox" onChange={(evt) => toggleCheckAll('#students', evt.target.checked)}/></th>
-                          <th>ID</th>
-                          <th>Last</th>
-                          <th>First</th>
-                          <th>Assigned</th>
-                          <th>Doing </th>
-                          <th>Completed </th>
-                          <th>Archived </th>
-                        </tr>
-                      {students.map((student) => {
-                        let stats = studentStats(student.assignments)
-                        return (
-                          <tr key={student.id} className="student">
-                            <td className="select"><input defaultValue={student.id} type="checkbox" /></td>
-                            <td className="">{student.id}</td>
-                            <td className="">{student.user.lastName}</td>
-                            <td className="">{student.user.firstName}</td>
-
-                            <td className="">{stats.assigned}</td>
-                            <td className="">{stats.doing}</td>
-                            <td className="">{stats.completed}</td>
-                            <td className="">{stats.archived}</td>
-                          </tr>
-                        )
-                      })}
-                      </tbody>
-                    </table>
-                  </section>
-                  <div className="center">
-                    <button type="submit" className="btn btn-primary">Set Assignment</button>
-                  </div>
-
-                </form>
-                  
-              </section>
-            </section>  
+                      <td className="">{stats.assigned}</td>
+                      <td className="">{stats.doing}</td>
+                      <td className="">{stats.completed}</td>
+                      <td className="">{stats.archived}</td>
+                    </tr>
+                  )
+                })}
+                </tbody>
+              </table>
+            </section>
           </div>
         </div>
       </div>
