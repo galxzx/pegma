@@ -10,7 +10,7 @@ const App = ({ user, children, teacher}) => {
       <header className="top-menu">
         <div className="container header-content">
           <Link to="/home" className="logo">
-            <img src="/images/pegma-logo-horizontal.svg" alt="Pegma"/> {(user && user.student_id && teacher.user) ? (
+            <img src="/images/pegma-logo-horizontal.png" alt="Pegma"/> {(user && user.student_id && teacher.user) ? (
               <span>
               | <span className="classroom">{`${teacher.user.firstName} ${teacher.user.lastName}'s Classroom`}</span>
               </span>) : <span></span>
