@@ -929,6 +929,25 @@ footer {
 	font-style: italic;
 }
 
+/* TASKS */
+
+.task {
+	padding: 10px 30px;
+	border: 1px solid $lightGrey;
+	
+	.topic, .subject {
+		padding: 5px;
+		margin-bottom: 10px;
+	}
+
+	.body {
+		padding: 15px;
+		border: 1px solid $lightGrey;
+		margin-bottom: 15px;
+	}
+
+}
+
 /* STUDENT-TRACKER */
 
 #student-tracker {

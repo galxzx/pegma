@@ -611,6 +611,18 @@ footer {
   padding: 10px 30px;
   font-style: italic; }
 
+/* TASKS */
+.task {
+  padding: 10px 30px;
+  border: 1px solid #EEEEEC; }
+  .task .topic, .task .subject {
+    padding: 5px;
+    margin-bottom: 10px; }
+  .task .body {
+    padding: 15px;
+    border: 1px solid #EEEEEC;
+    margin-bottom: 15px; }
+
 /* STUDENT-TRACKER */
 #student-tracker div.list-container {
   margin-left: 1%;
