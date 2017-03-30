@@ -53,12 +53,15 @@ export const getGrades = (array) => {
 
 // Calculates the overall GPA
 export const GPA = (report) => {
+  let count = 0
   let result = report.reduce((total, subject) => {
-    if(subject.gradedAssignments > 0) {
-      return (subject.partialGrade / subject.gradedAssignments) + total
+    if(subject.gradedAssignments > 0 && subject.partialGrade > 0) {
+      count++
+      return subject.partialGrade  + total
     }
     else return total
-  }, 0) / report.length
+  }, 0) / count
+
   return (result > 0) ? result : null
 }
 
