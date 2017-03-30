@@ -39,9 +39,9 @@ class TeacherAssignmentsPanel extends React.Component {
   		if (val === 'task') val = (o) => o.type == 'task'
   		else if (val === 'quiz') val = (o) => o.type == 'quiz'
 			else if (val === 'assigned') val = (o) => o.status == 'assigned'
-			else if (val === 'assigned') val = (o) => o.status == 'completed'
-			else if (val === 'assigned') val = (o) => o.status == 'archived'
-			else if (val === 'assigned') val = (o) => o.overdue
+			else if (val === 'completed') val = (o) => o.status == 'completed'
+			else if (val === 'archived') val = (o) => o.status == 'archived'
+			else if (val === 'overdue') val = (o) => o.overdue
 
 	    refilteredAssignments = _.filter(this.state.allAssignments, val)
   	}

@@ -27,8 +27,8 @@ const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll, due_
         <div className="flex-container">
           <div className="flex-child panel">
             <div className="panel-header">New Assignments</div>
-            <section>
-              <p> Here you can set assignments to your students. You may use any assignment previously created or create your own tasks and quizzes.</p>
+            <section  className="teacher-assignments">
+              <p> Here you can give assignments to your students. You may use any assignment previously created or create your own tasks and quizzes.</p>
             </section>
             <section className="options">
               <Link to="/teacher/createtask"><button className="btn btn-primary">Create New Task</button></Link>
@@ -42,7 +42,7 @@ const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll, due_
               <form onSubmit={(evt) => handleSubmit(evt)}>
                 <div className="flex-container">
                   <div className="flex-child">                 
-                    <select id="tasks" name="tasks" className="normal">
+                    <select id="tasks" name="tasks" className="normal full">
                       <option>Assign Task...</option>
                     {
                       library && library.tasks &&
@@ -58,7 +58,7 @@ const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll, due_
                     </select>
                   </div>
                   <div className="flex-child">                     
-                    <select id="quizzes" name="quizzes" className="normal">
+                    <select id="quizzes" name="quizzes" className="normal full">
                       <option>Assign Quiz...</option>
                     {
                       library && library.quizzes &&
@@ -82,7 +82,7 @@ const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll, due_
                     </div>
                     <div className="flex-child"> 
                       <label></label>                                                       
-                      <button type="submit" className="btn btn-primary normal assign">Assign Task</button>
+                      <button type="submit" className="btn btn-primary normal assign">Set Assignments</button>
                     </div>
                   </div>
               </form>

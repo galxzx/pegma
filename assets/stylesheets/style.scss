@@ -8,6 +8,7 @@ $darkGrey: #4B4B4A;
 $red: #C60034;
 $pink: #FF2760;
 $yellow: #FFC943;
+$lightYellow: #FFE299;
 $orange: #FF8943;
 $blue: #0B9CCC;
 $cyan: #43B9FF;
@@ -78,9 +79,12 @@ input.normal {
 	margin-right: 5px;
 }
 
-select.normal {
+select.normal, .full {
 	height: 30px;
 	margin-right: 5px;	
+}
+
+select.full {
 	width: 100%;
 }
 
@@ -137,6 +141,18 @@ select.normal {
 
 .btn-primary {
 	background: $yellow;
+}
+
+.btn-secondary {
+	background: $lightYellow;
+}
+
+.btn-danger {
+	background: $pink;
+}
+
+.btn-small {
+	transform: scale(0.8);
 }
 
 /* FORMS */
@@ -507,6 +523,46 @@ footer {
 	border-bottom: 1px solid $lightGrey;
 }
 
+.panel-body {
+	padding: 15px;
+}
+
+.center {
+	text-align: center !important;
+}
+
+.functions {
+
+	.panel-body {
+
+		.assignment-dropdown {
+			display: flex;
+			justify-content: space-between;
+			margin-bottom: 15px;
+
+			select {
+				width: 48%;
+			}
+		}
+
+		.nav {
+		  text-align: center;
+
+	    a {
+	    	color: $black;
+	    	padding: 0 10px;
+	    }
+
+	  }
+
+		.due-date-picker {
+			text-align: center;
+  		margin: 15px 0;
+  	}
+
+	}
+}
+
 /* NOTIFICATIONS */
 
 .notifications-list {
@@ -548,6 +604,10 @@ footer {
 .panel-calendar {
 	width: 100%;
 	border: 0px;
+
+	li {
+		margin-bottom: 5px;
+	}
 }
 
 .calendar-content-sm {
@@ -768,7 +828,6 @@ footer {
 		}
 	}
 
-
 	.alert-inline {
 		font-size: 70%;
 		color: $red;
@@ -778,6 +837,54 @@ footer {
 	button {
 		background: $yellow;
 		margin-top: 20px auto 10px auto;
+	}
+}
+
+/* CREATOR */
+
+.creator-content {
+	fieldset {
+		padding: 30px 25% 10px 25%;
+		border: 0;
+
+		input, 
+		textarea {
+			width: 100%;
+			margin-bottom: 10px;
+		}
+
+		select {
+			margin-bottom: 10px;
+		}
+	}
+
+	.nav {
+		text-align: center;
+		margin-bottom: 15px;
+	}
+
+	.create-question {
+		padding: 0;
+		
+		li {
+			list-style: none;
+			border: 1px solid $lightGrey;
+			padding: 15px;
+			margin-bottom: 15px;
+
+			&>div {
+				margin: 5px 0;
+			}
+
+			h4 {
+				margin-top: 10px;
+			}
+		}
+
+		button {
+			margin: 0 auto;
+			display: block;
+		}
 	}
 }
 
@@ -842,6 +949,25 @@ footer {
 .quiz-completed-description {
 	padding: 10px 30px;
 	font-style: italic;
+}
+
+/* TASKS */
+
+.task {
+	padding: 10px 30px;
+	border: 1px solid $lightGrey;
+	
+	.topic, .subject {
+		padding: 5px;
+		margin-bottom: 10px;
+	}
+
+	.body {
+		padding: 15px;
+		border: 1px solid $lightGrey;
+		margin-bottom: 15px;
+	}
+
 }
 
 /* STUDENT-TRACKER */
@@ -976,7 +1102,7 @@ div.teacher-assignments {
 
 	.options {
 	  text-align: center;
-    padding: 20px;
+    padding: 15px 0;
 
     a {
     	color: $black;
@@ -991,7 +1117,6 @@ div.teacher-assignments {
   	select {
   		margin: 10px 10px 10px 0;
   	}
-
   	.due-date-picker {
   		margin: 10px 0;
   		width: 50%;
@@ -999,7 +1124,6 @@ div.teacher-assignments {
   	button.assign {
   		margin-top: 25px;
   		margin-left: 15px;
-  		width: 50%;
   	}
   	label {
   		padding-bottom: 10px;
@@ -1091,14 +1215,13 @@ table.teacher-students {
 }
 
 #message-box {
-	display: block;
-	padding-top: 10px;
-	height: 30px;
-	margin-left: 18px;
-	margin-right: 18px;
+	margin-top: 0px;
+	margin-left: 20px;
+	margin-right: 20px;
+	padding: 15px;
+	height: 15px;
+	background: $lightGrey;
 	text-align: center;
-	background: $white;
-	border: 1px solid $lightGrey;
 }
 
 

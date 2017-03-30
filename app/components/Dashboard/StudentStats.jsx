@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router'
 
+import {GPA, getGrades} from '../../utils'
+
 const StudentStats = ({assignments}) => {
   let totalToDo = 0
   let totalNew = 0
@@ -23,6 +25,8 @@ const StudentStats = ({assignments}) => {
       totalToDo++
     }
   })
+
+  const grade = GPA(getGrades(assignments))
 
   return (
     <ul className="stats">
@@ -50,8 +54,8 @@ const StudentStats = ({assignments}) => {
       <li className="stats-rewards">
         <span className="icon icon-trophy"></span>
         <div className="info">
-          <div className="quantity">{ totalRewards }</div>
-          <div className="type">Reward Points</div>
+          <div className="quantity">{ grade }</div>
+          <div className="type">Grade Average</div>
         </div>
       </li>
     </ul>

@@ -23,9 +23,9 @@ const CreateTask = ({handleSubmit, submitting, addTask}) => {
 
         <div className="flex-container">
 
-          <section className="flex-child panel functions">
+          <section className="flex-child panel creator">
             <div className="panel-header">Create New Task</div>
-            <div className="settings-content">
+            <div className="creator-content">
               <form onSubmit={handleSubmit(addTask)}>
                 <fieldset>
                   <div className="form-group">
