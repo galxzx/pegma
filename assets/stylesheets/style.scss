@@ -528,7 +528,14 @@ footer {
 }
 
 .center {
-	text-align: center !important;
+	text-align: center;
+}
+
+.centered-block {
+	display: inline-block !important;
+	width: 33.33%;
+	float: none !important;
+
 }
 
 .functions {
@@ -894,18 +901,24 @@ footer {
 	padding: 10px 30px;
 
 	.question-group {
-
-		border: 1px solid $lightGrey;
 		padding: 10px;
 		margin-bottom: 10px;
 
+		.centered-block {
+			border: 1px solid $lightGrey;
+			padding: 10px;
+		}
+
 		.inquiry {
 			margin: 10px 0;
+			text-align: left;
 		}
 
 		.inquiry-options {
 			list-style: none;
 			padding: 0;
+			text-align: left;
+
 		}
 
 		.inquiry-option {
@@ -943,6 +956,9 @@ footer {
 	.inquiry-options {
 		list-style: disc !important;
 		margin-left: 19px !important;
+	}
+	.border {
+		border: 1px solid $lightGrey !important;
 	}
 }
 
