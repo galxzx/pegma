@@ -5,8 +5,12 @@ export const Login = ({ login }) => (
   <div className="modal-login">
 
     <nav>
-      <button className="btn bg-blue"><span className="icon icon-facebook-square"></span>Facebook</button>
-      <button className="btn bg-green"><span className="icon icon-google-plus-square"></span>Google</button>
+    {
+      // <button className="btn bg-blue"><span className="icon icon-facebook-square"></span>Facebook</button>
+      // <button className="btn bg-green"><span className="icon icon-google-plus-square"></span>Google</button>
+    }
+      <p style={{margin: '5px', fontSize:'14px'}}>Try out the app as a teacher with user: geoff.bass@example.com password: 1234</p>
+      <p style={{margin: '5px', fontSize:'14px'}}>Try out the app as a student with user: cody@example.com password: 1234</p>
     </nav>
     <form onSubmit={evt => {
       evt.preventDefault()
