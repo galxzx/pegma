@@ -63,7 +63,7 @@ const allTasks = [
   { subject: 'English', topic: 'Poetry', title: 'All The Single Ladies', description: 'Read the lyrics for the poem "Put A Ring on It" written by the contemporary writer Beyonce Knowles', teacher_id: 1, grade_level: 1},
   // History
   { subject: 'History', topic: 'Presidents', title: 'Presidents List #1', description: 'List all American presidents in alphabetical order', teacher_id: 1, grade_level: 1},
-  { subject: 'History', topic: 'American History', title: 'History Essay #1', description: 'Write an essay about the whole American history since day one', teacher_id: 1, grade_level: 1},
+  { subject: 'History', topic: 'American History', title: 'History Essay #1', description: 'Write an essay about the foundation of US History', teacher_id: 1, grade_level: 1},
   { subject: 'History', topic: 'American History', title: 'Reading #1', description: 'Read pages 234-432 from the textbook about American History', teacher_id: 1, grade_level: 1},
   { subject: 'History', topic: 'WWII', title: 'Reading #2', description: 'Read pages 23-42 from the textbook', teacher_id: 1, grade_level: 1},
   { subject: 'History', topic: 'WWI', title: 'Reading #3', description: 'Read pages 13-53 from the textbook', teacher_id: 1, grade_level: 1},
@@ -101,7 +101,7 @@ const allTasks = [
   { subject: 'English', topic: 'Poetry', title: 'All The Single Ladies', description: 'Read the lyrics for the poem "Put A Ring on It" written by the contemporary writer Beyonce Knowles', teacher_id: 1, grade_level: 1},
   // History
   { subject: 'History', topic: 'Presidents', title: 'Presidents List #1', description: 'List all American presidents in alphabetical order', teacher_id: 1, grade_level: 1},
-  { subject: 'History', topic: 'American History', title: 'History Essay #1', description: 'Write an essay about the whole American history since day one', teacher_id: 1, grade_level: 1},
+  { subject: 'History', topic: 'American History', title: 'History Essay #1', description: 'Write an essay about the beginning of US History', teacher_id: 1, grade_level: 1},
   { subject: 'History', topic: 'American History', title: 'Reading #1', description: 'Read pages 234-432 from the textbook about American History', teacher_id: 1, grade_level: 1},
   { subject: 'History', topic: 'WWII', title: 'Reading #2', description: 'Read pages 23-42 from the textbook', teacher_id: 1, grade_level: 1},
   { subject: 'History', topic: 'WWI', title: 'Reading #3', description: 'Read pages 13-53 from the textbook', teacher_id: 1, grade_level: 1},
@@ -140,7 +140,7 @@ const allTasks = [
   { subject: 'English', topic: 'Poetry', title: 'All The Single Ladies', description: 'Read the lyrics for the poem "Put A Ring on It" written by the contemporary writer Beyonce Knowles', teacher_id: 1, grade_level: 1},
   // History
   { subject: 'History', topic: 'Presidents', title: 'Presidents List #1', description: 'List all American presidents in alphabetical order', teacher_id: 1, grade_level: 1},
-  { subject: 'History', topic: 'American History', title: 'History Essay #1', description: 'Write an essay about the whole American history since day one', teacher_id: 1, grade_level: 1},
+  { subject: 'History', topic: 'American History', title: 'History Essay #1', description: 'Write an essay about the beginning of US History', teacher_id: 1, grade_level: 1},
   { subject: 'History', topic: 'American History', title: 'Reading #1', description: 'Read pages 234-432 from the textbook about American History', teacher_id: 1, grade_level: 1},
   { subject: 'History', topic: 'WWII', title: 'Reading #2', description: 'Read pages 23-42 from the textbook', teacher_id: 1, grade_level: 1},
   { subject: 'History', topic: 'WWI', title: 'Reading #3', description: 'Read pages 13-53 from the textbook', teacher_id: 1, grade_level: 1},
@@ -177,16 +177,16 @@ const allQuizzes = [
     {inquiry: 'What is 12 : 4?', answer:['4', '3', '2', '2.5'], type:'multiple-choice', solution: 1},
     {inquiry: 'What is 4 x 2 : 8', answer:['0', '1', '2', '3'], type:'multiple-choice', solution: 1},
    ]},
-   { subject: 'Math', title: 'Final Super Hard Quiz', teacher_id: 1,  description: 'Covering all content we study so far',questions: [
+   { subject: 'Math', title: 'End of Year Review', teacher_id: 1,  description: 'Covering all content we have studied so far',questions: [
     {inquiry: 'What is 2 + 2?', answer:['4', '8', '1', '12'], type:'multiple-choice', solution: 0},
     {inquiry: 'What is the answer to life the universe and everything?', answer:['pasta', '42', '34', 'yes'], type:'multiple-choice', solution: 1},
     {inquiry: 'Julie has 13 apples only, if she gives 5 to Max and eat 4 bananas, how many pineapples will she have?', answer:['4', '5', '0', '8'], type:'multiple-choice', solution: 2}
   ]},
   // Science
   { subject: 'Science', title: 'Science Quiz #1', teacher_id: 1,  description: 'Questions about the first 3 chapters of our textbook', questions: [
-    {inquiry: 'What is planet?', answer:['A thing in the universe.', 'A type of pasta', 'A bug', '9'], type:'multiple-choice', solution: 0},
-    {inquiry: 'What is cell?', answer:['A phone', 'A smal thing in living beings', 'Money?', 'I have no idea'], type:'multiple-choice', solution: 1},
-    {inquiry: 'What is animal?', answer:['A living being', 'A non-living being', 'A character in the Muppets', 'I have no idea'], type:'multiple-choice', solution: 0},
+    {inquiry: 'What is a planet?', answer:['A thing in the universe.', 'A type of pasta', 'A bug', '9'], type:'multiple-choice', solution: 0},
+    {inquiry: 'What is a cell?', answer:['A phone', 'A smal thing in living beings', 'Money?', 'I have no idea'], type:'multiple-choice', solution: 1},
+    {inquiry: 'What is an animal?', answer:['A living being', 'A non-living being', 'A character in the Muppets', 'I have no idea'], type:'multiple-choice', solution: 0},
    ]},
    { subject: 'Science', title: 'Anatomy Quiz #1', teacher_id: 1, description: 'Read chapter 5 of our textbook before solving this quiz', questions: [
     {inquiry: 'How many bones are in the human body?', answer:['More than 150', '10', '58', '53'], type:'multiple-choice', solution: 0},
@@ -194,8 +194,8 @@ const allQuizzes = [
     {inquiry: 'What is NOT a body part?', answer:['Head', 'Hand', 'Toe', 'Pizza'], type:'multiple-choice', solution: 3},
    ]},
    { subject: 'Science', title: 'Science Quiz #2', teacher_id: 1,  description: 'Random questions about life and science', questions: [
-    {inquiry: 'Is there a God?', answer:['Yes.', 'No.', 'Maybe.', 'You are not allowed to ask me this question, and I\'m sueing this school.'], type:'multiple-choice', solution: 3},
-    {inquiry: 'How is the best way to decompose a dead body?', answer:['Burning it.', 'Using acid in a bathtub.', 'Burrying it.', 'Feeding it to the dogs.'], type:'multiple-choice', solution: 1},
+    {inquiry: 'Is there a God?', answer:['Yes.', 'No.', 'Maybe.', 'You are not allowed to ask me this question, and I\'m suing this school.'], type:'multiple-choice', solution: 3},
+    {inquiry: 'What is the best way to decompose a dead body?', answer:['Burning it.', 'Using acid in a bathtub.', 'Burrying it.', 'Feeding it to the dogs.'], type:'multiple-choice', solution: 1},
     {inquiry: 'How many fingers and toes are in the human body?', answer:['12', '11', '10', '8'], type:'multiple-choice', solution: 2},
    ]},
    // History
@@ -207,13 +207,13 @@ const allQuizzes = [
    { subject: 'History', title: 'History Quiz #2', teacher_id: 1, description: 'Read pages 35-57 before solving this quiz.', questions: [
     {inquiry: 'What year did the United States celebrate its bicentennial?', answer:['1979', '2017', '1976', '1983'], type:'multiple-choice', solution: 2},
     {inquiry: 'During the Vietnam War, was the United States allied with North Vietnam or South Vietnam?', answer:['North', 'South', 'East', 'West'], type:'multiple-choice', solution: 1},
-    {inquiry: 'How was the 44th American president?', answer:['Bush', 'Obama', 'Trump', 'Hilary Clinton'], type:'multiple-choice', solution: 1},
+    {inquiry: 'Who was the 44th American president?', answer:['Bush', 'Obama', 'Trump', 'Hilary Clinton'], type:'multiple-choice', solution: 1},
    ]},
    // English
    { subject: 'English', title: 'Synonyms Quiz #1',  description: 'Review your notes from week 2 before solving this questions', teacher_id: 1, questions: [
-    {inquiry: 'What is NOT a synonym for Scandalous?', answer:['sordid', 'improper', 'discreditable', 'seemly'], type:'multiple-choice', solution: 3},
-    {inquiry: 'What is a synonym for Trustworthy?', answer:['unreliable', 'honorable', 'fickle', 'erratic'], type:'multiple-choice', solution: 1},
-    {inquiry: 'What is NOT a synonym for delicious?', answer:['Pizza', 'Icecream', 'Chocolate', 'Broccoli'], type:'multiple-choice', solution: 3},
+    {inquiry: 'Which word is NOT a synonym for Scandalous?', answer:['sordid', 'improper', 'discreditable', 'seemly'], type:'multiple-choice', solution: 3},
+    {inquiry: 'Which word is a synonym for Trustworthy?', answer:['unreliable', 'honorable', 'fickle', 'erratic'], type:'multiple-choice', solution: 1},
+    {inquiry: 'Which word is NOT a synonym for delicious?', answer:['Pizza', 'Ice Cream', 'Chocolate', 'Broccoli'], type:'multiple-choice', solution: 3},
    ]},
    { subject: 'English', title: 'English Quiz #1', description: 'Make sure you have your notes with you before solving this quiz. Also, remember to get the irregular verb list handed to you during class', teacher_id: 1, questions: [
     {inquiry: 'Complete the Beyonce\'s lyrics: If I were a boy...', answer:['...I think I could understand', '...I swear I\'d be a better man', '...All the single ladies', '...I would run the world'], type:'multiple-choice', solution: 0},
