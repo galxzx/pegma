@@ -2,6 +2,7 @@ import {expect} from 'chai'
 import {createStore} from 'redux'
 import rootReducer from './index'
 import {openAlert, closeAlert, setAlert} from './alert'
+import {toggleChatbox} from './chatbox'
 
 describe('Root Reducer', () => {
 
@@ -34,6 +35,27 @@ describe('Root Reducer', () => {
 
       it('setAlert sets the alert message', () => {
         expect(setAlert('New Alert Message')).to.deep.equal({type:'SET_ALERT', message:'New Alert Message'})
+      })
+
+    })
+  })
+
+
+  describe('Chatbox Reducer', () => {
+    it('has expected initial state', () => {
+      expect(testStore.getState().chatbox).to.deep.equal({open: false})
+    })
+
+    it('toggles state', () => {
+      testStore.dispatch({type: 'TOGGLE_CHATBOX'})
+      const newState = testStore.getState()
+      expect(newState.chatbox.open).to.equal(true)
+    })
+
+    describe('Chatbox Action Creators', () => {
+
+      it('toggleChatbox creates action', () => {
+        expect(toggleChatbox()).to.deep.equal({type: 'TOGGLE_CHATBOX'})
       })
 
     })
