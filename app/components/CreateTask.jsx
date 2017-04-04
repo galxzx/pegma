@@ -63,7 +63,6 @@ const CreateTask = ({handleSubmit, submitting, addTask}) => {
             </div>
           </section>
 
-
         </div>
 
       </div>

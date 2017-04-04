@@ -18,7 +18,7 @@ const ChatMessage = ({message, chatName, age}) => {
           </p>
       </div>
     </li>
-    )
+  )
 
   }
 
