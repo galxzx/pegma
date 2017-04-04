@@ -1,24 +1,25 @@
 import React from 'react'
-import chai, {expect} from 'chai'                                                   
+import chai, {expect} from 'chai'
 chai.use(require('chai-enzyme')())
 import {shallow, mount} from 'enzyme'
 import {spy} from 'sinon'
 chai.use(require('sinon-chai'))
 import {createStore} from 'redux'
 import store from './../../store'
+import {Provider} from 'react-redux'
 
-import TeacherAssignmentsPanel from './TeacherAssignmentsPanel'
+import {TeacherAssignmentsPanel} from './TeacherAssignmentsPanel'
 
 describe('<TeacherAssignmentsPanel/>', () => {
 
   let root
   beforeEach('render the root', () =>
-    root = shallow(<Provider store={store}><TeacherAssignmentsPanel /></Provider>)
+    root = shallow(<TeacherAssignmentsPanel students={[]} />)
   )
 
-  it('should have a select input', () => {
-    expect(root.find('select')).to.have.length(1)
-    expect(root.find('option')).to.have.length(4)
+  it('should have two select inputs', () => {
+    expect(root.find('select')).to.have.length(2)
+    expect(root.find('option')).to.have.length(12)
   })
 
   it('should have a local state', () => {

@@ -1,18 +1,21 @@
 import React from 'react'
-import chai, {expect} from 'chai'                                                   
+import chai, {expect} from 'chai'
 chai.use(require('chai-enzyme')())
 import {shallow, mount} from 'enzyme'
 import {spy} from 'sinon'
 chai.use(require('sinon-chai'))
 import {createStore} from 'redux'
 
-import StudentAssignmentsPanel from './StudentAssignmentsPanel'
+import {AssignmentsPanel} from './StudentAssignmentsPanel'
 
-describe('<StudentAssignmentsPanel/>', () => {
+describe('<AssignmentsPanel/>', () => {
 
   let root
-  beforeEach('render the root', () =>
-    root = shallow(<StudentAssignmentsPanel />)
+  beforeEach('render the root', () => {
+    root = shallow(<AssignmentsPanel assignments={[]} />)
+
+
+  }
   )
 
   it('should have a select input', () => {
