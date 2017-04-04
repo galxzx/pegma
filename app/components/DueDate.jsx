@@ -1,4 +1,5 @@
 import React from 'react'
+import 'moment/locale/en-ca'
 
 const DueDate = (props) => {
   const yesterday = new Date();
@@ -11,7 +12,7 @@ const DueDate = (props) => {
         className='my-react-component'
         showOnInputClick
         placeholder='placeholder'
-        locale='de'
+        locale='en-ca'
       />
     </div>
   )

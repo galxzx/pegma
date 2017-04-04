@@ -1128,6 +1128,16 @@ div.teacher-assignments {
   	label {
   		padding-bottom: 10px;
   	}
+
+  	table {
+  		.text {
+  			text-align: left;
+  		}
+
+  		.number {
+  			text-align: center;
+  		}
+  	}
   }
 }
 
@@ -1181,9 +1191,6 @@ table.teacher-assignments {
 	font-size: 0.85em;
 	td {
 		width: 5% !important;
-	}
-	td:nth-child(3), td:nth-child(4) {
-		text-align: left;
 	}
 }
 

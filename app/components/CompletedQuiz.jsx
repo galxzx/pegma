@@ -3,7 +3,8 @@ import React from 'react'
 import QuizContainer from '../containers/QuizContainer'
 
 const CompletedQuiz = ({ currentAssignment, quiz }) => {
-    const quizAnswers = currentAssignment.quiz_answers
+  
+  const quizAnswers = currentAssignment.quiz_answers
 
   return (
     currentAssignment.quiz_answers ? (
@@ -34,8 +35,8 @@ const CompletedQuiz = ({ currentAssignment, quiz }) => {
 
       </div>
     ) : <QuizContainer />
-
   )
+
 }
 
 export default CompletedQuiz

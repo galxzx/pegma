@@ -747,6 +747,10 @@ div.teacher-assignments {
     margin-left: 15px; }
   .functions .teacher-assignments label {
     padding-bottom: 10px; }
+  .functions .teacher-assignments table .text {
+    text-align: left; }
+  .functions .teacher-assignments table .number {
+    text-align: center; }
 
 table.teacher-assignments, table.teacher-students {
   margin: 15px;
@@ -786,8 +790,6 @@ table.teacher-assignments {
   font-size: 0.85em; }
   table.teacher-assignments td {
     width: 5% !important; }
-  table.teacher-assignments td:nth-child(3), table.teacher-assignments td:nth-child(4) {
-    text-align: left; }
 
 table.teacher-students.fancy-colors tr {
   -webkit-transition: all 200ms;
