@@ -28,7 +28,7 @@ module.exports = require('express').Router()
 	.get('/:teacherId/students', mustBeLoggedIn, (req, res, next) =>
 		Teacher.findById(req.params.teacherId)
 		.then(teacher => teacher.getStudents({
-			order:['id'],
+			order:['lastName'],
 			include: [
 				{model: Assignment, include:[Quiz, Task]}, User]}))
 		.then(students => res.json(students))

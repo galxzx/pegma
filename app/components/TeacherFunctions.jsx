@@ -1,23 +1,21 @@
-
 import React from 'react'
+import { Link } from 'react-router'
 import { Field, reduxForm } from 'redux-form'
 import DatePicker from 'react-datepicker'
 import moment from 'moment'
-import { Link } from 'react-router'
+
 import DueDate from '../containers/DueDateContainer'
 
 const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll, due_date, handleChange, message}) => {
 
   const studentStats = (assignments) => {
     const stats = {
-      'assigned':0,
-      'doing':0,
-      'completed':0,
-      'archived':0
+      'assigned': 0,
+      'doing': 0,
+      'completed': 0,
+      'archived': 0
     }
-
     assignments.forEach(assignment => stats[assignment.status]++)
-
     return stats
   }
 
@@ -77,7 +75,7 @@ const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll, due_
                 </div>
                 <div className="flex-container">
                     <div className="flex-child due-date-picker">                
-                      <label>Due Date </label>
+                      <label>Due Date </label><br />
                       <DatePicker selected={ due_date } onChange={handleChange}  />
                     </div>
                     <div className="flex-child"> 
@@ -98,9 +96,8 @@ const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll, due_
                 <tbody id="students">
                   <tr id="filters">
                     <th><input type="checkbox" onChange={(evt) => toggleCheckAll('#students', evt.target.checked)}/></th>
-                    <th>ID</th>
-                    <th>Last</th>
-                    <th>First</th>
+                    <th className="text">Last Name</th>
+                    <th className="text">First Name</th>
                     <th>Assigned</th>
                     <th>Doing </th>
                     <th>Completed </th>
@@ -109,16 +106,15 @@ const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll, due_
                 {students.map((student) => {
                   let stats = studentStats(student.assignments)
                   return (
-                    <tr key={student.id} className="student">
-                      <td className="select"><input defaultValue={student.id} type="checkbox" /></td>
-                      <td className="">{student.id}</td>
-                      <td className="">{student.user.lastName}</td>
-                      <td className="">{student.user.firstName}</td>
+                    <tr key={student.id} className="student table">
+                      <td className="select"><input defaultValue={ student.id } type="checkbox" /></td>
+                      <td className="text">{ student.user.lastName }</td>
+                      <td className="text">{ student.user.firstName }</td>
 
-                      <td className="">{stats.assigned}</td>
-                      <td className="">{stats.doing}</td>
-                      <td className="">{stats.completed}</td>
-                      <td className="">{stats.archived}</td>
+                      <td className="number">{ stats.assigned }</td>
+                      <td className="number">{ stats.doing }</td>
+                      <td className="number">{ stats.completed }</td>
+                      <td className="number">{ stats.archived }</td>
                     </tr>
                   )
                 })}

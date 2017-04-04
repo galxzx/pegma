@@ -12,7 +12,7 @@ const {mustBeLoggedIn, forbidden,} = require('./auth.filters')
 
 module.exports = require('express').Router()
 	.get('/quizzes', mustBeLoggedIn, (req, res, next) =>
-		Quiz.findAll({include:[Question]})
+		Quiz.findAll({include:[Question], order: ['title']})
 		.then(quizzes => res.json(quizzes))
 		.catch(next))
   .get('/quizzes/:quizId', mustBeLoggedIn, (req, res, next) =>
@@ -20,7 +20,7 @@ module.exports = require('express').Router()
       .then(quiz => res.json(quiz))
        .catch(next))
 	.get('/tasks', mustBeLoggedIn, (req, res, next) =>
-		Task.findAll({})
+		Task.findAll({order: ['title']})
 		.then(tasks => res.json(tasks))
 		.catch(next))
   .get('/tasks/:taskId', mustBeLoggedIn, (req, res, next) =>
