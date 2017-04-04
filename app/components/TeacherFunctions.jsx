@@ -3,10 +3,11 @@ import { Link } from 'react-router'
 import { Field, reduxForm } from 'redux-form'
 import DatePicker from 'react-datepicker'
 import moment from 'moment'
+import _ from 'lodash'
 
 import DueDate from '../containers/DueDateContainer'
 
-const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll, due_date, handleChange, message}) => {
+const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll, due_date, handleDateChange, handleSelectTask, handleSelectQuiz, handleSelectStudent, allTasks, allQuizzes, message}) => {
 
   const studentStats = (assignments) => {
     const stats = {
@@ -37,38 +38,33 @@ const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll, due_
             <div className="panel-header">Existing Assignments</div>
             <section className="teacher-assignments">
               <p>Select a quiz and/or task to assign to students.</p>
-              <form onSubmit={(evt) => handleSubmit(evt)}>
+              <form onSubmit={(event) => handleSubmit(event)}>
                 <div className="flex-container">
                   <div className="flex-child">                 
-                    <select id="tasks" name="tasks" className="normal full">
-                      <option>Assign Task...</option>
+                    <select id="tasks" name="tasks" className="normal full" onChange={handleSelectTask}>
+                      <option id='0'>Assign Task...</option>
                     {
-                      library && library.tasks &&
-                        library.tasks.map(task =>
-                          <option
-                            id={`task-${task.id}`}
-                            key={task.id}
-                            data-id={task.id}
-                            data-title={task.title}>{task.title}
-                          </option>
+                      allTasks && allTasks.map(task =>
+                        <option
+                          key={`quiz-${task.id}`}
+                          value={task.id}
+                          >{task.title}
+                        </option>
                         )
                     }
                     </select>
                   </div>
                   <div className="flex-child">                     
-                    <select id="quizzes" name="quizzes" className="normal full">
-                      <option>Assign Quiz...</option>
+                    <select id="quizzes" name="quizzes" className="normal full" onChange={handleSelectQuiz}>
+                      <option id='0'>Assign Quiz...</option>
                     {
-                      library && library.quizzes &&
-                        library.quizzes.map(quiz =>
-                          <option
-                            id={`quiz-${quiz.id}`}
-                            key={quiz.id}
-                            data-id={quiz.id}
-                            data-title={quiz.title}
-                            >{quiz.title}
-                          </option>
-                        )
+                      allQuizzes && allQuizzes.map(quiz =>
+                        <option
+                          key={`quiz-${quiz.id}`}
+                          value={quiz.id}
+                          >{quiz.title}
+                        </option>
+                      )
                     }
                     </select>
                   </div>
@@ -76,7 +72,7 @@ const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll, due_
                 <div className="flex-container">
                     <div className="flex-child due-date-picker">                
                       <label>Due Date </label><br />
-                      <DatePicker selected={ due_date } onChange={handleChange}  />
+                      <DatePicker selected={ due_date } onChange={ handleDateChange }  />
                     </div>
                     <div className="flex-child"> 
                       <label></label>                                                       
@@ -95,7 +91,7 @@ const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll, due_
               <table className="teacher-assignments">
                 <tbody id="students">
                   <tr id="filters">
-                    <th><input type="checkbox" onChange={(evt) => toggleCheckAll('#students', evt.target.checked)}/></th>
+                    <th><input type="checkbox" onChange={(event) => toggleCheckAll('#students', event.target.checked)}/></th>
                     <th className="text">Last Name</th>
                     <th className="text">First Name</th>
                     <th>Assigned</th>
@@ -107,10 +103,9 @@ const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll, due_
                   let stats = studentStats(student.assignments)
                   return (
                     <tr key={student.id} className="student table">
-                      <td className="select"><input defaultValue={ student.id } type="checkbox" /></td>
+                      <td className="select"><input value={ student.id } type="checkbox"/></td>
                       <td className="text">{ student.user.lastName }</td>
                       <td className="text">{ student.user.firstName }</td>
-
                       <td className="number">{ stats.assigned }</td>
                       <td className="number">{ stats.doing }</td>
                       <td className="number">{ stats.completed }</td>
