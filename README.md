@@ -3,7 +3,7 @@
 ### To Run this app
 - Download the application from [github](https://github.com/galxzx/pegma).
 - Run ```npm install```, run the seed file ```npm run seed```, then run ```npm start```
-- Type ```http://localhost:1337/``` on your broswer to start the app.
+- Type ```http://localhost:1337/``` on your browser to start the app.
 
 - You may visit a live version [here](https://pegma.herokuapp.com/).
 
@@ -34,7 +34,7 @@ Teachers may:
 - [Jonathan Mann](https://github.com/jdmann)
 
 ----------------------------
-### Tools and Librarys
+### Tools and Libraries
 
 - [ReactJS](https://facebook.github.io/react/)
 - [Bones](https://github.com/FullstackAcademy/bones.git)
