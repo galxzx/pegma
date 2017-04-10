@@ -38,7 +38,7 @@ Teachers may:
 - [ReactJS](https://facebook.github.io/react/)
 - [Bones](https://github.com/FullstackAcademy/bones.git)
 - [Sequelize](http://docs.sequelizejs.com/en/v3/)
-- [Socket.io] (https://socket.io/)
+- [Socket.io](https://socket.io/)
 - [d3](https://d3js.org/)
 - [lodash](https://lodash.com/)
 - [rc-datepicker](https://github.com/buildo/rc-datepicker)
