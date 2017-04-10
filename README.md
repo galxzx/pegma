@@ -4,6 +4,7 @@
 - Download the application from [github](https://github.com/galxzx/pegma).
 - Run ```npm install```, run the seed file ```npm run seed```, then run ```npm start```
 - Type ```http://localhost:1337/``` on your broswer to start the app.
+
 - You may visit a live version [here](https://pegma.herokuapp.com/).
 
 ----------------------------
