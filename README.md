@@ -13,13 +13,6 @@
 Pegma is a teacher/student assignment tracking application.
 
 ----------------------------
-### Team
-
-- [Corryn Young](https://github.com/galxzx)
-- [Fabiano Pires da Silva](https://github.com/kavispires)
-- [Jonathan Mann](https://github.com/jdmann)
-
-----------------------------
 ### Functionality
 
 Students may:
@@ -32,6 +25,13 @@ Teachers may:
 - Create tasks and self-graded quizzes.
 - Add/Drop students from their classroom.
 - Update grades and archive assignments.
+
+----------------------------
+### Team
+
+- [Corryn Young](https://github.com/galxzx)
+- [Fabiano Pires da Silva](https://github.com/kavispires)
+- [Jonathan Mann](https://github.com/jdmann)
 
 ----------------------------
 ### Tools and Librarys
