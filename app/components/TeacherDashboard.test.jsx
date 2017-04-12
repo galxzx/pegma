@@ -1,5 +1,5 @@
 import React from 'react'
-import chai, {expect} from 'chai'                                                   
+import chai, {expect} from 'chai'
 chai.use(require('chai-enzyme')())
 import {shallow, mount} from 'enzyme'
 import {spy} from 'sinon'
@@ -9,7 +9,7 @@ import {createStore} from 'redux'
 import TeacherDashboard from './TeacherDashboard'
 import TeacherStats from './Dashboard/TeacherStats'
 import TeacherNotificationsPanel from './Dashboard/TeacherNotificationsPanel'
-import CalendarSmall from './Dashboard/CalendarSmall'
+import TeacherCalendarSmall from './Dashboard/TeacherCalendarSmall'
 import TeacherAssignmentsPanel from './Dashboard/TeacherAssignmentsPanel'
 
 
@@ -29,15 +29,12 @@ describe('<TeacherDashboard/>', () => {
   })
 
   it('should have a Calendar panel', () => {
-    expect(root.find(CalendarSmall)).to.have.length(1)
+    expect(root.find(TeacherCalendarSmall)).to.have.length(1)
   })
 
   it('should have a Assignments Panel', () => {
     expect(root.find(TeacherAssignmentsPanel)).to.have.length(1)
   })
 
-  xit('should receive assignments as props', () => {
-    expect(root.assignments).to.be.defined
-  })
 
 })

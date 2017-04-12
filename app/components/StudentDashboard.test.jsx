@@ -1,5 +1,5 @@
 import React from 'react'
-import chai, {expect} from 'chai'                                                   
+import chai, {expect} from 'chai'
 chai.use(require('chai-enzyme')())
 import {shallow, mount} from 'enzyme'
 import {spy} from 'sinon'
@@ -9,7 +9,7 @@ import {createStore} from 'redux'
 import StudentDashboard from './StudentDashboard'
 import StudentStats from './Dashboard/StudentStats'
 import StudentNotificationsPanel from './Dashboard/StudentNotificationsPanel'
-import CalendarSmall from './Dashboard/CalendarSmall'
+import StudentCalendarSmall from './Dashboard/StudentCalendarSmall'
 import StudentAssignmentsPanel from './Dashboard/StudentAssignmentsPanel'
 
 
@@ -29,7 +29,7 @@ describe('<StudentDashboard/>', () => {
   })
 
   it('should have a Calendar panel', () => {
-    expect(root.find(CalendarSmall)).to.have.length(1)
+    expect(root.find(StudentCalendarSmall)).to.have.length(1)
   })
 
   it('should have a Assignments Panel', () => {

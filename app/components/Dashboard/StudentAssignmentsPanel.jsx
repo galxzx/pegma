@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 import _ from 'lodash'
 import { connect } from 'react-redux'
 
-class AssignmentsPanel extends React.Component {
+export class AssignmentsPanel extends React.Component {
   constructor(props) {
     super(props)
     this.state = {

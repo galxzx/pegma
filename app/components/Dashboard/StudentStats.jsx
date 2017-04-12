@@ -54,7 +54,7 @@ const StudentStats = ({assignments}) => {
       <li className="stats-rewards">
         <span className="icon icon-trophy"></span>
         <div className="info">
-          <div className="quantity">{ grade }</div>
+          <div className="quantity">{ Math.round(grade) }</div>
           <div className="type">Grade Average</div>
         </div>
       </li>

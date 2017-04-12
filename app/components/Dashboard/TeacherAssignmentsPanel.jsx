@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router'
 import _ from 'lodash'
 
-class TeacherAssignmentsPanel extends React.Component {
+export class TeacherAssignmentsPanel extends React.Component {
 	constructor(props) {
     super(props)
     this.state = {
