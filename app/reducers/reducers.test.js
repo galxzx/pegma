@@ -61,4 +61,17 @@ describe('Root Reducer', () => {
     })
   })
 
+  describe('Tracker Reducer', () => {
+    it('has expected initial state', () => {
+      expect(testStore.getState().tracker).to.deep.equal({board: {lanes: [
+    {id:'assigned', title: 'assigned', label: 'assigned', cards:[]},
+    {id:'doing', title: 'doing', label: 'doing', cards:[]},
+    {id:'completed', title: 'completed', label: 'completed', cards:[]},
+    {id:'archived', title: 'archived', label: 'archived', cards:[]}
+  ]}})
+    })
+
+
+  })
+
 })
