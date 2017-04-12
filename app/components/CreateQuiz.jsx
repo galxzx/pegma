@@ -65,7 +65,6 @@ const createQuiz = ({handleSubmit, submitting, addQuiz}) => {
             </div>
           </section>
 
-
         </div>
 
       </div>

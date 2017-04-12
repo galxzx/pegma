@@ -4,7 +4,7 @@ import RenderField from './RenderField'
 import RenderError from './RenderError'
 
 const CreateQuestions = ({ fields, meta: { touched, error, submitFailed } }) => (
-  <div className="">
+  <div>
     <ul className="create-question">
       {
         fields.map((question, index) =>

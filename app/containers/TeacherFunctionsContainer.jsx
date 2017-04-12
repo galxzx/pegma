@@ -5,76 +5,94 @@ import TeacherFunctions from '../components/TeacherFunctions'
 import {addAssignmentsRequest} from '../reducers/teacher'
 
 class TeacherFunctionsContainer extends Component {
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
     this.state = {
       due_date: moment(),
-      message: ''
+      message: '',
+      allTasks: [],
+      allQuizzes: [],
+      selectedTask: 0, 
+      selectedQuiz: 0
     }
+    this.handleSelectTask = this.handleSelectTask.bind(this)
+    this.handleSelectQuiz = this.handleSelectQuiz.bind(this)
+    this.handleDateChange = this.handleDateChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleChange = this.handleChange.bind(this)
   }
 
-  componentDidMount(){
+  componentWillReceiveProps (nextProps) {
+    // Remove duplicates from library based on titles
+    this.setState({allTasks: _.uniqBy([...nextProps.library.tasks], 'title')})
+    this.setState({allQuizzes: _.uniqBy([...nextProps.library.quizzes], 'title')})
+  }
+
+  componentDidMount () {
+    window.scrollTo(0,0)   
+  }
+
+  componentWillUpdate () {
     window.scrollTo(0,0)
   }
 
-  componentWillUpdate(){
-    window.scrollTo(0,0)
-
+  handleSelectTask (event) {
+    let val = +event.target.value
+    if (isNaN(val)) val = 0
+    this.setState({ selectedTask: val })
   }
 
-  handleSubmit (evt) {
+  handleSelectQuiz (event) {
+    let val = +event.target.value
+    if (isNaN(val)) val = 0
+    this.setState({ selectedQuiz: val })
+  }
 
-    evt.preventDefault()
+  handleDateChange (date) {
+    this.setState({ due_date: date })
+  }
 
-    let tasks = document.getElementById('tasks')
-    let taskIdx = tasks.selectedIndex || 0
+  handleSubmit (event) {
+    event.preventDefault()
 
-    let quizzes = document.getElementById('quizzes')
-    let quizIdx = quizzes.selectedIndex || 0
+    // Check restrictions for at least one task or quiz being selected
+    if (!this.state.selectedTask && !this.state.selectedQuiz) return this.setState({ message: 'You must select at least one task or one quiz' })
 
-    let studentIds = document.querySelectorAll(`#students tr.student td.select input[type="checkbox"]:checked`)
-    studentIds = [...studentIds].map(input => {
-      return +input.value
-    })
+    // Get all selected students ids
+    let selectedStudents = document.querySelectorAll(`#students tr.student td.select input[type="checkbox"]:checked`)
+    selectedStudents = [...selectedStudents].map(input => +input.value)
+
+    // Check restriction for at least one student being selected
+    if (selectedStudents.length < 1) return this.setState({message: 'Please select at least one student'})
 
     let numCreated = 0
-    let numStudents = studentIds.length
+    const numStudents = selectedStudents.length
+    const dueDate = this.state.due_date;
 
-    if(studentIds.length !== 0) {
-      if(taskIdx && taskIdx !== 0) {
-        let taskOption = tasks.querySelector(`#task-${taskIdx}`)
-        let taskTitle = taskOption.getAttribute('data-title')
-        let taskId = taskOption.getAttribute('data-id')
-        this.props.addAssignmentsRequest({status: 'assigned', type: 'task', task_id: taskId, title: taskTitle, due_date: this.state.due_date}, studentIds)
-        numCreated += studentIds.length
-      }
-
-      if(quizIdx && quizIdx !== 0) {
-        let quizOption = quizzes.querySelector(`#quiz-${quizIdx}`)
-        let quizTitle = quizOption.getAttribute('data-title')
-        let quizId = quizOption.getAttribute('data-id')
-        this.props.addAssignmentsRequest({status: 'assigned', type: 'quiz', quiz_id: quizId, title: quizTitle, due_date: this.state.due_date}, studentIds)
-        numCreated += studentIds.length
-      }
-      this.setState({message: `${numCreated} assignments were created for ${numStudents} students`})
-      clearForm()
+    if (this.state.selectedTask) {
+      const thisTask = this.state.allTasks.find((el) => el.id === this.state.selectedTask)
+      this.props.addAssignmentsRequest({type: 'task', task_id: thisTask.id, title: thisTask.title, due_date: dueDate}, selectedStudents)
+      numCreated += selectedStudents.length
     }
-    else {
-      this.setState({message: 'Please select a student'})
-    }
-  }
 
-  handleChange(date) {
+    if (this.state.selectedQuiz) {
+      const thisQuiz = this.state.allQuizzes.find((el) => el.id === this.state.selectedQuiz)
+      this.props.addAssignmentsRequest({type: 'quiz', quiz_id: thisQuiz.id, title: thisQuiz.title, due_date: dueDate}, selectedStudents)
+      numCreated += selectedStudents.length
+    }
+
+    this.setState({message: `${numCreated} assignments were created for ${numStudents} students`})
+
+    // Clear forms and state
+    clearForm()
     this.setState({
-      due_date: date
+      selectedTask: 0, 
+      selectedQuiz: 0
     })
   }
 
-  render(){
+  render () {
     return (
-      <TeacherFunctions {...this.props} handleSubmit={this.handleSubmit} handleChange={this.handleChange} due_date={this.state.due_date} message={this.state.message} />
+      <TeacherFunctions {...this.props} {...this.state} handleSubmit={this.handleSubmit} handleSelectQuiz={this.handleSelectQuiz} handleSelectTask={this.handleSelectTask} handleDateChange={this.handleDateChange} due_date={this.state.due_date} />
     )
   }
 }
@@ -103,50 +121,6 @@ const clearForm = () => {
 const displayMessage = (message) => {
 	document.getElementById('message-box').innerHTML = message
 }
-
-// const handleSubmit = (evt) => (dispatch, getState) => {
-
-// 	evt.preventDefault()
-
-// 	let tasks = document.getElementById('tasks')
-// 	let taskIdx = tasks.selectedIndex || 0
-
-// 	let quizzes = document.getElementById('quizzes')
-// 	let quizIdx = quizzes.selectedIndex || 0
-
-// 	let studentIds = document.querySelectorAll(`#students tr.student td.select input[type="checkbox"]:checked`)
-// 	studentIds = [...studentIds].map(input => {
-// 		return +input.value
-// 	})
-
-// 	let numCreated = 0
-// 	let numStudents = studentIds.length
-
-// 	if(studentIds.length !== 0) {
-// 			console.log('taskIdx===>', taskIdx)
-// 		if(taskIdx && taskIdx !== 0) {
-// 			let taskOption = tasks.querySelector(`#task-${taskIdx}`)
-// 			let taskTitle = taskOption.getAttribute('data-title')
-// 			let taskId = taskOption.getAttribute('data-id')
-// 			dispatch(addAssignmentsRequest({status: 'assigned', type: 'task', task_id: taskId, title: taskTitle}, studentIds))
-// 			numCreated += studentIds.length
-// 		}
-
-// 		if(quizIdx && quizIdx !== 0) {
-// 			let quizOption = quizzes.querySelector(`#quiz-${quizIdx}`)
-// 			let quizTitle = quizOption.getAttribute('data-title')
-// 			let quizId = quizOption.getAttribute('data-id')
-// 			dispatch(addAssignmentsRequest({status: 'assigned', type: 'quiz', quiz_id: quizId, title: quizTitle}))
-// 			numCreated += studentIds.length
-// 		}
-// 	clearForm()
-// 	// update this to retrieve from state...
-// 	displayMessage(`${numCreated} assignments were created for ${numStudents} students`)
-// 	}
-// 	else {
-// 		displayMessage('')
-// 	}
-// }
 
 const mapState = (state) => {
   return {

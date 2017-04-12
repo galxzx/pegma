@@ -1,23 +1,22 @@
-
 import React from 'react'
+import { Link } from 'react-router'
 import { Field, reduxForm } from 'redux-form'
 import DatePicker from 'react-datepicker'
 import moment from 'moment'
-import { Link } from 'react-router'
+import _ from 'lodash'
+
 import DueDate from '../containers/DueDateContainer'
 
-const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll, due_date, handleChange, message}) => {
+const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll, due_date, handleDateChange, handleSelectTask, handleSelectQuiz, handleSelectStudent, allTasks, allQuizzes, message}) => {
 
   const studentStats = (assignments) => {
     const stats = {
-      'assigned':0,
-      'doing':0,
-      'completed':0,
-      'archived':0
+      'assigned': 0,
+      'doing': 0,
+      'completed': 0,
+      'archived': 0
     }
-
     assignments.forEach(assignment => stats[assignment.status]++)
-
     return stats
   }
 
@@ -39,46 +38,41 @@ const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll, due_
             <div className="panel-header">Existing Assignments</div>
             <section className="teacher-assignments">
               <p>Select a quiz and/or task to assign to students.</p>
-              <form onSubmit={(evt) => handleSubmit(evt)}>
+              <form onSubmit={(event) => handleSubmit(event)}>
                 <div className="flex-container">
                   <div className="flex-child">                 
-                    <select id="tasks" name="tasks" className="normal full">
-                      <option>Assign Task...</option>
+                    <select id="tasks" name="tasks" className="normal full" onChange={handleSelectTask}>
+                      <option id='0'>Assign Task...</option>
                     {
-                      library && library.tasks &&
-                        library.tasks.map(task =>
-                          <option
-                            id={`task-${task.id}`}
-                            key={task.id}
-                            data-id={task.id}
-                            data-title={task.title}>{task.title}
-                          </option>
+                      allTasks && allTasks.map(task =>
+                        <option
+                          key={`quiz-${task.id}`}
+                          value={task.id}
+                          >{task.title}
+                        </option>
                         )
                     }
                     </select>
                   </div>
                   <div className="flex-child">                     
-                    <select id="quizzes" name="quizzes" className="normal full">
-                      <option>Assign Quiz...</option>
+                    <select id="quizzes" name="quizzes" className="normal full" onChange={handleSelectQuiz}>
+                      <option id='0'>Assign Quiz...</option>
                     {
-                      library && library.quizzes &&
-                        library.quizzes.map(quiz =>
-                          <option
-                            id={`quiz-${quiz.id}`}
-                            key={quiz.id}
-                            data-id={quiz.id}
-                            data-title={quiz.title}
-                            >{quiz.title}
-                          </option>
-                        )
+                      allQuizzes && allQuizzes.map(quiz =>
+                        <option
+                          key={`quiz-${quiz.id}`}
+                          value={quiz.id}
+                          >{quiz.title}
+                        </option>
+                      )
                     }
                     </select>
                   </div>
                 </div>
                 <div className="flex-container">
                     <div className="flex-child due-date-picker">                
-                      <label>Due Date </label>
-                      <DatePicker selected={ due_date } onChange={handleChange}  />
+                      <label>Due Date </label><br />
+                      <DatePicker selected={ due_date } onChange={ handleDateChange }  />
                     </div>
                     <div className="flex-child"> 
                       <label></label>                                                       
@@ -97,10 +91,9 @@ const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll, due_
               <table className="teacher-assignments">
                 <tbody id="students">
                   <tr id="filters">
-                    <th><input type="checkbox" onChange={(evt) => toggleCheckAll('#students', evt.target.checked)}/></th>
-                    <th>ID</th>
-                    <th>Last</th>
-                    <th>First</th>
+                    <th><input type="checkbox" onChange={(event) => toggleCheckAll('#students', event.target.checked)}/></th>
+                    <th className="text">Last Name</th>
+                    <th className="text">First Name</th>
                     <th>Assigned</th>
                     <th>Doing </th>
                     <th>Completed </th>
@@ -109,16 +102,14 @@ const TeacherFunctions = ({students, library, handleSubmit, toggleCheckAll, due_
                 {students.map((student) => {
                   let stats = studentStats(student.assignments)
                   return (
-                    <tr key={student.id} className="student">
-                      <td className="select"><input defaultValue={student.id} type="checkbox" /></td>
-                      <td className="">{student.id}</td>
-                      <td className="">{student.user.lastName}</td>
-                      <td className="">{student.user.firstName}</td>
-
-                      <td className="">{stats.assigned}</td>
-                      <td className="">{stats.doing}</td>
-                      <td className="">{stats.completed}</td>
-                      <td className="">{stats.archived}</td>
+                    <tr key={student.id} className="student table">
+                      <td className="select"><input value={ student.id } type="checkbox"/></td>
+                      <td className="text">{ student.user.lastName }</td>
+                      <td className="text">{ student.user.firstName }</td>
+                      <td className="number">{ stats.assigned }</td>
+                      <td className="number">{ stats.doing }</td>
+                      <td className="number">{ stats.completed }</td>
+                      <td className="number">{ stats.archived }</td>
                     </tr>
                   )
                 })}
